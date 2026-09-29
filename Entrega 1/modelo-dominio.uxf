@@ -1,0 +1,1839 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1584</x>
+      <y>432</y>
+      <w>144</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Entrenador
+--
+bg=light_gray
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1557</x>
+      <y>621</y>
+      <w>180</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>Socio
+--
+-socioID: String
+-fechaNacimiento: LocalDate
+bg=light_gray
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1836</x>
+      <y>432</y>
+      <w>198</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Equipo
+--
+-nombre: String
+-cupoMaximo: int
+-activo: boolean
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1836</x>
+      <y>756</y>
+      <w>171</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>JugadorEquipo
+--
+-numeroCamiseta: int
+-posicion: String
+-activo: boolean
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1926</x>
+      <y>585</y>
+      <w>189</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>EquipoInscrito
+--
+-fechaInscripcion: LocalDate
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2151</x>
+      <y>288</y>
+      <w>153</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Categoria
+--
+-nombre: String
+-edadMaxima: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2151</x>
+      <y>378</y>
+      <w>198</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>DeporteEquipo
+--
+-nombre: String
+-minimoHabilitados: int
+-puntosVictoria: int
+-puntosEmpate: int
+-puntosDerrota: int
+-admiteEmpate: boolean
+-marcadorPorSets: boolean
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2466</x>
+      <y>216</y>
+      <w>171</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>PartidoInterno
+--
+-proposito: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2430</x>
+      <y>333</y>
+      <w>234</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Competencia
+--
+-nombre: String
+-entidadOrganizadora: String
+-temporada: int
+-nominaMinima: int
+-amarillasParaSuspension: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2853</x>
+      <y>324</y>
+      <w>180</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/Formato/
+--
+#criterioDesempate: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2853</x>
+      <y>450</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Liga
+--
+-idaYVuelta: boolean
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3024</x>
+      <y>450</y>
+      <w>189</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>GruposEliminacion
+--
+-numeroGrupos: int
+-clasificadosPorGrupo: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2430</x>
+      <y>594</y>
+      <w>207</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/ParticipanteCompetencia/
+--
+#nombre: String
+#grupo: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2466</x>
+      <y>693</y>
+      <w>162</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>EquipoExterno
+--
+-institucion: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2736</x>
+      <y>594</y>
+      <w>180</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>PartidoCompetencia
+--
+-escenario: String
+-fase: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2970</x>
+      <y>702</y>
+      <w>207</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/Partido/
+--
+#fecha: LocalDate
+#marcadorLocal: int
+#marcadorVisitante: int
+#jugado: boolean
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2196</x>
+      <y>756</y>
+      <w>153</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/Estadistica/
+--
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2061</x>
+      <y>846</y>
+      <w>135</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>EstadisticaFutbol
+--
+-goles: int
+-asistencias: int
+-amarillas: int
+-rojas: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2205</x>
+      <y>846</y>
+      <w>135</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>EstadisticaBaloncesto
+--
+-puntos: int
+-rebotes: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2349</x>
+      <y>846</y>
+      <w>135</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>EstadisticaVoleibol
+--
+-aces: int
+-bloqueos: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2349</x>
+      <y>990</y>
+      <w>162</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Suspension
+--
+-motivo: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2106</x>
+      <y>594</y>
+      <w>342</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>360.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2538</x>
+      <y>657</y>
+      <w>27</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;41.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2628</x>
+      <y>225</y>
+      <w>648</w>
+      <h>549</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>610.0;584.0;700.0;584.0;700.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2907</x>
+      <y>612</y>
+      <w>144</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>140.0;95.0;140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1719</x>
+      <y>441</y>
+      <w>135</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=0..1
+fontsize=12
+dirigido por</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2025</x>
+      <y>450</y>
+      <w>144</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+pertenece a</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1998</x>
+      <y>297</y>
+      <w>171</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+juega en</panel_attributes>
+    <additional_attributes>20.0;146.0;20.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2340</x>
+      <y>396</y>
+      <w>108</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+de</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2295</x>
+      <y>279</y>
+      <w>207</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+habilitada</panel_attributes>
+    <additional_attributes>210.0;60.0;210.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1863</x>
+      <y>495</y>
+      <w>54</w>
+      <h>279</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+fontsize=12
+tiene</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;282.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1674</x>
+      <y>693</y>
+      <w>180</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+fontsize=12
+es</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;180.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1863</x>
+      <y>207</y>
+      <w>621</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+local</panel_attributes>
+    <additional_attributes>670.0;20.0;10.0;20.0;10.0;244.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1908</x>
+      <y>234</y>
+      <w>576</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+visitante</panel_attributes>
+    <additional_attributes>620.0;20.0;10.0;20.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1989</x>
+      <y>495</y>
+      <w>72</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+inscribe a</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1953</x>
+      <y>621</y>
+      <w>63</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1..*
+fontsize=12
+nómina</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;148.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2655</x>
+      <y>333</y>
+      <w>216</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=1
+fontsize=12
+se juega con</panel_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2511</x>
+      <y>423</y>
+      <w>72</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=2..*
+fontsize=12
+inscritos</panel_attributes>
+    <additional_attributes>10.0;16.0;10.0;184.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2655</x>
+      <y>396</y>
+      <w>216</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+fontsize=12
+partidos</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0;170.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2628</x>
+      <y>585</y>
+      <w>126</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+local</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2628</x>
+      <y>621</y>
+      <w>126</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+visitante</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2340</x>
+      <y>756</y>
+      <w>648</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+fontsize=12
+registra</panel_attributes>
+    <additional_attributes>700.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1998</x>
+      <y>765</y>
+      <w>216</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+de</panel_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1971</x>
+      <y>819</y>
+      <w>396</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+aplica a</panel_attributes>
+    <additional_attributes>420.0;212.0;10.0;212.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2502</x>
+      <y>792</y>
+      <w>585</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+origen</panel_attributes>
+    <additional_attributes>10.0;239.0;620.0;239.0;620.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2502</x>
+      <y>792</y>
+      <w>630</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=0..1
+fontsize=12
+cumplidaEn</panel_attributes>
+    <additional_attributes>10.0;264.0;660.0;264.0;660.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2988</x>
+      <y>369</y>
+      <w>135</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;130.0;50.0;130.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2934</x>
+      <y>369</y>
+      <w>27</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2259</x>
+      <y>801</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2313</x>
+      <y>801</y>
+      <w>108</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;100.0;30.0;100.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2142</x>
+      <y>801</y>
+      <w>90</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;80.0;30.0;10.0;30.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1647</x>
+      <y>468</y>
+      <w>81</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..1
+fontsize=12
+también es</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1098</x>
+      <y>324</y>
+      <w>171</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Fisioterapeuta
+--
+bg=light_gray
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1098</x>
+      <y>423</y>
+      <w>171</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Empleado
+--
+-idEmpleado: int
+bg=light_gray
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1098</x>
+      <y>585</y>
+      <w>171</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/Cliente/
+--
+#nombre: String
+#apellidos: String
+#puntosFidelidad: int
+bg=light_gray
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>828</x>
+      <y>432</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>CodigoDescuento
+--
+-idDescuento: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>783</x>
+      <y>567</y>
+      <w>189</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/Venta/
+--
+#fechaHora: LocalDateTime
+#montoTotal: double
+#puntosRedimidos: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>693</x>
+      <y>711</y>
+      <w>171</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>VentaCafeteria
+--
+-porcentajePropina: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>882</x>
+      <y>711</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>VentaTienda
+--
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>486</x>
+      <y>585</y>
+      <w>171</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>DetalleVenta
+--
+-cantidad: int
+-precioUnitario: double
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>225</x>
+      <y>576</y>
+      <w>171</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/Producto/
+--
+#nombre: String
+#precio: double
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>225</x>
+      <y>351</y>
+      <w>180</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Ubicacion
+--
+-nombre: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>63</x>
+      <y>729</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Articulo
+--
+-categoria: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>729</y>
+      <w>171</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/ProductoCafeteria/
+--
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>198</x>
+      <y>855</y>
+      <w>171</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Bebida
+--
+-temperatura: String
+-tamaño: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>396</x>
+      <y>855</y>
+      <w>171</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Snack
+--
+-alergenos: List&lt;String&gt;
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>360</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1260</x>
+      <y>450</y>
+      <w>342</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;10.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>468</y>
+      <w>27</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1260</x>
+      <y>621</y>
+      <w>315</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;10.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>972</x>
+      <y>432</y>
+      <w>144</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=1
+fontsize=12
+pertenece a</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>963</x>
+      <y>603</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+comprador</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>891</x>
+      <y>468</y>
+      <w>45</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=0..1
+fontsize=12
+usa</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>765</x>
+      <y>639</y>
+      <w>126</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>120.0;10.0;120.0;45.0;10.0;45.0;10.0;75.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>639</y>
+      <w>108</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;45.0;100.0;45.0;100.0;75.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>594</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=1..*
+fontsize=12
+contiene</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>387</x>
+      <y>594</y>
+      <w>117</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+de</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>126</x>
+      <y>639</y>
+      <w>198</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>200.0;10.0;200.0;65.0;10.0;65.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>297</x>
+      <y>639</y>
+      <w>90</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;65.0;80.0;65.0;80.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>774</y>
+      <w>117</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>110.0;10.0;110.0;55.0;10.0;55.0;10.0;85.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>774</y>
+      <w>135</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;55.0;130.0;55.0;130.0;85.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>225</x>
+      <y>459</y>
+      <w>180</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Existencia
+--
+-cantidad: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>297</x>
+      <y>495</y>
+      <w>36</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+de</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;85.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>297</x>
+      <y>387</y>
+      <w>36</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+en</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1305</x>
+      <y>261</y>
+      <w>171</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Turno
+--
+-dia: String
+-horaInicio: LocalTime
+-horaFin: LocalTime
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1539</x>
+      <y>225</y>
+      <w>216</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>SolicitudCambioTurno
+--
+-fechaSolicitud: LocalDate
+-nuevoDia: String
+-nuevaHoraInicio: LocalTime
+-nuevaHoraFin: LocalTime
+-estado: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>864</x>
+      <y>261</y>
+      <w>198</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Sugerencia
+--
+-nombreProducto: String
+-tipo: String
+-descripcion: String
+-fecha: LocalDate
+-estado: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1062</x>
+      <y>792</y>
+      <w>207</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>Mensualidad
+--
+-periodo: String
+-valor: double
+-fechaPago: LocalDate
+-pagada: boolean
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1260</x>
+      <y>324</y>
+      <w>180</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=0..*
+m2=1
+fontsize=12
+tiene asignado</panel_attributes>
+    <additional_attributes>100.0;10.0;100.0;115.0;10.0;115.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1467</x>
+      <y>261</y>
+      <w>90</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+sobre</panel_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1260</x>
+      <y>315</y>
+      <w>315</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+solicitada por</panel_attributes>
+    <additional_attributes>330.0;10.0;330.0;142.0;10.0;142.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>981</x>
+      <y>351</y>
+      <w>135</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+propuesta por</panel_attributes>
+    <additional_attributes>40.0;10.0;40.0;90.0;130.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1152</x>
+      <y>666</y>
+      <w>423</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+fontsize=12
+paga</panel_attributes>
+    <additional_attributes>445.0;20.0;10.0;20.0;10.0;135.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1620</x>
+      <y>927</y>
+      <w>162</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Inscripcion
+--
+-nivel: String
+-puntajeELO: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1323</x>
+      <y>927</y>
+      <w>198</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>Reserva
+--
+-fecha: LocalDate
+-horaInicio: LocalTime
+-horaFin: LocalTime
+-numJugadores: int
+-modalidad: String
+-estado: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1098</x>
+      <y>927</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Convocatoria
+--
+-estadoAsistencia: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1098</x>
+      <y>1062</y>
+      <w>153</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Evaluacion
+--
+-nota: int
+-comentario: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>855</x>
+      <y>918</y>
+      <w>180</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>SesionEntrenamiento
+--
+-fecha: LocalDate
+-hora: LocalTime
+-duracionMin: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1359</x>
+      <y>1107</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>PartidoPractica
+--
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1575</x>
+      <y>1098</y>
+      <w>171</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/EstadisticaPractica/
+--
+#setsGanados: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1467</x>
+      <y>1215</y>
+      <w>162</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>EstadisticaTenisPadel
+--
+-gamesGanados: int
+-aces: int
+-erroresNoForzados: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1647</x>
+      <y>1215</y>
+      <w>144</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>EstadisticaTenisMesa
+--
+-puntosTotales: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1449</x>
+      <y>1359</y>
+      <w>180</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Disciplina
+--
+-nombre: String
+-cupoInstalaciones: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1125</x>
+      <y>1350</y>
+      <w>198</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/Instalacion/
+--
+#nombre: String
+#capacidadMaxima: int
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>999</x>
+      <y>1485</y>
+      <w>135</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>CanchaTenis
+--
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1152</x>
+      <y>1485</y>
+      <w>135</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>CanchaPadel
+--
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1314</x>
+      <y>1485</y>
+      <w>162</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>MesaTenisMesa
+--
+-techada: boolean
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1629</x>
+      <y>693</y>
+      <w>54</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+fontsize=12
+tiene</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1620</x>
+      <y>945</y>
+      <w>225</w>
+      <h>468</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+en</panel_attributes>
+    <additional_attributes>180.0;10.0;220.0;10.0;220.0;490.0;10.0;490.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1314</x>
+      <y>1359</y>
+      <w>153</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=0..1
+m2=1..*
+fontsize=12
+cuenta con</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1287</x>
+      <y>1008</y>
+      <w>54</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+de</panel_attributes>
+    <additional_attributes>35.0;10.0;10.0;10.0;10.0;380.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1494</x>
+      <y>693</y>
+      <w>126</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+hecha por</panel_attributes>
+    <additional_attributes>10.0;260.0;10.0;160.0;110.0;160.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1422</x>
+      <y>1035</y>
+      <w>81</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=0..1
+m2=1
+fontsize=12
+se juega en</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1503</x>
+      <y>1107</y>
+      <w>90</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=2..4
+fontsize=12
+registra</panel_attributes>
+    <additional_attributes>10.0;20.0;80.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1665</x>
+      <y>981</y>
+      <w>36</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+de</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>936</x>
+      <y>981</y>
+      <w>207</w>
+      <h>423</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+en</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;440.0;210.0;440.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>153</y>
+      <w>1827</w>
+      <h>828</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+dirigida por</panel_attributes>
+    <additional_attributes>950.0;890.0;10.0;890.0;10.0;20.0;2010.0;20.0;2010.0;260.0;1870.0;260.0;1870.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1026</x>
+      <y>918</y>
+      <w>90</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=1..*
+fontsize=12
+registra</panel_attributes>
+    <additional_attributes>10.0;20.0;80.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1242</x>
+      <y>693</y>
+      <w>351</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+fontsize=12
+de</panel_attributes>
+    <additional_attributes>10.0;275.0;50.0;275.0;50.0;80.0;360.0;80.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1161</x>
+      <y>963</y>
+      <w>54</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..1
+fontsize=12
+tiene</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1053</x>
+      <y>1413</y>
+      <w>108</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>95.0;10.0;95.0;45.0;10.0;45.0;10.0;75.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>1413</y>
+      <w>27</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;75.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1215</x>
+      <y>1413</y>
+      <w>162</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;45.0;160.0;45.0;160.0;75.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1503</x>
+      <y>1485</y>
+      <w>162</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>EscenarioConjunto
+--
+-tipo: String
+fontsize=12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1269</x>
+      <y>1413</y>
+      <w>333</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+fontsize=12</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;35.0;350.0;35.0;350.0;75.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1584</x>
+      <y>1152</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1674</x>
+      <y>1152</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+</diagram>
