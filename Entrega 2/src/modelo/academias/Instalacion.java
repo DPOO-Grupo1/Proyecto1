@@ -55,26 +55,21 @@ public abstract class Instalacion {
 	}
 
 	/**
-	 * Indica si los socios pueden reservar esta instalación.
-	 * Los escenarios de conjunto no son reservables (RF7).
+	 * indica si los socios pueden reservar esta instalación
 	 */
 	public abstract boolean esReservable();
 
 	/**
-	 * Valida si la instalación admite la cantidad de jugadores y la modalidad solicitadas (RF7).
+	 * valida si la instalación admite la cantidad de jugadores y la modalidad solicitadas
 	 */
 	public abstract boolean admite(int numJugadores, Modalidad modalidad);
 
-	/**
-	 * Regla de ingreso y cafetería: pádel y mesas techadas restringen bebidas calientes (RF4, RF7).
-	 */
 	public abstract boolean restringeBebidaCaliente();
 
 	/**
 	 * Revisa si la instalación está desocupada en esa fecha y horario.
 	 * Revisa tanto reservas activas como sesiones de entrenamiento.
-	 * Bloques contiguos no se solapan.
-	 */
+	*/
 	public boolean estaLibre(LocalDate fecha, LocalTime inicio, LocalTime fin) {
 		for (Reserva reserva : reservas) {
 			if (reserva.tieneConflictoCon(fecha, inicio, fin)) {
