@@ -1,11 +1,18 @@
 flowchart LR
-    Club["Club en Memoria"] -->|"1. guardarClub()"| Central["CentralPersistencia"]
+    Club["Club en Memoria"] -->|"1. guardarClub(club, 'datos')"| Central["CentralPersistencia"]
     Central -->|"2. guardar()"| PersAcad["PersistenciaAcademias"]
     Central -->|"3. guardar()"| PersEntr["PersistenciaEntrenamiento"]
-    PersAcad -->|"4. Escribe JSON sin ciclos (IDs planos)"| JSONAcad["academias.json"]
-    PersEntr -->|"5. Escribe JSON de sesiones y evaluaciones"| JSONEntr["entrenamiento.json"]
 
-    Disco[("Archivos en Disco")] -.->|"6. cargarClub()"| Central
+    subgraph Folder["Carpeta de Datos: datos/"]
+        JSONAcad["academias.json"]
+        JSONEntr["entrenamiento.json"]
+        JSONOtros["usuarios.json, deportes.json..."]
+    end
+
+    PersAcad -->|"4. Escribe JSON sin ciclos (IDs planos)"| JSONAcad
+    PersEntr -->|"5. Escribe JSON de sesiones y evaluaciones"| JSONEntr
+
+    Folder -.->|"6. cargarClub('datos')"| Central
     Central -.->|"7. cargar()"| PersAcad
     PersAcad -.->|"8. Reconstruye objetos y enlaces bidireccionales"| ClubNuevo["Nuevo Club"]
     Central -.->|"9. cargar()"| PersEntr
