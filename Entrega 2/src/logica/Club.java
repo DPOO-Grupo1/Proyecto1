@@ -17,6 +17,10 @@ import modelo.partidos.PartidoInterno;
 import modelo.usuarios.Empleado;
 import modelo.usuarios.Socio;
 import modelo.usuarios.Usuario;
+import modelo.tienda.Existencia;
+import modelo.tienda.Producto;
+import modelo.tienda.Ubicacion;
+import modelo.tienda.Venta;
 
 /**
  * Guarda todas las listas del club y busca por id o por nombre.
@@ -31,6 +35,10 @@ public class Club {
 	private List<PartidoInterno> partidosInternos;
 	private List<Competencia> competencias;
 	private LocalDate fechaActual;
+	private List<Producto> productos;
+	private List<Ubicacion> ubicaciones;
+	private List<Existencia> existencias;
+	private List<Venta> ventas;
 
 	public Club() {
 		this.usuarios = new HashMap<String, Usuario>();
@@ -40,6 +48,10 @@ public class Club {
 		this.partidosInternos = new ArrayList<PartidoInterno>();
 		this.competencias = new ArrayList<Competencia>();
 		this.fechaActual = LocalDate.now();
+		this.productos = new ArrayList<Producto>();
+		this.ubicaciones = new ArrayList<Ubicacion>();
+		this.existencias = new ArrayList<Existencia>();
+		this.ventas = new ArrayList<Venta>();
 	}
 
 	// ---------------- Fecha actual ----------------
@@ -263,5 +275,53 @@ public class Club {
 			}
 		}
 		throw new NoEncontradoException("No existe la competencia '" + nombre + "' de la temporada " + temporada);
+	}
+	// ---------------- Tienda (Área C) ----------------
+
+	public void agregarProducto(Producto producto) {
+	    productos.add(producto);
+	}
+
+	public Producto buscarProducto(String nombre) throws NoEncontradoException {
+	    for (Producto p : productos) {
+	        if (p.getNombre().equalsIgnoreCase(nombre)) {
+	            return p;
+	        }
+	    }
+	    throw new NoEncontradoException("No existe el producto '" + nombre + "'");
+	}
+
+	public void agregarUbicacion(Ubicacion ubicacion) {
+	    ubicaciones.add(ubicacion);
+	}
+
+	public Ubicacion buscarUbicacion(String nombre) throws NoEncontradoException {
+	    for (Ubicacion u : ubicaciones) {
+	        if (u.getNombre().equalsIgnoreCase(nombre)) {
+	            return u;
+	        }
+	    }
+	    throw new NoEncontradoException("No existe la ubicación '" + nombre + "'");
+	}
+
+	public void agregarExistencia(Existencia existencia) {
+	    existencias.add(existencia);
+	}
+
+	public Existencia buscarExistencia(Producto producto, Ubicacion ubicacion) throws NoEncontradoException {
+	    for (Existencia e : existencias) {
+	        if (e.getProducto() == producto && e.getUbicacion() == ubicacion) {
+	            return e;
+	        }
+	    }
+	    throw new NoEncontradoException("No hay existencias de '" + producto.getNombre() + "' en " + ubicacion.getNombre());
+	}
+
+	public void agregarVenta(Venta venta) {
+	    ventas.add(venta);
+	}
+
+	public List<Venta> getVentas() {
+	    return ventas;
 	}
 }
