@@ -10,6 +10,7 @@ import java.util.Map;
 import excepciones.NoEncontradoException;
 import modelo.academias.Disciplina;
 import modelo.academias.Instalacion;
+import modelo.academias.PartidoPractica;
 import modelo.academias.Reserva;
 import modelo.entrenamiento.SesionEntrenamiento;
 import modelo.competencias.Competencia;
@@ -38,6 +39,7 @@ public class Club {
 	private List<Disciplina> disciplinas;
 	private List<Instalacion> instalaciones;
 	private List<Reserva> reservas;
+	private List<PartidoPractica> partidosPractica;
 	private List<SesionEntrenamiento> sesiones;
 	private LocalDate fechaActual;
 
@@ -51,6 +53,7 @@ public class Club {
 		this.disciplinas = new ArrayList<Disciplina>();
 		this.instalaciones = new ArrayList<Instalacion>();
 		this.reservas = new ArrayList<Reserva>();
+		this.partidosPractica = new ArrayList<PartidoPractica>();
 		this.sesiones = new ArrayList<SesionEntrenamiento>();
 		this.fechaActual = LocalDate.now();
 	}
@@ -359,15 +362,37 @@ public class Club {
 		return total;
 	}
 
+	public void agregarPartidoPractica(PartidoPractica partido) {
+		partidosPractica.add(partido);
+	}
+
+	public List<PartidoPractica> getPartidosPractica() {
+		return partidosPractica;
+	}
+
+	public PartidoPractica buscarPartidoPractica(String id) throws NoEncontradoException {
+		for (PartidoPractica partido : partidosPractica) {
+			if (partido.getId().equalsIgnoreCase(id)) {
+				return partido;
+			}
+		}
+		throw new NoEncontradoException("No existe un partido de práctica con id '" + id + "'");
+	}
+
 	/**
 	 * Revisa si el socio ya tiene un compromiso en esa fecha y horario:
-	 * ya sea como titular de una reserva activa o convocado a una sesión de
+	 * ya sea como titular de una reserva activa, participante de un partido de práctica
+	 * o convocado a una sesión de entrenamiento (RF7, RF9, RF15).
 	 */
 	public boolean tieneCompromiso(Socio socio, LocalDate fecha, LocalTime inicio, LocalTime fin) {
 		for (Reserva reserva : reservas) {
-			if (reserva.estaActiva() && reserva.getTitular() == socio
-					&& reserva.tieneConflictoCon(fecha, inicio, fin)) {
-				return true;
+			if (reserva.estaActiva() && reserva.tieneConflictoCon(fecha, inicio, fin)) {
+				if (reserva.getTitular() == socio) {
+					return true;
+				}
+				if (reserva.getPartido() != null && reserva.getPartido().tieneParticipante(socio)) {
+					return true;
+				}
 			}
 		}
 		for (SesionEntrenamiento sesion : sesiones) {

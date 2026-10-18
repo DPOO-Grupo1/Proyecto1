@@ -52,6 +52,23 @@ public class Disciplina {
 		return ranking;
 	}
 
+	/**
+	 * Valida si la disciplina admite el tipo de estadística registrado (RF10, EP10.2a).
+	 * Tenis y Pádel admiten EstadisticaTenisPadel; Tenis de mesa admite EstadisticaTenisMesa.
+	 */
+	public boolean admiteEstadistica(EstadisticaPractica estadistica) {
+		if (estadistica == null) {
+			return false;
+		}
+		if (nombre.equalsIgnoreCase("Tenis") || nombre.equalsIgnoreCase("Pádel") || nombre.equalsIgnoreCase("Padel")) {
+			return estadistica instanceof EstadisticaTenisPadel;
+		}
+		if (nombre.equalsIgnoreCase("Tenis de mesa")) {
+			return estadistica instanceof EstadisticaTenisMesa;
+		}
+		return false;
+	}
+
 	@Override
 	public String toString() {
 		return nombre;

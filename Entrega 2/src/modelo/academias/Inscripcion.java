@@ -1,5 +1,8 @@
 package modelo.academias;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelo.usuarios.Socio;
 
 /**
@@ -20,12 +23,14 @@ public class Inscripcion {
 	private Disciplina disciplina;
 	private Nivel nivel;
 	private int puntajeELO;
+	private List<PartidoPractica> partidos;
 
 	public Inscripcion(Socio socio, Disciplina disciplina, Nivel nivel, int puntajeELO) {
 		this.socio = socio;
 		this.disciplina = disciplina;
 		this.nivel = nivel;
 		this.puntajeELO = puntajeELO;
+		this.partidos = new ArrayList<PartidoPractica>();
 	}
 
 	public Socio getSocio() {
@@ -57,6 +62,14 @@ public class Inscripcion {
 		double esperado = 1.0 / (1.0 + Math.pow(10, (eloRival - puntajeELO) / 400.0));
 		double resultado = gano ? 1.0 : 0.0;
 		puntajeELO = (int) Math.round(puntajeELO + FACTOR_K * (resultado - esperado));
+	}
+
+	public List<PartidoPractica> getPartidos() {
+		return partidos;
+	}
+
+	public void agregarPartido(PartidoPractica partido) {
+		partidos.add(partido);
 	}
 
 	@Override
