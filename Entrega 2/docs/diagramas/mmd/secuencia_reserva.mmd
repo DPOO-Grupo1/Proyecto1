@@ -1,0 +1,49 @@
+sequenceDiagram
+    autonumber
+    actor Socio as Socio (S3)
+    participant Consola as Consola PP4
+    participant Gestor as GestorAcademias
+    participant Club as Club
+    participant Inst as Instalacion (I2)
+    participant Res as Nueva Reserva
+
+    Socio->>Consola: Solicitar reserva (I2, 2026-10-07, 15:00-16:30, 2 jug, SENCILLOS)
+    Consola->>Gestor: reservar(quien, "I2", fecha, 15:00, 16:30, 2, SENCILLOS)
+    
+    activate Gestor
+    Gestor->>Gestor: verificarSocio(quien)
+    Note over Gestor: Si quien es Administrador -> PermisoDenegadoException
+    
+    Gestor->>Club: buscarInstalacion("I2")
+    Club-->>Gestor: instalacion (I2: CanchaTenis)
+    
+    Gestor->>Inst: esReservable()
+    Inst-->>Gestor: true
+    
+    Gestor->>Socio: getInscripcion(disciplina)
+    Note over Gestor,Socio: Valida que esté inscrito en Tenis
+    
+    Gestor->>Socio: estaAlDia(fecha)
+    Note over Gestor,Socio: Valida mensualidad no vencida
+    
+    Gestor->>Inst: admite(2, SENCILLOS)
+    Inst-->>Gestor: true
+    
+    Gestor->>Inst: estaLibre(fecha, 15:00, 16:30)
+    Inst-->>Gestor: true (sin choques)
+    
+    Gestor->>Club: tieneCompromiso(socio, fecha, 15:00, 16:30)
+    Club-->>Gestor: false
+    
+    create participant Res
+    Gestor->>Res: new Reserva("R1", socio, instalacion, fecha, ...)
+    Res-->>Gestor: reserva
+    
+    Gestor->>Club: agregarReserva(reserva)
+    Gestor->>Inst: agregarReserva(reserva)
+    Gestor->>Socio: agregarReserva(reserva)
+    
+    Gestor-->>Consola: reserva
+    deactivate Gestor
+    
+    Consola-->>Socio: Confirmación: Reserva R1 ACTIVA

@@ -1,0 +1,11 @@
+flowchart LR
+    Socio["Socio Titular"] -->|"1. Convoca rival"| Consola["Consola PP4"]
+    Consola -->|"2. programarPartidoPractica()"| Gestor["GestorAcademias"]
+    Gestor -->|"3. Valida niveles compatibles o excepcion de entrenador"| Partido["PartidoPractica"]
+    Partido -->|"4. Partido creado en estado programado"| Reserva["Reserva"]
+
+    Jugador["Socio Participante"] -.->|"5. Tras jugar: registrarResultadoPractica()"| Gestor
+    Gestor -.->|"6. Valida coherencia y estadisticas de la disciplina"| Partido
+    Partido -.->|"7. Determina ganador y aplica formula ELO K=32"| Calculo["Calculo ELO"]
+    Calculo -.->|"8. Actualiza puntajes ELO de los participantes"| Inscripcion["Inscripciones"]
+    Partido -.->|"9. Cambia estado a FINALIZADA"| Reserva

@@ -1,0 +1,12 @@
+flowchart LR
+    Entrenador["Entrenador"] -->|"1. Ingresa deporte, cancha y alumnos"| Consola["Consola PP5"]
+    Consola -->|"2. planearSesion()"| Gestor["GestorEntrenamiento"]
+    Gestor -->|"3. Valida cancha libre y sin choques de horario"| Club["Club / Cancha"]
+    Club -->|"4. Crea SesionEntrenamiento y Convocatorias"| Gestor
+    Gestor -->|"5. Confirmacion de sesion"| Consola
+    Consola -->|"6. Muestra sesion programada"| Entrenador
+
+    Entrenador -.->|"7. Tras finalizar sesion: registrarAsistencia()"| Gestor
+    Gestor -.->|"8. Asigna estado (asistio, falto, tarde)"| Convocatoria["Convocatoria"]
+    Entrenador -.->|"9. Opcional: registrarEvaluacion(nota 1 a 5)"| Gestor
+    Gestor -.->|"10. Asigna nota y comentario"| Convocatoria

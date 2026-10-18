@@ -1,0 +1,12 @@
+flowchart LR
+    Socio["Socio"] -->|"1. Pide cancha, fecha y horario"| Consola["Consola PP4"]
+    Consola -->|"2. reservar()"| Gestor["GestorAcademias"]
+    Gestor -->|"3. Valida mora, deporte inscrito y cancha libre"| Club["Club / Cancha"]
+    Club -->|"4. Crea Reserva ACTIVA"| Gestor
+    Gestor -->|"5. Confirmacion de reserva"| Consola
+    Consola -->|"6. Muestra reserva activa"| Socio
+
+    Socio -.->|"7. Presenta reserva en instalacion"| Ingreso["Control de Ingreso"]
+    Ingreso -.->|"8. registrarIngreso()"| Gestor
+    Gestor -.->|"9. Valida restriccion de bebida caliente"| Cancha["Instalacion"]
+    Cancha -.->|"10. Padel o mesa techada: rechaza cafe"| Ingreso
