@@ -1,0 +1,15 @@
+flowchart LR
+    A["Administrador publica turnos semanales (RF33)"] --> B{"¿Sin solapes y cobertura mínima?"}
+    B -- No --> C["Rechazar publicación (CoberturaTurnos / ConflictoHorario)"]
+    B -- Sí --> D["Turnos activos (2 entrenadores y 1 fisio por bloque)"]
+    D --> E["Empleado solicita cambio de turno (RF18, RF19)"]
+    E --> F{"¿Turno propio, sin solicitud pendiente y en horario?"}
+    F -- No --> G["Rechazar solicitud con excepción"]
+    F -- Sí --> H["Crear solicitud con estado PENDIENTE"]
+    H --> I["Administrador evalúa solicitud (RF33)"]
+    I -- Rechazar --> J["Marcar solicitud como RECHAZADA"]
+    I -- Aprobar --> K{"¿Copia simulada mantiene cobertura y sin solapes?"}
+    K -- No --> L["Rechazar aprobación por incumplir cobertura mínima"]
+    K -- Sí --> M["Actualizar horario del turno y marcar APROBADA"]
+    M --> N["Empleado consulta estado de su solicitud (RF19)"]
+    J --> N

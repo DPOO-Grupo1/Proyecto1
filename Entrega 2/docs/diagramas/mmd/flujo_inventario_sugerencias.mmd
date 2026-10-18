@@ -1,0 +1,13 @@
+flowchart LR
+    A["Empleado sugiere producto para tienda (RF21)"] --> B{"¿Nombre y descripción válidos?"}
+    B -- No --> C["Rechazar con DatoInvalidoException"]
+    B -- Sí --> D["Sugerencia registrada con estado PENDIENTE"]
+    D --> E["Administrador revisa sugerencia (RF32)"]
+    E -- Rechazar --> F["Rechazar con motivo obligatorio e informar al empleado"]
+    E -- Aprobar --> G["Marcar sugerencia como APROBADA"]
+    G --> H["Administrador registra producto e inventario inicial (RF31)"]
+    H --> I{"¿Precio mayor a 0 y cantidad no negativa?"}
+    I -- No --> J["Rechazar registro por datos inválidos"]
+    I -- Sí --> K["Producto incorporado en ubicación destino"]
+    K --> L["Reabastecer o mover existencias entre ubicaciones (RF30, RF31)"]
+    L --> M["Administrador consulta inventario consolidado (RF29)"]

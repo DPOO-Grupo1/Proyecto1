@@ -1,0 +1,21 @@
+flowchart LR
+    A["Cliente selecciona productos (RF3, RF4)"] --> B{"¿Es cafetería?"}
+    B -- Sí --> C["Informar alérgenos de snacks (RF4)"]
+    C --> D{"¿Incluye bebida caliente?"}
+    D -- Sí --> E{"¿Cliente en cancha de pádel o tenis techado?"}
+    E -- Sí --> F["Rechazar por seguridad (VentaInvalidaException)"]
+    E -- No --> G["Calcular Impoconsumo 8% y propina voluntaria"]
+    D -- No --> G
+    B -- No --> H["Verificar existencias en Tienda y calcular IVA 19%"]
+    H --> I{"¿Aplica código de descuento? (RF17, RF20)"}
+    G --> I
+    I -- Propio --> J["Aplicar 15% de descuento"]
+    I -- Ajeno --> K["Aplicar 8% de descuento"]
+    I -- No --> L{"¿Desea redimir puntos de fidelidad? (RF5)"}
+    J --> L
+    K --> L
+    L -- Sí --> M["Descontar puntos del total (1 punto = $1)"]
+    L -- No --> N["Confirmar pago y descontar existencias"]
+    M --> N
+    N --> O["Acumular 2% del total en puntos de fidelidad"]
+    O --> P["Registrar venta y emitir comprobante"]
