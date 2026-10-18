@@ -362,6 +362,15 @@ public class Club {
 		return sesiones;
 	}
 
+	public SesionEntrenamiento buscarSesion(String id) throws NoEncontradoException {
+		for (SesionEntrenamiento sesion : sesiones) {
+			if (sesion.getId().equalsIgnoreCase(id)) {
+				return sesion;
+			}
+		}
+		throw new NoEncontradoException("No existe una sesión de entrenamiento con id '" + id + "'");
+	}
+
 	/**
 	 * Cuenta cuántas reservas activas de instalaciones de esa disciplina se cruzan
 	 * Sirve para validar que no se exceda el cupo simultáneo de la disciplina.
