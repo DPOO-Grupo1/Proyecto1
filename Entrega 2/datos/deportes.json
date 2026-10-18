@@ -1,246 +1,512 @@
 {
-  "partidosInternos": [],
-  "categorias": [
-    {
-      "edadMaxima": 99,
-      "edadMinima": 18,
-      "nombre": "Mayores"
-    },
-    {
-      "edadMaxima": 17,
-      "edadMinima": 15,
-      "nombre": "Sub-17"
-    },
-    {
-      "edadMaxima": 14,
-      "edadMinima": 12,
-      "nombre": "Sub-15"
-    }
-  ],
   "deportes": [
     {
+      "nombre": "Fútbol",
+      "minimoHabilitados": 7,
+      "puntosVictoria": 3,
+      "puntosEmpate": 1,
       "puntosDerrota": 0,
       "admiteEmpate": true,
-      "puntosEmpate": 1,
-      "minimoHabilitados": 7,
-      "marcadorPorSets": false,
-      "nombre": "Fútbol",
-      "puntosVictoria": 3
+      "marcadorPorSets": false
     },
     {
-      "puntosDerrota": 1,
-      "admiteEmpate": false,
-      "puntosEmpate": 0,
-      "minimoHabilitados": 5,
-      "marcadorPorSets": false,
       "nombre": "Baloncesto",
-      "puntosVictoria": 2
+      "minimoHabilitados": 5,
+      "puntosVictoria": 2,
+      "puntosEmpate": 0,
+      "puntosDerrota": 0,
+      "admiteEmpate": false,
+      "marcadorPorSets": false
     },
     {
-      "puntosDerrota": 1,
-      "admiteEmpate": false,
-      "puntosEmpate": 0,
-      "minimoHabilitados": 6,
-      "marcadorPorSets": true,
       "nombre": "Voleibol",
-      "puntosVictoria": 2
+      "minimoHabilitados": 6,
+      "puntosVictoria": 2,
+      "puntosEmpate": 0,
+      "puntosDerrota": 0,
+      "admiteEmpate": false,
+      "marcadorPorSets": true
+    }
+  ],
+  "categorias": [
+    {
+      "nombre": "Mayores",
+      "edadMinima": 18,
+      "edadMaxima": 0
+    },
+    {
+      "nombre": "Sub-17",
+      "edadMinima": 15,
+      "edadMaxima": 16
+    },
+    {
+      "nombre": "Sub-15",
+      "edadMinima": 12,
+      "edadMaxima": 14
     }
   ],
   "equipos": [
     {
-      "cupoMaximo": 22,
-      "entrenador": 1,
+      "nombre": "Águilas FC",
       "deporte": "Fútbol",
       "categoria": "Mayores",
+      "cupoMaximo": 22,
+      "activo": true,
+      "entrenador": 1,
       "jugadores": [
         {
-          "posicion": "Defensa",
           "socioID": "J1",
-          "numero": 1,
+          "numero": 10,
+          "posicion": "delantero",
           "activo": true
         },
         {
-          "posicion": "Defensa",
-          "socioID": "J2",
-          "numero": 2,
-          "activo": true
-        },
-        {
-          "posicion": "Defensa",
-          "socioID": "J3",
-          "numero": 3,
-          "activo": true
-        },
-        {
-          "posicion": "Defensa",
           "socioID": "J4",
-          "numero": 4,
+          "numero": 2,
+          "posicion": "defensa",
           "activo": true
         },
         {
-          "posicion": "Delantero",
           "socioID": "J5",
-          "numero": 5,
+          "numero": 3,
+          "posicion": "defensa",
           "activo": true
         },
         {
-          "posicion": "Delantero",
           "socioID": "J6",
-          "numero": 6,
+          "numero": 5,
+          "posicion": "defensa",
           "activo": true
         },
         {
-          "posicion": "Delantero",
           "socioID": "J7",
-          "numero": 7,
+          "numero": 6,
+          "posicion": "volante",
           "activo": true
         },
         {
-          "posicion": "Delantero",
           "socioID": "J8",
           "numero": 8,
+          "posicion": "volante",
           "activo": true
         },
         {
-          "posicion": "Delantero",
           "socioID": "J9",
           "numero": 9,
+          "posicion": "delantero",
           "activo": true
         },
         {
-          "posicion": "Delantero",
           "socioID": "J10",
-          "numero": 10,
-          "activo": true
-        },
-        {
-          "posicion": "Delantero",
-          "socioID": "J11",
           "numero": 11,
+          "posicion": "delantero",
           "activo": true
         },
         {
-          "posicion": "Delantero",
+          "socioID": "J11",
+          "numero": 13,
+          "posicion": "arquero",
+          "activo": true
+        },
+        {
           "socioID": "J12",
-          "numero": 12,
+          "numero": 14,
+          "posicion": "volante",
+          "activo": true
+        },
+        {
+          "socioID": "J13",
+          "numero": 15,
+          "posicion": "defensa",
+          "activo": true
+        },
+        {
+          "socioID": "J14",
+          "numero": 16,
+          "posicion": "volante",
           "activo": true
         }
-      ],
-      "nombre": "Águilas FC",
-      "activo": true
+      ]
     },
     {
-      "cupoMaximo": 15,
-      "entrenador": 2,
+      "nombre": "Titanes Basket",
       "deporte": "Baloncesto",
       "categoria": "Mayores",
+      "cupoMaximo": 15,
+      "activo": true,
+      "entrenador": 2,
       "jugadores": [
         {
-          "posicion": "Alero",
-          "socioID": "B1",
-          "numero": 4,
-          "activo": true
-        },
-        {
-          "posicion": "Alero",
-          "socioID": "B2",
-          "numero": 5,
-          "activo": true
-        },
-        {
-          "posicion": "Alero",
-          "socioID": "B3",
-          "numero": 6,
-          "activo": true
-        },
-        {
-          "posicion": "Alero",
-          "socioID": "B4",
+          "socioID": "J2",
           "numero": 7,
+          "posicion": "base",
           "activo": true
         },
         {
-          "posicion": "Alero",
+          "socioID": "B1",
+          "numero": 20,
+          "posicion": "alero",
+          "activo": true
+        },
+        {
+          "socioID": "B2",
+          "numero": 21,
+          "posicion": "alero",
+          "activo": true
+        },
+        {
+          "socioID": "B3",
+          "numero": 22,
+          "posicion": "alero",
+          "activo": true
+        },
+        {
+          "socioID": "B4",
+          "numero": 23,
+          "posicion": "alero",
+          "activo": true
+        },
+        {
           "socioID": "B5",
-          "numero": 8,
+          "numero": 24,
+          "posicion": "alero",
           "activo": true
         },
         {
-          "posicion": "Alero",
           "socioID": "B6",
-          "numero": 9,
+          "numero": 25,
+          "posicion": "alero",
           "activo": true
         },
         {
-          "posicion": "Alero",
           "socioID": "B7",
-          "numero": 10,
-          "activo": true
-        },
-        {
-          "posicion": "Alero",
-          "socioID": "B8",
-          "numero": 11,
+          "numero": 26,
+          "posicion": "alero",
           "activo": true
         }
-      ],
-      "nombre": "Titanes Basket",
-      "activo": true
+      ]
     },
     {
-      "cupoMaximo": 20,
-      "entrenador": 1,
+      "nombre": "Halcones FC",
       "deporte": "Fútbol",
       "categoria": "Mayores",
+      "cupoMaximo": 20,
+      "activo": true,
+      "entrenador": 1,
       "jugadores": [
         {
-          "posicion": "Medio",
           "socioID": "H1",
           "numero": 1,
+          "posicion": "medio",
           "activo": true
         },
         {
-          "posicion": "Medio",
           "socioID": "H2",
           "numero": 2,
+          "posicion": "medio",
           "activo": true
         },
         {
-          "posicion": "Medio",
           "socioID": "H3",
           "numero": 3,
+          "posicion": "medio",
           "activo": true
         },
         {
-          "posicion": "Medio",
           "socioID": "H4",
           "numero": 4,
+          "posicion": "medio",
           "activo": true
         },
         {
-          "posicion": "Medio",
           "socioID": "H5",
           "numero": 5,
+          "posicion": "medio",
           "activo": true
         },
         {
-          "posicion": "Medio",
           "socioID": "H6",
           "numero": 6,
+          "posicion": "medio",
           "activo": true
         }
-      ],
-      "nombre": "Halcones FC",
-      "activo": true
+      ]
     },
     {
-      "cupoMaximo": 10,
-      "entrenador": null,
+      "nombre": "Cóndores Voleibol",
       "deporte": "Voleibol",
       "categoria": "Sub-17",
-      "jugadores": [],
-      "nombre": "Cóndores Voleibol",
-      "activo": false
+      "cupoMaximo": 12,
+      "activo": false,
+      "entrenador": null,
+      "jugadores": []
+    },
+    {
+      "nombre": "Pumas Sub-17",
+      "deporte": "Fútbol",
+      "categoria": "Sub-17",
+      "cupoMaximo": 20,
+      "activo": true,
+      "entrenador": null,
+      "jugadores": []
+    },
+    {
+      "nombre": "Lobos FC",
+      "deporte": "Fútbol",
+      "categoria": "Mayores",
+      "cupoMaximo": 20,
+      "activo": true,
+      "entrenador": null,
+      "jugadores": [
+        {
+          "socioID": "L1",
+          "numero": 1,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L2",
+          "numero": 2,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L3",
+          "numero": 3,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L4",
+          "numero": 4,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L5",
+          "numero": 5,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L6",
+          "numero": 6,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L7",
+          "numero": 7,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L8",
+          "numero": 8,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L9",
+          "numero": 9,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L10",
+          "numero": 10,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L11",
+          "numero": 11,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "L12",
+          "numero": 12,
+          "posicion": "campo",
+          "activo": true
+        }
+      ]
+    },
+    {
+      "nombre": "Gaviotas Voley",
+      "deporte": "Voleibol",
+      "categoria": "Mayores",
+      "cupoMaximo": 14,
+      "activo": true,
+      "entrenador": 3,
+      "jugadores": [
+        {
+          "socioID": "V1",
+          "numero": 1,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V2",
+          "numero": 2,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V3",
+          "numero": 3,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V4",
+          "numero": 4,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V5",
+          "numero": 5,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V6",
+          "numero": 6,
+          "posicion": "campo",
+          "activo": true
+        }
+      ]
+    },
+    {
+      "nombre": "Panteras Voley",
+      "deporte": "Voleibol",
+      "categoria": "Mayores",
+      "cupoMaximo": 14,
+      "activo": true,
+      "entrenador": 3,
+      "jugadores": [
+        {
+          "socioID": "V7",
+          "numero": 7,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V8",
+          "numero": 8,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V9",
+          "numero": 9,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V10",
+          "numero": 10,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V11",
+          "numero": 11,
+          "posicion": "campo",
+          "activo": true
+        },
+        {
+          "socioID": "V12",
+          "numero": 12,
+          "posicion": "campo",
+          "activo": true
+        }
+      ]
+    },
+    {
+      "nombre": "Toros Basket",
+      "deporte": "Baloncesto",
+      "categoria": "Mayores",
+      "cupoMaximo": 15,
+      "activo": true,
+      "entrenador": 2,
+      "jugadores": [
+        {
+          "socioID": "T1",
+          "numero": 1,
+          "posicion": "base",
+          "activo": true
+        },
+        {
+          "socioID": "T2",
+          "numero": 2,
+          "posicion": "base",
+          "activo": true
+        },
+        {
+          "socioID": "T3",
+          "numero": 3,
+          "posicion": "base",
+          "activo": true
+        },
+        {
+          "socioID": "T4",
+          "numero": 4,
+          "posicion": "base",
+          "activo": true
+        },
+        {
+          "socioID": "T5",
+          "numero": 5,
+          "posicion": "base",
+          "activo": true
+        }
+      ]
+    }
+  ],
+  "partidosInternos": [
+    {
+      "id": 1,
+      "fecha": "2026-10-01",
+      "local": "Lobos FC",
+      "visitante": "Halcones FC",
+      "proposito": "práctica",
+      "jugado": true,
+      "marcadorLocal": 1,
+      "marcadorVisitante": 0,
+      "estadisticas": [
+        {
+          "equipo": "Lobos FC",
+          "socioID": "L1",
+          "goles": 1,
+          "asistencias": 0,
+          "amarillas": 0,
+          "rojas": 1
+        },
+        {
+          "equipo": "Lobos FC",
+          "socioID": "L2",
+          "goles": 0,
+          "asistencias": 1,
+          "amarillas": 2,
+          "rojas": 0
+        }
+      ],
+      "suspensiones": [
+        {
+          "equipo": "Lobos FC",
+          "socioID": "L1",
+          "motivo": "Roja directa",
+          "cumplidaEn": null
+        },
+        {
+          "equipo": "Lobos FC",
+          "socioID": "L2",
+          "motivo": "2 amarillas",
+          "cumplidaEn": null
+        }
+      ]
     }
   ]
 }

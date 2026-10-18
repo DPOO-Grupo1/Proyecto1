@@ -39,7 +39,7 @@ public class GestorTienda extends Gestor {
         super(club);
     }
     
-  //-----------RF3, RF17, RF20, RF5: comprar en la tienda
+  // RF3, RF17, RF20, RF5: comprar en la tienda
     public VentaTienda comprarEnTienda(Usuario quien, Map<String, Integer> items,
             Integer codigo, int puntosARedimir)
             throws PermisoDenegadoException, NoEncontradoException, VentaInvalidaException {
@@ -55,15 +55,15 @@ public class GestorTienda extends Gestor {
             throw new VentaInvalidaException("La compra no tiene productos");
         }
         Ubicacion tienda = club.buscarUbicacion("Tienda");
-        for (Map.Entry<String, Integer> item : items.entrySet()) {
-            Producto p = club.buscarProducto(item.getKey());
+        for (String nombre : items.keySet()) {
+            Producto p = club.buscarProducto(nombre);
             if (!(p instanceof Articulo)) {
                 throw new VentaInvalidaException("'" + p.getNombre() + "' no se vende en la tienda");
             }
-            if (item.getValue() <= 0) {
+            if (items.get(nombre) <= 0) {
                 throw new VentaInvalidaException("La cantidad de '" + p.getNombre() + "' debe ser mayor a 0");
             }
-            if (club.buscarExistencia(p, tienda).getCantidad() < item.getValue()) {
+            if (club.buscarExistencia(p, tienda).getCantidad() < items.get(nombre)) {
                 throw new VentaInvalidaException("No hay existencias suficientes de '" + p.getNombre() + "'");
             }
         }
@@ -82,8 +82,8 @@ public class GestorTienda extends Gestor {
 
         // 4. crear la venta
         VentaTienda venta = new VentaTienda(cliente, LocalDateTime.now());
-        for (Map.Entry<String, Integer> item : items.entrySet()) {
-            venta.agregarDetalle(club.buscarProducto(item.getKey()), item.getValue());
+        for (String nombre : items.keySet()) {
+            venta.agregarDetalle(club.buscarProducto(nombre), items.get(nombre));
         }
         if (cod != null) {
             venta.aplicarCodigo(cod);
@@ -92,9 +92,9 @@ public class GestorTienda extends Gestor {
         venta.calcularTotal();
 
         // 5. aplicar cambios
-        for (Map.Entry<String, Integer> item : items.entrySet()) {
-            Producto p = club.buscarProducto(item.getKey());
-            club.buscarExistencia(p, tienda).descontar(item.getValue());
+        for (String nombre : items.keySet()) {
+            Producto p = club.buscarProducto(nombre);
+            club.buscarExistencia(p, tienda).descontar(items.get(nombre));
         }
         cliente.restarPuntos(puntosARedimir);
         cliente.sumarPuntos(venta.calcularPuntosGenerados());
@@ -105,7 +105,7 @@ public class GestorTienda extends Gestor {
         return venta;
     }
     
-  //-----------RF4, RF17, RF20, RF5: comprar en la cafetería
+  // RF4, RF17, RF20, RF5: comprar en la cafetería
     public VentaCafeteria comprarEnCafeteria(Usuario quien, Map<String, Integer> items,
             Integer codigo, int puntosARedimir, int porcentajePropina)
             throws PermisoDenegadoException, NoEncontradoException, VentaInvalidaException, DatoInvalidoException {
@@ -124,15 +124,15 @@ public class GestorTienda extends Gestor {
             throw new VentaInvalidaException("La compra no tiene productos");
         }
         Ubicacion cafeteria = club.buscarUbicacion("Cafetería");
-        for (Map.Entry<String, Integer> item : items.entrySet()) {
-            Producto p = club.buscarProducto(item.getKey());
+        for (String nombre : items.keySet()) {
+            Producto p = club.buscarProducto(nombre);
             if (!(p instanceof ProductoCafeteria)) {
                 throw new VentaInvalidaException("'" + p.getNombre() + "' no se vende en la cafetería");
             }
-            if (item.getValue() <= 0) {
+            if (items.get(nombre) <= 0) {
                 throw new VentaInvalidaException("La cantidad de '" + p.getNombre() + "' debe ser mayor a 0");
             }
-            if (club.buscarExistencia(p, cafeteria).getCantidad() < item.getValue()) {
+            if (club.buscarExistencia(p, cafeteria).getCantidad() < items.get(nombre)) {
                 throw new VentaInvalidaException("No hay existencias suficientes de '" + p.getNombre() + "'");
             }
             if (p instanceof Bebida && ((Bebida) p).esCaliente()
@@ -155,8 +155,8 @@ public class GestorTienda extends Gestor {
 
         // 4. crear la venta
         VentaCafeteria venta = new VentaCafeteria(cliente, LocalDateTime.now(), porcentajePropina);
-        for (Map.Entry<String, Integer> item : items.entrySet()) {
-            venta.agregarDetalle(club.buscarProducto(item.getKey()), item.getValue());
+        for (String nombre : items.keySet()) {
+            venta.agregarDetalle(club.buscarProducto(nombre), items.get(nombre));
         }
         if (cod != null) {
             venta.aplicarCodigo(cod);
@@ -165,9 +165,9 @@ public class GestorTienda extends Gestor {
         venta.calcularTotal();
 
         // 5. aplicar cambios
-        for (Map.Entry<String, Integer> item : items.entrySet()) {
-            Producto p = club.buscarProducto(item.getKey());
-            club.buscarExistencia(p, cafeteria).descontar(item.getValue());
+        for (String nombre : items.keySet()) {
+            Producto p = club.buscarProducto(nombre);
+            club.buscarExistencia(p, cafeteria).descontar(items.get(nombre));
         }
         cliente.restarPuntos(puntosARedimir);
         cliente.sumarPuntos(venta.calcularPuntosGenerados());
@@ -178,7 +178,7 @@ public class GestorTienda extends Gestor {
         return venta;
     }
     
-  //-----------RF4: consultar alérgenos
+  // RF4: consultar alérgenos
     public List<String> consultarAlergenos(Usuario quien, Map<String, Integer> items)
             throws NoEncontradoException {
         List<String> alergenos = new ArrayList<String>();
@@ -195,8 +195,7 @@ public class GestorTienda extends Gestor {
         return alergenos;
     }
     
-    //-----------RF31: reabastecer
-    
+    // RF31: reabastecer
     public void reabastecer(Usuario quien, String producto, String ubicacion, int cantidad)
             throws PermisoDenegadoException, NoEncontradoException, DatoInvalidoException {
         verificarAdministrador(quien);
@@ -210,7 +209,7 @@ public class GestorTienda extends Gestor {
         club.buscarExistencia(p, u).sumar(cantidad);
     }
 
-    //-----------RF31: registrar producto nuevo
+    // RF31: registrar producto nuevo
     public void registrarProducto(Usuario quien, Producto producto, String ubicacion, int cantidadInicial)
             throws PermisoDenegadoException, NoEncontradoException, DuplicadoException, DatoInvalidoException {
         verificarAdministrador(quien);
@@ -235,7 +234,7 @@ public class GestorTienda extends Gestor {
         club.agregarExistencia(new Existencia(producto, u, cantidadInicial));
     }
 
-    //-----------RF29: consultar inventario
+    // RF29: consultar inventario
     public Map<Producto, Integer> consultarInventario(Usuario quien, String ubicacion)
             throws PermisoDenegadoException, NoEncontradoException {
         verificarAdministrador(quien);
@@ -250,7 +249,7 @@ public class GestorTienda extends Gestor {
         return inventario;
     }
 
-    //-----------RF30: mover productos entre ubicaciones
+    // RF30: mover productos entre ubicaciones
     public void moverProductos(Usuario quien, String producto, String origen, String destino, int cantidad)
             throws PermisoDenegadoException, NoEncontradoException, DatoInvalidoException {
         verificarAdministrador(quien);
@@ -277,7 +276,7 @@ public class GestorTienda extends Gestor {
         exDestino.sumar(cantidad);
     }
     
-  //-----------privado: ¿el cliente está ahora en una instalación restringida?
+  // privado: ¿el cliente está ahora en una instalación restringida?
     private boolean estaEnInstalacionRestringida(Cliente cliente) {
         LocalDate hoy = club.getFechaActual();
         LocalTime ahora = LocalTime.now();

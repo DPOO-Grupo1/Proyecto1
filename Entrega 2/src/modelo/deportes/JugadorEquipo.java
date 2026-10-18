@@ -55,8 +55,7 @@ public class JugadorEquipo {
 		activo = false;
 	}
 
-	// ---------------- Suspensiones ----------------
-
+	// Suspensiones
 	public List<Suspension> getSuspensiones() {
 		return suspensiones;
 	}

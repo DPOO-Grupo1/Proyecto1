@@ -38,12 +38,10 @@ import persistencia.PersistenciaEntrenamiento;
 public class PruebaPersistenciaAreaB {
 
 	public static void main(String[] args) {
-		System.out.println("=========================================================");
-		System.out.println("    INICIO PRUEBA PERSISTENCIA: ÁREA B (JSON)            ");
-		System.out.println("=========================================================");
+		System.out.println("=== Prueba de persistencia del área B (JSON) ===");
 
 		try {
-			String carpeta = "/private/tmp/p1_test_persistencia_b";
+			String carpeta = "salida_pruebas";
 			new File(carpeta).mkdirs();
 			String archivoAcademias = carpeta + "/academias.json";
 			String archivoEntrenamiento = carpeta + "/entrenamiento.json";
@@ -127,7 +125,7 @@ public class PruebaPersistenciaAreaB {
 
 			persAcademias.guardar(archivoAcademias, clubOriginal);
 			persEntrenamiento.guardar(archivoEntrenamiento, clubOriginal);
-			System.out.println("✔ Guardado exitoso de academias.json y entrenamiento.json");
+			System.out.println("Guardado exitoso de academias.json y entrenamiento.json");
 
 			// 3. Cargar en un Club completamente nuevo
 			Club clubCargado = new Club();
@@ -141,7 +139,7 @@ public class PruebaPersistenciaAreaB {
 
 			persAcademias.cargar(archivoAcademias, clubCargado);
 			persEntrenamiento.cargar(archivoEntrenamiento, clubCargado);
-			System.out.println("✔ Carga exitosa desde los archivos JSON");
+			System.out.println("Carga exitosa desde los archivos JSON");
 
 			// 4. Verificaciones de integridad de datos
 			// Disciplinas
@@ -149,7 +147,7 @@ public class PruebaPersistenciaAreaB {
 			if (dTenis.getCupoInstalaciones() != 2) {
 				throw new Exception("Cupo de instalaciones de tenis incorrecto");
 			}
-			System.out.println("✔ Disciplina verificada: " + dTenis.getNombre() + " (cupo: " + dTenis.getCupoInstalaciones() + ")");
+			System.out.println("Disciplina verificada: " + dTenis.getNombre() + " (cupo: " + dTenis.getCupoInstalaciones() + ")");
 
 			// Instalaciones
 			Instalacion cPadel = clubCargado.buscarInstalacion("I3");
@@ -164,7 +162,7 @@ public class PruebaPersistenciaAreaB {
 			if (!(escConj instanceof EscenarioConjunto)) {
 				throw new Exception("I7 no fue restaurada como EscenarioConjunto");
 			}
-			System.out.println("✔ Instalaciones polimórficas verificadas: CanchaPadel, MesaTechada y EscenarioConjunto");
+			System.out.println("Instalaciones polimórficas verificadas: CanchaPadel, MesaTechada y EscenarioConjunto");
 
 			// Inscripciones y ELO
 			Socio cS1 = clubCargado.buscarSocio("S1");
@@ -172,13 +170,13 @@ public class PruebaPersistenciaAreaB {
 			if (cIns1 == null || cIns1.getNivel() != Nivel.PRINCIPIANTE || cIns1.getPuntajeELO() != 1000) {
 				throw new Exception("Inscripción de S1 no coincide");
 			}
-			System.out.println("✔ Inscripción y ELO verificados: " + cS1.getNombreCompleto() + " (" + cIns1 + ")");
+			System.out.println("Inscripción y ELO verificados: " + cS1.getNombreCompleto() + " (" + cIns1 + ")");
 
 			// Ranking
 			if (dTenis.getRanking().size() != 3) {
 				throw new Exception("Ranking de tenis debe tener 3 inscripciones");
 			}
-			System.out.println("✔ Ranking de tenis restaurado: 1° " + dTenis.getRanking().get(0).getSocio().getNombreCompleto());
+			System.out.println("Ranking de tenis restaurado: 1° " + dTenis.getRanking().get(0).getSocio().getNombreCompleto());
 
 			// Reservas y enlace bidireccional
 			Reserva cR1 = clubCargado.buscarReserva("R1");
@@ -186,12 +184,12 @@ public class PruebaPersistenciaAreaB {
 				throw new Exception("Datos de reserva R1 no coinciden");
 			}
 			if (cR1.getInstalacion().getReservas().isEmpty()) {
-				throw new Exception("Enlace bidireccional Instalacion -> Reserva no restaurado");
+				throw new Exception("Enlace bidireccional Instalacion: Reserva no restaurado");
 			}
 			if (cR1.getTitular().getReservas().isEmpty()) {
-				throw new Exception("Enlace bidireccional Socio -> Reserva no restaurado");
+				throw new Exception("Enlace bidireccional Socio: Reserva no restaurado");
 			}
-			System.out.println("✔ Reserva R1 y enlaces bidireccionales restaurados correctamente");
+			System.out.println("Reserva R1 y enlaces bidireccionales restaurados correctamente");
 
 			// Partido de práctica y estadísticas
 			PartidoPractica cPP1 = clubCargado.buscarPartidoPractica("PP1");
@@ -202,7 +200,7 @@ public class PruebaPersistenciaAreaB {
 			if (statsS3 == null || statsS3.getAces() != 5 || statsS3.getGamesGanados() != 8) {
 				throw new Exception("Estadísticas de tenis de S3 no coinciden");
 			}
-			System.out.println("✔ Partido PP1, ganador (" + cPP1.getGanador().getNombreCompleto() + ") y estadísticas de sets/games/aces verificados");
+			System.out.println("Partido PP1, ganador (" + cPP1.getGanador().getNombreCompleto() + ") y estadísticas de sets/games/aces verificados");
 
 			// Sesión de entrenamiento, convocatorias y evaluación
 			SesionEntrenamiento cSE1 = clubCargado.buscarSesion("SE1");
@@ -219,14 +217,12 @@ public class PruebaPersistenciaAreaB {
 			if (cConvS1.getEvaluacion() == null || cConvS1.getEvaluacion().getNota() != 4) {
 				throw new Exception("Evaluación de S1 en SE1 no coincide");
 			}
-			System.out.println("✔ Sesión SE1, asistencias y evaluación restauradas: " + cConvS1);
+			System.out.println("Sesión SE1, asistencias y evaluación restauradas: " + cConvS1);
 
-			System.out.println("\n=========================================================");
-			System.out.println("   ¡TODAS LAS PRUEBAS DE PERSISTENCIA PASARON CON ÉXITO! ");
-			System.out.println("=========================================================");
+			System.out.println("\nFin de la prueba de persistencia.");
 
 		} catch (Exception e) {
-			System.err.println("FALLO EN PRUEBA PERSISTENCIA: " + e.getMessage());
+			System.err.println("Error inesperado en la prueba de persistencia: " + e.getMessage());
 			e.printStackTrace();
 			System.exit(1);
 		}

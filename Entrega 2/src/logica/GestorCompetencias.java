@@ -39,8 +39,7 @@ public class GestorCompetencias extends Gestor {
 		super(club);
 	}
 
-	// ---------- RF25: crear competencias ----------
-
+	// RF25: crear competencias
 	/**
 	 * RF25. Crea una competencia con su formato (Liga o GruposEliminacion). Solo el administrador.
 	 * No puede haber dos con el mismo nombre en la misma temporada.
@@ -81,8 +80,7 @@ public class GestorCompetencias extends Gestor {
 		return rival;
 	}
 
-	// ---------- RF26: inscribir equipos ----------
-
+	// RF26: inscribir equipos
 	/**
 	 * RF26. Inscribe un equipo del club con la nómina que se escoja (números de camiseta).
 	 * Solo el administrador. El equipo debe estar activo y ser del deporte y la categoría de la
@@ -137,8 +135,7 @@ public class GestorCompetencias extends Gestor {
 		return inscrito;
 	}
 
-	// ---------- RF27: partidos oficiales ----------
-
+	// RF27: partidos oficiales
 	/**
 	 * RF27. Programa un partido entre dos participantes de la competencia. Solo el administrador.
 	 * Puede ser entre dos rivales externos.
@@ -231,8 +228,7 @@ public class GestorCompetencias extends Gestor {
 		}
 	}
 
-	// ---------- RF2: consultas ----------
-
+	// RF2: consultas
 	/**
 	 * RF2. Lista las competencias, con filtro opcional por deporte y por categoría (null = sin filtro).
 	 * Si no hay ninguna, devuelve la lista vacía.
@@ -309,8 +305,7 @@ public class GestorCompetencias extends Gestor {
 		return ordenarDeMayorAMenor(filas);
 	}
 
-	// ---------- Métodos privados ----------
-
+	// Métodos privados
 	private void verificarGrupo(Competencia competencia, String grupo) throws DatoInvalidoException {
 		if (!competencia.getFormato().grupoValido(grupo)) {
 			throw new DatoInvalidoException("El grupo '" + grupo + "' no es válido para el formato "

@@ -1,4 +1,4 @@
-package Pruebas;
+package pruebas;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class PruebaDescuento {
 
     public static void main(String[] args) {
 
-        // ===== PREPARAR =====
+        // PREPARAR
         Club club = new Club();
         GestorTienda gestor = new GestorTienda(club);
 
@@ -39,7 +39,7 @@ public class PruebaDescuento {
         Map<String, Integer> items = new HashMap<String, Integer>();
         items.put("Balón", 1);
 
-        // ===== 1. El empleado dueño usa su código (15 %) =====
+        // 1. El empleado dueño usa su código (15 %)
         System.out.println("=== 1. Empleado compra 1 balón con su código ===");
         try {
             gestor.comprarEnTienda(entrenador, items, 7, 0);
@@ -48,7 +48,7 @@ public class PruebaDescuento {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 2. Un socio usa el código del empleado (8 %) =====
+        // 2. Un socio usa el código del empleado (8 %)
         System.out.println("=== 2. Socio compra 1 balón con el código del empleado ===");
         try {
             gestor.comprarEnTienda(socio, items, 7, 0);
@@ -57,7 +57,7 @@ public class PruebaDescuento {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 3. Código que no existe =====
+        // 3. Código que no existe
         System.out.println("=== 3. Socio usa un código inexistente ===");
         try {
             gestor.comprarEnTienda(socio, items, 99, 0);
@@ -66,7 +66,7 @@ public class PruebaDescuento {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 4. Redimir puntos que no tiene =====
+        // 4. Redimir puntos que no tiene
         System.out.println("=== 4. Socio intenta redimir 999999 puntos ===");
         try {
             gestor.comprarEnTienda(socio, items, null, 999999);

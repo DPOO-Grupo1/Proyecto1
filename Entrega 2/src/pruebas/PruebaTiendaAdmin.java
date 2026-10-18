@@ -1,4 +1,4 @@
-package Pruebas;
+package pruebas;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -8,9 +8,7 @@ import excepciones.ClubException;
 import logica.Club;
 import logica.GestorTienda;
 import modelo.tienda.Articulo;
-import modelo.tienda.Bebida;
-import modelo.tienda.CodigoDescuento;
-import modelo.tienda.Existencia;
+import modelo.tienda.Producto;
 import modelo.tienda.Snack;
 import modelo.tienda.Ubicacion;
 import modelo.usuarios.Administrador;
@@ -20,7 +18,7 @@ public class PruebaTiendaAdmin {
 
     public static void main(String[] args) {
 
-        // ===== PREPARAR =====
+        // PREPARAR
         Club club = new Club();
         GestorTienda gestor = new GestorTienda(club);
 
@@ -33,7 +31,7 @@ public class PruebaTiendaAdmin {
         club.agregarUbicacion(new Ubicacion("Bodega"));
         club.agregarUbicacion(new Ubicacion("Cafetería"));
 
-        // ===== 1. Admin registra un producto =====
+        // 1. Admin registra un producto
         System.out.println("=== 1. Admin registra un balón (10 unidades en Tienda) ===");
         try {
             gestor.registrarProducto(admin, new Articulo("Balón", 50000, "Balones"), "Tienda", 10);
@@ -42,7 +40,7 @@ public class PruebaTiendaAdmin {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 2. Producto repetido =====
+        // 2. Producto repetido
         System.out.println("=== 2. Admin registra otro 'Balón' (repetido) ===");
         try {
             gestor.registrarProducto(admin, new Articulo("Balón", 50000, "Balones"), "Tienda", 10);
@@ -51,35 +49,38 @@ public class PruebaTiendaAdmin {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 3. Reabastecer =====
+        // 3. Reabastecer
         System.out.println("=== 3. Admin reabastece 5 balones ===");
         try {
             gestor.reabastecer(admin, "Balón", "Tienda", 5);
             System.out.println("ACEPTADO");
             System.out.println(gestor.consultarInventario(admin, "Tienda").size() + " producto(s) en Tienda");
-            for (Map.Entry<modelo.tienda.Producto, Integer> e : gestor.consultarInventario(admin, "Tienda").entrySet()) {
-                System.out.println("  " + e.getKey().getNombre() + ": " + e.getValue());
+            Map<Producto, Integer> inventario = gestor.consultarInventario(admin, "Tienda");
+            for (Producto producto : inventario.keySet()) {
+                System.out.println("  " + producto.getNombre() + ": " + inventario.get(producto));
             }
         } catch (ClubException e) {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 4. Mover a la bodega =====
+        // 4. Mover a la bodega
         System.out.println("=== 4. Admin mueve 6 balones de Tienda a Bodega ===");
         try {
             gestor.moverProductos(admin, "Balón", "Tienda", "Bodega", 6);
             System.out.println("ACEPTADO");
-            for (Map.Entry<modelo.tienda.Producto, Integer> e : gestor.consultarInventario(admin, "Tienda").entrySet()) {
-                System.out.println("  Tienda: " + e.getKey().getNombre() + " = " + e.getValue());
+            Map<Producto, Integer> enTienda = gestor.consultarInventario(admin, "Tienda");
+            for (Producto producto : enTienda.keySet()) {
+                System.out.println("  Tienda: " + producto.getNombre() + " = " + enTienda.get(producto));
             }
-            for (Map.Entry<modelo.tienda.Producto, Integer> e : gestor.consultarInventario(admin, "Bodega").entrySet()) {
-                System.out.println("  Bodega: " + e.getKey().getNombre() + " = " + e.getValue());
+            Map<Producto, Integer> enBodega = gestor.consultarInventario(admin, "Bodega");
+            for (Producto producto : enBodega.keySet()) {
+                System.out.println("  Bodega: " + producto.getNombre() + " = " + enBodega.get(producto));
             }
         } catch (ClubException e) {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 5. Mover más de lo que hay =====
+        // 5. Mover más de lo que hay
         System.out.println("=== 5. Admin intenta mover 999 balones ===");
         try {
             gestor.moverProductos(admin, "Balón", "Tienda", "Bodega", 999);
@@ -88,7 +89,7 @@ public class PruebaTiendaAdmin {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 6. Administrador intenta comprar =====
+        // 6. Administrador intenta comprar
         System.out.println("=== 6. El administrador intenta comprar ===");
         Map<String, Integer> items = new HashMap<String, Integer>();
         items.put("Balón", 1);
@@ -99,7 +100,7 @@ public class PruebaTiendaAdmin {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 7. Cafetería: alérgenos y compra =====
+        // 7. Cafetería: alérgenos y compra
         System.out.println("=== 7. Socio consulta alérgenos y compra un snack con propina ===");
         try {
             java.util.List<String> alergenos = new java.util.ArrayList<String>();

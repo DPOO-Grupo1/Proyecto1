@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import excepciones.ClubException;
 import excepciones.ConflictoHorarioException;
 import excepciones.CupoExcedidoException;
 import excepciones.DatoInvalidoException;
@@ -265,8 +264,7 @@ public class GestorAcademias extends Gestor {
 			participantes.add(socio);
 		}
 
-		// Regla de niveles: adyacentes o mismo nivel (un entrenador exime la regla, RF9
-		// / EP9.1c)
+		// Niveles iguales o adyacentes, salvo que juegue un entrenador (RF9, EP9.1c)
 		if (!hayEntrenador && disciplina != null && participantes.size() >= 2) {
 			Nivel base = participantes.get(0).getInscripcion(disciplina).getNivel();
 			for (int i = 1; i < participantes.size(); i++) {

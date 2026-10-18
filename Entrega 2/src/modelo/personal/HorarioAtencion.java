@@ -22,6 +22,12 @@ public class HorarioAtencion {
         this.cierre = LocalTime.of(20, 0);
     }
 
+    // Nombre del día en español, para los mensajes ("lunes", "martes", ...)
+    public static String nombreDia(DayOfWeek dia) {
+        String[] nombres = { "lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo" };
+        return nombres[dia.getValue() - 1];
+    }
+
     public List<DayOfWeek> getDias() { return dias; }
     public LocalTime getApertura() { return apertura; }
     public LocalTime getCierre() { return cierre; }

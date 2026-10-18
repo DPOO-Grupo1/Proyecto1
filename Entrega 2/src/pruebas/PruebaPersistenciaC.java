@@ -1,9 +1,7 @@
-package Pruebas;
+package pruebas;
 
 import java.io.File;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,10 +23,10 @@ import persistencia.PersistenciaTienda;
 public class PruebaPersistenciaC {
 
     public static void main(String[] args) throws Exception {
-        String carpeta = "C:/datos_cds";
+        String carpeta = "salida_pruebas";
         new File(carpeta).mkdirs();
 
-        // ===== PARTE 1: crear datos y guardarlos =====
+        // PARTE 1: crear datos y guardarlos
         Club club = new Club();
         GestorTienda tienda = new GestorTienda(club);
         GestorReportes reportes = new GestorReportes(club);
@@ -60,7 +58,7 @@ public class PruebaPersistenciaC {
         new PersistenciaPersonal().guardar(carpeta + "/personal.json", club);
         System.out.println("Guardado en " + carpeta);
 
-        // ===== PARTE 2: club nuevo y vacío, cargar desde los archivos =====
+        // PARTE 2: club nuevo y vacío, cargar desde los archivos
         Club club2 = new Club();
         Socio socio2 = new Socio("ana16", "1234", "Ana", "Pérez", "S001", LocalDate.of(2005, 3, 14));
         Entrenador entrenador2 = new Entrenador("carlos", "1234", "Carlos", "Gómez", 1);

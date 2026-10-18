@@ -3,8 +3,7 @@ package modelo.entrenamiento;
 import excepciones.DatoInvalidoException;
 
 /**
- * Evaluación formativa del desempeño técnico de un socio en una sesión de entrenamiento.
- * La calificación es numérica en la escala de 1 a 5.
+ * Evaluación de un socio en una sesión de entrenamiento: nota de 1 a 5 y un comentario.
  */
 public class Evaluacion {
 

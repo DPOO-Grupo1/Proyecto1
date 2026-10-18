@@ -1,6 +1,5 @@
 package modelo.tienda;
 
-import modelo.tienda.Venta;
 import modelo.tienda.Producto;
 
 public class DetalleVenta {

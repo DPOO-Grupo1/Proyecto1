@@ -36,8 +36,7 @@ public class GestorEntrenamiento extends Gestor {
 		super(club);
 	}
 
-	// ---------------- RF15: Planear sesión de entrenamiento ----------------
-
+	// RF15: Planear sesión de entrenamiento
 	/**
 	 * RF15. Planea una sesión de entrenamiento individual o grupal de una disciplina de academia.
 	 * Solo un entrenador o el administrador pueden planearla.
@@ -194,8 +193,7 @@ public class GestorEntrenamiento extends Gestor {
 		return sesion;
 	}
 
-	// ---------------- RF16: Asistencia y evaluación ----------------
-
+	// RF16: Asistencia y evaluación
 	/**
 	 * RF16. Registra la asistencia de un socio convocado en una sesión finalizada.
 	 * Solo el entrenador responsable de la sesión o el administrador pueden registrarla.
@@ -225,8 +223,8 @@ public class GestorEntrenamiento extends Gestor {
 	}
 
 	/**
-	 * RF16. Registra la evaluación técnica y formativa de un socio en una sesión finalizada.
-	 * La calificación debe estar entre 1 y 5. La evaluación es opcional por convocado.
+	 * RF16. Registra la evaluación de un socio en una sesión finalizada.
+	 * La nota va de 1 a 5. Evaluar es opcional.
 	 */
 	public void registrarEvaluacion(Usuario quien, String idSesion, String socioID, int nota, String comentario)
 			throws PermisoDenegadoException, NoEncontradoException, EstadoInvalidoException, DatoInvalidoException {
@@ -257,8 +255,7 @@ public class GestorEntrenamiento extends Gestor {
 		sesion.finalizar();
 	}
 
-	// ---------------- Consultas ----------------
-
+	// Consultas
 	/**
 	 * Consulta las sesiones de entrenamiento del club, opcionalmente filtradas por fecha.
 	 */
@@ -293,8 +290,7 @@ public class GestorEntrenamiento extends Gestor {
 		return resultado;
 	}
 
-	// ---------------- Métodos auxiliares de permisos ----------------
-
+	// Métodos auxiliares de permisos
 	private Entrenador determinarEntrenador(Usuario quien) throws PermisoDenegadoException {
 		if (quien instanceof Entrenador) {
 			return (Entrenador) quien;

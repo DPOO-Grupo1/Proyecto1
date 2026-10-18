@@ -1,8 +1,6 @@
 package modelo.academias;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -38,17 +36,18 @@ public class Disciplina {
 	}
 
 	/**
-	 * Inscritos de mayor a menor ELO Devuelve una copia para no desordenar la lista
-	 * original.
+	 * Inscritos de mayor a menor ELO. Es una lista nueva, así no se desordena la original.
 	 */
 	public List<Inscripcion> getRanking() {
-		List<Inscripcion> ranking = new ArrayList<Inscripcion>(inscripciones);
-		Collections.sort(ranking, new Comparator<Inscripcion>() {
-			@Override
-			public int compare(Inscripcion a, Inscripcion b) {
-				return b.getPuntajeELO() - a.getPuntajeELO();
+		List<Inscripcion> ranking = new ArrayList<Inscripcion>();
+		// Ordenamiento por inserción: cada inscrito se pone después de los que tienen igual o más ELO
+		for (Inscripcion inscripcion : inscripciones) {
+			int i = 0;
+			while (i < ranking.size() && ranking.get(i).getPuntajeELO() >= inscripcion.getPuntajeELO()) {
+				i++;
 			}
-		});
+			ranking.add(i, inscripcion);
+		}
 		return ranking;
 	}
 

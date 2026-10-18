@@ -1,4 +1,4 @@
-package Pruebas;
+package pruebas;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class PruebaTienda {
 
     public static void main(String[] args) {
 
-        // ===== PREPARAR =====
+        // PREPARAR
         Club club = new Club();
         GestorTienda gestor = new GestorTienda(club);
 
@@ -31,7 +31,7 @@ public class PruebaTienda {
         Existencia existencia = new Existencia(balon, tienda, 10);
         club.agregarExistencia(existencia);
 
-        // ===== PRUEBA 1: compra normal =====
+        // PRUEBA 1: compra normal
         System.out.println("=== 1. Socio compra 2 balones ===");
         System.out.println("Inventario antes: " + existencia.getCantidad());
         Map<String, Integer> items = new HashMap<String, Integer>();
@@ -47,7 +47,7 @@ public class PruebaTienda {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== PRUEBA 2: pide más de lo que hay =====
+        // PRUEBA 2: pide más de lo que hay
         System.out.println("=== 2. Socio intenta comprar 999 balones ===");
         Map<String, Integer> demasiados = new HashMap<String, Integer>();
         demasiados.put("Balón", 999);
@@ -58,7 +58,7 @@ public class PruebaTienda {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== PRUEBA 3: socio intenta registrar un producto =====
+        // PRUEBA 3: socio intenta registrar un producto
         System.out.println("=== 3. Socio intenta registrar un producto ===");
         try {
             gestor.registrarProducto(socio, new Articulo("Raqueta", 80000, "Raquetas"), "Tienda", 5);

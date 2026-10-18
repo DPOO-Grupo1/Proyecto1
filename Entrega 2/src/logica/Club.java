@@ -209,8 +209,7 @@ public class Club {
 		return false;
 	}
 
-	// ---------------- Partidos ----------------
-
+	// Partidos
 	/**
 	 * El id es el total de partidos + 1. Funciona porque los partidos nunca se
 	 * borran.
@@ -279,8 +278,7 @@ public class Club {
 		throw new NoEncontradoException("No existe un partido con id " + id);
 	}
 
-	// ---------------- Competencias ----------------
-
+	// Competencias
 	public void agregarCompetencia(Competencia competencia) {
 		competencias.add(competencia);
 	}
@@ -437,8 +435,7 @@ public class Club {
 		return false;
 	}
 
-	// ---------------- Tienda (Área C) ----------------
-
+	// Tienda (Área C)
 	public void agregarProducto(Producto producto) {
 		productos.add(producto);
 	}
@@ -515,8 +512,7 @@ public class Club {
 	    return codigos;
 	}
 	
-	// ---------------- Personal (Área C) ----------------
-
+	// Personal (Área C)
 	public HorarioAtencion getHorario() {
 	    return horario;
 	}
@@ -537,10 +533,14 @@ public class Club {
 	    return sugerencias;
 	}
 	
-	//normalizador de texto just in case
-    private String normalizar(String texto) {
-        String sinTildes = java.text.Normalizer.normalize(texto, java.text.Normalizer.Form.NFD)
-                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-        return sinTildes.toLowerCase();
-    }
+	// Para comparar nombres sin importar mayúsculas ni tildes ("Cafeteria" y "Cafetería" son la misma)
+	private String normalizar(String texto) {
+		String resultado = texto.toLowerCase();
+		resultado = resultado.replace('á', 'a');
+		resultado = resultado.replace('é', 'e');
+		resultado = resultado.replace('í', 'i');
+		resultado = resultado.replace('ó', 'o');
+		resultado = resultado.replace('ú', 'u');
+		return resultado;
+	}
 }

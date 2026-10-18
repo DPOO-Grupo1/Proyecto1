@@ -1,4 +1,4 @@
-package Pruebas;
+package pruebas;
 
 import java.io.File;
 import java.time.DayOfWeek;
@@ -52,7 +52,7 @@ public class PruebasExtraAreaC {
         club.agregarUsuario(e3);
         club.agregarUsuario(f1);
 
-        // ===== PARTE 1: bebida caliente en pádel =====
+        // PARTE 1: bebida caliente en pádel
         club.agregarUbicacion(new Ubicacion("Cafetería"));
         tienda.registrarProducto(admin, new Bebida("CALIENTE", 250, "Café", 3000), "Cafetería", 10);
 
@@ -85,7 +85,7 @@ public class PruebasExtraAreaC {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== PARTE 2: cambio de turno rechazado por cobertura =====
+        // PARTE 2: cambio de turno rechazado por cobertura
         // e1 solo trabaja el lunes; e2 y f1 todos los días; e3 de martes a sábado.
         List<Turno> turnos = new ArrayList<Turno>();
         int id = 1;
@@ -118,9 +118,9 @@ public class PruebasExtraAreaC {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== PARTE 3: ida y vuelta de códigos y turnos =====
+        // PARTE 3: ida y vuelta de códigos y turnos
         club.agregarCodigo(new CodigoDescuento(7, e1));
-        String carpeta = "C:/datos_cds";
+        String carpeta = "salida_pruebas";
         new File(carpeta).mkdirs();
         new PersistenciaTienda().guardar(carpeta + "/tienda.json", club);
         new PersistenciaPersonal().guardar(carpeta + "/personal.json", club);
@@ -136,7 +136,7 @@ public class PruebasExtraAreaC {
         new PersistenciaTienda().cargar(carpeta + "/tienda.json", club2);
         new PersistenciaPersonal().cargar(carpeta + "/personal.json", club2);
 
-        System.out.println("=== 5. Ida y vuelta (antes -> después de cargar) ===");
+        System.out.println("=== 5. Ida y vuelta (antes y después de cargar) ===");
         System.out.println("Códigos: " + club.getCodigos().size() + " -> " + club2.getCodigos().size());
         System.out.println("Turnos: " + club.getTurnos().size() + " -> " + club2.getTurnos().size());
         System.out.println("Ventas: " + club.getVentas().size() + " -> " + club2.getVentas().size());

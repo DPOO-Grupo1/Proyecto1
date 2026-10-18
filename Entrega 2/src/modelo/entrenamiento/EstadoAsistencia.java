@@ -12,7 +12,7 @@ public enum EstadoAsistencia {
 	TARDE;
 
 	/**
-	 * Parsea el texto del estado de asistencia en español flexible (con o sin tilde).
+	 * Convierte el texto ("asistió", "asistio", "faltó", ...) en un estado. Acepta con o sin tilde.
 	 */
 	public static EstadoAsistencia desdeTexto(String texto) throws DatoInvalidoException {
 		if (texto == null) {

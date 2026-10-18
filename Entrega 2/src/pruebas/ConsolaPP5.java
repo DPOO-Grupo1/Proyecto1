@@ -27,7 +27,6 @@ import modelo.deportes.DeporteEquipo;
 import modelo.deportes.Equipo;
 import modelo.deportes.JugadorEquipo;
 import modelo.entrenamiento.Convocatoria;
-import modelo.entrenamiento.EstadoAsistencia;
 import modelo.entrenamiento.SesionEntrenamiento;
 import modelo.usuarios.Administrador;
 import modelo.usuarios.Entrenador;
@@ -35,14 +34,11 @@ import modelo.usuarios.Socio;
 
 /**
  * Programa de Prueba PP5: Entrenamiento (RF15 y RF16: sesiones, convocatorias, asistencia y evaluación).
- * Ejecutable en Eclipse: Clic derecho -> Run As -> Java Application.
  */
 public class ConsolaPP5 {
 
 	public static void main(String[] args) {
-		System.out.println("=========================================================");
-		System.out.println("          INICIO CONSOLA PP5: ENTRENAMIENTO              ");
-		System.out.println("=========================================================");
+		System.out.println("=== PP5: Entrenamiento ===");
 
 		try {
 			Club club = new Club();
@@ -128,28 +124,26 @@ public class ConsolaPP5 {
 			club.agregarSesion(se1);
 			i2.agregarSesion(se1);
 
-			// =========================================================================
-			// RF15: PLANEAR SESIÓN DE ENTRENAMIENTO
-			// =========================================================================
+			// RF15: planear una sesión de entrenamiento
 			System.out.println("\n--- [RF15] Planear sesión de entrenamiento ---");
 
 			// EP15.1a APROBADO: Tenis, 2026-10-08 09:00-10:30 en I1, convocados S1, S2 y S3
 			SesionEntrenamiento seTenis = gestor.planearSesion(e1, "Tenis", "I1",
 					LocalDate.of(2026, 10, 8), LocalTime.of(9, 0), 90,
 					Arrays.asList("S1", "S2", "S3"));
-			System.out.println("✔ EP15.1a Aprobado (grupal tenis): " + seTenis);
+			System.out.println("EP15.1a Aprobado (grupal tenis): " + seTenis);
 			System.out.println("  Convocados registrados: " + seTenis.getConvocatorias().size());
 
 			// EP15.1b APROBADO: Individual de tenis de mesa en I6 con S7
 			SesionEntrenamiento seIndividual = gestor.planearSesion(e1, "Tenis de mesa", "I6",
 					LocalDate.of(2026, 10, 8), LocalTime.of(11, 0), 60,
 					Arrays.asList("S7"));
-			System.out.println("✔ EP15.1b Aprobado (individual tenis de mesa): " + seIndividual);
+			System.out.println("EP15.1b Aprobado (individual tenis de mesa): " + seIndividual);
 
 			// EP15.1c APROBADO: EQ1 completo en I7 (escenario conjunto)
 			SesionEntrenamiento seEquipo = gestor.planearSesionEquipo(e1, "Águilas FC", "I7",
 					LocalDate.of(2026, 10, 8), LocalTime.of(15, 0), 120);
-			System.out.println("✔ EP15.1c Aprobado (equipo en escenario conjunto): " + seEquipo);
+			System.out.println("EP15.1c Aprobado (equipo en escenario conjunto): " + seEquipo);
 			System.out.println("  Convocados de equipo: " + seEquipo.getConvocatorias().size());
 
 			// EP15.2a RECHAZADO: Sesión de EQ1 en la cancha de pádel I3 (instalación incompatible)
@@ -158,7 +152,7 @@ public class ConsolaPP5 {
 						LocalDate.of(2026, 10, 9), LocalTime.of(10, 0), 90);
 				throw new Exception("Debió rechazar fútbol en cancha de pádel");
 			} catch (ReglaDeportivaException e) {
-				System.out.println("✔ EP15.2a Rechazado (instalación incompatible): " + e.getMessage());
+				System.out.println("EP15.2a Rechazado (instalación incompatible): " + e.getMessage());
 			}
 
 			// EP15.2b RECHAZADO: Solapamiento con reserva activa R3 en I1
@@ -171,7 +165,7 @@ public class ConsolaPP5 {
 						LocalTime.of(7, 30), 60, Arrays.asList("S2"));
 				throw new Exception("Debió rechazar por solapamiento con reserva R3");
 			} catch (ConflictoHorarioException e) {
-				System.out.println("✔ EP15.2b Rechazado (solapamiento con reserva): " + e.getMessage());
+				System.out.println("EP15.2b Rechazado (solapamiento con reserva): " + e.getMessage());
 			}
 
 			// EP15.2c RECHAZADO: Convocar a S6 (tenis de mesa) a entrenamiento de tenis
@@ -180,7 +174,7 @@ public class ConsolaPP5 {
 						LocalTime.of(10, 0), 60, Arrays.asList("S6"));
 				throw new Exception("Debió rechazar convocar a socio no inscrito en la disciplina");
 			} catch (ReglaDeportivaException e) {
-				System.out.println("✔ EP15.2c Rechazado (convocado no inscrito en disciplina): " + e.getMessage());
+				System.out.println("EP15.2c Rechazado (convocado no inscrito en disciplina): " + e.getMessage());
 			}
 
 			// EP15.2d RECHAZADO: Duración 0
@@ -189,12 +183,10 @@ public class ConsolaPP5 {
 						LocalTime.of(10, 0), 0, Arrays.asList("S1"));
 				throw new Exception("Debió rechazar duración 0");
 			} catch (DatoInvalidoException e) {
-				System.out.println("✔ EP15.2d Rechazado (duración 0): " + e.getMessage());
+				System.out.println("EP15.2d Rechazado (duración 0): " + e.getMessage());
 			}
 
-			// =========================================================================
-			// RF16: ASISTENCIA Y EVALUACIÓN
-			// =========================================================================
+			// RF16: asistencia y evaluación
 			System.out.println("\n--- [RF16] Asistencia y evaluación ---");
 
 			// EP16.2a RECHAZADO: E2, no responsable, intenta registrar asistencia en SE1
@@ -202,7 +194,7 @@ public class ConsolaPP5 {
 				gestor.registrarAsistencia(e2, "SE1", "S1", "asistió");
 				throw new Exception("Debió rechazar registro de asistencia por entrenador no responsable");
 			} catch (PermisoDenegadoException e) {
-				System.out.println("✔ EP16.2a Rechazado (solo entrenador responsable): " + e.getMessage());
+				System.out.println("EP16.2a Rechazado (solo entrenador responsable): " + e.getMessage());
 			}
 
 			// EP16.2b RECHAZADO: Estado 'pendiente'
@@ -210,7 +202,7 @@ public class ConsolaPP5 {
 				gestor.registrarAsistencia(e1, "SE1", "S1", "pendiente");
 				throw new Exception("Debió rechazar estado pendiente");
 			} catch (DatoInvalidoException e) {
-				System.out.println("✔ EP16.2b Rechazado (estado pendiente no permitido): " + e.getMessage());
+				System.out.println("EP16.2b Rechazado (estado pendiente no permitido): " + e.getMessage());
 			}
 
 			// EP16.2c RECHAZADO: Nota 6 y nota 0
@@ -218,13 +210,13 @@ public class ConsolaPP5 {
 				gestor.registrarEvaluacion(e1, "SE1", "S1", 6, "Excelente pero nota inválida");
 				throw new Exception("Debió rechazar nota 6");
 			} catch (DatoInvalidoException e) {
-				System.out.println("✔ EP16.2c Rechazado (nota 6 fuera de rango): " + e.getMessage());
+				System.out.println("EP16.2c Rechazado (nota 6 fuera de rango): " + e.getMessage());
 			}
 			try {
 				gestor.registrarEvaluacion(e1, "SE1", "S1", 0, "Mala nota inválida");
 				throw new Exception("Debió rechazar nota 0");
 			} catch (DatoInvalidoException e) {
-				System.out.println("✔ EP16.2c Rechazado (nota 0 fuera de rango): " + e.getMessage());
+				System.out.println("EP16.2c Rechazado (nota 0 fuera de rango): " + e.getMessage());
 			}
 
 			// EP16.2d RECHAZADO: Asistencia de S9, no convocada
@@ -232,7 +224,7 @@ public class ConsolaPP5 {
 				gestor.registrarAsistencia(e1, "SE1", "S9", "asistió");
 				throw new Exception("Debió rechazar socio no convocado");
 			} catch (NoEncontradoException e) {
-				System.out.println("✔ EP16.2d Rechazado (socio no convocado): " + e.getMessage());
+				System.out.println("EP16.2d Rechazado (socio no convocado): " + e.getMessage());
 			}
 
 			// EP16.2e RECHAZADO: Asistencia en sesión no finalizada (seTenis de EP15.1a)
@@ -240,35 +232,33 @@ public class ConsolaPP5 {
 				gestor.registrarAsistencia(e1, seTenis.getId(), "S1", "asistió");
 				throw new Exception("Debió rechazar asistencia en sesión no finalizada");
 			} catch (EstadoInvalidoException e) {
-				System.out.println("✔ EP16.2e Rechazado (sesión no finalizada): " + e.getMessage());
+				System.out.println("EP16.2e Rechazado (sesión no finalizada): " + e.getMessage());
 			}
 
-			// EP16.1a APROBADO: SE1 finalizada -> S1 asistió, S2 llegó tarde, S3 faltó
+			// EP16.1a APROBADO: SE1 finalizada: S1 asistió, S2 llegó tarde, S3 faltó
 			gestor.registrarAsistencia(e1, "SE1", "S1", "asistió");
 			gestor.registrarAsistencia(e1, "SE1", "S2", "llegó tarde");
 			gestor.registrarAsistencia(e1, "SE1", "S3", "faltó");
-			System.out.println("✔ EP16.1a Aprobado: 3 asistencias registradas correctamente:");
+			System.out.println("EP16.1a Aprobado: 3 asistencias registradas correctamente:");
 			for (Convocatoria c : se1.getConvocatorias()) {
 				System.out.println("  - " + c);
 			}
 
 			// EP16.1b APROBADO: Evaluación de S1 con nota 4 y comentario; S2 y S3 sin evaluar (opcional)
 			gestor.registrarEvaluacion(e1, "SE1", "S1", 4, "Muy buen saque, mejorar volea");
-			System.out.println("✔ EP16.1b Aprobado: Evaluación asignada a S1 (opcional para los demás):");
+			System.out.println("EP16.1b Aprobado: Evaluación asignada a S1 (opcional para los demás):");
 			for (Convocatoria c : se1.getConvocatorias()) {
 				System.out.println("  - " + c);
 			}
 
 			// Consultar historial del socio S1
 			List<Convocatoria> convsS1 = gestor.consultarConvocatoriasSocio(s1, "S1");
-			System.out.println("✔ Consultar convocatorias de S1: " + convsS1.size() + " sesión(es)");
+			System.out.println("Consultar convocatorias de S1: " + convsS1.size() + " sesión(es)");
 
-			System.out.println("\n=========================================================");
-			System.out.println("     ¡TODAS LAS PRUEBAS DE PP5 PASARON CON ÉXITO!        ");
-			System.out.println("=========================================================");
+			System.out.println("\nFin de PP5.");
 
 		} catch (Exception e) {
-			System.err.println("FALLO EN CONSOLA PP5: " + e.getMessage());
+			System.err.println("Error inesperado en PP5: " + e.getMessage());
 			e.printStackTrace();
 			System.exit(1);
 		}

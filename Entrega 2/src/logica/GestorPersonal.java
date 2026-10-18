@@ -10,6 +10,7 @@ import excepciones.ConflictoHorarioException;
 import excepciones.DatoInvalidoException;
 import excepciones.EstadoInvalidoException;
 import excepciones.PermisoDenegadoException;
+import modelo.personal.HorarioAtencion;
 import modelo.personal.SolicitudCambioTurno;
 import modelo.personal.Sugerencia;
 import modelo.personal.Turno;
@@ -28,7 +29,7 @@ public class GestorPersonal extends Gestor {
         super(club);
     }
 
-    //-----------RF18, RF19: solicitar cambio de turno
+    // RF18, RF19: solicitar cambio de turno
     public SolicitudCambioTurno solicitarCambio(Usuario quien, Turno turno, DayOfWeek nuevoDia,
             LocalTime inicio, LocalTime fin)
             throws PermisoDenegadoException, DatoInvalidoException, EstadoInvalidoException {
@@ -50,7 +51,7 @@ public class GestorPersonal extends Gestor {
         return solicitud;
     }
 
-    //-----------RF19: consultar mis solicitudes
+    // RF19: consultar mis solicitudes
     public List<SolicitudCambioTurno> consultarSolicitudes(Usuario quien)
             throws PermisoDenegadoException {
         verificarEmpleado(quien);
@@ -62,7 +63,7 @@ public class GestorPersonal extends Gestor {
         return resultado;
     }
 
-    //-----------RF21: sugerir producto
+    // RF21: sugerir producto
     public Sugerencia sugerirProducto(Usuario quien, String nombre, String tipo, String descripcion)
             throws PermisoDenegadoException, DatoInvalidoException {
         verificarEmpleado(quien);
@@ -78,7 +79,7 @@ public class GestorPersonal extends Gestor {
         return sugerencia;
     }
 
-    //-----------RF32: resolver sugerencia
+    // RF32: resolver sugerencia
     public void resolverSugerencia(Usuario quien, Sugerencia sugerencia, boolean aprobar, String motivo)
             throws PermisoDenegadoException, EstadoInvalidoException, DatoInvalidoException {
         verificarAdministrador(quien);
@@ -96,7 +97,7 @@ public class GestorPersonal extends Gestor {
         }
     }
 
-    //-----------RF33: publicar turnos
+    // RF33: publicar turnos
     public void publicarTurnos(Usuario quien, List<Turno> turnos)
             throws PermisoDenegadoException, ConflictoHorarioException, CoberturaTurnosException {
         verificarAdministrador(quien);
@@ -113,7 +114,7 @@ public class GestorPersonal extends Gestor {
         }
     }
 
-    //-----------RF33: resolver solicitud de cambio de turno
+    // RF33: resolver solicitud de cambio de turno
     public void resolverSolicitud(Usuario quien, SolicitudCambioTurno solicitud, boolean aprobar)
             throws PermisoDenegadoException, EstadoInvalidoException, CoberturaTurnosException,
             ConflictoHorarioException {
@@ -146,7 +147,7 @@ public class GestorPersonal extends Gestor {
         solicitud.aprobar();
     }
 
-    //-----------privados
+    // privados
     private void verificarEmpleado(Usuario quien) throws PermisoDenegadoException {
         if (!(quien instanceof Entrenador) && !(quien instanceof Fisioterapeuta)) {
             throw new PermisoDenegadoException("Solo un entrenador o fisioterapeuta puede hacer esto");
@@ -161,7 +162,7 @@ public class GestorPersonal extends Gestor {
                 Turno b = turnos.get(j);
                 if (a.getEmpleado() == b.getEmpleado() && a.seSolapaCon(b)) {
                     throw new ConflictoHorarioException("El empleado " + a.getEmpleado().getLogin()
-                            + " tiene dos turnos que se solapan el " + a.getDia());
+                            + " tiene dos turnos que se solapan el " + HorarioAtencion.nombreDia(a.getDia()));
                 }
             }
         }
@@ -183,7 +184,7 @@ public class GestorPersonal extends Gestor {
                     }
                 }
                 if (entrenadores < 2 || fisios < 1) {
-                    throw new CoberturaTurnosException("El " + dia + " a las " + bloque
+                    throw new CoberturaTurnosException("El " + HorarioAtencion.nombreDia(dia) + " a las " + bloque
                             + " no hay cobertura mínima (2 entrenadores y 1 fisioterapeuta): hay "
                             + entrenadores + " entrenador(es) y " + fisios + " fisioterapeuta(s)");
                 }

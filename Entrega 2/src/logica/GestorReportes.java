@@ -42,7 +42,7 @@ public class GestorReportes extends Gestor {
         super(club);
     }
 
-    //-----------RF35: registrar mensualidad
+    // RF35: registrar mensualidad
     public Mensualidad registrarPago(Usuario quien, String socioID, YearMonth periodo, double valor)
             throws PermisoDenegadoException, NoEncontradoException, DuplicadoException, DatoInvalidoException {
         verificarAdministrador(quien);
@@ -62,7 +62,7 @@ public class GestorReportes extends Gestor {
         return mensualidad;
     }
     
-    //-----------RF28: historial global
+    // RF28: historial global
     public Historial consultarHistorial(Usuario quien, FiltroHistorial filtro)
             throws PermisoDenegadoException {
         verificarAdministrador(quien);
@@ -100,7 +100,7 @@ public class GestorReportes extends Gestor {
         return historial;
     }
 
-    //-----------RF34: reporte financiero
+    // RF34: reporte financiero
     public ReporteFinanciero generarReporteFinanciero(Usuario quien, Periodo periodo, LocalDate desde)
             throws PermisoDenegadoException {
         verificarAdministrador(quien);
@@ -141,7 +141,7 @@ public class GestorReportes extends Gestor {
                 subCafe, impCafe, totCafe, totMensualidades);
     }
 
-    //-----------RF34: reporte deportivo
+    // RF34: reporte deportivo
     public ReporteDeportivo generarReporteDeportivo(Usuario quien, Periodo periodo, LocalDate desde)
             throws PermisoDenegadoException {
         verificarAdministrador(quien);
@@ -205,7 +205,7 @@ public class GestorReportes extends Gestor {
         return reporte;
     }
 
-    //-----------auxiliar privado
+    // auxiliar privado
     private boolean enRango(LocalDate fecha, LocalDate inicio, LocalDate fin) {
         return !fecha.isBefore(inicio) && !fecha.isAfter(fin);
     }

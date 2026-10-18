@@ -21,7 +21,7 @@ public class FiltroHistorial {
     private DeporteEquipo deporte;
     private Categoria categoria;
 
-    // Constructor corto (el que ya usas en las pruebas)
+    // Filtro solo por fechas y equipo
     public FiltroHistorial(LocalDate desde, LocalDate hasta, Equipo equipo) {
         this(desde, hasta, equipo, null, null, null, null);
     }

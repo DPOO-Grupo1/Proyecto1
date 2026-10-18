@@ -1,4 +1,4 @@
-package Pruebas;
+package pruebas;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -24,7 +24,7 @@ public class PruebaReportes {
 
     public static void main(String[] args) {
 
-        // ===== PREPARAR =====
+        // PREPARAR
         Club club = new Club();
         GestorReportes reportes = new GestorReportes(club);
         GestorTienda tienda = new GestorTienda(club);
@@ -43,7 +43,7 @@ public class PruebaReportes {
         LocalDate hoy = club.getFechaActual();
         YearMonth mes = YearMonth.from(hoy);
 
-        // ===== 1. Registrar mensualidad =====
+        // 1. Registrar mensualidad
         System.out.println("=== 1. Admin registra la mensualidad del mes ===");
         try {
             reportes.registrarPago(admin, "S001", mes, 120000);
@@ -52,7 +52,7 @@ public class PruebaReportes {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 2. Mensualidad repetida =====
+        // 2. Mensualidad repetida
         System.out.println("=== 2. Admin registra el mismo mes otra vez ===");
         try {
             reportes.registrarPago(admin, "S001", mes, 120000);
@@ -61,7 +61,7 @@ public class PruebaReportes {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 3. Socio intenta registrar un pago =====
+        // 3. Socio intenta registrar un pago
         System.out.println("=== 3. Socio intenta registrar un pago ===");
         try {
             reportes.registrarPago(socio, "S001", mes.plusMonths(1), 120000);
@@ -70,7 +70,7 @@ public class PruebaReportes {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 4. Reporte financiero =====
+        // 4. Reporte financiero
         System.out.println("=== 4. Reporte financiero mensual (1 venta de tienda + mensualidad) ===");
         try {
             Map<String, Integer> items = new HashMap<String, Integer>();
@@ -87,7 +87,7 @@ public class PruebaReportes {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 5. Reporte deportivo =====
+        // 5. Reporte deportivo
         System.out.println("=== 5. Reporte deportivo mensual ===");
         try {
             ReporteDeportivo rd = reportes.generarReporteDeportivo(admin, Periodo.MENSUAL, mes.atDay(1));
@@ -98,7 +98,7 @@ public class PruebaReportes {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 6. Historial global =====
+        // 6. Historial global
         System.out.println("=== 6. Historial global ===");
         try {
             Historial h = reportes.consultarHistorial(admin, new FiltroHistorial(null, null, null));
@@ -108,7 +108,7 @@ public class PruebaReportes {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        // ===== 7. Socio intenta ver reportes =====
+        // 7. Socio intenta ver reportes
         System.out.println("=== 7. Socio intenta generar un reporte financiero ===");
         try {
             reportes.generarReporteFinanciero(socio, Periodo.DIARIO, hoy);

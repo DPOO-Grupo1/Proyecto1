@@ -77,7 +77,7 @@ public abstract class Venta {
 	}
 
 	public double calcularTotal() {
-	    // precio -> impuesto -> descuento -> propina
+	    // subtotal + impuesto - descuento - puntos + propina
 	    montoTotal = getSubtotal() + calcularImpuesto() - getDescuento() - puntosRedimidos + calcularPropina();
 	    return montoTotal;
 	}

@@ -123,9 +123,8 @@ public class PartidoPractica {
 		int maxSets = -1;
 		boolean empateSets = false;
 
-		for (Map.Entry<Socio, EstadisticaPractica> entry : stats.entrySet()) {
-			Socio socio = entry.getKey();
-			EstadisticaPractica stat = entry.getValue();
+		for (Socio socio : stats.keySet()) {
+			EstadisticaPractica stat = stats.get(socio);
 
 			if (!tieneParticipante(socio)) {
 				throw new ReglaDeportivaException("El socio '" + socio.getLogin() + "' no es participante de este partido");

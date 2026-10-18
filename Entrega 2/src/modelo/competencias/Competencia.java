@@ -76,8 +76,7 @@ public class Competencia {
 		return formato;
 	}
 
-	// ---------------- Participantes ----------------
-
+	// Participantes
 	public List<ParticipanteCompetencia> getParticipantes() {
 		return participantes;
 	}
@@ -116,8 +115,7 @@ public class Competencia {
 		return null;
 	}
 
-	// ---------------- Partidos ----------------
-
+	// Partidos
 	public List<PartidoCompetencia> getPartidos() {
 		return partidos;
 	}
@@ -126,8 +124,7 @@ public class Competencia {
 		partidos.add(partido);
 	}
 
-	// ---------------- Cálculos ----------------
-
+	// Cálculos
 	/**
 	 * Calcula la tabla con los partidos jugados. Si el grupo es null, incluye a todos.
 	 */

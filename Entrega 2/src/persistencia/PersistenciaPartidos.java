@@ -27,8 +27,7 @@ public abstract class PersistenciaPartidos implements IPersistenciaArea {
 
 	protected ArchivoJSON archivoJSON = new ArchivoJSON();
 
-	// ---------- Guardar ----------
-
+	// Guardar
 	protected JSONObject partidoAJSON(Partido partido, Club club) {
 		JSONObject jp = new JSONObject();
 		jp.put("id", partido.getId());
@@ -92,8 +91,7 @@ public abstract class PersistenciaPartidos implements IPersistenciaArea {
 		return js;
 	}
 
-	// ---------- Cargar ----------
-
+	// Cargar
 	protected void verificarIdNuevo(int id, Club club, String archivo) throws PersistenciaException {
 		try {
 			club.buscarPartido(id);

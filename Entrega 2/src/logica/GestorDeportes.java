@@ -36,8 +36,7 @@ public class GestorDeportes extends Gestor {
 		super(club);
 	}
 
-	// ---------- RF22: crear equipos ----------
-
+	// RF22: crear equipos
 	/**
 	 * RF22. Crea un equipo sin jugadores. Solo el administrador.
 	 * Se rechaza si ya hay un equipo con ese nombre o si el cupo es menor
@@ -76,8 +75,7 @@ public class GestorDeportes extends Gestor {
 		equipo.setEntrenador((Entrenador) empleado);
 	}
 
-	// ---------- RF23: inscribir jugadores ----------
-
+	// RF23: inscribir jugadores
 	/**
 	 * RF23. Inscribe a un socio en un equipo con número y posición. Solo el administrador.
 	 * Revisa que el equipo esté activo y tenga cupo, que la edad sirva para la categoría,
@@ -120,8 +118,7 @@ public class GestorDeportes extends Gestor {
 		return jugador;
 	}
 
-	// ---------- RF24: bajas ----------
-
+	// RF24: bajas
 	/**
 	 * RF24. Da de baja un equipo que no tenga partidos pendientes. Solo el administrador.
 	 * Sus jugadores quedan inactivos, pero no se borra nada.
@@ -156,8 +153,7 @@ public class GestorDeportes extends Gestor {
 		jugador.desactivar();
 	}
 
-	// ---------- RF12: programar partidos internos ----------
-
+	// RF12: programar partidos internos
 	/**
 	 * RF12. Programa un partido interno. Solo un entrenador.
 	 * Los dos equipos deben ser distintos, estar activos, ser del mismo deporte y categoría
@@ -202,8 +198,7 @@ public class GestorDeportes extends Gestor {
 		return partido;
 	}
 
-	// ---------- RF13 y RF14: resultados, estadísticas y tarjetas ----------
-
+	// RF13 y RF14: resultados, estadísticas y tarjetas
 	/**
 	 * RF13. Registra el marcador de un partido interno (en voleibol es por sets). Solo un entrenador.
 	 * No se puede registrar dos veces, ni con marcadores negativos, ni empates si el deporte no los admite.
@@ -271,8 +266,7 @@ public class GestorDeportes extends Gestor {
 		}
 	}
 
-	// ---------- RF1: información deportiva ----------
-
+	// RF1: información deportiva
 	/**
 	 * RF1. Devuelve los equipos en que juega o jugó el socio que consulta.
 	 */
@@ -295,8 +289,7 @@ public class GestorDeportes extends Gestor {
 		return club.getPartidosDe(jugador.getEquipo());
 	}
 
-	// ---------- Métodos privados ----------
-
+	// Métodos privados
 	private void verificarMinimoHabilitados(Equipo equipo, Partido partido) throws ReglaDeportivaException {
 		int habilitados = equipo.contarHabilitadosPara(partido);
 		int minimo = equipo.getDeporte().getMinimoHabilitados();

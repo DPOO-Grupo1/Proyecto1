@@ -1,8 +1,7 @@
 package modelo.academias;
 
 /**
- * Cancha de pádel. Solo admite dobles con 4 jugadores
- * Restringe el ingreso de bebidas calientes
+ * Cancha de pádel. Solo admite dobles con 4 jugadores y no deja entrar con bebidas calientes.
  */
 public class CanchaPadel extends Instalacion {
 
