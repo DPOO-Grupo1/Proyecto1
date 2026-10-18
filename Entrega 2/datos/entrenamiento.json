@@ -1,0 +1,31 @@
+{"sesiones": [{
+  "fecha": "2026-10-01",
+  "entrenador": "e1",
+  "hora": "07:00",
+  "disciplina": "Tenis",
+  "equipo": null,
+  "finalizada": true,
+  "instalacion": "I2",
+  "duracionMin": 90,
+  "id": "SE1",
+  "convocatorias": [
+    {
+      "socioID": "S1",
+      "asistencia": "asistió",
+      "evaluacion": {
+        "comentario": "Excelente saque",
+        "nota": 4
+      }
+    },
+    {
+      "socioID": "S2",
+      "asistencia": "llegó tarde",
+      "evaluacion": null
+    },
+    {
+      "socioID": "S3",
+      "asistencia": "faltó",
+      "evaluacion": null
+    }
+  ]
+}]}

@@ -1,0 +1,355 @@
+{
+  "administradores": [{
+    "password": "123",
+    "login": "admin"
+  }],
+  "empleados": [
+    {
+      "apellidos": "López",
+      "password": "pass",
+      "tipo": "Entrenador",
+      "socioID": null,
+      "idEmpleado": 1,
+      "puntosFidelidad": 0,
+      "login": "e1",
+      "nombre": "Marta"
+    },
+    {
+      "apellidos": "Ramos",
+      "password": "pass",
+      "tipo": "Entrenador",
+      "socioID": null,
+      "idEmpleado": 2,
+      "puntosFidelidad": 0,
+      "login": "e2",
+      "nombre": "Carlos"
+    },
+    {
+      "apellidos": "Ruiz",
+      "password": "pass",
+      "tipo": "Entrenador",
+      "socioID": null,
+      "idEmpleado": 3,
+      "puntosFidelidad": 0,
+      "login": "e3",
+      "nombre": "Andrés"
+    }
+  ],
+  "socios": [
+    {
+      "apellidos": "Titan",
+      "password": "pass",
+      "socioID": "B6",
+      "fechaNacimiento": "1997-02-02",
+      "puntosFidelidad": 0,
+      "login": "socio_b6",
+      "nombre": "Basket6"
+    },
+    {
+      "apellidos": "Titan",
+      "password": "pass",
+      "socioID": "B7",
+      "fechaNacimiento": "1997-02-02",
+      "puntosFidelidad": 0,
+      "login": "socio_b7",
+      "nombre": "Basket7"
+    },
+    {
+      "apellidos": "Titan",
+      "password": "pass",
+      "socioID": "B4",
+      "fechaNacimiento": "1997-02-02",
+      "puntosFidelidad": 0,
+      "login": "socio_b4",
+      "nombre": "Basket4"
+    },
+    {
+      "apellidos": "Titan",
+      "password": "pass",
+      "socioID": "B5",
+      "fechaNacimiento": "1997-02-02",
+      "puntosFidelidad": 0,
+      "login": "socio_b5",
+      "nombre": "Basket5"
+    },
+    {
+      "apellidos": "Titan",
+      "password": "pass",
+      "socioID": "B2",
+      "fechaNacimiento": "1997-02-02",
+      "puntosFidelidad": 0,
+      "login": "socio_b2",
+      "nombre": "Basket2"
+    },
+    {
+      "apellidos": "Titan",
+      "password": "pass",
+      "socioID": "B3",
+      "fechaNacimiento": "1997-02-02",
+      "puntosFidelidad": 0,
+      "login": "socio_b3",
+      "nombre": "Basket3"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J8",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j8",
+      "nombre": "Jugador8"
+    },
+    {
+      "apellidos": "FC",
+      "password": "pass",
+      "socioID": "H6",
+      "fechaNacimiento": "1999-05-05",
+      "puntosFidelidad": 0,
+      "login": "socio_h6",
+      "nombre": "Halcon6"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J9",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j9",
+      "nombre": "Jugador9"
+    },
+    {
+      "apellidos": "Titan",
+      "password": "pass",
+      "socioID": "B1",
+      "fechaNacimiento": "1997-02-02",
+      "puntosFidelidad": 0,
+      "login": "socio_b1",
+      "nombre": "Basket1"
+    },
+    {
+      "apellidos": "Titan",
+      "password": "pass",
+      "socioID": "B8",
+      "fechaNacimiento": "1997-02-02",
+      "puntosFidelidad": 0,
+      "login": "socio_b8",
+      "nombre": "Basket8"
+    },
+    {
+      "apellidos": "Rincón",
+      "password": "pass",
+      "socioID": "S1",
+      "fechaNacimiento": "1995-03-10",
+      "puntosFidelidad": 0,
+      "login": "s1",
+      "nombre": "Ana"
+    },
+    {
+      "apellidos": "Cárdenas",
+      "password": "pass",
+      "socioID": "S2",
+      "fechaNacimiento": "1990-05-20",
+      "puntosFidelidad": 0,
+      "login": "s2",
+      "nombre": "Bruno"
+    },
+    {
+      "apellidos": "Vega",
+      "password": "pass",
+      "socioID": "S3",
+      "fechaNacimiento": "1988-08-15",
+      "puntosFidelidad": 0,
+      "login": "s3",
+      "nombre": "Carla"
+    },
+    {
+      "apellidos": "Peña",
+      "password": "pass",
+      "socioID": "S4",
+      "fechaNacimiento": "1991-10-11",
+      "puntosFidelidad": 0,
+      "login": "s4",
+      "nombre": "Diego"
+    },
+    {
+      "apellidos": "Ruiz",
+      "password": "pass",
+      "socioID": "S5",
+      "fechaNacimiento": "1993-04-18",
+      "puntosFidelidad": 0,
+      "login": "s5",
+      "nombre": "Elena"
+    },
+    {
+      "apellidos": "Ortiz",
+      "password": "pass",
+      "socioID": "S6",
+      "fechaNacimiento": "1997-06-12",
+      "puntosFidelidad": 0,
+      "login": "s6",
+      "nombre": "Fabio"
+    },
+    {
+      "apellidos": "Soto",
+      "password": "pass",
+      "socioID": "S7",
+      "fechaNacimiento": "1994-02-28",
+      "puntosFidelidad": 0,
+      "login": "s7",
+      "nombre": "Gabriela"
+    },
+    {
+      "apellidos": "Ramírez",
+      "password": "pass",
+      "socioID": "S8",
+      "fechaNacimiento": "1996-12-01",
+      "puntosFidelidad": 0,
+      "login": "s8",
+      "nombre": "Helena"
+    },
+    {
+      "apellidos": "Torres",
+      "password": "pass",
+      "socioID": "S9",
+      "fechaNacimiento": "1992-11-02",
+      "puntosFidelidad": 0,
+      "login": "s9",
+      "nombre": "Iván"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J12",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j12",
+      "nombre": "Jugador12"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J11",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j11",
+      "nombre": "Jugador11"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J10",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j10",
+      "nombre": "Jugador10"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J6",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j6",
+      "nombre": "Jugador6"
+    },
+    {
+      "apellidos": "FC",
+      "password": "pass",
+      "socioID": "H4",
+      "fechaNacimiento": "1999-05-05",
+      "puntosFidelidad": 0,
+      "login": "socio_h4",
+      "nombre": "Halcon4"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J7",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j7",
+      "nombre": "Jugador7"
+    },
+    {
+      "apellidos": "FC",
+      "password": "pass",
+      "socioID": "H5",
+      "fechaNacimiento": "1999-05-05",
+      "puntosFidelidad": 0,
+      "login": "socio_h5",
+      "nombre": "Halcon5"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J4",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j4",
+      "nombre": "Jugador4"
+    },
+    {
+      "apellidos": "FC",
+      "password": "pass",
+      "socioID": "H2",
+      "fechaNacimiento": "1999-05-05",
+      "puntosFidelidad": 0,
+      "login": "socio_h2",
+      "nombre": "Halcon2"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J5",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j5",
+      "nombre": "Jugador5"
+    },
+    {
+      "apellidos": "FC",
+      "password": "pass",
+      "socioID": "H3",
+      "fechaNacimiento": "1999-05-05",
+      "puntosFidelidad": 0,
+      "login": "socio_h3",
+      "nombre": "Halcon3"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J2",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j2",
+      "nombre": "Jugador2"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J3",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j3",
+      "nombre": "Jugador3"
+    },
+    {
+      "apellidos": "FC",
+      "password": "pass",
+      "socioID": "H1",
+      "fechaNacimiento": "1999-05-05",
+      "puntosFidelidad": 0,
+      "login": "socio_h1",
+      "nombre": "Halcon1"
+    },
+    {
+      "apellidos": "Aguila",
+      "password": "pass",
+      "socioID": "J1",
+      "fechaNacimiento": "1998-01-01",
+      "puntosFidelidad": 0,
+      "login": "socio_j1",
+      "nombre": "Jugador1"
+    }
+  ]
+}
