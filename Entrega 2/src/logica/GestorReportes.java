@@ -58,6 +58,7 @@ public class GestorReportes extends Gestor {
 
         Mensualidad mensualidad = new Mensualidad(periodo, valor, club.getFechaActual());
         socio.agregarMensualidad(mensualidad);
+        socio.setAlDia(true);
         return mensualidad;
     }
     
