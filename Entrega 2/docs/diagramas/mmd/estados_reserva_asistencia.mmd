@@ -1,0 +1,26 @@
+stateDiagram-v2
+    direction LR
+
+    state "Ciclo de Vida de Reserva" as ReservaStates {
+        [*] --> ACTIVA : reservar() (Socio al día, cancha libre)
+        ACTIVA --> CANCELADA : cancelarReserva() (Anticipación >= 2h)
+        ACTIVA --> FINALIZADA : registrarResultadoPractica() (Partido jugado)
+        CANCELADA --> [*]
+        FINALIZADA --> [*]
+    }
+
+    state "Ciclo de Vida de Convocatoria" as ConvocatoriaStates {
+        [*] --> PENDIENTE : planearSesion() (Convocado a sesión)
+        PENDIENTE --> ASISTIO : registrarAsistencia("asistió") [Sesión finalizada]
+        PENDIENTE --> FALTO : registrarAsistencia("faltó") [Sesión finalizada]
+        PENDIENTE --> TARDE : registrarAsistencia("llegó tarde") [Sesión finalizada]
+        
+        state ASISTIO {
+            [*] --> SinEvaluar
+            SinEvaluar --> Evaluado : registrarEvaluacion(nota 1..5, comentario)
+        }
+        
+        ASISTIO --> [*]
+        FALTO --> [*]
+        TARDE --> [*]
+    }

@@ -1,0 +1,35 @@
+sequenceDiagram
+    autonumber
+    actor Coach as Entrenador (E1)
+    participant Consola as Consola PP5
+    participant Gestor as GestorEntrenamiento
+    participant Club as Club
+    participant Inst as Instalacion (I1)
+    participant Sesion as Nueva SesionEntrenamiento
+
+    Coach->>Consola: Planear sesión (Tenis, Cancha I1, 90 min, Alumnos S1, S2, S3)
+    Consola->>Gestor: planearSesion(e1, "Tenis", "I1", fecha, 09:00, 90, [S1, S2, S3])
+
+    activate Gestor
+    Gestor->>Club: buscarDisciplina("Tenis")
+    Club-->>Gestor: disciplina (Tenis)
+
+    Gestor->>Club: buscarInstalacion("I1")
+    Club-->>Gestor: instalacion (I1: CanchaTenis)
+
+    Gestor->>Inst: estaLibre(fecha, 09:00, 10:30)
+    Inst-->>Gestor: true (sin choques)
+
+    Note over Gestor: Valida que E1 y los alumnos no tengan compromisos previos
+
+    create participant Sesion
+    Gestor->>Sesion: new SesionEntrenamiento("SE2", e1, I1, fecha, 09:00, 90)
+    Note over Gestor,Sesion: Crea y agrega Convocatoria para S1, S2 y S3
+
+    Gestor->>Club: agregarSesion(sesion)
+    Gestor->>Inst: agregarSesion(sesion)
+
+    Gestor-->>Consola: sesion (SE2)
+    deactivate Gestor
+
+    Consola-->>Coach: Confirmación: Sesión SE2 programada con 3 convocados
