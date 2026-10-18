@@ -28,6 +28,9 @@ import modelo.tienda.Producto;
 import modelo.tienda.Ubicacion;
 import modelo.tienda.Venta;
 import modelo.tienda.CodigoDescuento;
+import modelo.personal.HorarioAtencion;
+import modelo.personal.Sugerencia;
+import modelo.personal.Turno;
 
 /**
  * Guarda todas las listas del club y busca por id o por nombre.
@@ -52,6 +55,9 @@ public class Club {
 	private List<Existencia> existencias;
 	private List<Venta> ventas;
 	private List<CodigoDescuento> codigos;
+	private List<Turno> turnos;
+	private List<Sugerencia> sugerencias;
+	private HorarioAtencion horario;
 
 	public Club() {
 		this.usuarios = new HashMap<String, Usuario>();
@@ -71,6 +77,9 @@ public class Club {
 		this.existencias = new ArrayList<Existencia>();
 		this.ventas = new ArrayList<Venta>();
 		this.codigos = new ArrayList<CodigoDescuento>();
+		this.turnos = new ArrayList<Turno>();
+		this.sugerencias = new ArrayList<Sugerencia>();
+		this.horario = new HorarioAtencion();
 		
 	}
 
@@ -492,6 +501,28 @@ public class Club {
 	        }
 	    }
 	    throw new NoEncontradoException("No existe el código de descuento " + id);
+	}
+	
+	// ---------------- Personal (Área C) ----------------
+
+	public HorarioAtencion getHorario() {
+	    return horario;
+	}
+
+	public List<Turno> getTurnos() {
+	    return turnos;
+	}
+
+	public void setTurnos(List<Turno> turnos) {
+	    this.turnos = turnos;
+	}
+
+	public void agregarSugerencia(Sugerencia sugerencia) {
+	    sugerencias.add(sugerencia);
+	}
+
+	public List<Sugerencia> getSugerencias() {
+	    return sugerencias;
 	}
 	
 	//normalizador de texto just in case

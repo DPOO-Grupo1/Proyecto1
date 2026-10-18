@@ -6,50 +6,65 @@ import java.util.Map;
 
 import excepciones.ClubException;
 import logica.Club;
+import logica.GestorTienda;
 import modelo.tienda.Articulo;
+import modelo.tienda.Existencia;
 import modelo.tienda.Ubicacion;
-import modelo.tienda.VentaTienda;
 import modelo.usuarios.Socio;
 
 public class PruebaTienda {
 
     public static void main(String[] args) {
-        // 1. PREPARAR: datos creados a mano
-    	Club club = new Club();
-    	GestorTienda gestor = new GestorTienda(club);
 
-    	Socio socio = new Socio("ana16", "1234", "Ana", "Pérez", "S001", LocalDate.of(2005, 3, 14));
-    	club.agregarUsuario(socio);               // si Club tiene ese método
+        // ===== PREPARAR =====
+        Club club = new Club();
+        GestorTienda gestor = new GestorTienda(club);
 
-    	Articulo balon = new Articulo("Balón", 50000, "Balones");
-    	Ubicacion tienda = new Ubicacion("Tienda");
-    	club.agregarProducto(balon);
-    	club.agregarUbicacion(tienda);
-    	// y la Existencia: balón en la tienda, con 10 unidades
+        Socio socio = new Socio("ana16", "1234", "Ana", "Pérez", "S001", LocalDate.of(2005, 3, 14));
+        club.agregarUsuario(socio);
 
-    	Map<String, Integer> items = new HashMap<String, Integer>();
-    	items.put("Balón", 2);                    // nombre del producto → cantidad
+        Ubicacion tienda = new Ubicacion("Tienda");
+        club.agregarUbicacion(tienda);
 
-    	Map<String, Integer> itemsDeMas = new HashMap<String, Integer>();
-    	itemsDeMas.put("Balón", 999);             // más de las 10 que hay
-    	
-        // (Club, socio, producto, existencias...)
+        Articulo balon = new Articulo("Balón", 50000, "Balones");
+        club.agregarProducto(balon);
+        Existencia existencia = new Existencia(balon, tienda, 10);
+        club.agregarExistencia(existencia);
 
-        // 2. EJECUTAR + 3. MOSTRAR
-        System.out.println("=== Compra normal ===");
+        // ===== PRUEBA 1: compra normal =====
+        System.out.println("=== 1. Socio compra 2 balones ===");
+        System.out.println("Inventario antes: " + existencia.getCantidad());
+        Map<String, Integer> items = new HashMap<String, Integer>();
+        items.put("Balón", 2);
         try {
-            VentaTienda v = gestor.comprarEnTienda(socio, items, null, 0);
-            System.out.println("ACEPTADO. Total: " + v.getMontoTotal());
+            gestor.comprarEnTienda(socio, items, null, 0);
+            System.out.println("ACEPTADO");
+            System.out.println("Inventario después: " + existencia.getCantidad());
+            System.out.println("Compras del socio: " + socio.getCompras().size());
+            System.out.println("Total pagado: " + socio.getCompras().get(0).getMontoTotal());
+            System.out.println("Puntos ganados: " + socio.getPuntosFidelidad());
         } catch (ClubException e) {
             System.out.println("RECHAZADO: " + e.getMessage());
         }
 
-        System.out.println("=== Compra sin inventario ===");
+        // ===== PRUEBA 2: pide más de lo que hay =====
+        System.out.println("=== 2. Socio intenta comprar 999 balones ===");
+        Map<String, Integer> demasiados = new HashMap<String, Integer>();
+        demasiados.put("Balón", 999);
         try {
-            gestor.comprarEnTienda(socio, itemsDeMas, null, 0);
-            System.out.println("ACEPTADO (esto sería un error de la prueba)");
+            gestor.comprarEnTienda(socio, demasiados, null, 0);
+            System.out.println("ACEPTADO (esto sería un error)");
         } catch (ClubException e) {
-            System.out.println("RECHAZADO: " + e.getMessage());   // esto es lo esperado
+            System.out.println("RECHAZADO: " + e.getMessage());
+        }
+
+        // ===== PRUEBA 3: socio intenta registrar un producto =====
+        System.out.println("=== 3. Socio intenta registrar un producto ===");
+        try {
+            gestor.registrarProducto(socio, new Articulo("Raqueta", 80000, "Raquetas"), "Tienda", 5);
+            System.out.println("ACEPTADO (esto sería un error)");
+        } catch (ClubException e) {
+            System.out.println("RECHAZADO: " + e.getMessage());
         }
     }
 }

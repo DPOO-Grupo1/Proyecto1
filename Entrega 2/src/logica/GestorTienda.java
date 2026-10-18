@@ -1,6 +1,8 @@
 package logica;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +13,10 @@ import excepciones.PermisoDenegadoException;
 import excepciones.VentaInvalidaException;
 import excepciones.DatoInvalidoException;
 import excepciones.DuplicadoException;
+import modelo.academias.Reserva;
+import modelo.entrenamiento.SesionEntrenamiento;
 import modelo.tienda.Articulo;
+import modelo.tienda.Bebida;
 import modelo.tienda.CodigoDescuento;
 import modelo.tienda.Existencia;
 import modelo.tienda.Producto;
@@ -21,6 +26,7 @@ import modelo.tienda.Ubicacion;
 import modelo.tienda.VentaCafeteria;
 import modelo.tienda.VentaTienda;
 import modelo.usuarios.Cliente;
+import modelo.usuarios.Socio;
 import modelo.usuarios.Usuario;
 
 /**
@@ -129,8 +135,10 @@ public class GestorTienda extends Gestor {
             if (club.buscarExistencia(p, cafeteria).getCantidad() < item.getValue()) {
                 throw new VentaInvalidaException("No hay existencias suficientes de '" + p.getNombre() + "'");
             }
-            // TODO (Área B): si p es Bebida caliente y el cliente está en pádel o mesa techada,
-            // lanzar VentaInvalidaException. Necesita cliente.estaEnInstalacionRestringida(...)
+            if (p instanceof Bebida && ((Bebida) p).esCaliente()
+                    && estaEnInstalacionRestringida(cliente)) {
+                throw new VentaInvalidaException("No se puede despachar una bebida caliente a quien está en una cancha de pádel o mesa de tenis de mesa techada");
+            }
         }
 
         // 3. validar código y puntos
@@ -269,5 +277,40 @@ public class GestorTienda extends Gestor {
         exDestino.sumar(cantidad);
     }
     
+  //-----------privado: ¿el cliente está ahora en una instalación restringida?
+    private boolean estaEnInstalacionRestringida(Cliente cliente) {
+        LocalDate hoy = club.getFechaActual();
+        LocalTime ahora = LocalTime.now();
+
+        // reservas activas: como titular o como participante del partido de práctica
+        for (Reserva r : club.getReservas()) {
+            if (r.estaActiva() && r.getFecha().equals(hoy)
+                    && !ahora.isBefore(r.getHoraInicio()) && ahora.isBefore(r.getHoraFin())
+                    && r.getInstalacion().restringeBebidaCaliente()) {
+                if (r.getTitular() == cliente) {
+                    return true;
+                }
+                if (cliente instanceof Socio && r.getPartido() != null
+                        && r.getPartido().tieneParticipante((Socio) cliente)) {
+                    return true;
+                }
+            }
+        }
+
+        // sesiones de entrenamiento: como entrenador o como convocado
+        for (SesionEntrenamiento s : club.getSesiones()) {
+            if (s.getFecha().equals(hoy)
+                    && !ahora.isBefore(s.getHora()) && ahora.isBefore(s.getHoraFin())
+                    && s.getInstalacion().restringeBebidaCaliente()) {
+                if (s.getEntrenador() == cliente) {
+                    return true;
+                }
+                if (cliente instanceof Socio && s.tieneConvocado((Socio) cliente)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     
 }
