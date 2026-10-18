@@ -23,7 +23,9 @@ public class CentralPersistencia {
 		agregarArea(new PersistenciaUsuarios(), "usuarios.json");
 		agregarArea(new PersistenciaDeportes(), "deportes.json");
 		agregarArea(new PersistenciaCompetencias(), "competencias.json");
-		// Aquí van las de las áreas B y C, en orden: academias, entrenamiento, tienda, personal.
+		agregarArea(new PersistenciaAcademias(), "academias.json");
+		agregarArea(new PersistenciaEntrenamiento(), "entrenamiento.json");
+		// Aquí van las del área C: tienda, personal.
 	}
 
 	private void agregarArea(IPersistenciaArea area, String archivo) {
