@@ -1,12 +1,17 @@
 package logica;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import excepciones.NoEncontradoException;
+import modelo.academias.Disciplina;
+import modelo.academias.Instalacion;
+import modelo.academias.Reserva;
+import modelo.entrenamiento.SesionEntrenamiento;
 import modelo.competencias.Competencia;
 import modelo.deportes.Categoria;
 import modelo.deportes.DeporteEquipo;
@@ -30,6 +35,10 @@ public class Club {
 	private List<Equipo> equipos;
 	private List<PartidoInterno> partidosInternos;
 	private List<Competencia> competencias;
+	private List<Disciplina> disciplinas;
+	private List<Instalacion> instalaciones;
+	private List<Reserva> reservas;
+	private List<SesionEntrenamiento> sesiones;
 	private LocalDate fechaActual;
 
 	public Club() {
@@ -39,13 +48,17 @@ public class Club {
 		this.equipos = new ArrayList<Equipo>();
 		this.partidosInternos = new ArrayList<PartidoInterno>();
 		this.competencias = new ArrayList<Competencia>();
+		this.disciplinas = new ArrayList<Disciplina>();
+		this.instalaciones = new ArrayList<Instalacion>();
+		this.reservas = new ArrayList<Reserva>();
+		this.sesiones = new ArrayList<SesionEntrenamiento>();
 		this.fechaActual = LocalDate.now();
 	}
 
-	// ---------------- Fecha actual ----------------
+	// Fecha actual
 
 	/**
-	 * Fecha que se usa como "hoy". Se puede cambiar para las pruebas.
+	 * Fecha que se usa como "hoy"
 	 */
 	public LocalDate getFechaActual() {
 		return fechaActual;
@@ -55,7 +68,7 @@ public class Club {
 		this.fechaActual = fechaActual;
 	}
 
-	// ---------------- Usuarios ----------------
+	// Usuarios
 
 	public void agregarUsuario(Usuario usuario) {
 		usuarios.put(usuario.getLogin(), usuario);
@@ -101,7 +114,7 @@ public class Club {
 		throw new NoEncontradoException("No existe un empleado con id " + idEmpleado);
 	}
 
-	// ---------------- Deportes y categorías ----------------
+	// Deportes y categorías
 
 	public void agregarDeporte(DeporteEquipo deporte) {
 		deportes.add(deporte);
@@ -137,7 +150,7 @@ public class Club {
 		throw new NoEncontradoException("No existe la categoría '" + nombre + "'");
 	}
 
-	// ---------------- Equipos ----------------
+	// Equipos
 
 	public void agregarEquipo(Equipo equipo) {
 		equipos.add(equipo);
@@ -171,7 +184,8 @@ public class Club {
 	// ---------------- Partidos ----------------
 
 	/**
-	 * El id es el total de partidos + 1. Funciona porque los partidos nunca se borran.
+	 * El id es el total de partidos + 1. Funciona porque los partidos nunca se
+	 * borran.
 	 */
 	public int siguienteIdPartido() {
 		int total = partidosInternos.size();
@@ -263,5 +277,104 @@ public class Club {
 			}
 		}
 		throw new NoEncontradoException("No existe la competencia '" + nombre + "' de la temporada " + temporada);
+	}
+
+	// Academias
+
+	public void agregarDisciplina(Disciplina disciplina) {
+		disciplinas.add(disciplina);
+	}
+
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+
+	public Disciplina buscarDisciplina(String nombre) throws NoEncontradoException {
+		for (Disciplina disciplina : disciplinas) {
+			if (disciplina.getNombre().equalsIgnoreCase(nombre)) {
+				return disciplina;
+			}
+		}
+		throw new NoEncontradoException(
+				"No existe la disciplina '" + nombre + "': las academias son tenis, pádel y tenis de mesa");
+	}
+
+	// Instalaciones y Reservas
+
+	public void agregarInstalacion(Instalacion instalacion) {
+		instalaciones.add(instalacion);
+	}
+
+	public List<Instalacion> getInstalaciones() {
+		return instalaciones;
+	}
+
+	public Instalacion buscarInstalacion(String id) throws NoEncontradoException {
+		for (Instalacion instalacion : instalaciones) {
+			if (instalacion.getId().equalsIgnoreCase(id)) {
+				return instalacion;
+			}
+		}
+		throw new NoEncontradoException("No existe una instalación con id '" + id + "'");
+	}
+
+	public void agregarReserva(Reserva reserva) {
+		reservas.add(reserva);
+	}
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public Reserva buscarReserva(String id) throws NoEncontradoException {
+		for (Reserva reserva : reservas) {
+			if (reserva.getId().equalsIgnoreCase(id)) {
+				return reserva;
+			}
+		}
+		throw new NoEncontradoException("No existe una reserva con id '" + id + "'");
+	}
+
+	public void agregarSesion(SesionEntrenamiento sesion) {
+		sesiones.add(sesion);
+	}
+
+	public List<SesionEntrenamiento> getSesiones() {
+		return sesiones;
+	}
+
+	/**
+	 * Cuenta cuántas reservas activas de instalaciones de esa disciplina se cruzan
+	 * Sirve para validar que no se exceda el cupo simultáneo de la disciplina.
+	 */
+	public int contarReservasSimultaneas(Disciplina disciplina, LocalDate fecha, LocalTime inicio, LocalTime fin) {
+		int total = 0;
+		for (Reserva reserva : reservas) {
+			if (reserva.estaActiva()
+					&& reserva.getInstalacion().getDisciplina() == disciplina
+					&& reserva.tieneConflictoCon(fecha, inicio, fin)) {
+				total++;
+			}
+		}
+		return total;
+	}
+
+	/**
+	 * Revisa si el socio ya tiene un compromiso en esa fecha y horario:
+	 * ya sea como titular de una reserva activa o convocado a una sesión de
+	 */
+	public boolean tieneCompromiso(Socio socio, LocalDate fecha, LocalTime inicio, LocalTime fin) {
+		for (Reserva reserva : reservas) {
+			if (reserva.estaActiva() && reserva.getTitular() == socio
+					&& reserva.tieneConflictoCon(fecha, inicio, fin)) {
+				return true;
+			}
+		}
+		for (SesionEntrenamiento sesion : sesiones) {
+			if (sesion.tieneConvocado(socio) && sesion.tieneConflictoCon(fecha, inicio, fin)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
