@@ -33,6 +33,10 @@ public class Convocatoria {
 		return asistencia;
 	}
 
+	public void setAsistencia(EstadoAsistencia asistencia) {
+		this.asistencia = asistencia;
+	}
+
 	/**
 	 * Registra la asistencia efectiva del convocado.
 	 * Se rechaza si se intenta marcar como 'pendiente' (EP16.2b).

@@ -200,6 +200,24 @@ public class PartidoPractica {
 		}
 	}
 
+	public void setCancelado(boolean cancelado) {
+		this.cancelado = cancelado;
+	}
+
+	public void setJugado(boolean jugado) {
+		this.jugado = jugado;
+	}
+
+	public void setGanador(Socio ganador) {
+		this.ganador = ganador;
+	}
+
+	public void agregarEstadistica(Socio socio, EstadisticaPractica stat) {
+		if (socio != null && stat != null) {
+			this.estadisticas.put(socio, stat);
+		}
+	}
+
 	@Override
 	public String toString() {
 		String res = "Partido " + id;
