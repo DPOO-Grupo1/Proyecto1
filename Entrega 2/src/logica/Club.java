@@ -503,6 +503,18 @@ public class Club {
 	    throw new NoEncontradoException("No existe el código de descuento " + id);
 	}
 	
+	public List<Producto> getProductos() {
+	    return productos;
+	}
+
+	public List<Ubicacion> getUbicaciones() {
+	    return ubicaciones;
+	}
+
+	public List<CodigoDescuento> getCodigos() {
+	    return codigos;
+	}
+	
 	// ---------------- Personal (Área C) ----------------
 
 	public HorarioAtencion getHorario() {

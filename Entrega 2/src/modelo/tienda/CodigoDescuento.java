@@ -35,5 +35,8 @@ public class CodigoDescuento {
 			return 0.08;
 		}
 	}
+	public void desactivar() {
+	    this.activo = false;
+	}
 	
 }
