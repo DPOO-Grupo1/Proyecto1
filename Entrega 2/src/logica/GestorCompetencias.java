@@ -120,9 +120,15 @@ public class GestorCompetencias extends Gestor {
 			}
 			nomina.add(jugador);
 		}
-		if (nomina.size() < competencia.getNominaMinima()) {
-			int faltan = competencia.getNominaMinima() - nomina.size();
-			throw new ReglaDeportivaException("La nómina tiene " + nomina.size() + " jugadores y el mínimo es "
+		int habilitados = 0;
+		for (JugadorEquipo jugador : nomina) {
+			if (jugador.estaHabilitado()) {
+				habilitados++;
+			}
+		}
+		if (habilitados < competencia.getNominaMinima()) {
+			int faltan = competencia.getNominaMinima() - habilitados;
+			throw new ReglaDeportivaException("La nómina tiene " + habilitados + " habilitados y el mínimo es "
 					+ competencia.getNominaMinima() + ": faltan " + faltan);
 		}
 
