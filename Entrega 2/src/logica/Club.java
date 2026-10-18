@@ -27,6 +27,7 @@ import modelo.tienda.Existencia;
 import modelo.tienda.Producto;
 import modelo.tienda.Ubicacion;
 import modelo.tienda.Venta;
+import modelo.tienda.CodigoDescuento;
 
 /**
  * Guarda todas las listas del club y busca por id o por nombre.
@@ -50,6 +51,7 @@ public class Club {
 	private List<Ubicacion> ubicaciones;
 	private List<Existencia> existencias;
 	private List<Venta> ventas;
+	private List<CodigoDescuento> codigos;
 
 	public Club() {
 		this.usuarios = new HashMap<String, Usuario>();
@@ -68,6 +70,8 @@ public class Club {
 		this.ubicaciones = new ArrayList<Ubicacion>();
 		this.existencias = new ArrayList<Existencia>();
 		this.ventas = new ArrayList<Venta>();
+		this.codigos = new ArrayList<CodigoDescuento>();
+		
 	}
 
 	// Fecha actual
@@ -435,12 +439,12 @@ public class Club {
 	}
 
 	public Ubicacion buscarUbicacion(String nombre) throws NoEncontradoException {
-		for (Ubicacion u : ubicaciones) {
-			if (u.getNombre().equalsIgnoreCase(nombre)) {
-				return u;
-			}
-		}
-		throw new NoEncontradoException("No existe la ubicación '" + nombre + "'");
+	    for (Ubicacion u : ubicaciones) {
+	        if (normalizar(u.getNombre()).equals(normalizar(nombre))) {   
+	            return u;
+	        }
+	    }
+	    throw new NoEncontradoException("No existe la ubicación '" + nombre + "'");
 	}
 
 	public void agregarExistencia(Existencia existencia) {
@@ -463,4 +467,28 @@ public class Club {
 	public List<Venta> getVentas() {
 		return ventas;
 	}
+	
+	public List<Existencia> getExistencias() {
+	    return existencias;
+	}
+	
+	public void agregarCodigo(CodigoDescuento codigo) {
+	    codigos.add(codigo);
+	}
+
+	public CodigoDescuento buscarCodigo(int id) throws NoEncontradoException {
+	    for (CodigoDescuento c : codigos) {
+	        if (c.getIdDescuento() == id) {
+	            return c;
+	        }
+	    }
+	    throw new NoEncontradoException("No existe el código de descuento " + id);
+	}
+	
+	//normalizador de texto just in case
+    private String normalizar(String texto) {
+        String sinTildes = java.text.Normalizer.normalize(texto, java.text.Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+        return sinTildes.toLowerCase();
+    }
 }

@@ -20,6 +20,7 @@ public class VentaCafeteria extends Venta{
 		return 0.08 * getSubtotal();
 	}
 	
+	@Override
 	public double calcularPropina() {
 		return (getPorcentajePropina() * getSubtotal()) /100;
 	}

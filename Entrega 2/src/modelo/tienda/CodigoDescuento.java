@@ -10,12 +10,18 @@ public class CodigoDescuento {
 	
 	public CodigoDescuento(int idDescuento, Empleado dueno) {
 		this.idDescuento = idDescuento;
+		this.dueno = dueno; 
 		activo = true;
 	}
 
 	public int getIdDescuento() {
 		return idDescuento;
 	}
+	
+	public Empleado getDueno() {
+	    return dueno;
+	}
+	
 	public boolean isActivo() {
 		return activo;
 	}

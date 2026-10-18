@@ -65,13 +65,26 @@ public abstract class Venta {
 	
 	public abstract double calcularImpuesto() ;
 	
-	//TODO: Decidir orden de cálculo con propina y puntos
+	public double getDescuento() {
+	    if (codigo == null) {
+	        return 0;
+	    }
+	    return (getSubtotal() + calcularImpuesto()) * codigo.porcentajePara(cliente);
+	}
+
+	public double calcularPropina() {
+	    return 0;   // VentaCafeteria lo sobrescribe
+	}
+
 	public double calcularTotal() {
-		return 0;
+	    // precio -> impuesto -> descuento -> propina
+	    montoTotal = getSubtotal() + calcularImpuesto() - getDescuento() - puntosRedimidos + calcularPropina();
+	    return montoTotal;
 	}
-	
-	public double calcularPuntosGenerados() {
-		return 0;
+
+	public int calcularPuntosGenerados() {
+	    return (int) (montoTotal * 0.02);
 	}
+
 	
 }
