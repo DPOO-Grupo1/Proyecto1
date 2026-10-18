@@ -5,11 +5,15 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.academias.Disciplina;
+import modelo.academias.Inscripcion;
+import modelo.academias.Reserva;
 import modelo.deportes.DeporteEquipo;
 import modelo.deportes.JugadorEquipo;
 
 /**
- * Socio del club. Puede jugar en equipos, inscribirse en academias, reservar y comprar.
+ * Socio del club. Puede jugar en equipos, inscribirse en academias, reservar y
+ * comprar.
  */
 public class Socio extends Cliente {
 
@@ -17,6 +21,9 @@ public class Socio extends Cliente {
 	private LocalDate fechaNacimiento;
 	private Entrenador entrenador;
 	private List<JugadorEquipo> participaciones;
+	private List<Inscripcion> inscripciones;
+	private List<Reserva> reservas;
+	private boolean alDia;
 
 	public Socio(String login, String password, String nombre, String apellidos, String socioID,
 			LocalDate fechaNacimiento) {
@@ -25,6 +32,9 @@ public class Socio extends Cliente {
 		this.fechaNacimiento = fechaNacimiento;
 		this.entrenador = null;
 		this.participaciones = new ArrayList<JugadorEquipo>();
+		this.inscripciones = new ArrayList<Inscripcion>();
+		this.reservas = new ArrayList<Reserva>();
+		this.alDia = true;
 	}
 
 	public String getSocioID() {
@@ -74,5 +84,58 @@ public class Socio extends Cliente {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * True si el socio también es entrenador del club. Sirve para la regla de
+	 * niveles
+	 * del partido de práctica: con un entrenador, no importa el nivel.
+	 */
+	public boolean esEntrenador() {
+		return entrenador != null;
+	}
+
+	// Academias
+
+	public List<Inscripcion> getInscripciones() {
+		return inscripciones;
+	}
+
+	public void agregarInscripcion(Inscripcion inscripcion) {
+		inscripciones.add(inscripcion);
+	}
+
+	/**
+	 * La inscripción del socio en esa disciplina, o null si no está inscrito.
+	 */
+	public Inscripcion getInscripcion(Disciplina disciplina) {
+		for (Inscripcion inscripcion : inscripciones) {
+			if (inscripcion.getDisciplina() == disciplina) {
+				return inscripcion;
+			}
+		}
+		return null;
+	}
+
+	// Reservas e instalaciones
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void agregarReserva(Reserva reserva) {
+		reservas.add(reserva);
+	}
+
+	/**
+	 * Por defecto los socios están al día, salvo que se marquen en mora (como el
+	 * socio S9 en las pruebas).
+	 */
+	public boolean estaAlDia(LocalDate fecha) {
+		return alDia;
+	}
+
+	public void setAlDia(boolean alDia) {
+		this.alDia = alDia;
 	}
 }
