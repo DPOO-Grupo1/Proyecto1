@@ -2,6 +2,7 @@ package modelo.usuarios;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import modelo.academias.Inscripcion;
 import modelo.academias.Reserva;
 import modelo.deportes.DeporteEquipo;
 import modelo.deportes.JugadorEquipo;
+import modelo.reportes.Mensualidad;
 
 /**
  * Socio del club. Puede jugar en equipos, inscribirse en academias, reservar y
@@ -24,6 +26,7 @@ public class Socio extends Cliente {
 	private List<Inscripcion> inscripciones;
 	private List<Reserva> reservas;
 	private boolean alDia;
+	private List<Mensualidad> mensualidades;
 
 	public Socio(String login, String password, String nombre, String apellidos, String socioID,
 			LocalDate fechaNacimiento) {
@@ -35,6 +38,7 @@ public class Socio extends Cliente {
 		this.inscripciones = new ArrayList<Inscripcion>();
 		this.reservas = new ArrayList<Reserva>();
 		this.alDia = true;
+		this.mensualidades = new ArrayList<Mensualidad>();
 	}
 
 	public String getSocioID() {
@@ -137,5 +141,23 @@ public class Socio extends Cliente {
 
 	public void setAlDia(boolean alDia) {
 		this.alDia = alDia;
+	}
+	
+	//métodos de periodicidad
+	public List<Mensualidad> getMensualidades() {
+	    return mensualidades;
+	}
+
+	public void agregarMensualidad(Mensualidad mensualidad) {
+	    mensualidades.add(mensualidad);
+	}
+
+	public boolean tieneMensualidadPagada(YearMonth periodo) {
+	    for (Mensualidad m : mensualidades) {
+	        if (m.getPeriodo().equals(periodo) && m.isPagada()) {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 }
