@@ -2,7 +2,6 @@ package modelo.academias;
 
 /**
  * Mesa de tenis de mesa. Admite sencillos (2 jugadores) y dobles (4 jugadores).
- * Restringe bebidas calientes solo si es techada (RF4, RF7).
  */
 public class MesaTenisMesa extends Instalacion {
 

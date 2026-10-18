@@ -90,7 +90,7 @@ public class Reserva {
 	}
 
 	/**
-	 * Cancela la reserva y automáticamente cancela el partido de práctica asociado (RF8).
+	 * Cancela la reserva y automáticamente cancela el partido de práctica asociado
 	 */
 	public void cancelar() {
 		this.estado = EstadoReserva.CANCELADA;
@@ -101,7 +101,8 @@ public class Reserva {
 
 	/**
 	 * Horas que faltan desde el momento actual hasta el inicio de la reserva.
-	 * Sirve para validar la regla de cancelación con al menos 2 horas de anticipación (RF8).
+	 * Sirve para validar la regla de cancelación con al menos 2 horas de
+	 * anticipación
 	 */
 	public double horasHastaInicio(LocalDate fechaActual, LocalTime horaActual) {
 		LocalDateTime ahora = LocalDateTime.of(fechaActual, horaActual);
@@ -110,8 +111,10 @@ public class Reserva {
 	}
 
 	/**
-	 * Revisa si la reserva tiene conflicto horario con otro rango en la misma fecha.
-	 * Bloques contiguos no tienen conflicto: [14:00, 15:30) y [15:30, 17:00) no chocan.
+	 * Revisa si la reserva tiene conflicto horario con otro rango en la misma
+	 * fecha.
+	 * Bloques contiguos no tienen conflicto: [14:00, 15:30) y [15:30, 17:00) no
+	 * chocan.
 	 */
 	public boolean tieneConflictoCon(LocalDate fecha, LocalTime inicio, LocalTime fin) {
 		if (!estaActiva() || !this.fecha.equals(fecha)) {
