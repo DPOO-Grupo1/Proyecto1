@@ -1,0 +1,246 @@
+{
+  "partidosInternos": [],
+  "categorias": [
+    {
+      "edadMaxima": 99,
+      "edadMinima": 18,
+      "nombre": "Mayores"
+    },
+    {
+      "edadMaxima": 17,
+      "edadMinima": 15,
+      "nombre": "Sub-17"
+    },
+    {
+      "edadMaxima": 14,
+      "edadMinima": 12,
+      "nombre": "Sub-15"
+    }
+  ],
+  "deportes": [
+    {
+      "puntosDerrota": 0,
+      "admiteEmpate": true,
+      "puntosEmpate": 1,
+      "minimoHabilitados": 7,
+      "marcadorPorSets": false,
+      "nombre": "Fútbol",
+      "puntosVictoria": 3
+    },
+    {
+      "puntosDerrota": 1,
+      "admiteEmpate": false,
+      "puntosEmpate": 0,
+      "minimoHabilitados": 5,
+      "marcadorPorSets": false,
+      "nombre": "Baloncesto",
+      "puntosVictoria": 2
+    },
+    {
+      "puntosDerrota": 1,
+      "admiteEmpate": false,
+      "puntosEmpate": 0,
+      "minimoHabilitados": 6,
+      "marcadorPorSets": true,
+      "nombre": "Voleibol",
+      "puntosVictoria": 2
+    }
+  ],
+  "equipos": [
+    {
+      "cupoMaximo": 22,
+      "entrenador": 1,
+      "deporte": "Fútbol",
+      "categoria": "Mayores",
+      "jugadores": [
+        {
+          "posicion": "Defensa",
+          "socioID": "J1",
+          "numero": 1,
+          "activo": true
+        },
+        {
+          "posicion": "Defensa",
+          "socioID": "J2",
+          "numero": 2,
+          "activo": true
+        },
+        {
+          "posicion": "Defensa",
+          "socioID": "J3",
+          "numero": 3,
+          "activo": true
+        },
+        {
+          "posicion": "Defensa",
+          "socioID": "J4",
+          "numero": 4,
+          "activo": true
+        },
+        {
+          "posicion": "Delantero",
+          "socioID": "J5",
+          "numero": 5,
+          "activo": true
+        },
+        {
+          "posicion": "Delantero",
+          "socioID": "J6",
+          "numero": 6,
+          "activo": true
+        },
+        {
+          "posicion": "Delantero",
+          "socioID": "J7",
+          "numero": 7,
+          "activo": true
+        },
+        {
+          "posicion": "Delantero",
+          "socioID": "J8",
+          "numero": 8,
+          "activo": true
+        },
+        {
+          "posicion": "Delantero",
+          "socioID": "J9",
+          "numero": 9,
+          "activo": true
+        },
+        {
+          "posicion": "Delantero",
+          "socioID": "J10",
+          "numero": 10,
+          "activo": true
+        },
+        {
+          "posicion": "Delantero",
+          "socioID": "J11",
+          "numero": 11,
+          "activo": true
+        },
+        {
+          "posicion": "Delantero",
+          "socioID": "J12",
+          "numero": 12,
+          "activo": true
+        }
+      ],
+      "nombre": "Águilas FC",
+      "activo": true
+    },
+    {
+      "cupoMaximo": 15,
+      "entrenador": 2,
+      "deporte": "Baloncesto",
+      "categoria": "Mayores",
+      "jugadores": [
+        {
+          "posicion": "Alero",
+          "socioID": "B1",
+          "numero": 4,
+          "activo": true
+        },
+        {
+          "posicion": "Alero",
+          "socioID": "B2",
+          "numero": 5,
+          "activo": true
+        },
+        {
+          "posicion": "Alero",
+          "socioID": "B3",
+          "numero": 6,
+          "activo": true
+        },
+        {
+          "posicion": "Alero",
+          "socioID": "B4",
+          "numero": 7,
+          "activo": true
+        },
+        {
+          "posicion": "Alero",
+          "socioID": "B5",
+          "numero": 8,
+          "activo": true
+        },
+        {
+          "posicion": "Alero",
+          "socioID": "B6",
+          "numero": 9,
+          "activo": true
+        },
+        {
+          "posicion": "Alero",
+          "socioID": "B7",
+          "numero": 10,
+          "activo": true
+        },
+        {
+          "posicion": "Alero",
+          "socioID": "B8",
+          "numero": 11,
+          "activo": true
+        }
+      ],
+      "nombre": "Titanes Basket",
+      "activo": true
+    },
+    {
+      "cupoMaximo": 20,
+      "entrenador": 1,
+      "deporte": "Fútbol",
+      "categoria": "Mayores",
+      "jugadores": [
+        {
+          "posicion": "Medio",
+          "socioID": "H1",
+          "numero": 1,
+          "activo": true
+        },
+        {
+          "posicion": "Medio",
+          "socioID": "H2",
+          "numero": 2,
+          "activo": true
+        },
+        {
+          "posicion": "Medio",
+          "socioID": "H3",
+          "numero": 3,
+          "activo": true
+        },
+        {
+          "posicion": "Medio",
+          "socioID": "H4",
+          "numero": 4,
+          "activo": true
+        },
+        {
+          "posicion": "Medio",
+          "socioID": "H5",
+          "numero": 5,
+          "activo": true
+        },
+        {
+          "posicion": "Medio",
+          "socioID": "H6",
+          "numero": 6,
+          "activo": true
+        }
+      ],
+      "nombre": "Halcones FC",
+      "activo": true
+    },
+    {
+      "cupoMaximo": 10,
+      "entrenador": null,
+      "deporte": "Voleibol",
+      "categoria": "Sub-17",
+      "jugadores": [],
+      "nombre": "Cóndores Voleibol",
+      "activo": false
+    }
+  ]
+}
