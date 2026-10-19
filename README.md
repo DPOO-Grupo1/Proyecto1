@@ -24,8 +24,9 @@ Proyecto1/
 │   │   ├── tienda.json
 │   │   └── usuarios.json
 │   ├── docs/
-│   │   ├── diagrama-alto-nivel.pdf     # Diagrama de arquitectura de alto nivel
-│   │   ├── diagrama-clases-diseno.pdf  # Diagrama de clases completo
+│   │   ├── diagrama-alto-nivel     # Diagrama de arquitectura de alto nivel
+│   │   ├── diagrama-clases-diseno # Diagrama de clases completo
+│   │   ├── documentacion
 │   │   └── diagramas/
 │   │       ├── secuencias/             # Diagramas de secuencia UML en formato Mermaid
 │   │       │   ├── formato_raiz/       # Archivos .mmd editables
