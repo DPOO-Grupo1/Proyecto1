@@ -1,20 +1,9 @@
-# Sistema de Gestión de Club Deportivo Campestre — Entrega 2
+# Entrega 2
 **Diseño y Programación Orientada a Objetos (DPOO)**  
 **Grupo 1**
 
----
 
-## 1. Integrantes y Responsabilidades
-
-| Integrante | Rol / Área Asignada | Módulos y Requerimientos |
-|---|---|---|
-| **Felipe Castillo** | **Área A**: Gestión Deportiva y Competencias | Deportes de equipo, categorías, nóminas, partidos internos, competencias por grupos/eliminatoria, tablas de posiciones y tarjetas/suspensiones (RF1, RF2, RF12, RF13, RF14, RF22, RF23, RF24, RF25, RF26, RF27). |
-| **Maria Paula Duque** | **Área B**: Academias, Entrenamiento y Persistencia | Inscripciones a academias, reservas de instalaciones, ranking ELO, partidos de práctica, planeación de sesiones de entrenamiento, asistencia, evaluaciones y motor central de persistencia JSON (RF6, RF7, RF8, RF9, RF10, RF11, RF15, RF16, RF36). |
-| **Susana Herrera** | **Área C**: Tienda, Cafetería, Personal y Administración | Ventas de tienda con IVA, consumo en cafetería con alérgenos e impoconsumo, restricción de bebidas calientes, códigos de descuento de empleados, puntos de fidelidad, inventario, sugerencias, publicación de turnos, cambios de turno, historial global, reportes y mensualidades (RF3, RF4, RF5, RF17, RF18, RF19, RF20, RF21, RF28, RF29, RF30, RF31, RF32, RF33, RF34, RF35). |
-
----
-
-## 2. Estructura del Repositorio
+## 1. Estructura del Repositorio
 
 El proyecto se encuentra en la carpeta `Entrega 2/` y sigue la siguiente arquitectura por capas y paquetes:
 
@@ -90,7 +79,7 @@ Proyecto1/
 
 ---
 
-## 3. Guía para Monitoras: Cómo abrir y correr el proyecto en Eclipse
+## 2. Guía para Monitoras: Cómo abrir y correr el proyecto en Eclipse
 
 El proyecto ya cuenta con los metadatos oficiales de Eclipse (`.project` y `.classpath`) apuntando a la biblioteca `lib/org.json-1.6-20240205.jar`, por lo que **no requiere instalación de plugins adicionales**.
 
@@ -155,7 +144,7 @@ Entrega 2/datos/
 
 ---
 
-## 6. Ejecución desde Terminal (Opcional)
+## 6. Ejecución desde Terminal
 
 Si se prefiere compilar y ejecutar todo el suite de pruebas directamente desde la línea de comandos:
 
