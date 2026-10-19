@@ -79,10 +79,7 @@ Proyecto1/
 
 ---
 
-## 2. Guía para Monitoras: Cómo abrir y correr el proyecto en Eclipse
-
-El proyecto ya cuenta con los metadatos oficiales de Eclipse (`.project` y `.classpath`) apuntando a la biblioteca `lib/org.json-1.6-20240205.jar`, por lo que **no requiere instalación de plugins adicionales**.
-
+## 2. Guía
 ### Paso 1: Importar en Eclipse
 1. Abrir **Eclipse IDE**.
 2. En el menú superior, seleccionar **File** $\rightarrow$ **Open Projects from File System...**  
