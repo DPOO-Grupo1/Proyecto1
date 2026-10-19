@@ -1,0 +1,78 @@
+sequenceDiagram
+    autonumber
+    actor Socio as Socio Comprador (S1)
+    participant Consola as Consola PP3
+    participant Gestor as GestorTienda
+    participant Club as Club
+    participant Existencia as Existencia (AR1 en Tienda)
+    participant Codigo as CodigoDescuento (CD1)
+    participant Venta as Nueva VentaTienda
+
+    Socio->>Consola: Solicitar compra en tienda (AR1 x1, AR2 x2, código CD1, 5000 puntos)
+    Consola->>Gestor: comprarEnTienda(s1, items, 1, 5000)
+
+    activate Gestor
+    Gestor->>Gestor: verificarCliente(quien)
+    Note over Gestor: Valida que quien sea Socio o Empleado (Cliente)
+
+    Gestor->>Club: buscarUbicacion("Tienda")
+    Club-->>Gestor: ubicacion (Tienda)
+
+    Gestor->>Club: buscarProducto("AR1")
+    Club-->>Gestor: producto (AR1: Articulo)
+
+    Gestor->>Club: buscarExistencia(AR1, Tienda)
+    Club-->>Gestor: existencia
+    Gestor->>Existencia: getCantidad()
+    Existencia-->>Gestor: 5 unidades disponibles
+    Note over Gestor,Existencia: Valida existencias disponibles >= cantidad solicitada
+
+    opt Código de descuento presente (RF17)
+        Gestor->>Club: buscarCodigo(1)
+        Club-->>Gestor: cd1
+        Gestor->>Codigo: isActivo()
+        Codigo-->>Gestor: true
+    end
+
+    Gestor->>Socio: getPuntosFidelidad()
+    Socio-->>Gestor: 9000 puntos
+    Note over Gestor,Socio: Valida saldo suficiente para redimir (5000 <= 9000)
+
+    create participant Venta
+    Gestor->>Venta: new VentaTienda(s1, fechaHora)
+    Venta-->>Gestor: venta
+
+    Gestor->>Venta: agregarDetalle(AR1, 1)
+    Gestor->>Venta: agregarDetalle(AR2, 2)
+
+    opt Aplicar código de descuento
+        Gestor->>Venta: aplicarCodigo(cd1)
+        activate Venta
+        Venta->>Codigo: porcentajePara(s1)
+        Codigo-->>Venta: 0.08 (8% descuento ajeno)
+        deactivate Venta
+    end
+
+    opt Redimir puntos de fidelidad (RF5)
+        Gestor->>Venta: redimirPuntos(5000)
+    end
+
+    Gestor->>Venta: calcularTotal()
+    activate Venta
+    Note over Venta: Total = Subtotal ($410.000) + IVA 19% ($77.900) - Descuento - Puntos
+    deactivate Venta
+
+    Gestor->>Existencia: descontar(1)
+    Note over Gestor,Existencia: Descuenta unidades vendidas del inventario de Tienda
+
+    Gestor->>Socio: restarPuntos(5000)
+    Gestor->>Venta: calcularPuntosGenerados()
+    Venta-->>Gestor: puntos (2% del valor neto)
+    Gestor->>Socio: sumarPuntos(puntos)
+    Gestor->>Socio: agregarCompra(venta)
+    Gestor->>Club: agregarVenta(venta)
+
+    Gestor-->>Consola: venta (VentaTienda)
+    deactivate Gestor
+
+    Consola-->>Socio: Comprobante: Total pagado, existencias descontadas y puntos acumulados
