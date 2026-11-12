@@ -1,0 +1,10 @@
+flowchart LR
+    A["Administrador crea equipo (RF22)"] --> B["Inscribir socios con número y posición (RF23)"]
+    B --> C["Entrenador programa partido interno (RF12)"]
+    C --> D{"¿Mismo deporte, categoría y mínimo habilitados?"}
+    D -- No --> E["Rechazar con ReglaDeportivaException"]
+    D -- Sí --> F["Registrar resultado y estadísticas (RF13)"]
+    F --> G{"¿Tarjetas en fútbol? (RF14)"}
+    G -- Roja o 2 amarillas --> H["Generar suspensión para siguiente partido"]
+    G -- Normal --> I["Partido finalizado y estadísticas guardadas"]
+    H --> I

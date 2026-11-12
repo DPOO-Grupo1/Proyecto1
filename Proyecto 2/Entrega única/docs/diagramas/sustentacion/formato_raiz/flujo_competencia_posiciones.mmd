@@ -1,0 +1,10 @@
+flowchart LR
+    A["Administrador crea competencia con formato (RF25)"] --> B["Inscribir equipos con nómina mínima (RF26)"]
+    B --> C["Programar partidos oficiales entre participantes (RF27)"]
+    C --> D["Registrar marcador y estadísticas de partido (RF27)"]
+    D --> E{"¿Llegó a límite de amarillas?"}
+    E -- Sí --> F["Suspender jugador para siguiente oficial"]
+    E -- No --> G["Calcular tabla de posiciones (RF2)"]
+    F --> G
+    G --> H["Aplicar desempate por enfrentamiento directo"]
+    H --> I["Obtener clasificados, goleadores y destacados"]

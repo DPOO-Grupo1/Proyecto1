@@ -1,0 +1,10 @@
+flowchart LR
+    Socio["Socio Titular"] -->|"1. Solicita cancelar reserva"| Consola["Consola PP4"]
+    Consola -->|"2. cancelarReserva()"| Gestor["GestorAcademias"]
+    Gestor -->|"3. Valida titularidad y anticipacion >= 2 horas"| Reserva["Reserva"]
+    Reserva -->|"4. Cambia estado a CANCELADA"| Reserva
+    Reserva -->|"5. Efecto en cascada: cancela partido asociado"| Partido["PartidoPractica"]
+    Partido -->|"6. Cambia estado a CANCELADO"| Partido
+    Gestor -->|"7. Libera cancha en horario asignado"| Cancha["Instalacion"]
+    Gestor -->|"8. Confirmacion"| Consola
+    Consola -->|"9. Muestra cancelacion exitosa"| Socio

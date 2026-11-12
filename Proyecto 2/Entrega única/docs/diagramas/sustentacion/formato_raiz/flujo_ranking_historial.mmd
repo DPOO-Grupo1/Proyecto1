@@ -1,0 +1,11 @@
+flowchart LR
+    Usuario["Cualquier Usuario"] -->|"1. Solicita ranking de disciplina"| Consola["Consola PP4"]
+    Consola -->|"2. consultarRanking()"| Gestor["GestorAcademias"]
+    Gestor -->|"3. getRanking()"| Disciplina["Disciplina"]
+    Disciplina -->|"4. Ordena inscripciones por ELO descendente"| Disciplina
+    Disciplina -->|"5. Retorna lista ordenada"| Gestor
+    Gestor -->|"6. Muestra tabla de posiciones"| Consola
+
+    Socio["Socio / Admin"] -.->|"7. consultarHistorial()"| Gestor
+    Gestor -.->|"8. Valida privacidad (solo propio socio o admin)"| Historial["Historial Deportivo"]
+    Historial -.->|"9. Retorna partidos y estadisticas del socio"| Consola

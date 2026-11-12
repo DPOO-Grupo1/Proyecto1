@@ -1,0 +1,174 @@
+{
+  "disciplinas": [
+    {
+      "cupoInstalaciones": 2,
+      "nombre": "Tenis"
+    },
+    {
+      "cupoInstalaciones": 2,
+      "nombre": "Pádel"
+    },
+    {
+      "cupoInstalaciones": 3,
+      "nombre": "Tenis de mesa"
+    }
+  ],
+  "reservas": [
+    {
+      "horaFin": "15:30",
+      "fecha": "2026-10-05",
+      "estado": "FINALIZADA",
+      "numJugadores": 2,
+      "modalidad": "SENCILLOS",
+      "instalacion": "I1",
+      "id": "R1",
+      "titular": "S2",
+      "horaInicio": "14:00"
+    },
+    {
+      "horaFin": "19:30",
+      "fecha": "2026-10-06",
+      "estado": "ACTIVA",
+      "numJugadores": 4,
+      "modalidad": "DOBLES",
+      "instalacion": "I3",
+      "id": "R2",
+      "titular": "S4",
+      "horaInicio": "18:00"
+    },
+    {
+      "horaFin": "08:30",
+      "fecha": "2026-10-08",
+      "estado": "ACTIVA",
+      "numJugadores": 2,
+      "modalidad": "SENCILLOS",
+      "instalacion": "I1",
+      "id": "R3",
+      "titular": "S1",
+      "horaInicio": "07:00"
+    }
+  ],
+  "inscripciones": [
+    {
+      "puntajeELO": 1000,
+      "socioID": "S1",
+      "disciplina": "Tenis",
+      "nivel": "PRINCIPIANTE"
+    },
+    {
+      "puntajeELO": 1041,
+      "socioID": "S2",
+      "disciplina": "Tenis",
+      "nivel": "INTERMEDIO"
+    },
+    {
+      "puntajeELO": 1209,
+      "socioID": "S3",
+      "disciplina": "Tenis",
+      "nivel": "AVANZADO"
+    },
+    {
+      "puntajeELO": 1000,
+      "socioID": "S8",
+      "disciplina": "Tenis",
+      "nivel": "PRINCIPIANTE"
+    },
+    {
+      "puntajeELO": 1000,
+      "socioID": "S4",
+      "disciplina": "Pádel",
+      "nivel": "INTERMEDIO"
+    },
+    {
+      "puntajeELO": 1000,
+      "socioID": "S5",
+      "disciplina": "Pádel",
+      "nivel": "INTERMEDIO"
+    },
+    {
+      "puntajeELO": 1000,
+      "socioID": "S6",
+      "disciplina": "Tenis de mesa",
+      "nivel": "PRINCIPIANTE"
+    },
+    {
+      "puntajeELO": 1000,
+      "socioID": "S7",
+      "disciplina": "Tenis de mesa",
+      "nivel": "PRINCIPIANTE"
+    }
+  ],
+  "instalaciones": [
+    {
+      "tipo": "tenis",
+      "disciplina": "Tenis",
+      "id": "I1",
+      "nombre": "Cancha Central Tenis"
+    },
+    {
+      "tipo": "tenis",
+      "disciplina": "Tenis",
+      "id": "I2",
+      "nombre": "Cancha Auxiliar Tenis"
+    },
+    {
+      "tipo": "padel",
+      "disciplina": "Pádel",
+      "id": "I3",
+      "nombre": "Cancha Pádel 1"
+    },
+    {
+      "tipo": "padel",
+      "disciplina": "Pádel",
+      "id": "I4",
+      "nombre": "Cancha Pádel 2"
+    },
+    {
+      "tipo": "tenis_mesa",
+      "disciplina": "Tenis de mesa",
+      "techada": true,
+      "id": "I5",
+      "nombre": "Mesa Techada"
+    },
+    {
+      "tipo": "tenis_mesa",
+      "disciplina": "Tenis de mesa",
+      "techada": false,
+      "id": "I6",
+      "nombre": "Mesa Aire Libre"
+    },
+    {
+      "tipo": "escenario_conjunto",
+      "id": "I7",
+      "tipoDeporte": "Fútbol",
+      "nombre": "Cancha de Fútbol 11"
+    }
+  ],
+  "partidosPractica": [{
+    "estadisticas": [
+      {
+        "setsGanados": 1,
+        "socioID": "S2",
+        "gamesGanados": 6,
+        "erroresNoForzados": 8,
+        "aces": 3
+      },
+      {
+        "setsGanados": 2,
+        "socioID": "S3",
+        "gamesGanados": 12,
+        "erroresNoForzados": 6,
+        "aces": 5
+      }
+    ],
+    "jugado": true,
+    "cancelado": false,
+    "ganador": "S3",
+    "id": "PP1",
+    "idReserva": "R1",
+    "participantes": [
+      "S2",
+      "S3"
+    ]
+  }]
+}

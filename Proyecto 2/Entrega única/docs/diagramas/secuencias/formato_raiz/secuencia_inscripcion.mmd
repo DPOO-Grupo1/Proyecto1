@@ -1,0 +1,29 @@
+sequenceDiagram
+    autonumber
+    actor Socio as Socio (S1)
+    participant Consola as Consola PP4
+    participant Gestor as GestorAcademias
+    participant Club as Club
+    participant Disciplina as Disciplina (Tenis)
+
+    Socio->>Consola: Solicitar inscripción (Tenis, Principiante)
+    Consola->>Gestor: inscribirEnAcademia(s1, "S1", "Tenis", "Principiante")
+
+    activate Gestor
+    Gestor->>Club: buscarSocio("S1")
+    Club-->>Gestor: socio (S1)
+    
+    Gestor->>Club: buscarDisciplina("Tenis")
+    Club-->>Gestor: disciplina (Tenis)
+
+    Gestor->>Socio: getInscripcion(disciplina)
+    Note over Gestor,Socio: Valida que no tenga inscripción previa
+
+    Gestor->>Gestor: Crear Inscripcion(S1, Tenis, PRINCIPIANTE, ELO=1000)
+    Gestor->>Socio: agregarInscripcion(inscripcion)
+    Gestor->>Disciplina: agregarInscripcion(inscripcion)
+
+    Gestor-->>Consola: Inscripción creada exitosamente
+    deactivate Gestor
+
+    Consola-->>Socio: Confirmación: Inscrito en Tenis (Nivel: PRINCIPIANTE, ELO: 1000)

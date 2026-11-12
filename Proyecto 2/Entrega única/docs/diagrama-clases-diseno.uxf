@@ -1,0 +1,3564 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>3700</x>
+      <y>2950</y>
+      <w>1330</w>
+      <h>774</h>
+    </coordinates>
+    <panel_attributes>excepciones
+fontsize=16</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>4600</x>
+      <y>3800</y>
+      <w>3094</w>
+      <h>1248</h>
+    </coordinates>
+    <panel_attributes>persistencia
+fontsize=16</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>6100</x>
+      <y>1250</y>
+      <w>3212</w>
+      <h>1974</h>
+    </coordinates>
+    <panel_attributes>logica
+fontsize=16</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>-230</y>
+      <w>480</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Diagrama de clases de diseño (Entrega 2)
+--
+Sale del código de Entrega 2/src (paquetes modelo, logica,
+persistencia y excepciones). No se muestran constructores ni
+getters/setters simples. Club guarda las listas de todo el
+dominio (ver diagrama de alto nivel), por eso sus colecciones
+son atributos y no líneas. Clases en gris: núcleo común.
+bg=yellow</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3007</x>
+      <y>860</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Entrenador
+--
+--
+bg=light_gray</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2782</x>
+      <y>1308</y>
+      <w>820</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>Socio
+--
+-socioID: String
+-fechaNacimiento: LocalDate
+-alDia: boolean
+--
++getEdad(LocalDate): int
++agregarParticipacion(JugadorEquipo): void
++juegaEnDeporte(DeporteEquipo): boolean
++esEntrenador(): boolean
++agregarInscripcion(Inscripcion): void
++getInscripcion(Disciplina): Inscripcion
++agregarReserva(Reserva): void
++estaAlDia(LocalDate): boolean
++agregarMensualidad(Mensualidad): void
++tieneMensualidadPagada(YearMonth): boolean
+bg=light_gray</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3749</x>
+      <y>860</y>
+      <w>370</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>Equipo
+--
+-nombre: String
+-cupoMaximo: int
+-activo: boolean
+--
++estaActivo(): boolean
++getJugadoresActivos(): List&lt;JugadorEquipo&gt;
++tieneCupo(): boolean
++numeroDisponible(int): boolean
++agregarJugador(JugadorEquipo): void
++buscarJugador(int): JugadorEquipo
++contarHabilitadosPara(Partido): int
++buscarJugadorPorSocio(String): JugadorEquipo
++desactivar(): void
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3654</x>
+      <y>1770</y>
+      <w>560</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>JugadorEquipo
+--
+-numeroCamiseta: int
+-posicion: String
+-activo: boolean
+--
++estaActivo(): boolean
++desactivar(): void
++agregarSuspension(Suspension): void
++getSuspensionPendiente(): Suspension
++getSuspensionPendientePara(Partido): Suspension
++estaHabilitado(): boolean
++getSuspensionQueImpide(Partido): Suspension
++estaHabilitadoPara(Partido): boolean
++motivoNoHabilitadoPara(Partido): String
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3814</x>
+      <y>1308</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>EquipoInscrito
+--
+-fechaInscripcion: LocalDate
+--
++representa(Equipo): boolean</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4286</x>
+      <y>396</y>
+      <w>280</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Categoria
+--
+_+SIN_EDAD_MAXIMA: int_
+-nombre: String
+-edadMinima: int
+-edadMaxima: int
+--
++tieneEdadMaxima(): boolean
++admiteEdad(int): boolean
++admite(Socio, LocalDate): boolean</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4266</x>
+      <y>860</y>
+      <w>320</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>DeporteEquipo
+--
+-nombre: String
+-minimoHabilitados: int
+-puntosVictoria: int
+-puntosEmpate: int
+-puntosDerrota: int
+-admiteEmpate: boolean
+-marcadorPorSets: boolean
+--
++puntosPara(int, int): int
++admiteEstadistica(Estadistica): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5086</x>
+      <y>70</y>
+      <w>260</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PartidoInterno
+--
+-proposito: String
+--
++participa(Equipo): boolean
++mismoContexto(Partido): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4896</x>
+      <y>396</y>
+      <w>640</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>Competencia
+--
+-nombre: String
+-entidadOrganizadora: String
+-temporada: int
+-nominaMinima: int
+-amarillasParaSuspension: int
+--
++agregarParticipante(ParticipanteCompetencia): void
++tieneParticipante(String): boolean
++buscarParticipante(String): ParticipanteCompetencia
++getParticipanteDe(Equipo): ParticipanteCompetencia
++agregarPartido(PartidoCompetencia): void
++calcularTabla(String): List&lt;FilaTabla&gt;
+-buscarFila(List&lt;FilaTabla&gt;, ParticipanteCompetencia): FilaTabla
++puntosEnfrentamientoDirecto(ParticipanteCompetencia, ParticipanteCompetencia): int
++contarAmarillasDesdeUltimaSancion(JugadorEquipo): int
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5602</x>
+      <y>396</y>
+      <w>470</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Formato/
+--
+_+CRITERIO_POR_DEFECTO: String_
+#criterioDesempate: String
+--
++ordenar(List&lt;FilaTabla&gt;, Competencia): void
+#vaAntes(FilaTabla, FilaTabla, Competencia): boolean
+/+grupoValido(String): boolean/
+/+getClasificados(Competencia): List&lt;ParticipanteCompetencia&gt;/</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5602</x>
+      <y>860</y>
+      <w>470</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Liga
+--
+-idaYVuelta: boolean
+--
++grupoValido(String): boolean
++getClasificados(Competencia): List&lt;ParticipanteCompetencia&gt;
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6112</x>
+      <y>860</y>
+      <w>470</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>GruposEliminacion
+--
+-numeroGrupos: int
+-clasificadosPorGrupo: int
+--
++getGrupos(): List&lt;String&gt;
++grupoValido(String): boolean
++getClasificados(Competencia): List&lt;ParticipanteCompetencia&gt;
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4961</x>
+      <y>1308</y>
+      <w>510</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/ParticipanteCompetencia/
+--
+#nombre: String
+#grupo: String
+--
+/+representa(Equipo): boolean/
+/+getNomina(): List&lt;JugadorEquipo&gt;/
++estaEnNomina(JugadorEquipo): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5081</x>
+      <y>1770</y>
+      <w>270</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>EquipoExterno
+--
+-institucion: String
+--
++representa(Equipo): boolean
++getNomina(): List&lt;JugadorEquipo&gt;</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5632</x>
+      <y>1308</y>
+      <w>410</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>PartidoCompetencia
+--
+-escenario: String
+-fase: String
+--
++getParticipanteDe(Equipo): ParticipanteCompetencia
++participa(Equipo): boolean
++mismoContexto(Partido): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5657</x>
+      <y>1770</y>
+      <w>360</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Partido/
+--
+#id: int
+#fecha: LocalDate
+#marcadorLocal: int
+#marcadorVisitante: int
+#jugado: boolean
+--
++registrarResultado(int, int): void
++agregarEstadistica(Estadistica): void
++tieneEstadisticaDe(JugadorEquipo): boolean
++getEstadisticaDe(JugadorEquipo): Estadistica
+/+participa(Equipo): boolean/
+/+mismoContexto(Partido): boolean/</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4626</x>
+      <y>1770</y>
+      <w>230</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Estadistica/
+--
+--
+/+getNombreDeporte(): String/
+/+valorDestacado(): int/</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4311</x>
+      <y>2176</y>
+      <w>230</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>EstadisticaFutbol
+--
+_+DEPORTE: String_
+-goles: int
+-asistencias: int
+-amarillas: int
+-rojas: int
+--
++motivoSuspension(): String
++getNombreDeporte(): String
++valorDestacado(): int
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4626</x>
+      <y>2176</y>
+      <w>230</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>EstadisticaBaloncesto
+--
+_+DEPORTE: String_
+-puntos: int
+-rebotes: int
+--
++getNombreDeporte(): String
++valorDestacado(): int
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5101</x>
+      <y>2176</y>
+      <w>230</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>EstadisticaVoleibol
+--
+_+DEPORTE: String_
+-aces: int
+-bloqueos: int
+--
++getNombreDeporte(): String
++valorDestacado(): int
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5096</x>
+      <y>2972</y>
+      <w>240</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Suspension
+--
+_+MOTIVO_ROJA: String_
+_+MOTIVO_DOS_AMARILLAS: String_
+_+MOTIVO_ACUMULACION: String_
+-motivo: String
+--
++estaPendiente(): boolean
++aplicaEn(Partido): boolean
++cumplir(Partido): void
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1846</x>
+      <y>396</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Fisioterapeuta
+--
+--
+bg=light_gray</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1746</x>
+      <y>860</y>
+      <w>330</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Empleado
+--
+-idEmpleado: int
+--
++agregarTurno(Turno): void
++agregarSugerencia(Sugerencia): void
+bg=light_gray</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1791</x>
+      <y>1308</y>
+      <w>240</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Cliente/
+--
+#nombre: String
+#apellidos: String
+#puntosFidelidad: int
+--
++getNombreCompleto(): String
++sumarPuntos(int): void
++restarPuntos(int): void
++agregarCompra(Venta): void
+bg=light_gray</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>861</x>
+      <y>860</y>
+      <w>260</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>CodigoDescuento
+--
+-idDescuento: int
+-activo: boolean
+--
++porcentajePara(Cliente): double
++desactivar(): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>841</x>
+      <y>1308</y>
+      <w>300</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Venta/
+--
+#fechaHora: LocalDateTime
+#montoTotal: double
+#puntosRedimidos: int
+--
++agregarDetalle(Producto, int): void
++aplicarCodigo(CodigoDescuento): void
++redimirPuntos(int): void
++getSubtotal(): double
+/+calcularImpuesto(): double/
++getDescuento(): double
++calcularPropina(): double
++calcularTotal(): double
++calcularPuntosGenerados(): int</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>876</x>
+      <y>1770</y>
+      <w>230</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>VentaCafeteria
+--
+-porcentajePropina: int
+--
++calcularImpuesto(): double
++calcularPropina(): double</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1406</x>
+      <y>1770</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>VentaTienda
+--
+--
++calcularImpuesto(): double</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>405</x>
+      <y>1308</y>
+      <w>200</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>DetalleVenta
+--
+~cantidad: int
+~precioUnitario: double
+--
++getSubtotal(): double</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>1308</y>
+      <w>220</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Producto/
+--
+#nombre: String
+#precio: double
+--</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>396</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Ubicacion
+--
+-nombre: String
+--</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>1770</y>
+      <w>160</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Articulo
+--
+-categoria: String
+--</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>1770</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>ProductoCafeteria
+--
+--</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>65</x>
+      <y>2176</y>
+      <w>190</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Bebida
+--
+-temperatura: String
+-tamanio: int
+--
++esCaliente(): boolean</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>2176</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Snack
+--
+-alergenos: List&lt;String&gt;
+--</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>860</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Existencia
+--
+-cantidad: int
+--
++descontar(int): void
++sumar(int): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2238</x>
+      <y>396</y>
+      <w>380</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Turno
+--
+-id: int
+-dia: DayOfWeek
+-horaInicio: LocalTime
+-horaFin: LocalTime
+--
++agregarSolicitud(SolicitudCambioTurno): void
++tieneSolicitudPendiente(): boolean
++seSolapaCon(Turno): boolean
++cubre(DayOfWeek, LocalTime): boolean
++cambiar(DayOfWeek, LocalTime, LocalTime): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3077</x>
+      <y>70</y>
+      <w>230</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>SolicitudCambioTurno
+--
+-fechaSolicitud: LocalDate
+-nuevoDia: DayOfWeek
+-nuevaHoraInicio: LocalTime
+-nuevaHoraFin: LocalTime
+-estado: EstadoSolicitud
+--
++estaPendiente(): boolean
++aprobar(): void
++rechazar(): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>886</x>
+      <y>396</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Sugerencia
+--
+-nombreProducto: String
+-tipo: String
+-descripcion: String
+-fecha: LocalDate
+-estado: EstadoSolicitud
+-motivoRechazo: String
+--
++estaPendiente(): boolean
++aprobar(): void
++rechazar(String): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>901</x>
+      <y>2176</y>
+      <w>180</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Mensualidad
+--
+-periodo: YearMonth
+-valor: double
+-fechaPago: LocalDate
+-pagada: boolean
+--</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3037</x>
+      <y>2526</y>
+      <w>310</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Inscripcion
+--
+_+ELO_INICIAL: int_
+_+FACTOR_K: int_
+-nivel: Nivel
+-puntajeELO: int
+--
++actualizarELO(int, boolean): void
++agregarPartido(PartidoPractica): void
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2193</x>
+      <y>2526</y>
+      <w>470</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Reserva
+--
+-id: String
+-fecha: LocalDate
+-horaInicio: LocalTime
+-horaFin: LocalTime
+-numJugadores: int
+-modalidad: Modalidad
+-estado: EstadoReserva
+--
++estaActiva(): boolean
++cancelar(): void
++horasHastaInicio(LocalDate, LocalTime): double
++tieneConflictoCon(LocalDate, LocalTime, LocalTime): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1736</x>
+      <y>2526</y>
+      <w>350</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Convocatoria
+--
+-asistencia: EstadoAsistencia
+--
++registrarAsistencia(EstadoAsistencia): void
++asignarEvaluacion(Evaluacion): void
++tieneEvaluacion(): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1826</x>
+      <y>3280</y>
+      <w>170</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Evaluacion
+--
+-nota: int
+-comentario: String
+--
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>2526</y>
+      <w>470</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>SesionEntrenamiento
+--
+-id: String
+-fecha: LocalDate
+-hora: LocalTime
+-duracionMin: int
+-finalizada: boolean
+--
++getHoraFin(): LocalTime
++esDeEquipo(): boolean
++estaFinalizada(): boolean
++finalizar(): void
++agregarConvocatoria(Convocatoria): void
++convocar(Socio): Convocatoria
++tieneConvocado(Socio): boolean
++buscarConvocatoria(Socio): Convocatoria
++buscarConvocatoria(String): Convocatoria
++tieneConflictoCon(LocalDate, LocalTime, LocalTime): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2168</x>
+      <y>3628</y>
+      <w>520</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>PartidoPractica
+--
+-id: String
+-cancelado: boolean
+-jugado: boolean
+--
++agregarParticipante(Socio): void
++tieneParticipante(Socio): boolean
++estaCancelado(): boolean
++getEstadistica(Socio): EstadisticaPractica
++cancelar(): void
++registrarResultado(Usuario, Map&lt;Socio, EstadisticaPractica&gt;): void
++agregarEstadistica(Socio, EstadisticaPractica): void
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3102</x>
+      <y>3280</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/EstadisticaPractica/
+--
+#setsGanados: int
+--
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2328</x>
+      <y>3976</y>
+      <w>200</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>EstadisticaTenisPadel
+--
+-gamesGanados: int
+-aces: int
+-erroresNoForzados: int
+--
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3102</x>
+      <y>3976</y>
+      <w>180</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>EstadisticaTenisMesa
+--
+-puntosTotales: int
+--
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2238</x>
+      <y>4242</y>
+      <w>380</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Disciplina
+--
+-nombre: String
+-cupoInstalaciones: int
+--
++agregarInscripcion(Inscripcion): void
++getRanking(): List&lt;Inscripcion&gt;
++admiteEstadistica(EstadisticaPractica): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1706</x>
+      <y>4242</y>
+      <w>410</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Instalacion/
+--
+#id: String
+#nombre: String
+--
++agregarReserva(Reserva): void
++agregarSesion(SesionEntrenamiento): void
+/+esReservable(): boolean/
+/+admite(int, Modalidad): boolean/
+/+restringeBebidaCaliente(): boolean/
++estaLibre(LocalDate, LocalTime, LocalTime): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1376</x>
+      <y>4570</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>CanchaTenis
+--
+--
++esReservable(): boolean
++admite(int, Modalidad): boolean
++restringeBebidaCaliente(): boolean</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1766</x>
+      <y>4570</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>CanchaPadel
+--
+--
++esReservable(): boolean
++admite(int, Modalidad): boolean
++restringeBebidaCaliente(): boolean</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2283</x>
+      <y>4570</y>
+      <w>290</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>MesaTenisMesa
+--
+-techada: boolean
+--
++esReservable(): boolean
++admite(int, Modalidad): boolean
++restringeBebidaCaliente(): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3047</x>
+      <y>4570</y>
+      <w>290</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>EscenarioConjunto
+--
+-tipo: String
+--
++esReservable(): boolean
++admite(int, Modalidad): boolean
++restringeBebidaCaliente(): boolean
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1766</x>
+      <y>1770</y>
+      <w>290</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Usuario/
+--
+#login: String
+#password: String
+--
++verificarPassword(String): boolean
+bg=light_gray</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2368</x>
+      <y>1770</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Administrador
+--
+--
+bg=light_gray</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6622</x>
+      <y>396</y>
+      <w>310</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>FilaTabla
+--
+-jugados: int
+-ganados: int
+-empatados: int
+-perdidos: int
+-aFavor: int
+-enContra: int
+-puntos: int
+--
++registrarPartido(int, int, int): void
++getDiferencia(): int
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6692</x>
+      <y>860</y>
+      <w>170</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>FilaClasificacion
+--
+-valor: int
+--
++sumar(int): void
++toString(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3814</x>
+      <y>4242</y>
+      <w>240</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Nivel
+--
+_+PRINCIPIANTE: Nivel_
+_+INTERMEDIO: Nivel_
+_+AVANZADO: Nivel_
+--
++esAdyacenteA(Nivel): boolean
+_+desdeTexto(String): Nivel_
+bg=#FFF8E1</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3794</x>
+      <y>4570</y>
+      <w>280</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+EstadoReserva
+--
+_+ACTIVA: EstadoReserva_
+_+CANCELADA: EstadoReserva_
+_+FINALIZADA: EstadoReserva_
+--
+_+desdeTexto(String): EstadoReserva_
+bg=#FFF8E1</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4301</x>
+      <y>4242</y>
+      <w>250</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Modalidad
+--
+_+SENCILLOS: Modalidad_
+_+DOBLES: Modalidad_
+-jugadores: int
+--
+_+desdeTexto(String): Modalidad_
+bg=#FFF8E1</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>841</x>
+      <y>3280</y>
+      <w>300</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+EstadoAsistencia
+--
+_+PENDIENTE: EstadoAsistencia_
+_+ASISTIO: EstadoAsistencia_
+_+FALTO: EstadoAsistencia_
+_+TARDE: EstadoAsistencia_
+--
+_+desdeTexto(String): EstadoAsistencia_
++toString(): String
+bg=#FFF8E1</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3819</x>
+      <y>70</y>
+      <w>230</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+EstadoSolicitud
+--
+_+PENDIENTE: EstadoSolicitud_
+_+APROBADA: EstadoSolicitud_
+_+RECHAZADA: EstadoSolicitud_
+--
+bg=#FFF8E1</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2223</x>
+      <y>70</y>
+      <w>410</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>HorarioAtencion
+--
+-dias: List&lt;DayOfWeek&gt;
+-apertura: LocalTime
+-cierre: LocalTime
+--
+_+nombreDia(DayOfWeek): String_
++contiene(DayOfWeek, LocalTime, LocalTime): boolean
++getBloques(): List&lt;LocalTime&gt;</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>2972</y>
+      <w>240</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Periodo
+--
+_+DIARIO: Periodo_
+_+SEMANAL: Periodo_
+_+MENSUAL: Periodo_
+--
++inicio(LocalDate): LocalDate
++fin(LocalDate): LocalDate
+bg=#FFF8E1</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>2972</y>
+      <w>230</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>ReporteFinanciero
+--
+-desde: LocalDate
+-hasta: LocalDate
+-subtotalTienda: double
+-impuestoTienda: double
+-totalTienda: double
+-subtotalCafeteria: double
+-impuestoCafeteria: double
+-totalCafeteria: double
+-totalMensualidades: double
+--</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>861</x>
+      <y>2972</y>
+      <w>260</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>ReporteDeportivo
+--
+-desde: LocalDate
+-hasta: LocalDate
+-resultados: List&lt;String&gt;
+--
++agregarResultado(String): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>3628</y>
+      <w>370</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Historial
+--
+--
++agregarPartido(Partido): void
++agregarReserva(Reserva): void
++agregarSesion(SesionEntrenamiento): void
++agregarPartidoPractica(PartidoPractica): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>841</x>
+      <y>3628</y>
+      <w>300</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>FiltroHistorial
+--
+-desde: LocalDate
+-hasta: LocalDate
+--
+-fechaSirve(LocalDate): boolean
+-socioEnEquipo(Equipo): boolean
++acepta(Partido): boolean
+-equiposDe(Partido): List&lt;Equipo&gt;
++acepta(Reserva): boolean
++acepta(SesionEntrenamiento): boolean
++acepta(PartidoPractica): boolean</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4535</x>
+      <y>3070</y>
+      <w>170</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/ClubException/
+{extends Exception}
+--
+--</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3770</x>
+      <y>3268</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>AutenticacionException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4000</x>
+      <y>3268</y>
+      <w>210</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>CoberturaTurnosException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4265</x>
+      <y>3268</y>
+      <w>210</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ConflictoHorarioException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4530</x>
+      <y>3268</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>CupoExcedidoException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4765</x>
+      <y>3268</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>DatoInvalidoException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3785</x>
+      <y>3426</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>DuplicadoException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4005</x>
+      <y>3426</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EstadoInvalidoException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4250</x>
+      <y>3426</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>JugadorNoHabilitadoException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4530</x>
+      <y>3426</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>NoEncontradoException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4750</x>
+      <y>3426</y>
+      <w>210</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>PermisoDenegadoException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3775</x>
+      <y>3584</y>
+      <w>180</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>PersistenciaException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4005</x>
+      <y>3584</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ReglaDeportivaException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4275</x>
+      <y>3584</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>VentaInvalidaException</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4670</x>
+      <y>3928</y>
+      <w>360</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>CentralPersistencia
+--
+-archivos: List&lt;String&gt;
+--
+-agregarArea(IPersistenciaArea, String): void
++cargarClub(String): Club
++guardarClub(Club, String): void
+-verificarIdsPartidos(Club): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5790</x>
+      <y>3928</y>
+      <w>240</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+/IPersistenciaArea/
+--
+--
+/+cargar(String, Club): void/
+/+guardar(String, Club): void/</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4675</x>
+      <y>4176</y>
+      <w>350</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PersistenciaUsuarios
+--
+--
++cargar(String, Club): void
+-crearEmpleado(JSONObject, String): Empleado
+-agregar(Club, Usuario, String): void
++guardar(String, Club): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5070</x>
+      <y>4176</y>
+      <w>600</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/PersistenciaPartidos/
+--
+--
+#partidoAJSON(Partido, Club): JSONObject
+-estadisticaAJSON(Estadistica): JSONObject
+-suspensionAJSON(Suspension, JugadorEquipo): JSONObject
+#verificarIdNuevo(int, Club, String): void
+#leerFecha(JSONObject, String): LocalDate
+#cargarResultadoYEstadisticas(JSONObject, Partido, DeporteEquipo, Club): void
+-crearEstadistica(JSONObject, JugadorEquipo, DeporteEquipo): Estadistica
+#cargarSuspensiones(JSONObject, Partido, Club): void
+#buscarJugador(JSONObject, Club): JugadorEquipo
+#textoOpcional(String): Object
+#leerTextoOpcional(JSONObject, String): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5710</x>
+      <y>4176</y>
+      <w>400</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PersistenciaAcademias
+--
+--
++cargar(String, Club): void
+-cargarInstalacion(JSONObject, Club, String): void
+-cargarPartidoPractica(JSONObject, Club): void
++guardar(String, Club): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6397</x>
+      <y>4176</y>
+      <w>300</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>PersistenciaEntrenamiento
+--
+--
++cargar(String, Club): void
+-cargarSesion(JSONObject, Club): void
++guardar(String, Club): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6984</x>
+      <y>4176</y>
+      <w>360</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PersistenciaTienda
+--
+--
++cargar(String, Club): void
+-cargarProducto(JSONObject, String): Producto
+-cargarVenta(JSONObject, Club, String): void
++guardar(String, Club): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7384</x>
+      <y>4176</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>PersistenciaPersonal
+--
+--
++cargar(String, Club): void
++guardar(String, Club): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4670</x>
+      <y>4548</y>
+      <w>360</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>PersistenciaDeportes
+--
+--
++cargar(String, Club): void
+-cargarEquipo(JSONObject, Club, String): void
++guardar(String, Club): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5095</x>
+      <y>4548</y>
+      <w>550</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>PersistenciaCompetencias
+--
+--
++cargar(String, Club): void
+-cargarCompetencia(JSONObject, Club, String): void
+-cargarFormato(JSONObject, String): Formato
+-cargarParticipante(JSONObject, Club, String): ParticipanteCompetencia
++guardar(String, Club): void
+-formatoAJSON(Formato): JSONObject
+-participanteAJSON(ParticipanteCompetencia): JSONObject</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6162</x>
+      <y>4868</y>
+      <w>770</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>ArchivoJSON
+--
+--
++leer(String): JSONObject
++escribir(String, JSONObject): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7120</x>
+      <y>1370</y>
+      <w>310</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Gestor/
+--
+--
+#verificarAdministrador(Usuario): void
+#verificarEntrenador(Usuario): void
+#verificarSocio(Usuario): void
+-nombreDe(Usuario): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6175</x>
+      <y>1632</y>
+      <w>650</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>GestorDeportes
+--
+--
++crearEquipo(Usuario, String, DeporteEquipo, Categoria, int): Equipo
++asignarEntrenador(Usuario, String, int): void
++inscribirJugador(Usuario, String, String, int, String): JugadorEquipo
++darDeBajaEquipo(Usuario, String): void
++retirarJugador(Usuario, String, int): void
++programarPartidoInterno(Usuario, String, String, LocalDate, String): PartidoInterno
++registrarResultadoInterno(Usuario, PartidoInterno, int, int): void
++registrarEstadistica(Usuario, PartidoInterno, JugadorEquipo, Estadistica): void
++consultarInformacion(Usuario): List&lt;JugadorEquipo&gt;
++consultarPartidosDe(Usuario, JugadorEquipo): List&lt;Partido&gt;
+-verificarMinimoHabilitados(Equipo, Partido): void
+-cumplirSuspensiones(PartidoInterno): void
+-tieneCompromisosPendientes(Equipo): boolean</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6870</x>
+      <y>1632</y>
+      <w>810</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>GestorCompetencias
+--
+--
++crearCompetencia(Usuario, String, String, int, DeporteEquipo, Categoria, int, int, Formato): Competencia
++agregarRival(Usuario, Competencia, String, String, String): EquipoExterno
++inscribirEquipo(Usuario, Competencia, String, List&lt;Integer&gt;, String): EquipoInscrito
++programarPartido(Usuario, Competencia, String, String, LocalDate, String, String): PartidoCompetencia
++registrarResultado(Usuario, PartidoCompetencia, int, int): void
++registrarEstadistica(Usuario, PartidoCompetencia, JugadorEquipo, Estadistica): void
++consultarCompetencias(Usuario, String, String): List&lt;Competencia&gt;
++consultarCompetencia(Usuario, String, int): Competencia
++consultarTabla(Usuario, Competencia, String): List&lt;FilaTabla&gt;
++consultarClasificados(Usuario, Competencia): List&lt;ParticipanteCompetencia&gt;
++consultarGoleadores(Usuario, Competencia): List&lt;FilaClasificacion&gt;
++consultarDestacados(Usuario, Competencia): List&lt;FilaClasificacion&gt;
+-verificarGrupo(Competencia, String): void
+-acumularAmarillas(Competencia, JugadorEquipo, PartidoCompetencia): void
+-cumplirSuspensiones(PartidoCompetencia): void
+-filaDe(List&lt;FilaClasificacion&gt;, JugadorEquipo): FilaClasificacion
+-ordenarDeMayorAMenor(List&lt;FilaClasificacion&gt;): List&lt;FilaClasificacion&gt;</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7732</x>
+      <y>1632</y>
+      <w>690</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>GestorAcademias
+--
+--
++inscribirEnAcademia(Usuario, String, String, String): Inscripcion
++consultarPerfil(Usuario, String): List&lt;Inscripcion&gt;
++reservar(Usuario, String, LocalDate, LocalTime, LocalTime, int, Modalidad): Reserva
++registrarIngreso(Usuario, String, boolean): boolean
++cancelarReserva(Usuario, String, LocalTime): void
++cancelarReserva(Usuario, String): void
++programarPartidoPractica(Usuario, String, List&lt;String&gt;): PartidoPractica
++registrarResultadoPractica(Usuario, String, Map&lt;Socio, EstadisticaPractica&gt;): void
++consultarHistorial(Usuario, String, String, LocalDate, LocalDate): List&lt;PartidoPractica&gt;
++consultarRanking(Usuario, String): List&lt;Inscripcion&gt;
++consultarReservas(Usuario, LocalDate): List&lt;Reserva&gt;
++consultarInstalaciones(Usuario, String): List&lt;Instalacion&gt;</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8462</x>
+      <y>1632</y>
+      <w>780</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>GestorEntrenamiento
+--
+--
++planearSesion(Usuario, String, String, LocalDate, LocalTime, int, List&lt;String&gt;): SesionEntrenamiento
++planearSesionEquipo(Usuario, String, String, LocalDate, LocalTime, int): SesionEntrenamiento
++registrarAsistencia(Usuario, String, String, String): void
++registrarEvaluacion(Usuario, String, String, int, String): void
++finalizarSesion(Usuario, String): void
++consultarSesiones(Usuario, LocalDate): List&lt;SesionEntrenamiento&gt;
++consultarConvocatoriasSocio(Usuario, String): List&lt;Convocatoria&gt;
+-determinarEntrenador(Usuario): Entrenador
+-verificarResponsableSesion(Usuario, SesionEntrenamiento): void
+-generarIdSesion(): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6170</x>
+      <y>2084</y>
+      <w>660</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>GestorTienda
+--
+--
++comprarEnTienda(Usuario, Map&lt;String, Integer&gt;, Integer, int): VentaTienda
++comprarEnCafeteria(Usuario, Map&lt;String, Integer&gt;, Integer, int, int): VentaCafeteria
++consultarAlergenos(Usuario, Map&lt;String, Integer&gt;): List&lt;String&gt;
++reabastecer(Usuario, String, String, int): void
++registrarProducto(Usuario, Producto, String, int): void
++consultarInventario(Usuario, String): Map&lt;Producto, Integer&gt;
++moverProductos(Usuario, String, String, String, int): void
+-estaEnInstalacionRestringida(Cliente): boolean</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6940</x>
+      <y>2084</y>
+      <w>670</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>GestorPersonal
+--
+--
++solicitarCambio(Usuario, Turno, DayOfWeek, LocalTime, LocalTime): SolicitudCambioTurno
++consultarSolicitudes(Usuario): List&lt;SolicitudCambioTurno&gt;
++sugerirProducto(Usuario, String, String, String): Sugerencia
++resolverSugerencia(Usuario, Sugerencia, boolean, String): void
++publicarTurnos(Usuario, List&lt;Turno&gt;): void
++resolverSolicitud(Usuario, SolicitudCambioTurno, boolean): void
+-verificarEmpleado(Usuario): void
+-verificarSinSolapes(List&lt;Turno&gt;): void
+-verificarCobertura(List&lt;Turno&gt;): void</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7792</x>
+      <y>2084</y>
+      <w>570</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>GestorReportes
+--
+--
++registrarPago(Usuario, String, YearMonth, double): Mensualidad
++consultarHistorial(Usuario, FiltroHistorial): Historial
++generarReporteFinanciero(Usuario, Periodo, LocalDate): ReporteFinanciero
++generarReporteDeportivo(Usuario, Periodo, LocalDate): ReporteDeportivo
+-enRango(LocalDate, LocalDate, LocalDate): boolean</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8557</x>
+      <y>2084</y>
+      <w>590</w>
+      <h>1040</h>
+    </coordinates>
+    <panel_attributes>Club
+--
+-usuarios: Map&lt;String, Usuario&gt;
+-deportes: List&lt;DeporteEquipo&gt;
+-categorias: List&lt;Categoria&gt;
+-equipos: List&lt;Equipo&gt;
+-partidosInternos: List&lt;PartidoInterno&gt;
+-competencias: List&lt;Competencia&gt;
+-disciplinas: List&lt;Disciplina&gt;
+-instalaciones: List&lt;Instalacion&gt;
+-reservas: List&lt;Reserva&gt;
+-partidosPractica: List&lt;PartidoPractica&gt;
+-sesiones: List&lt;SesionEntrenamiento&gt;
+-fechaActual: LocalDate
+-productos: List&lt;Producto&gt;
+-ubicaciones: List&lt;Ubicacion&gt;
+-existencias: List&lt;Existencia&gt;
+-ventas: List&lt;Venta&gt;
+-codigos: List&lt;CodigoDescuento&gt;
+-turnos: List&lt;Turno&gt;
+-sugerencias: List&lt;Sugerencia&gt;
+-horario: HorarioAtencion
+--
++agregarUsuario(Usuario): void
++existeUsuario(String): boolean
++buscarUsuario(String): Usuario
++buscarSocio(String): Socio
++buscarEmpleado(int): Empleado
++agregarDeporte(DeporteEquipo): void
++buscarDeporte(String): DeporteEquipo
++agregarCategoria(Categoria): void
++buscarCategoria(String): Categoria
++agregarEquipo(Equipo): void
++buscarEquipo(String): Equipo
++existeEquipo(String): boolean
++siguienteIdPartido(): int
++agregarPartidoInterno(PartidoInterno): void
++buscarPartidoInterno(int): PartidoInterno
++getPartidosDe(Equipo): List&lt;Partido&gt;
++buscarPartido(int): Partido
++agregarCompetencia(Competencia): void
++existeCompetencia(String, int): boolean
++buscarCompetencia(String, int): Competencia
++agregarDisciplina(Disciplina): void
++buscarDisciplina(String): Disciplina
++agregarInstalacion(Instalacion): void
++buscarInstalacion(String): Instalacion
++agregarReserva(Reserva): void
++buscarReserva(String): Reserva
++agregarSesion(SesionEntrenamiento): void
++buscarSesion(String): SesionEntrenamiento
++contarReservasSimultaneas(Disciplina, LocalDate, LocalTime, LocalTime): int
++agregarPartidoPractica(PartidoPractica): void
++buscarPartidoPractica(String): PartidoPractica
++tieneCompromiso(Socio, LocalDate, LocalTime, LocalTime): boolean
++agregarProducto(Producto): void
++buscarProducto(String): Producto
++agregarUbicacion(Ubicacion): void
++buscarUbicacion(String): Ubicacion
++agregarExistencia(Existencia): void
++buscarExistencia(Producto, Ubicacion): Existencia
++agregarVenta(Venta): void
++agregarCodigo(CodigoDescuento): void
++buscarCodigo(int): CodigoDescuento
++agregarSugerencia(Sugerencia): void
+-normalizar(String): String</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1894</x>
+      <y>4442</y>
+      <w>30</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;10.0;128.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1504</x>
+      <y>4442</y>
+      <w>420</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>400.0;10.0;400.0;69.0;10.0;69.0;10.0;128.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1894</x>
+      <y>4442</y>
+      <w>1311</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;1291.0;69.0;1291.0;128.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3175</x>
+      <y>3370</y>
+      <w>466</w>
+      <h>626</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>77.4;10.0;77.4;129.0;446.0;129.0;446.0;547.0;10.0;547.0;10.0;606.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2411</x>
+      <y>3370</y>
+      <w>861</w>
+      <h>626</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>841.4;10.0;841.4;185.0;352.0;185.0;352.0;547.0;10.0;547.0;10.0;606.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1894</x>
+      <y>4442</y>
+      <w>547</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;527.0;69.0;527.0;128.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5199</x>
+      <y>1458</y>
+      <w>30</w>
+      <h>332</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;211.0;10.0;312.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3965</x>
+      <y>1183</y>
+      <w>1030</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>1010.5;125.0;1010.5;10.0;10.0;10.0;10.0;125.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5820</x>
+      <y>546</y>
+      <w>540</w>
+      <h>334</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;199.0;520.0;199.0;520.0;314.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5820</x>
+      <y>546</y>
+      <w>30</w>
+      <h>334</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;227.0;10.0;314.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4724</x>
+      <y>1860</y>
+      <w>30</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;243.0;10.0;316.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4409</x>
+      <y>1860</y>
+      <w>345</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>325.0;10.0;325.0;243.0;10.0;243.0;10.0;316.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4724</x>
+      <y>1860</y>
+      <w>505</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;243.0;485.0;243.0;485.0;316.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5820</x>
+      <y>1448</y>
+      <w>95</w>
+      <h>342</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>75.3;322.0;75.3;179.0;10.0;179.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5272</x>
+      <y>180</y>
+      <w>643</w>
+      <h>1610</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>623.3;1590.0;623.3;1461.0;283.0;1461.0;283.0;129.0;10.0;129.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>143</x>
+      <y>1398</y>
+      <w>30</w>
+      <h>392</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;271.0;10.0;372.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>143</x>
+      <y>1810</y>
+      <w>375</w>
+      <h>386</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>355.0;10.0;355.0;279.0;10.0;279.0;10.0;366.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>143</x>
+      <y>1398</y>
+      <w>375</w>
+      <h>392</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;229.0;355.0;229.0;355.0;372.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>488</x>
+      <y>1810</y>
+      <w>30</w>
+      <h>386</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;293.0;10.0;366.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>974</x>
+      <y>1558</y>
+      <w>30</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;111.0;10.0;212.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>974</x>
+      <y>1558</y>
+      <w>560</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;540.0;69.0;540.0;212.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1894</x>
+      <y>1617</y>
+      <w>547</w>
+      <h>173</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;153.0;10.0;10.0;527.0;10.0;527.0;153.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1894</x>
+      <y>1478</y>
+      <w>30</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;292.0;10.0;191.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1894</x>
+      <y>950</y>
+      <w>95</w>
+      <h>378</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>75.1;358.0;75.1;229.0;10.0;229.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2038</x>
+      <y>735</y>
+      <w>1073</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;125.0;10.0;10.0;1052.7;10.0;1052.7;125.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1894</x>
+      <y>436</y>
+      <w>174</w>
+      <h>444</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>154.1;424.0;154.1;309.0;10.0;309.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1959</x>
+      <y>1169</y>
+      <w>1089</w>
+      <h>159</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;139.0;10.0;10.0;1069.1;10.0;1069.1;139.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4367</x>
+      <y>327</y>
+      <w>742</w>
+      <h>89</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=-categoria</panel_attributes>
+    <additional_attributes>721.7;69.0;721.7;10.0;10.0;10.0;10.0;69.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3807</x>
+      <y>546</y>
+      <w>652</w>
+      <h>334</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=-categoria</panel_attributes>
+    <additional_attributes>10.0;314.0;10.0;199.0;632.5;199.0;632.5;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1023</x>
+      <y>546</y>
+      <w>3312</w>
+      <h>3102</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-categoria</panel_attributes>
+    <additional_attributes>10.0;3082.0;10.0;3009.0;222.3;3009.0;222.3;227.0;3291.7;227.0;3291.7;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1009</x>
+      <y>1169</y>
+      <w>850</w>
+      <h>159</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=0..*
+r1=#cliente
+r2=#compras</panel_attributes>
+    <additional_attributes>830.1;139.0;830.1;10.0;10.0;10.0;10.0;139.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>965</x>
+      <y>749</y>
+      <w>815</w>
+      <h>131</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=1
+r2=-dueno</panel_attributes>
+    <additional_attributes>10.0;111.0;10.0;10.0;794.6;10.0;794.6;111.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>939</x>
+      <y>970</y>
+      <w>34</w>
+      <h>358</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=0..1
+r2=#codigo</panel_attributes>
+    <additional_attributes>10.0;338.0;10.0;209.0;13.7;209.0;13.7;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4441</x>
+      <y>676</y>
+      <w>591</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=-deporte</panel_attributes>
+    <additional_attributes>571.3;10.0;571.3;83.0;10.0;83.0;10.0;184.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5302</x>
+      <y>313</y>
+      <w>514</w>
+      <h>103</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=1
+r2=-formato</panel_attributes>
+    <additional_attributes>10.0;83.0;10.0;10.0;493.5;10.0;493.5;83.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4866</x>
+      <y>676</y>
+      <w>314</w>
+      <h>652</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=2..*
+r2=-participantes</panel_attributes>
+    <additional_attributes>293.6;10.0;293.6;69.0;10.0;69.0;10.0;531.0;136.6;531.0;136.6;632.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5297</x>
+      <y>676</y>
+      <w>420</w>
+      <h>652</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=0..*
+r1=-competencia
+r2=-partidos</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;272.4;69.0;272.4;559.0;400.0;559.0;400.0;632.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1676</x>
+      <y>2646</y>
+      <w>239</w>
+      <h>654</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..1
+r2=-evaluacion</panel_attributes>
+    <additional_attributes>219.3;10.0;219.3;239.0;10.0;239.0;10.0;575.0;182.3;575.0;182.3;634.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>811</x>
+      <y>2415</y>
+      <w>1011</w>
+      <h>131</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=0..*
+m2=1
+r1=-convocatorias
+r2=-sesion</panel_attributes>
+    <additional_attributes>991.4;111.0;991.4;10.0;10.0;10.0;10.0;111.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1986</x>
+      <y>1558</y>
+      <w>1064</w>
+      <h>988</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-socio</panel_attributes>
+    <additional_attributes>10.0;968.0;10.0;867.0;149.5;867.0;149.5;125.0;1043.7;125.0;1043.7;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3856</x>
+      <y>749</y>
+      <w>481</w>
+      <h>131</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=-deporte</panel_attributes>
+    <additional_attributes>10.0;111.0;10.0;10.0;461.0;10.0;461.0;111.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1076</x>
+      <y>1060</y>
+      <w>3328</w>
+      <h>2588</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-deporte</panel_attributes>
+    <additional_attributes>10.0;2568.0;10.0;2509.0;210.7;2509.0;210.7;189.0;3308.1;189.0;3308.1;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>156</x>
+      <y>1169</y>
+      <w>295</w>
+      <h>159</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=~producto</panel_attributes>
+    <additional_attributes>275.2;139.0;275.2;10.0;10.0;10.0;10.0;139.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>478</x>
+      <y>1169</y>
+      <w>422</w>
+      <h>159</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=1..*
+r2=#detalles</panel_attributes>
+    <additional_attributes>401.9;139.0;401.9;10.0;10.0;10.0;10.0;139.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2486</x>
+      <y>2676</y>
+      <w>624</w>
+      <h>1586</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=0..*
+r1=-disciplina
+r2=-inscripciones</panel_attributes>
+    <additional_attributes>10.0;1566.0;10.0;1479.0;262.8;1479.0;262.8;209.0;604.0;209.0;604.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1889</x>
+      <y>4145</y>
+      <w>506</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=#disciplina</panel_attributes>
+    <additional_attributes>10.0;97.0;10.0;10.0;486.3;10.0;486.3;97.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1125</x>
+      <y>2816</y>
+      <w>1149</w>
+      <h>1446</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-disciplina</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;97.0;133.7;97.0;133.7;1353.0;1129.1;1353.0;1129.1;1426.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>925</x>
+      <y>576</y>
+      <w>937</w>
+      <h>304</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=0..*
+r1=-empleado
+r2=-sugerencias</panel_attributes>
+    <additional_attributes>916.6;284.0;916.6;169.0;10.0;169.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1935</x>
+      <y>576</y>
+      <w>475</w>
+      <h>304</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=0..*
+r1=-empleado
+r2=-turnos</panel_attributes>
+    <additional_attributes>10.0;284.0;10.0;183.0;455.5;183.0;455.5;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3178</x>
+      <y>735</y>
+      <w>610</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=0..1
+r2=-entrenador</panel_attributes>
+    <additional_attributes>590.2;125.0;590.2;10.0;10.0;10.0;10.0;125.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>862</x>
+      <y>900</y>
+      <w>2179</w>
+      <h>2748</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-entrenador</panel_attributes>
+    <additional_attributes>10.0;2728.0;10.0;2599.0;439.3;2599.0;439.3;293.0;2159.3;293.0;2159.3;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>951</x>
+      <y>900</y>
+      <w>2208</w>
+      <h>1646</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-entrenador</panel_attributes>
+    <additional_attributes>10.0;1626.0;10.0;1539.0;308.1;1539.0;308.1;307.0;2188.4;307.0;2188.4;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3248</x>
+      <y>900</y>
+      <w>60</w>
+      <h>428</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=1
+r1=-entrenador
+r2=-socio</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;279.0;39.8;279.0;39.8;408.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3869</x>
+      <y>1110</y>
+      <w>91</w>
+      <h>218</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=-equipo</panel_attributes>
+    <additional_attributes>10.0;198.0;10.0;83.0;71.3;83.0;71.3;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>969</x>
+      <y>1110</y>
+      <w>2814</w>
+      <h>2538</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-equipo</panel_attributes>
+    <additional_attributes>10.0;2518.0;10.0;2431.0;346.0;2431.0;346.0;111.0;2794.0;111.0;2794.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3611</x>
+      <y>1110</y>
+      <w>438</w>
+      <h>680</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=0..*
+r1=-equipo
+r2=-jugadores</panel_attributes>
+    <additional_attributes>418.2;10.0;418.2;69.0;10.0;69.0;10.0;545.0;211.5;545.0;211.5;660.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3906</x>
+      <y>180</y>
+      <w>1250</w>
+      <h>700</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-local</panel_attributes>
+    <additional_attributes>1230.2;10.0;1230.2;129.0;327.2;129.0;327.2;607.0;10.0;607.0;10.0;680.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3992</x>
+      <y>180</y>
+      <w>1237</w>
+      <h>700</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-visitante</panel_attributes>
+    <additional_attributes>1216.9;10.0;1216.9;143.0;254.9;143.0;254.9;621.0;10.0;621.0;10.0;680.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1127</x>
+      <y>1110</y>
+      <w>2745</w>
+      <h>1436</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-equipo</panel_attributes>
+    <additional_attributes>10.0;1416.0;10.0;1357.0;146.0;1357.0;146.0;125.0;2724.8;125.0;2724.8;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3908</x>
+      <y>1378</y>
+      <w>45</w>
+      <h>412</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1..*
+r2=-nomina</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;249.0;24.8;249.0;24.8;392.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4011</x>
+      <y>1617</y>
+      <w>661</w>
+      <h>173</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=#jugador</panel_attributes>
+    <additional_attributes>641.0;153.0;641.0;10.0;10.0;10.0;10.0;153.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4699</x>
+      <y>1617</y>
+      <w>1085</w>
+      <h>173</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=#estadisticas</panel_attributes>
+    <additional_attributes>1065.3;153.0;1065.3;10.0;10.0;10.0;10.0;153.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2441</x>
+      <y>3370</y>
+      <w>696</w>
+      <h>278</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=2..4
+r2=-estadisticas</panel_attributes>
+    <additional_attributes>10.0;258.0;10.0;129.0;676.3;129.0;676.3;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>53</x>
+      <y>950</y>
+      <w>111</w>
+      <h>378</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=-producto</panel_attributes>
+    <additional_attributes>91.0;10.0;91.0;229.0;10.0;229.0;10.0;358.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>101</x>
+      <y>456</y>
+      <w>63</w>
+      <h>424</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=-ubicacion</panel_attributes>
+    <additional_attributes>43.3;404.0;43.3;289.0;10.0;289.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4107</x>
+      <y>950</y>
+      <w>2678</w>
+      <h>840</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-jugador</panel_attributes>
+    <additional_attributes>2657.8;10.0;2657.8;229.0;125.8;229.0;125.8;691.0;10.0;691.0;10.0;820.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5326</x>
+      <y>596</y>
+      <w>1458</w>
+      <h>732</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-participante</panel_attributes>
+    <additional_attributes>1438.5;10.0;1438.5;163.0;256.5;163.0;256.5;625.0;10.0;625.0;10.0;712.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>915</x>
+      <y>1558</y>
+      <w>1900</w>
+      <h>2090</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-socio</panel_attributes>
+    <additional_attributes>10.0;2070.0;10.0;1969.0;441.7;1969.0;441.7;83.0;1879.8;83.0;1879.8;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>601</x>
+      <y>2000</y>
+      <w>5099</w>
+      <h>1648</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-partidos</panel_attributes>
+    <additional_attributes>10.0;1628.0;10.0;1541.0;108.4;1541.0;108.4;89.0;5078.9;89.0;5078.9;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>444</x>
+      <y>3503</y>
+      <w>1762</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-partidosPractica</panel_attributes>
+    <additional_attributes>10.0;125.0;10.0;10.0;1741.6;10.0;1741.6;125.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>2756</y>
+      <w>1743</w>
+      <h>892</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-reservas</panel_attributes>
+    <additional_attributes>10.0;872.0;10.0;771.0;200.8;771.0;200.8;143.0;1722.7;143.0;1722.7;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>365</x>
+      <y>2816</y>
+      <w>477</w>
+      <h>832</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-sesiones</panel_attributes>
+    <additional_attributes>10.0;812.0;10.0;683.0;371.6;683.0;371.6;69.0;457.3;69.0;457.3;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2489</x>
+      <y>2676</y>
+      <w>801</w>
+      <h>972</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-partidos</panel_attributes>
+    <additional_attributes>780.8;10.0;780.8;223.0;217.9;223.0;217.9;837.0;10.0;837.0;10.0;952.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3118</x>
+      <y>1558</y>
+      <w>537</w>
+      <h>988</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=0..*
+m2=1
+r1=-inscripciones
+r2=-socio</panel_attributes>
+    <additional_attributes>10.0;968.0;10.0;867.0;516.8;867.0;516.8;69.0;321.8;69.0;321.8;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1953</x>
+      <y>2756</y>
+      <w>454</w>
+      <h>1506</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=0..*
+r1=-instalacion
+r2=#reservas</panel_attributes>
+    <additional_attributes>10.0;1486.0;10.0;1427.0;196.4;1427.0;196.4;129.0;433.8;129.0;433.8;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>969</x>
+      <y>2816</y>
+      <w>798</w>
+      <h>1446</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=0..*
+r1=-instalacion
+r2=#sesiones</panel_attributes>
+    <additional_attributes>777.6;1426.0;777.6;1339.0;304.0;1339.0;304.0;69.0;10.0;69.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3510</x>
+      <y>1558</y>
+      <w>177</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=0..*
+m2=1
+r1=-participaciones
+r2=-socio</panel_attributes>
+    <additional_attributes>157.1;212.0;157.1;83.0;10.0;83.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3908</x>
+      <y>2020</y>
+      <w>1226</w>
+      <h>972</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+r2=-suspensiones</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;83.0;324.7;83.0;324.7;865.0;1206.1;865.0;1206.1;952.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>917</x>
+      <y>1558</y>
+      <w>1978</w>
+      <h>638</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-mensualidades</panel_attributes>
+    <additional_attributes>1958.4;10.0;1958.4;97.0;411.8;97.0;411.8;545.0;10.0;545.0;10.0;618.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5134</x>
+      <y>1183</y>
+      <w>737</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=-local</panel_attributes>
+    <additional_attributes>717.4;125.0;717.4;10.0;10.0;10.0;10.0;125.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5215</x>
+      <y>1197</y>
+      <w>751</w>
+      <h>131</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+r2=-visitante</panel_attributes>
+    <additional_attributes>730.8;111.0;730.8;10.0;10.0;10.0;10.0;111.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5242</x>
+      <y>2000</y>
+      <w>570</w>
+      <h>992</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-origen</panel_attributes>
+    <additional_attributes>10.0;972.0;10.0;885.0;312.9;885.0;312.9;103.0;549.6;103.0;549.6;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5284</x>
+      <y>2000</y>
+      <w>626</w>
+      <h>992</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-cumplidaEn</panel_attributes>
+    <additional_attributes>10.0;972.0;10.0;899.0;285.4;899.0;285.4;117.0;605.5;117.0;605.5;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2125</x>
+      <y>2756</y>
+      <w>423</w>
+      <h>892</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=1
+r1=-partido
+r2=-reserva</panel_attributes>
+    <additional_attributes>226.7;872.0;226.7;743.0;10.0;743.0;10.0;157.0;402.9;157.0;402.9;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2596</x>
+      <y>1558</y>
+      <w>534</w>
+      <h>2090</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-participantes</panel_attributes>
+    <additional_attributes>10.0;2070.0;10.0;1969.0;124.9;1969.0;124.9;69.0;513.6;69.0;513.6;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2637</x>
+      <y>1558</y>
+      <w>633</w>
+      <h>2090</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-ganador</panel_attributes>
+    <additional_attributes>10.0;2070.0;10.0;1983.0;98.4;1983.0;98.4;139.0;612.8;139.0;612.8;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2373</x>
+      <y>1558</y>
+      <w>992</w>
+      <h>988</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=0..*
+m2=1
+r1=-reservas
+r2=-titular</panel_attributes>
+    <additional_attributes>10.0;968.0;10.0;867.0;334.3;867.0;334.3;153.0;972.0;153.0;972.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1039</x>
+      <y>1558</y>
+      <w>1893</w>
+      <h>988</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-convocados</panel_attributes>
+    <additional_attributes>10.0;968.0;10.0;895.0;304.1;895.0;304.1;111.0;1872.8;111.0;1872.8;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2384</x>
+      <y>240</y>
+      <w>772</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=0..*
+m2=1
+r1=-solicitudes
+r2=-turno</panel_attributes>
+    <additional_attributes>751.8;10.0;751.8;69.0;10.0;69.0;10.0;156.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3848</x>
+      <y>3140</y>
+      <w>785</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>765.0;10.0;765.0;69.0;10.0;69.0;10.0;128.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4088</x>
+      <y>3140</y>
+      <w>545</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>525.0;10.0;525.0;69.0;10.0;69.0;10.0;128.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4353</x>
+      <y>3140</y>
+      <w>280</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>260.0;10.0;260.0;69.0;10.0;69.0;10.0;128.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4603</x>
+      <y>3140</y>
+      <w>30</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;10.0;128.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4603</x>
+      <y>3140</y>
+      <w>265</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;245.0;69.0;245.0;128.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3848</x>
+      <y>3140</y>
+      <w>785</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>765.0;10.0;765.0;69.0;132.0;69.0;132.0;227.0;10.0;227.0;10.0;286.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4088</x>
+      <y>3140</y>
+      <w>545</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>525.0;10.0;525.0;69.0;142.0;69.0;142.0;227.0;10.0;227.0;10.0;286.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4353</x>
+      <y>3140</y>
+      <w>280</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>260.0;10.0;260.0;69.0;157.0;69.0;157.0;227.0;10.0;227.0;10.0;286.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4500</x>
+      <y>3140</y>
+      <w>133</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>113.0;10.0;113.0;69.0;10.0;69.0;10.0;227.0;113.0;227.0;113.0;286.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4603</x>
+      <y>3140</y>
+      <w>265</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;127.0;69.0;127.0;227.0;245.0;227.0;245.0;286.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3848</x>
+      <y>3140</y>
+      <w>785</w>
+      <h>464</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>765.0;10.0;765.0;69.0;132.0;69.0;132.0;385.0;10.0;385.0;10.0;444.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4088</x>
+      <y>3140</y>
+      <w>545</w>
+      <h>464</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>525.0;10.0;525.0;69.0;142.0;69.0;142.0;385.0;10.0;385.0;10.0;444.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4353</x>
+      <y>3140</y>
+      <w>280</w>
+      <h>464</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>260.0;10.0;260.0;69.0;157.0;69.0;157.0;385.0;10.0;385.0;10.0;444.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5893</x>
+      <y>4018</y>
+      <w>30</w>
+      <h>178</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;99.0;10.0;158.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5248</x>
+      <y>4406</y>
+      <w>135</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;115.3;69.0;115.3;142.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4833</x>
+      <y>4406</y>
+      <w>445</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>424.7;10.0;424.7;83.0;10.0;83.0;10.0;142.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5893</x>
+      <y>4018</y>
+      <w>667</w>
+      <h>178</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;99.0;647.0;99.0;647.0;158.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5353</x>
+      <y>4018</y>
+      <w>570</w>
+      <h>178</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>550.0;10.0;550.0;99.0;10.0;99.0;10.0;158.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5893</x>
+      <y>4018</y>
+      <w>1624</w>
+      <h>178</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;99.0;1604.0;99.0;1604.0;158.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5893</x>
+      <y>4018</y>
+      <w>1284</w>
+      <h>178</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;99.0;1264.0;99.0;1264.0;158.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4833</x>
+      <y>4018</y>
+      <w>1090</w>
+      <h>178</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>1070.0;10.0;1070.0;99.0;10.0;99.0;10.0;158.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5888</x>
+      <y>4286</y>
+      <w>560</w>
+      <h>602</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-archivoJSON</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;189.0;241.0;189.0;241.0;509.0;539.7;509.0;539.7;582.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6133</x>
+      <y>4266</y>
+      <w>441</w>
+      <h>622</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-archivoJSON</panel_attributes>
+    <additional_attributes>402.0;10.0;402.0;223.0;10.0;223.0;10.0;543.0;420.5;543.0;420.5;602.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5448</x>
+      <y>4406</y>
+      <w>874</w>
+      <h>482</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=#archivoJSON</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;241.7;69.0;241.7;375.0;853.5;375.0;853.5;462.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6795</x>
+      <y>4246</y>
+      <w>717</w>
+      <h>642</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-archivoJSON</panel_attributes>
+    <additional_attributes>696.8;10.0;696.8;243.0;155.8;243.0;155.8;535.0;10.0;535.0;10.0;622.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6669</x>
+      <y>4286</y>
+      <w>503</w>
+      <h>602</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-archivoJSON</panel_attributes>
+    <additional_attributes>482.7;10.0;482.7;189.0;295.7;189.0;295.7;481.0;10.0;481.0;10.0;582.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4828</x>
+      <y>4286</y>
+      <w>1368</w>
+      <h>602</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-archivoJSON</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;189.0;222.0;189.0;222.0;481.0;1348.0;481.0;1348.0;582.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4828</x>
+      <y>3859</y>
+      <w>1068</w>
+      <h>89</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-areas</panel_attributes>
+    <additional_attributes>10.0;69.0;10.0;10.0;1047.8;10.0;1047.8;69.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7201</x>
+      <y>1490</y>
+      <w>889</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;869.0;69.0;869.0;142.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7201</x>
+      <y>1490</y>
+      <w>87</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;67.0;69.0;67.0;142.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6483</x>
+      <y>1490</y>
+      <w>748</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>728.0;10.0;728.0;69.0;10.0;69.0;10.0;142.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7201</x>
+      <y>1490</y>
+      <w>1664</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;1644.0;69.0;1644.0;142.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6840</x>
+      <y>1490</y>
+      <w>448</w>
+      <h>614</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>371.0;10.0;371.0;69.0;10.0;69.0;10.0;521.0;428.0;521.0;428.0;594.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7201</x>
+      <y>1490</y>
+      <w>889</w>
+      <h>614</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;498.0;69.0;498.0;521.0;869.0;521.0;869.0;594.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6483</x>
+      <y>1490</y>
+      <w>748</w>
+      <h>614</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>728.0;10.0;728.0;69.0;367.0;69.0;367.0;521.0;10.0;521.0;10.0;594.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7305</x>
+      <y>1490</y>
+      <w>1536</w>
+      <h>614</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=#club</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;83.0;408.0;83.0;408.0;535.0;1516.5;535.0;1516.5;594.0</additional_attributes>
+  </element>
+</diagram>

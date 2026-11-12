@@ -1,0 +1,33 @@
+sequenceDiagram
+    autonumber
+    actor Socio as Socio (S1)
+    participant Consola as Consola PP3
+    participant Gestor as GestorTienda
+    participant Club as Club
+    participant Venta as VentaTienda
+
+    Socio->>Consola: Comprar artículos en tienda (AR1, AR2)
+    Consola->>Gestor: comprarEnTienda(s1, items, codDescuento, puntos)
+
+    activate Gestor
+    Gestor->>Gestor: Validar que sea Socio o Empleado
+    Gestor->>Club: buscarExistencia(producto, "Tienda")
+    Club-->>Gestor: existencia (suficiente)
+
+    Gestor->>Gestor: Validar código de descuento y saldo de puntos
+
+    Gestor->>Venta: new VentaTienda(s1, fechaHora)
+    activate Venta
+    Venta->>Venta: calcularTotal(subtotal + IVA 19% - descuento - puntos)
+    Note over Venta: Aplica descuento de empleado y redención de puntos
+    Venta-->>Gestor: venta calculada
+    deactivate Venta
+
+    Gestor->>Club: Descontar existencias vendidas
+    Gestor->>Socio: Actualizar puntos (-redimidos + 2% acumulado)
+    Gestor->>Club: agregarVenta(venta)
+
+    Gestor-->>Consola: Venta exitosa (VentaTienda)
+    deactivate Gestor
+
+    Consola-->>Socio: Comprobante: Total pagado y puntos acumulados

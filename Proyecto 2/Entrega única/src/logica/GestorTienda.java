@@ -1,0 +1,315 @@
+package logica;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import excepciones.NoEncontradoException;
+import excepciones.PermisoDenegadoException;
+import excepciones.VentaInvalidaException;
+import excepciones.DatoInvalidoException;
+import excepciones.DuplicadoException;
+import modelo.academias.Reserva;
+import modelo.entrenamiento.SesionEntrenamiento;
+import modelo.tienda.Articulo;
+import modelo.tienda.Bebida;
+import modelo.tienda.CodigoDescuento;
+import modelo.tienda.Existencia;
+import modelo.tienda.Producto;
+import modelo.tienda.ProductoCafeteria;
+import modelo.tienda.Snack;
+import modelo.tienda.Ubicacion;
+import modelo.tienda.VentaCafeteria;
+import modelo.tienda.VentaTienda;
+import modelo.usuarios.Cliente;
+import modelo.usuarios.Socio;
+import modelo.usuarios.Usuario;
+
+/**
+ * Maneja las ventas de tienda y cafetería, descuentos, puntos e inventario.
+ * Cubre RF3, RF4, RF5, RF17, RF20, RF29, RF30 y RF31.
+ */
+public class GestorTienda extends Gestor {
+
+    public GestorTienda(Club club) {
+        super(club);
+    }
+    
+  // RF3, RF17, RF20, RF5: comprar en la tienda
+    public VentaTienda comprarEnTienda(Usuario quien, Map<String, Integer> items,
+            Integer codigo, int puntosARedimir)
+            throws PermisoDenegadoException, NoEncontradoException, VentaInvalidaException {
+
+        // 1. permiso: solo socios y empleados (Cliente)
+        if (!(quien instanceof Cliente)) {
+            throw new PermisoDenegadoException("Solo un socio o empleado puede comprar");
+        }
+        Cliente cliente = (Cliente) quien;
+
+        // 2. validar ítems
+        if (items == null || items.isEmpty()) {
+            throw new VentaInvalidaException("La compra no tiene productos");
+        }
+        Ubicacion tienda = club.buscarUbicacion("Tienda");
+        for (String nombre : items.keySet()) {
+            Producto p = club.buscarProducto(nombre);
+            if (!(p instanceof Articulo)) {
+                throw new VentaInvalidaException("'" + p.getNombre() + "' no se vende en la tienda");
+            }
+            if (items.get(nombre) <= 0) {
+                throw new VentaInvalidaException("La cantidad de '" + p.getNombre() + "' debe ser mayor a 0");
+            }
+            if (club.buscarExistencia(p, tienda).getCantidad() < items.get(nombre)) {
+                throw new VentaInvalidaException("No hay existencias suficientes de '" + p.getNombre() + "'");
+            }
+        }
+
+        // 3. validar código y puntos
+        CodigoDescuento cod = null;
+        if (codigo != null) {
+            cod = club.buscarCodigo(codigo);
+            if (!cod.isActivo()) {
+                throw new VentaInvalidaException("El código de descuento está inactivo");
+            }
+        }
+        if (puntosARedimir < 0 || puntosARedimir > cliente.getPuntosFidelidad()) {
+            throw new VentaInvalidaException("Puntos insuficientes: tiene " + cliente.getPuntosFidelidad());
+        }
+
+        // 4. crear la venta
+        VentaTienda venta = new VentaTienda(cliente, LocalDateTime.now());
+        for (String nombre : items.keySet()) {
+            venta.agregarDetalle(club.buscarProducto(nombre), items.get(nombre));
+        }
+        if (cod != null) {
+            venta.aplicarCodigo(cod);
+        }
+        venta.redimirPuntos(puntosARedimir);
+        venta.calcularTotal();
+
+        // 5. aplicar cambios
+        for (String nombre : items.keySet()) {
+            Producto p = club.buscarProducto(nombre);
+            club.buscarExistencia(p, tienda).descontar(items.get(nombre));
+        }
+        cliente.restarPuntos(puntosARedimir);
+        cliente.sumarPuntos(venta.calcularPuntosGenerados());
+
+        // 6. registrar
+        club.agregarVenta(venta);
+        cliente.agregarCompra(venta);
+        return venta;
+    }
+    
+  // RF4, RF17, RF20, RF5: comprar en la cafetería
+    public VentaCafeteria comprarEnCafeteria(Usuario quien, Map<String, Integer> items,
+            Integer codigo, int puntosARedimir, int porcentajePropina)
+            throws PermisoDenegadoException, NoEncontradoException, VentaInvalidaException, DatoInvalidoException {
+
+        // 1. permiso: solo socios y empleados (Cliente)
+        if (!(quien instanceof Cliente)) {
+            throw new PermisoDenegadoException("Solo un socio o empleado puede comprar");
+        }
+        Cliente cliente = (Cliente) quien;
+
+        // 2. validar propina e ítems
+        if (porcentajePropina < 0) {
+            throw new DatoInvalidoException("La propina no puede ser negativa");
+        }
+        if (items == null || items.isEmpty()) {
+            throw new VentaInvalidaException("La compra no tiene productos");
+        }
+        Ubicacion cafeteria = club.buscarUbicacion("Cafetería");
+        for (String nombre : items.keySet()) {
+            Producto p = club.buscarProducto(nombre);
+            if (!(p instanceof ProductoCafeteria)) {
+                throw new VentaInvalidaException("'" + p.getNombre() + "' no se vende en la cafetería");
+            }
+            if (items.get(nombre) <= 0) {
+                throw new VentaInvalidaException("La cantidad de '" + p.getNombre() + "' debe ser mayor a 0");
+            }
+            if (club.buscarExistencia(p, cafeteria).getCantidad() < items.get(nombre)) {
+                throw new VentaInvalidaException("No hay existencias suficientes de '" + p.getNombre() + "'");
+            }
+            if (p instanceof Bebida && ((Bebida) p).esCaliente()
+                    && estaEnInstalacionRestringida(cliente)) {
+                throw new VentaInvalidaException("No se puede despachar una bebida caliente a quien está en una cancha de pádel o mesa de tenis de mesa techada");
+            }
+        }
+
+        // 3. validar código y puntos
+        CodigoDescuento cod = null;
+        if (codigo != null) {
+            cod = club.buscarCodigo(codigo);
+            if (!cod.isActivo()) {
+                throw new VentaInvalidaException("El código de descuento está inactivo");
+            }
+        }
+        if (puntosARedimir < 0 || puntosARedimir > cliente.getPuntosFidelidad()) {
+            throw new VentaInvalidaException("Puntos insuficientes: tiene " + cliente.getPuntosFidelidad());
+        }
+
+        // 4. crear la venta
+        VentaCafeteria venta = new VentaCafeteria(cliente, LocalDateTime.now(), porcentajePropina);
+        for (String nombre : items.keySet()) {
+            venta.agregarDetalle(club.buscarProducto(nombre), items.get(nombre));
+        }
+        if (cod != null) {
+            venta.aplicarCodigo(cod);
+        }
+        venta.redimirPuntos(puntosARedimir);
+        venta.calcularTotal();
+
+        // 5. aplicar cambios
+        for (String nombre : items.keySet()) {
+            Producto p = club.buscarProducto(nombre);
+            club.buscarExistencia(p, cafeteria).descontar(items.get(nombre));
+        }
+        cliente.restarPuntos(puntosARedimir);
+        cliente.sumarPuntos(venta.calcularPuntosGenerados());
+
+        // 6. registrar
+        club.agregarVenta(venta);
+        cliente.agregarCompra(venta);
+        return venta;
+    }
+    
+  // RF4: consultar alérgenos
+    public List<String> consultarAlergenos(Usuario quien, Map<String, Integer> items)
+            throws NoEncontradoException {
+        List<String> alergenos = new ArrayList<String>();
+        for (String nombre : items.keySet()) {
+            Producto p = club.buscarProducto(nombre);
+            if (p instanceof Snack) {
+                for (String a : ((Snack) p).getAlergenos()) {
+                    if (!alergenos.contains(a)) {
+                        alergenos.add(a);
+                    }
+                }
+            }
+        }
+        return alergenos;
+    }
+    
+    // RF31: reabastecer
+    public void reabastecer(Usuario quien, String producto, String ubicacion, int cantidad)
+            throws PermisoDenegadoException, NoEncontradoException, DatoInvalidoException {
+        verificarAdministrador(quien);
+
+        if (cantidad <= 0) {
+            throw new DatoInvalidoException("La cantidad debe ser mayor a 0");
+        }
+
+        Producto p = club.buscarProducto(producto);
+        Ubicacion u = club.buscarUbicacion(ubicacion);
+        club.buscarExistencia(p, u).sumar(cantidad);
+    }
+
+    // RF31: registrar producto nuevo
+    public void registrarProducto(Usuario quien, Producto producto, String ubicacion, int cantidadInicial)
+            throws PermisoDenegadoException, NoEncontradoException, DuplicadoException, DatoInvalidoException {
+        verificarAdministrador(quien);
+
+        // no puede existir otro producto con ese nombre
+        boolean yaExiste = true;
+        try {
+            club.buscarProducto(producto.getNombre());
+        } catch (NoEncontradoException e) {
+            yaExiste = false;
+        }
+        if (yaExiste) {
+            throw new DuplicadoException("Ya existe el producto '" + producto.getNombre() + "'");
+        }
+
+        if (producto.getPrecio() <= 0 || cantidadInicial < 0) {
+            throw new DatoInvalidoException("El precio debe ser mayor a 0 y la cantidad inicial no puede ser negativa");
+        }
+
+        Ubicacion u = club.buscarUbicacion(ubicacion);
+        club.agregarProducto(producto);
+        club.agregarExistencia(new Existencia(producto, u, cantidadInicial));
+    }
+
+    // RF29: consultar inventario
+    public Map<Producto, Integer> consultarInventario(Usuario quien, String ubicacion)
+            throws PermisoDenegadoException, NoEncontradoException {
+        verificarAdministrador(quien);
+
+        Ubicacion u = club.buscarUbicacion(ubicacion);
+        Map<Producto, Integer> inventario = new HashMap<Producto, Integer>();
+        for (Existencia e : club.getExistencias()) {
+            if (e.getUbicacion() == u) {
+                inventario.put(e.getProducto(), e.getCantidad());
+            }
+        }
+        return inventario;
+    }
+
+    // RF30: mover productos entre ubicaciones
+    public void moverProductos(Usuario quien, String producto, String origen, String destino, int cantidad)
+            throws PermisoDenegadoException, NoEncontradoException, DatoInvalidoException {
+        verificarAdministrador(quien);
+
+        Producto p = club.buscarProducto(producto);
+        Ubicacion uOrigen = club.buscarUbicacion(origen);
+        Ubicacion uDestino = club.buscarUbicacion(destino);
+
+        Existencia exOrigen = club.buscarExistencia(p, uOrigen);
+        if (cantidad <= 0 || cantidad > exOrigen.getCantidad()) {
+            throw new DatoInvalidoException("La cantidad debe ser mayor a 0 y no superar las " + exOrigen.getCantidad() + " disponibles");
+        }
+
+        // si en el destino todavía no hay existencia de ese producto, se crea en 0
+        Existencia exDestino;
+        try {
+            exDestino = club.buscarExistencia(p, uDestino);
+        } catch (NoEncontradoException e) {
+            exDestino = new Existencia(p, uDestino, 0);
+            club.agregarExistencia(exDestino);
+        }
+
+        exOrigen.descontar(cantidad);
+        exDestino.sumar(cantidad);
+    }
+    
+  // privado: ¿el cliente está ahora en una instalación restringida?
+    private boolean estaEnInstalacionRestringida(Cliente cliente) {
+        LocalDate hoy = club.getFechaActual();
+        LocalTime ahora = LocalTime.now();
+
+        // reservas activas: como titular o como participante del partido de práctica
+        for (Reserva r : club.getReservas()) {
+            if (r.estaActiva() && r.getFecha().equals(hoy)
+                    && !ahora.isBefore(r.getHoraInicio()) && ahora.isBefore(r.getHoraFin())
+                    && r.getInstalacion().restringeBebidaCaliente()) {
+                if (r.getTitular() == cliente) {
+                    return true;
+                }
+                if (cliente instanceof Socio && r.getPartido() != null
+                        && r.getPartido().tieneParticipante((Socio) cliente)) {
+                    return true;
+                }
+            }
+        }
+
+        // sesiones de entrenamiento: como entrenador o como convocado
+        for (SesionEntrenamiento s : club.getSesiones()) {
+            if (s.getFecha().equals(hoy)
+                    && !ahora.isBefore(s.getHora()) && ahora.isBefore(s.getHoraFin())
+                    && s.getInstalacion().restringeBebidaCaliente()) {
+                if (s.getEntrenador() == cliente) {
+                    return true;
+                }
+                if (cliente instanceof Socio && s.tieneConvocado((Socio) cliente)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+}

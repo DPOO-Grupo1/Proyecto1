@@ -1,0 +1,8 @@
+flowchart LR
+    Usuario["Socio / Admin"] -->|"1. Selecciona disciplina y nivel inicial"| Consola["Consola PP4"]
+    Consola -->|"2. inscribirEnAcademia()"| Gestor["GestorAcademias"]
+    Gestor -->|"3. Valida disciplina oficial, nivel y sin duplicados"| Club["Club"]
+    Gestor -->|"4. Crea Inscripcion con ELO inicial 1000"| Inscripcion["Inscripcion"]
+    Inscripcion -->|"5. Enlace bidireccional a Socio y a Disciplina"| Club
+    Gestor -->|"6. Confirmacion de inscripcion"| Consola
+    Consola -->|"7. Muestra confirmacion y ELO 1000"| Usuario

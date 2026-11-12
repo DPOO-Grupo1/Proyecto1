@@ -1,0 +1,33 @@
+sequenceDiagram
+    autonumber
+    actor Socio as Socio Titular (S8)
+    participant Consola as Consola PP4
+    participant Gestor as GestorAcademias
+    participant Club as Club
+    participant Reserva as Reserva (R1)
+    participant Partido as PartidoPractica (PP1)
+
+    Socio->>Consola: Solicitar cancelación (idReserva="R1", horaActual=09:00)
+    Consola->>Gestor: cancelarReserva(s8, "R1", 09:00)
+
+    activate Gestor
+    Gestor->>Club: buscarReserva("R1")
+    Club-->>Gestor: reserva (R1)
+
+    Gestor->>Reserva: getTitular()
+    Note over Gestor,Reserva: Valida que quien cancela sea el titular S8
+
+    Gestor->>Reserva: horasHastaInicio(fechaActual, 09:00)
+    Note over Gestor,Reserva: Valida que falten >= 2 horas (5 horas restantes)
+
+    Gestor->>Reserva: cancelar()
+    activate Reserva
+    Reserva->>Reserva: setEstado(CANCELADA)
+    Reserva->>Partido: cancelar()
+    Note over Reserva,Partido: Efecto en cascada: cancela partido asociado
+    deactivate Reserva
+
+    Gestor-->>Consola: Cancelación exitosa
+    deactivate Gestor
+
+    Consola-->>Socio: Confirmación: Reserva y partido cancelados, cancha liberada
