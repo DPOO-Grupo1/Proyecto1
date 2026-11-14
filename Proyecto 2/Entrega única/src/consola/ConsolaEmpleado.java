@@ -3,6 +3,8 @@ package consola;
 import java.util.ArrayList;
 import java.util.List;
 
+import consola.torneos.MenuTorneosJugador;
+
 import modelo.usuarios.Empleado;
 import modelo.usuarios.Usuario;
 
@@ -37,6 +39,7 @@ public class ConsolaEmpleado extends Consola {
 		// Área A: menus.add(new MenuDeportesEntrenador(this));
 		// Área B: menus.add(new MenuEntrenamientoEntrenador(this));
 		// Área C: menus.add(new MenuTiendaEmpleado(this)); menus.add(new MenuTurnosEmpleado(this));
+		menus.add(new MenuTorneosJugador(this));
 		return menus;
 	}
 }

@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import consola.deportes.MenuDeportesSocio;
+import consola.torneos.MenuTorneosJugador;
+import modelo.usuarios.ParticipanteExterno;
 import modelo.usuarios.Socio;
 import modelo.usuarios.Usuario;
 
 /**
  * Consola del socio. Carga los datos, pide el login y muestra los menús de cada área.
+ * También la usan los estudiantes y externos registrados para los torneos, que solo ven ese menú.
  */
 public class ConsolaSocio extends Consola {
 
@@ -23,20 +26,23 @@ public class ConsolaSocio extends Consola {
 
 	@Override
 	protected String getNombreRol() {
-		return "socio";
+		return "socio ni participante de torneos";
 	}
 
 	@Override
 	protected boolean rolValido(Usuario usuario) {
-		return usuario instanceof Socio;
+		return usuario instanceof Socio || usuario instanceof ParticipanteExterno;
 	}
 
 	@Override
 	protected List<Menu> crearMenus() {
 		List<Menu> menus = new ArrayList<Menu>();
-		menus.add(new MenuDeportesSocio(this));
-		// Área B: menus.add(new MenuAcademiasSocio(this));
-		// Área C: menus.add(new MenuTiendaSocio(this));
+		if (usuario instanceof Socio) {
+			menus.add(new MenuDeportesSocio(this));
+			// Área B: menus.add(new MenuAcademiasSocio(this));
+			// Área C: menus.add(new MenuTiendaSocio(this));
+		}
+		menus.add(new MenuTorneosJugador(this));
 		return menus;
 	}
 }

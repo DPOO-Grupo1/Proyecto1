@@ -24,4 +24,11 @@ public abstract class Usuario {
 	public boolean verificarPassword(String password) {
 		return this.password.equals(password);
 	}
+
+	/**
+	 * Nombre para mostrar. Cliente y ParticipanteExterno lo sobrescriben con el nombre real.
+	 */
+	public String getNombreCompleto() {
+		return login;
+	}
 }

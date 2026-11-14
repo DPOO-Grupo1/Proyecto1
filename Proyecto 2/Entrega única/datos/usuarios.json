@@ -35,6 +35,32 @@
       "nombre": "Rosa"
     }
   ],
+  "externos": [
+    {
+      "apellidos": "Rojas",
+      "estudiante": true,
+      "password": "pass",
+      "documento": "1001234567",
+      "login": "x1",
+      "nombre": "Valentina"
+    },
+    {
+      "apellidos": "Pardo",
+      "estudiante": false,
+      "password": "pass",
+      "documento": "79888111",
+      "login": "x2",
+      "nombre": "Andrés"
+    },
+    {
+      "apellidos": "Suárez",
+      "estudiante": true,
+      "password": "pass",
+      "documento": "1019555222",
+      "login": "x3",
+      "nombre": "Camila"
+    }
+  ],
   "socios": [
     {
       "apellidos": "Titanes",

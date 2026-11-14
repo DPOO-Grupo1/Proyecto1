@@ -1,0 +1,315 @@
+{
+  "torneos": [
+    {
+      "estado": "FINALIZADO",
+      "tipo": {
+        "tarifa": 40000,
+        "nombre": "Competitivo"
+      },
+      "formato": "EliminacionDirecta",
+      "inscripciones": [
+        {
+          "pareja": null,
+          "fecha": "2026-10-01",
+          "jugador": "s2",
+          "valorPagado": 40000,
+          "preferencial": true
+        },
+        {
+          "pareja": null,
+          "fecha": "2026-10-01",
+          "jugador": "x1",
+          "valorPagado": 40000,
+          "preferencial": false
+        },
+        {
+          "pareja": null,
+          "fecha": "2026-10-01",
+          "jugador": "e1",
+          "valorPagado": 0,
+          "preferencial": false
+        },
+        {
+          "pareja": null,
+          "fecha": "2026-10-01",
+          "jugador": "x2",
+          "valorPagado": 40000,
+          "preferencial": false
+        }
+      ],
+      "encuentros": [
+        {
+          "jugado": true,
+          "marcadorVisitante": 0,
+          "numero": 1,
+          "ronda": 1,
+          "visitante": "x2",
+          "marcadorLocal": 2,
+          "local": "s2"
+        },
+        {
+          "jugado": true,
+          "marcadorVisitante": 2,
+          "numero": 2,
+          "ronda": 1,
+          "visitante": "e1",
+          "marcadorLocal": 1,
+          "local": "x1"
+        },
+        {
+          "jugado": true,
+          "marcadorVisitante": 1,
+          "numero": 3,
+          "ronda": 2,
+          "visitante": "e1",
+          "marcadorLocal": 2,
+          "local": "s2"
+        }
+      ],
+      "cupos": 4,
+      "nombre": "Relámpago de Tenis",
+      "clase": "Individual",
+      "fecha": "2026-10-17",
+      "preferencialesLiberados": false,
+      "modalidad": "SENCILLOS",
+      "disciplina": "Tenis",
+      "nivel": "INTERMEDIO"
+    },
+    {
+      "fecha": "2026-10-24",
+      "estado": "FINALIZADO",
+      "preferencialesLiberados": false,
+      "tipo": {
+        "porcentajeBono": 20,
+        "nombre": "Recreativo"
+      },
+      "deporte": "Fútbol",
+      "categoria": "Mayores",
+      "formato": "TodosContraTodos",
+      "inscripciones": [
+        {
+          "fecha": "2026-10-01",
+          "equipo": "Águilas FC",
+          "valorPagado": 0,
+          "preferencial": false
+        },
+        {
+          "fecha": "2026-10-01",
+          "equipo": "Lobos FC",
+          "valorPagado": 0,
+          "preferencial": false
+        }
+      ],
+      "encuentros": [{
+        "jugado": true,
+        "marcadorVisitante": 1,
+        "numero": 1,
+        "ronda": 1,
+        "visitante": "Lobos FC",
+        "marcadorLocal": 3,
+        "local": "Águilas FC"
+      }],
+      "cupos": 3,
+      "nombre": "Copa Recreativa de Fútbol",
+      "clase": "Conjunto"
+    },
+    {
+      "fecha": "2026-11-08",
+      "estado": "EN_CURSO",
+      "preferencialesLiberados": false,
+      "tipo": {
+        "tarifa": 150000,
+        "nombre": "Competitivo"
+      },
+      "deporte": "Baloncesto",
+      "categoria": "Mayores",
+      "formato": "TodosContraTodos",
+      "inscripciones": [
+        {
+          "fecha": "2026-10-01",
+          "equipo": "Titanes Basket",
+          "valorPagado": 150000,
+          "preferencial": false
+        },
+        {
+          "fecha": "2026-10-01",
+          "equipo": "Toros Basket",
+          "valorPagado": 150000,
+          "preferencial": false
+        }
+      ],
+      "encuentros": [{
+        "jugado": false,
+        "marcadorVisitante": 0,
+        "numero": 1,
+        "ronda": 1,
+        "visitante": "Toros Basket",
+        "marcadorLocal": 0,
+        "local": "Titanes Basket"
+      }],
+      "cupos": 4,
+      "nombre": "Liga Competitiva de Baloncesto",
+      "clase": "Conjunto"
+    },
+    {
+      "estado": "INSCRIPCIONES_ABIERTAS",
+      "tipo": {
+        "porcentajeBono": 15,
+        "nombre": "Recreativo"
+      },
+      "formato": "EliminacionDirecta",
+      "inscripciones": [{
+        "pareja": "s5",
+        "fecha": "2026-11-10",
+        "jugador": "s4",
+        "valorPagado": 0,
+        "preferencial": true
+      }],
+      "encuentros": [],
+      "cupos": 4,
+      "nombre": "Pádel en Dobles",
+      "clase": "Individual",
+      "fecha": "2026-12-12",
+      "preferencialesLiberados": false,
+      "modalidad": "DOBLES",
+      "disciplina": "Pádel",
+      "nivel": "INTERMEDIO"
+    },
+    {
+      "estado": "INSCRIPCIONES_ABIERTAS",
+      "tipo": {
+        "porcentajeBono": 10,
+        "nombre": "Recreativo"
+      },
+      "formato": "TodosContraTodos",
+      "inscripciones": [
+        {
+          "pareja": null,
+          "fecha": "2026-11-10",
+          "jugador": "s6",
+          "valorPagado": 0,
+          "preferencial": true
+        },
+        {
+          "pareja": null,
+          "fecha": "2026-11-10",
+          "jugador": "x3",
+          "valorPagado": 0,
+          "preferencial": false
+        }
+      ],
+      "encuentros": [],
+      "cupos": 6,
+      "nombre": "Abierto de Tenis de Mesa",
+      "clase": "Individual",
+      "fecha": "2026-12-05",
+      "preferencialesLiberados": false,
+      "modalidad": "SENCILLOS",
+      "disciplina": "Tenis de mesa",
+      "nivel": "PRINCIPIANTE"
+    },
+    {
+      "fecha": "2026-12-19",
+      "estado": "INSCRIPCIONES_ABIERTAS",
+      "preferencialesLiberados": false,
+      "tipo": {
+        "tarifa": 120000,
+        "nombre": "Competitivo"
+      },
+      "deporte": "Voleibol",
+      "categoria": "Mayores",
+      "formato": "EliminacionDirecta",
+      "inscripciones": [],
+      "encuentros": [],
+      "cupos": 4,
+      "nombre": "Copa Competitiva de Voleibol",
+      "clase": "Conjunto"
+    }
+  ],
+  "bonos": [
+    {
+      "dueno": "j1",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 1,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j4",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 2,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j5",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 3,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j6",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 4,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j7",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 5,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j8",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 6,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j9",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 7,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j10",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 8,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j11",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 9,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j12",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 10,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j13",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 11,
+      "porcentaje": 20
+    },
+    {
+      "dueno": "j14",
+      "torneo": "Copa Recreativa de Fútbol",
+      "usado": false,
+      "id": 12,
+      "porcentaje": 20
+    }
+  ]
+}

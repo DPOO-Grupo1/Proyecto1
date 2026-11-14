@@ -31,6 +31,8 @@ import modelo.tienda.CodigoDescuento;
 import modelo.personal.HorarioAtencion;
 import modelo.personal.Sugerencia;
 import modelo.personal.Turno;
+import modelo.torneos.BonoDescuento;
+import modelo.torneos.Torneo;
 
 /**
  * Guarda todas las listas del club y busca por id o por nombre.
@@ -58,6 +60,8 @@ public class Club {
 	private List<Turno> turnos;
 	private List<Sugerencia> sugerencias;
 	private HorarioAtencion horario;
+	private List<Torneo> torneos;
+	private List<BonoDescuento> bonos;
 
 	public Club() {
 		this.usuarios = new HashMap<String, Usuario>();
@@ -80,6 +84,8 @@ public class Club {
 		this.turnos = new ArrayList<Turno>();
 		this.sugerencias = new ArrayList<Sugerencia>();
 		this.horario = new HorarioAtencion();
+		this.torneos = new ArrayList<Torneo>();
+		this.bonos = new ArrayList<BonoDescuento>();
 		
 	}
 
@@ -533,6 +539,68 @@ public class Club {
 	    return sugerencias;
 	}
 	
+	// Torneos internos
+
+	public void agregarTorneo(Torneo torneo) {
+		torneos.add(torneo);
+	}
+
+	public List<Torneo> getTorneos() {
+		return torneos;
+	}
+
+	public boolean existeTorneo(String nombre) {
+		for (Torneo torneo : torneos) {
+			if (torneo.getNombre().equalsIgnoreCase(nombre)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public Torneo buscarTorneo(String nombre) throws NoEncontradoException {
+		for (Torneo torneo : torneos) {
+			if (torneo.getNombre().equalsIgnoreCase(nombre)) {
+				return torneo;
+			}
+		}
+		throw new NoEncontradoException("No existe el torneo '" + nombre + "'");
+	}
+
+	public void agregarBono(BonoDescuento bono) {
+		bonos.add(bono);
+	}
+
+	public List<BonoDescuento> getBonos() {
+		return bonos;
+	}
+
+	/**
+	 * Igual que los partidos: los bonos nunca se borran, así que el siguiente id es el total + 1.
+	 */
+	public int siguienteIdBono() {
+		return bonos.size() + 1;
+	}
+
+	public BonoDescuento buscarBono(int id) throws NoEncontradoException {
+		for (BonoDescuento bono : bonos) {
+			if (bono.getId() == id) {
+				return bono;
+			}
+		}
+		throw new NoEncontradoException("No existe el bono #" + id);
+	}
+
+	public List<BonoDescuento> getBonosDe(Usuario usuario) {
+		List<BonoDescuento> deUsuario = new ArrayList<BonoDescuento>();
+		for (BonoDescuento bono : bonos) {
+			if (bono.getDueno() == usuario) {
+				deUsuario.add(bono);
+			}
+		}
+		return deUsuario;
+	}
+
 	// Para comparar nombres sin importar mayúsculas ni tildes ("Cafeteria" y "Cafetería" son la misma)
 	private String normalizar(String texto) {
 		String resultado = texto.toLowerCase();

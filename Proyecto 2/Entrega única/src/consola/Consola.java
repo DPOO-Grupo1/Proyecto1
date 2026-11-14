@@ -41,7 +41,7 @@ public abstract class Consola {
 		return usuario;
 	}
 
-	// ---------- Lo que define cada consola ----------
+	// Lo que define cada consola
 
 	/** Nombre que se muestra al iniciar, por ejemplo "Consola del socio". */
 	protected abstract String getTitulo();
@@ -55,7 +55,7 @@ public abstract class Consola {
 	/** Los menús de área que ve este rol, en el orden del menú principal. Se llama después del login. */
 	protected abstract List<Menu> crearMenus();
 
-	// ---------- Flujo principal ----------
+	// Flujo principal
 
 	public void ejecutar() {
 		System.out.println("=== Club Deportivo Séneca: " + getTitulo() + " ===");
@@ -128,7 +128,7 @@ public abstract class Consola {
 		}
 	}
 
-	// ---------- Lectura de entradas (las usan los menús) ----------
+	// Lectura de entradas (las usan los menús)
 
 	/** Lee un texto que no puede quedar vacío. */
 	public String leerTexto(String mensaje) {

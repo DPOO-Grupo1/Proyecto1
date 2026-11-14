@@ -11,7 +11,7 @@ import logica.Club;
 /**
  * Carga y guarda todo el club. Cada área tiene su archivo dentro de la carpeta de datos,
  * y se cargan en orden porque unas dependen de otras (los equipos necesitan a los socios,
- * las competencias necesitan a los equipos).
+ * las competencias necesitan a los equipos, los torneos necesitan casi todo).
  */
 public class CentralPersistencia {
 
@@ -31,6 +31,7 @@ public class CentralPersistencia {
 		agregarArea(new PersistenciaEntrenamiento(), "entrenamiento.json");
 		agregarArea(new PersistenciaTienda(), "tienda.json");
 		agregarArea(new PersistenciaPersonal(), "personal.json");
+		agregarArea(new PersistenciaTorneos(), "torneos.json");
 	}
 
 	private void agregarArea(IPersistenciaArea area, String archivo) {

@@ -17,11 +17,13 @@ import modelo.usuarios.Cliente;
 import modelo.usuarios.Empleado;
 import modelo.usuarios.Entrenador;
 import modelo.usuarios.Fisioterapeuta;
+import modelo.usuarios.ParticipanteExterno;
 import modelo.usuarios.Socio;
 import modelo.usuarios.Usuario;
 
 /**
- * Guarda los usuarios en usuarios.json: administradores, socios y empleados.
+ * Guarda los usuarios en usuarios.json: administradores, socios, empleados y participantes
+ * externos de los torneos.
  * Es del núcleo común; las áreas B y C le agregan lo suyo (mensualidades, códigos de descuento).
  */
 public class PersistenciaUsuarios implements IPersistenciaArea {
@@ -57,6 +59,17 @@ public class PersistenciaUsuarios implements IPersistenciaArea {
 					((Entrenador) empleado).setSocio(club.buscarSocio(je.getString("socioID")));
 				}
 				agregar(club, empleado, archivo);
+			}
+
+			// Los archivos de antes de los torneos no tienen esta lista.
+			JSONArray externos = json.optJSONArray("externos");
+			if (externos != null) {
+				for (int i = 0; i < externos.length(); i++) {
+					JSONObject jx = externos.getJSONObject(i);
+					agregar(club, new ParticipanteExterno(jx.getString("login"), jx.getString("password"),
+							jx.getString("nombre"), jx.getString("apellidos"), jx.getString("documento"),
+							jx.getBoolean("estudiante")), archivo);
+				}
 			}
 		} catch (JSONException e) {
 			throw new PersistenciaException("Falta un dato o tiene un tipo incorrecto en " + archivo + ": " + e.getMessage(), e);
@@ -98,6 +111,7 @@ public class PersistenciaUsuarios implements IPersistenciaArea {
 		JSONArray administradores = new JSONArray();
 		JSONArray socios = new JSONArray();
 		JSONArray empleados = new JSONArray();
+		JSONArray externos = new JSONArray();
 
 		// Ordenados por login, así el archivo queda igual cada vez que se guarda
 		List<Usuario> ordenados = new ArrayList<Usuario>();
@@ -115,6 +129,13 @@ public class PersistenciaUsuarios implements IPersistenciaArea {
 			ju.put("password", usuario.getPassword());
 			if (usuario instanceof Administrador) {
 				administradores.put(ju);
+			} else if (usuario instanceof ParticipanteExterno) {
+				ParticipanteExterno externo = (ParticipanteExterno) usuario;
+				ju.put("nombre", externo.getNombre());
+				ju.put("apellidos", externo.getApellidos());
+				ju.put("documento", externo.getDocumento());
+				ju.put("estudiante", externo.isEstudiante());
+				externos.put(ju);
 			} else {
 				Cliente cliente = (Cliente) usuario;
 				ju.put("nombre", cliente.getNombre());
@@ -149,6 +170,7 @@ public class PersistenciaUsuarios implements IPersistenciaArea {
 		json.put("administradores", administradores);
 		json.put("socios", socios);
 		json.put("empleados", empleados);
+		json.put("externos", externos);
 		archivoJSON.escribir(archivo, json);
 	}
 }
