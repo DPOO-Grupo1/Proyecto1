@@ -3,6 +3,8 @@ package consola;
 import java.util.ArrayList;
 import java.util.List;
 
+import consola.deportes.MenuCompetenciasAdministrador;
+import consola.deportes.MenuEquiposAdministrador;
 import consola.torneos.MenuTorneosAdministrador;
 
 import modelo.usuarios.Administrador;
@@ -35,7 +37,8 @@ public class ConsolaAdministrador extends Consola {
 	@Override
 	protected List<Menu> crearMenus() {
 		List<Menu> menus = new ArrayList<Menu>();
-		// Área A: menus.add(new MenuDeportesAdministrador(this)); menus.add(new MenuCompetenciasAdministrador(this));
+		menus.add(new MenuEquiposAdministrador(this));
+		menus.add(new MenuCompetenciasAdministrador(this));
 		// Área B: menus.add(new MenuAcademiasAdministrador(this));
 		// Área C: menus.add(new MenuTiendaAdministrador(this)); menus.add(new MenuPersonalAdministrador(this));
 		menus.add(new MenuTorneosAdministrador(this));

@@ -4,14 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import consola.Consola;
-import consola.Menu;
 import excepciones.ClubException;
-import excepciones.ReglaDeportivaException;
-import logica.GestorCompetencias;
 import logica.GestorDeportes;
-import modelo.competencias.Competencia;
-import modelo.competencias.FilaTabla;
-import modelo.competencias.GruposEliminacion;
 import modelo.deportes.JugadorEquipo;
 import modelo.deportes.Suspension;
 import modelo.partidos.Estadistica;
@@ -21,15 +15,13 @@ import modelo.partidos.Partido;
  * Menú de deportes y competencias para el socio: su información deportiva (RF1)
  * y las tablas y clasificaciones de las competencias (RF2).
  */
-public class MenuDeportesSocio extends Menu {
+public class MenuDeportesSocio extends MenuConsultaCompetencias {
 
 	private GestorDeportes gestorDeportes;
-	private GestorCompetencias gestorCompetencias;
 
 	public MenuDeportesSocio(Consola consola) {
 		super(consola);
 		gestorDeportes = new GestorDeportes(club);
-		gestorCompetencias = new GestorCompetencias(club);
 	}
 
 	@Override
@@ -76,56 +68,5 @@ public class MenuDeportesSocio extends Menu {
 				System.out.println("   Suspendido: " + suspension);
 			}
 		}
-	}
-
-	// RF2: tabla
-	private void verTabla() throws ClubException {
-		Competencia competencia = elegirCompetencia();
-		if (competencia == null) {
-			return;
-		}
-		String grupo = null;
-		if (competencia.getFormato() instanceof GruposEliminacion) {
-			GruposEliminacion formato = (GruposEliminacion) competencia.getFormato();
-			grupo = consola.elegir("Grupo", formato.getGrupos());
-			if (grupo == null) {
-				return;
-			}
-		}
-		List<FilaTabla> tabla = gestorCompetencias.consultarTabla(usuario, competencia, grupo);
-		int posicion = 1;
-		for (FilaTabla fila : tabla) {
-			System.out.println("   " + posicion + ". " + fila);
-			posicion++;
-		}
-		if (tabla.isEmpty()) {
-			System.out.println("   (sin información disponible)");
-		}
-		consola.mostrarLista("Clasificados:", gestorCompetencias.consultarClasificados(usuario, competencia));
-	}
-
-	// RF2: goleadores y destacados
-	private void verClasificaciones() throws ClubException {
-		Competencia competencia = elegirCompetencia();
-		if (competencia == null) {
-			return;
-		}
-		try {
-			consola.mostrarLista("Goleadores:", gestorCompetencias.consultarGoleadores(usuario, competencia));
-		} catch (ReglaDeportivaException e) {
-			System.out.println("Goleadores: " + e.getMessage());
-		}
-		consola.mostrarLista("Jugadores destacados:", gestorCompetencias.consultarDestacados(usuario, competencia));
-	}
-
-	private Competencia elegirCompetencia() {
-		String deporte = consola.leerTextoOpcional("Filtrar por deporte");
-		List<Competencia> competencias = gestorCompetencias.consultarCompetencias(usuario,
-				deporte.isEmpty() ? null : deporte, null);
-		if (competencias.isEmpty()) {
-			System.out.println("No hay competencias con ese filtro (sin información disponible).");
-			return null;
-		}
-		return consola.elegir("Competencia", competencias);
 	}
 }

@@ -165,6 +165,28 @@ public abstract class Consola {
 		}
 	}
 
+	/** Lee una lista de enteros separados por comas, por ejemplo "1, 4, 7". No puede quedar vacía. */
+	public List<Integer> leerEnteros(String mensaje) {
+		while (true) {
+			System.out.print(mensaje + " (separados por comas): ");
+			String[] partes = scanner.nextLine().split(",");
+			List<Integer> numeros = new java.util.ArrayList<Integer>();
+			boolean validos = true;
+			for (String parte : partes) {
+				String texto = parte.trim();
+				try {
+					numeros.add(Integer.parseInt(texto));
+				} catch (NumberFormatException e) {
+					System.out.println("'" + texto + "' no es un número entero.");
+					validos = false;
+				}
+			}
+			if (validos && !numeros.isEmpty()) {
+				return numeros;
+			}
+		}
+	}
+
 	/** Lee un número con decimales mayor o igual a min. */
 	public double leerDecimal(String mensaje, double min) {
 		while (true) {
