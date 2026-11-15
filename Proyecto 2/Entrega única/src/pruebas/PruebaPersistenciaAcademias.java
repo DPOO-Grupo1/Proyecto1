@@ -35,7 +35,7 @@ import persistencia.PersistenciaEntrenamiento;
  * Prueba integral de persistencia de academias y entrenamiento.
  * Valida el ciclo completo de guardado y carga en archivos JSON.
  */
-public class PruebaPersistenciaAreaB {
+public class PruebaPersistenciaAcademias {
 
 	public static void main(String[] args) {
 		System.out.println("=== Prueba de persistencia de academias y entrenamiento (JSON) ===");

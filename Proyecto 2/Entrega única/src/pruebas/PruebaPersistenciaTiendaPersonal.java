@@ -20,7 +20,7 @@ import modelo.usuarios.Socio;
 import persistencia.PersistenciaPersonal;
 import persistencia.PersistenciaTienda;
 
-public class PruebaPersistenciaC {
+public class PruebaPersistenciaTiendaPersonal {
 
     public static void main(String[] args) throws Exception {
         String carpeta = "salida_pruebas";

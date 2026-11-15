@@ -29,7 +29,7 @@ import modelo.usuarios.Socio;
 import persistencia.PersistenciaPersonal;
 import persistencia.PersistenciaTienda;
 
-public class PruebasExtraAreaC {
+public class PruebasExtraTiendaPersonal {
 
     public static void main(String[] args) throws Exception {
 
