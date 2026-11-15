@@ -25,8 +25,7 @@ Proyecto 2/Entrega única/
 │   ├── diagrama-clases-diseno.pdf      # Diagrama de clases (también .png y .uxf)
 │   ├── diagrama-alto-nivel.pdf         # Diagrama de alto nivel (también .png y .uxf)
 │   ├── documentacion_Diagramas_Secuencia_modelo.pdf   # Documento de diseño
-│   ├── historias-usuario-torneos.md
-│   ├── historias-usuario-tienda-personal.md
+│   ├── historias-usuario.md            # Historias de usuario (banco de la Entrega 1 y torneos)
 │   └── diagramas/
 │       ├── secuencias/         # Diagramas de secuencia (.mmd en formato_raiz, imágenes en imagenes)
 │       └── sustentacion/       # Diagramas de flujo y de estados
@@ -105,7 +104,7 @@ Los participantes externos solo ven el menú de torneos internos.
 | Reportes y mensualidades | Historial global, reportes financiero y deportivo, registrar mensualidades | RF28, RF34, RF35 |
 | Torneos internos | Crear torneos, registrar participantes externos, inscribir y retirar, liberar cupos preferenciales, iniciar y registrar resultados | HU_T1 a HU_T9 |
 
-Las historias de usuario de los torneos internos están en `docs/historias-usuario-torneos.md`.
+Las historias de usuario están en `docs/historias-usuario.md`. El código de cada historia coincide con el inicio del nombre de sus pruebas: HU_RF3 se prueba con `rf3...` y HU_T3 con `hut3...`.
 
 ## 5. Persistencia
 
