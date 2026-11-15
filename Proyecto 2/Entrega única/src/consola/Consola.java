@@ -15,7 +15,7 @@ import persistencia.CentralPersistencia;
 
 /**
  * Lo que comparten las tres consolas: cargar los datos, pedir login y contraseña,
- * mostrar el menú principal con los menús de cada área, y guardar al salir.
+ * mostrar el menú principal con los menús del rol, y guardar al salir.
  * También tiene los métodos para leer entradas validadas, que usan todos los menús.
  */
 public abstract class Consola {
@@ -52,7 +52,7 @@ public abstract class Consola {
 	/** Si el usuario que entró puede usar esta consola. */
 	protected abstract boolean rolValido(Usuario usuario);
 
-	/** Los menús de área que ve este rol, en el orden del menú principal. Se llama después del login. */
+	/** Los menús que ve este rol, en el orden del menú principal. Se llama después del login. */
 	protected abstract List<Menu> crearMenus();
 
 	// Flujo principal

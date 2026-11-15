@@ -1,163 +1,134 @@
-# Entrega 2
-**Diseño y Programación Orientada a Objetos (DPOO)**  
+# Proyecto 2: Club Deportivo Séneca
+
+**Diseño y Programación Orientada a Objetos (ISIS-1226)**  
 **Grupo 1**
 
+Aplicación de consola para el club. Hay tres consolas, una para cada tipo de usuario (socio, empleado y administrador). Cada una pide login y contraseña y muestra solo lo que ese usuario puede hacer. Los datos se cargan de la carpeta `datos/` al iniciar y se guardan ahí al salir.
 
-## 1. Estructura del Repositorio
-
-El proyecto se encuentra en la carpeta `Entrega 2/` y sigue la siguiente arquitectura por capas y paquetes:
+## 1. Estructura
 
 ```text
-Proyecto1/
-├── Entrega 1/                          # Documento de análisis y diseño inicial
-├── Entrega 2/                          # Código fuente y recursos de la Entrega 2
-│   ├── .project                        # Descriptor de proyecto de Eclipse
-│   ├── .classpath                      # Configuración de classpath de Eclipse (Java + lib)
-│   ├── lib/
-│   │   └── org.json-1.6-20240205.jar   # Biblioteca para serialización y parseo JSON
-│   ├── datos/                          # Conjuntos de datos JSON para persistencia
-│   │   ├── academias.json
-│   │   ├── competencias.json
-│   │   ├── deportes.json
-│   │   ├── entrenamiento.json
-│   │   ├── personal.json
-│   │   ├── tienda.json
-│   │   └── usuarios.json
-│   ├── docs/
-│   │   ├── diagrama-alto-nivel.pdf     # Diagrama de arquitectura de alto nivel
-│   │   ├── diagrama-clases-diseno.pdf  # Diagrama de clases completo
-│   │   └── diagramas/
-│   │       ├── secuencias/             # Diagramas de secuencia UML en formato Mermaid
-│   │       │   ├── formato_raiz/       # Archivos .mmd editables
-│   │       │   └── imagenes/           # Exportaciones gráficas (.png / .jpeg)
-│   │       └── sustentacion/           # Diagramas de flujo y estados
-│   │           ├── formato_raiz/       # Archivos .mmd editables
-│   │           └── imagenes/           # Exportaciones gráficas
-│   └── src/
-│       ├── modelo/                     # Clases de dominio del negocio
-│       │   ├── academias/              # Disciplina, Instalacion, Canchas, Reserva, ELO
-│       │   ├── competencias/           # Competencia, Grupo, TablaPosiciones
-│       │   ├── deportes/               # DeporteEquipo, Categoria, Equipo, Suspension
-│       │   ├── entrenamiento/          # SesionEntrenamiento, Convocatoria, Evaluacion
-│       │   ├── partidos/               # PartidoInterno, PartidoCompetencia, Estadisticas
-│       │   ├── personal/               # HorarioAtencion, Turno, Solicitud, Sugerencia
-│       │   ├── reportes/               # Historial, ReporteFinanciero, ReporteDeportivo, Mensualidad
-│       │   ├── tienda/                 # Articulo, Bebida, Snack, VentaTienda, VentaCafeteria
-│       │   └── usuarios/               # Socio, Entrenador, Fisioterapeuta, Administrador
-│       ├── logica/                     # Controladores y lógica de negocio
-│       │   ├── Club.java               # Fachada central y contenedor de entidades
-│       │   ├── Gestor.java             # Clase base de gestores
-│       │   ├── GestorAcademias.java
-│       │   ├── GestorCompetencias.java
-│       │   ├── GestorDeportes.java
-│       │   ├── GestorEntrenamiento.java
-│       │   ├── GestorPersonal.java
-│       │   ├── GestorReportes.java
-│       │   └── GestorTienda.java
-│       ├── persistencia/               # Módulos de persistencia JSON independientes
-│       │   ├── CentralPersistencia.java
-│       │   ├── IPersistenciaModulo.java
-│       │   ├── PersistenciaAcademias.java
-│       │   ├── PersistenciaCompetencias.java
-│       │   ├── PersistenciaDeportes.java
-│       │   ├── PersistenciaEntrenamiento.java
-│       │   ├── PersistenciaPersonal.java
-│       │   ├── PersistenciaTienda.java
-│       │   └── PersistenciaUsuarios.java
-│       ├── excepciones/                # Jerarquía de excepciones de negocio del club
-│       └── pruebas/                    # Programas de prueba (Consolas PP1 a PP6)
-│           ├── ConsolaPP1.java
-│           ├── ConsolaPP2.java
-│           ├── ConsolaPP3.java
-│           ├── ConsolaPP4.java
-│           ├── ConsolaPP5.java
-│           ├── ConsolaPP6.java
-│           ├── PruebaPersistenciaAreaB.java
-│           └── PruebaPersistenciaC.java
-└── README.md                           # Guía de ejecución del proyecto
+Proyecto 2/Entrega única/
+├── .project, .classpath        # Proyecto de Eclipse (Proyecto2)
+├── lib/
+│   └── org.json-1.6-20240205.jar
+├── datos/                      # Archivos JSON con los datos del club
+│   ├── usuarios.json
+│   ├── deportes.json
+│   ├── competencias.json
+│   ├── torneos.json
+│   ├── academias.json
+│   ├── entrenamiento.json
+│   ├── tienda.json
+│   └── personal.json
+├── docs/
+│   ├── diagrama-clases-diseno.pdf      # Diagrama de clases (también .png y .uxf)
+│   ├── diagrama-alto-nivel.pdf         # Diagrama de alto nivel (también .png y .uxf)
+│   ├── documentacion_Diagramas_Secuencia_modelo.pdf   # Documento de diseño
+│   ├── historias-usuario-torneos.md
+│   ├── historias-usuario-tienda-personal.md
+│   └── diagramas/
+│       ├── secuencias/         # Diagramas de secuencia (.mmd en formato_raiz, imágenes en imagenes)
+│       └── sustentacion/       # Diagramas de flujo y de estados
+├── src/
+│   ├── consola/                # Las tres consolas y sus menús
+│   ├── logica/                 # Club y los gestores
+│   ├── modelo/                 # Clases del dominio, por paquete
+│   ├── persistencia/           # Carga y guardado en JSON
+│   ├── excepciones/
+│   └── pruebas/                # Programas de prueba de la Entrega 2
+└── test/                       # Pruebas JUnit 5
 ```
 
----
+## 2. Cómo abrir el proyecto en Eclipse
 
-## 2. Guía
-### Paso 1: Importar en Eclipse
-1. Abrir **Eclipse IDE**.
-2. En el menú superior, seleccionar **File** $\rightarrow$ **Open Projects from File System...**  
-   *(o alternativamente: **File** $\rightarrow$ **Import...** $\rightarrow$ **General** $\rightarrow$ **Existing Projects into Workspace**)*.
-3. En el campo **Import source**, hacer clic en **Directory...** y seleccionar la carpeta:
-   ```text
-   .../Proyecto1/Entrega 2
-   ```
-4. Eclipse detectará automáticamente el proyecto llamado **`Proyecto1`**.
-5. Asegurarse de que la casilla esté marcada y hacer clic en **Finish**.
+1. Abrir Eclipse y escoger **File > Import > General > Existing Projects into Workspace**.
+2. En **Select root directory** escoger la carpeta `Proyecto 2/Entrega única`.
+3. Aparece el proyecto **Proyecto2**. Marcarlo y dar **Finish**.
+4. El proyecto ya trae en el classpath `lib/org.json-1.6-20240205.jar` y JUnit 5. Si Eclipse marca error en la librería, ir a **Build Path > Configure Build Path > Libraries** y agregar el JAR de `lib/` con **Add JARs...**.
 
-### Paso 2: Verificar la biblioteca externa (JAR de JSON)
-1. En la vista **Package Explorer**, expandir el proyecto `Proyecto1`.
-2. Verificar que aparezca la carpeta **`Referenced Libraries`** con el archivo:
-   ```text
-   org.json-1.6-20240205.jar
-   ```
-3. Si el proyecto muestra un icono de advertencia rojo en las librerías:
-   - Clic derecho sobre `Proyecto1` $\rightarrow$ **Build Path** $\rightarrow$ **Configure Build Path...**
-   - Pestaña **Libraries** $\rightarrow$ Seleccionar **Classpath** $\rightarrow$ **Add JARs...**
-   - Seleccionar `Proyecto1/lib/org.json-1.6-20240205.jar` $\rightarrow$ Clic en **Apply and Close**.
+Se necesita Java 21.
 
-### Paso 3: Ejecutar las Consolas de Prueba
-Cada programa de prueba oficial (`PP1` a `PP6`) es una clase autónoma ejecutable con método `main`:
-1. En el **Package Explorer**, expandir la carpeta:
-   ```text
-   src  ->  pruebas
-   ```
-2. Hacer **clic derecho** sobre cualquiera de las consolas (por ejemplo, `ConsolaPP1.java`).
-3. Seleccionar **Run As** $\rightarrow$ **1 Java Application**.
-4. En la parte inferior, en la pestaña **Console**, se desplegará el encabezado del programa y cada prueba unitaria/de integración con la verificación de sus precondiciones, casos aprobados y casos rechazados con excepción.
+## 3. Cómo correr las consolas
 
----
+Las tres consolas están en `src/consola`. Se corren con clic derecho, **Run As > Java Application**:
 
-## 4. Consolas de Prueba Oficiales (Mapeo de Requerimientos)
+| Clase | Quién entra |
+|---|---|
+| `ConsolaSocio` | Socios del club y participantes externos de torneos |
+| `ConsolaEmpleado` | Entrenadores y fisioterapeutas |
+| `ConsolaAdministrador` | Administrador |
 
-| Consola | Nombre y Alcance | Requerimientos Evaluados | Descripción de Pruebas |
-|---|---|---|---|
-| **`ConsolaPP1.java`** | **Gestión deportiva y partidos internos** | **RF12, RF13, RF14, RF22, RF23, RF24** | Creación de deportes de equipo y categorías; registro de equipos y nóminas; programación de partidos internos; verificación de nómina mínima y habilitación de jugadores; captura de marcadores y estadísticas detalladas por deporte (fútbol, baloncesto, voleibol); acumulación de tarjetas amarillas y generación automática de suspensiones por tarjeta roja o doble amarilla. |
-| **`ConsolaPP2.java`** | **Competencias y partidos oficiales** | **RF1, RF2, RF25, RF26, RF27** | Creación de torneos en formato todos contra todos o eliminación directa; inscripción de equipos; programación del calendario oficial; captura de resultados; cálculo automático de la tabla de posiciones con criterios de desempate por enfrentamiento directo; y control de acumulación de tarjetas amarillas en competencia. |
-| **`ConsolaPP3.java`** | **Ventas, fidelidad y restricciones** | **RF3, RF4, RF5, RF17, RF20** | Compras en tienda física con IVA (19%); consumo en cafetería con impoconsumo (8%) y propina voluntaria; consulta obligatoria de alérgenos; restricción de seguridad que bloquea la venta de bebidas calientes a usuarios con reservas activas en pádel o mesas techadas; aplicación de códigos de descuento de empleados (15% propio, 8% ajeno); acumulación del 2% en puntos de fidelidad; y redención de puntos como descuento monetario. |
-| **`ConsolaPP4.java`** | **Academias individuales, reservas y ELO** | **RF6, RF7, RF8, RF9, RF10, RF11, RF36** | Inscripciones en disciplinas individuales (tenis, tenis de mesa, pádel); reservas de instalaciones con validación de horario, disciplina, número de jugadores, modalidad (sencillos/dobles) y mensualidad al día; registro de ingreso a la cancha; cancelación anticipada ($\ge 2$ horas antes) con liberación de cupo y cascada a partidos; programación de partidos de práctica; actualización matemática del ranking ELO (fórmula logística con factor K=32); y consultas administrativas. |
-| **`ConsolaPP5.java`** | **Entrenamiento, sesiones y asistencia** | **RF15, RF16** | Planeación de sesiones grupales, individuales y de equipo por el entrenador responsable; validación de compatibilidad con la instalación y cruces de horario; convocatoria de socios inscritos; registro de asistencia (asistió, faltó, tarde) únicamente sobre sesiones finalizadas; asignación de evaluaciones técnicas formativas (calificación 1 a 5 con retroalimentación); y consulta de convocatorias. |
-| **`ConsolaPP6.java`** | **Administración del club** | **RF18, RF19, RF21, RF28, RF29, RF30, RF31, RF32, RF33, RF34, RF35** | Consulta y auditoría de inventario por ubicación; traslado de productos entre almacenes; reabastecimiento e ingreso de nuevos artículos/snacks; ciclo de vida de sugerencias del personal (sugerir, aprobar, rechazar con motivo); gestión semanal de turnos garantizando la cobertura mínima (2 entrenadores y 1 fisioterapeuta por bloque); solicitudes y resolución de cambios de turno; consulta del historial global con filtros avanzados; generación de reportes financieros y deportivos; y control de mensualidades con reactivación de socios en mora. |
+Usuarios de prueba (están todos en `datos/usuarios.json`):
 
----
+| Login | Contraseña | Tipo |
+|---|---|---|
+| `admin` | `123` | Administrador |
+| `e1`, `e2`, `e3` | `pass` | Entrenadores |
+| `j1` a `j14`, `b1` a `b14`, `h1` a `h8`, y los demás socios | `pass` | Socios |
+| `x1`, `x2`, `x3` | `pass` | Participantes externos (solo torneos) |
 
-## 5. Pruebas de Persistencia JSON
+Las opciones se escogen por número y `0` vuelve al menú anterior. Si una operación no cumple alguna regla del club, la consola muestra `RECHAZADO:` con el motivo y no cambia nada. Al salir con `0` desde el menú principal se guardan los cambios en `datos/`.
 
-Para comprobar la serialización y carga de datos en formato JSON de forma independiente a la lógica interactiva:
+## 4. Qué se puede hacer en cada consola
 
-- **`PruebaPersistenciaAreaB.java`**: Valida el ciclo completo de guardado y carga de socios, inscripciones, instalaciones, reservas, partidos de práctica, ELO y sesiones de entrenamiento en los archivos `academias.json` y `entrenamiento.json`.
-- **`PruebaPersistenciaC.java`**: Valida el guardado y recarga de productos, existencias por ubicación, ventas, códigos de descuento, turnos y personal en `tienda.json` y `personal.json`.
+### Consola del socio
 
-Los archivos JSON persistidos se encuentran organizados en la carpeta:
-```text
-Entrega 2/datos/
-```
+| Menú | Opciones | Requerimientos |
+|---|---|---|
+| Deportes y competencias | Ver la información deportiva propia, tablas de posiciones, goleadores y destacados | RF1, RF2 |
+| Academias y prácticas | Inscribirse en una academia, reservar, registrar ingreso, cancelar, programar partidos de práctica y su resultado, ver perfil, historial y ranking, ver convocatorias | RF6 a RF11, RF16 |
+| Tienda y cafetería | Comprar en la tienda y en la cafetería, ver puntos, compras y bonos | RF3, RF4, RF5 |
+| Torneos internos | Ver torneos y su historial, inscribirse en un torneo individual, salirse, ver mis torneos y mis bonos. El entrenador también puede inscribir y retirar sus equipos | HU_T3, HU_T4, HU_T5, HU_T9, HU_T10 |
 
----
+Los participantes externos solo ven el menú de torneos internos.
 
-## 6. Ejecución desde Terminal 
+### Consola del empleado
 
-Si se prefiere compilar y ejecutar todo el suite de pruebas directamente desde la línea de comandos:
+| Menú | Opciones | Requerimientos |
+|---|---|---|
+| Equipos y partidos internos (entrenador) | Ver mis equipos, programar partidos internos, registrar resultado y estadísticas | RF12, RF13, RF14 |
+| Entrenamientos (entrenador) | Planear sesiones, finalizarlas, registrar asistencia y evaluaciones | RF15, RF16 |
+| Tienda y cafetería | Compras con descuento de empleado | RF17, RF20 |
+| Turnos y sugerencias | Ver mis turnos, solicitar cambios de turno, sugerir productos | RF18, RF19, RF21 |
+| Torneos internos | Las mismas opciones del socio | HU_T3 a HU_T5, HU_T9, HU_T10 |
+
+### Consola del administrador
+
+| Menú | Opciones | Requerimientos |
+|---|---|---|
+| Equipos y jugadores | Crear equipos, asignar entrenador, inscribir y retirar jugadores, dar de baja equipos | RF22, RF23, RF24 |
+| Competencias externas | Crear competencias, rivales externos, inscribir equipos, programar partidos, registrar resultados y estadísticas, ver tablas | RF2, RF25, RF26, RF27 |
+| Academias y reservas | Inscribir socios, consultar reservas e instalaciones | RF6, RF36 |
+| Inventario de tienda y cafetería | Consultar inventario, mover productos, reabastecer y registrar productos | RF29, RF30, RF31 |
+| Turnos y sugerencias del personal | Publicar turnos, resolver solicitudes de cambio y sugerencias | RF32, RF33 |
+| Reportes y mensualidades | Historial global, reportes financiero y deportivo, registrar mensualidades | RF28, RF34, RF35 |
+| Torneos internos | Crear torneos, registrar participantes externos, inscribir y retirar, liberar cupos preferenciales, iniciar y registrar resultados | HU_T1 a HU_T9 |
+
+Las historias de usuario de los torneos internos están en `docs/historias-usuario-torneos.md`.
+
+## 5. Persistencia
+
+`CentralPersistencia` carga y guarda todo el club. Cada parte del club tiene su clase de persistencia y su archivo en `datos/` (por ejemplo, `PersistenciaTorneos` con `torneos.json`). La carpeta se busca sola, así que las consolas funcionan desde Eclipse o desde la terminal.
+
+## 6. Pruebas JUnit
+
+Las pruebas están en `test/`, con los mismos paquetes de `src/`:
+
+- **Unitarias**, en `test/modelo` y `test/persistencia`: prueban una clase del modelo sin gestor (por ejemplo, la tabla de una competencia, los formatos de torneo, las ventas o los turnos).
+- **De integración**, en `test/logica`: llaman a los gestores. Cada prueba empieza con el requerimiento que verifica (por ejemplo `rf8...` o `hut3...`), y casi todos los requerimientos tienen un caso aceptado y uno rechazado.
+
+Las pruebas no usan los archivos de `datos/`. Cada clase `ClubDePrueba...` arma un club pequeño en memoria con una fecha fija.
+
+Para correrlas: clic derecho sobre la carpeta `test`, **Run As > JUnit Test**.
+
+## 7. Ejecución desde la terminal
+
+Desde la carpeta `Proyecto 2/Entrega única`:
 
 ```bash
-# 1. Posicionarse en la carpeta de la Entrega 2
-cd "Entrega 2"
-
-# 2. Compilar todas las clases en una carpeta bin temporal o local
-find src -name "*.java" > /tmp/sources.txt
-javac -d bin -cp "lib/org.json-1.6-20240205.jar" @/tmp/sources.txt
-
-# 3. Ejecutar cualquiera de las consolas oficiales:
-java -cp "bin:lib/org.json-1.6-20240205.jar" pruebas.ConsolaPP1
-java -cp "bin:lib/org.json-1.6-20240205.jar" pruebas.ConsolaPP2
-java -cp "bin:lib/org.json-1.6-20240205.jar" pruebas.ConsolaPP3
-java -cp "bin:lib/org.json-1.6-20240205.jar" pruebas.ConsolaPP4
-java -cp "bin:lib/org.json-1.6-20240205.jar" pruebas.ConsolaPP5
-java -cp "bin:lib/org.json-1.6-20240205.jar" pruebas.ConsolaPP6
+javac -d bin -cp "lib/org.json-1.6-20240205.jar" $(find src -name "*.java")
+java -cp "bin:lib/org.json-1.6-20240205.jar" consola.ConsolaAdministrador
 ```
+
+Son comandos de macOS o Linux; en Windows el separador del classpath es `;` en lugar de `:`. Las otras consolas son `consola.ConsolaSocio` y `consola.ConsolaEmpleado`.

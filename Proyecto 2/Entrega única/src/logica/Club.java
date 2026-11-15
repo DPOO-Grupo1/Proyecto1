@@ -441,7 +441,7 @@ public class Club {
 		return false;
 	}
 
-	// Tienda (Área C)
+	// Tienda
 	public void agregarProducto(Producto producto) {
 		productos.add(producto);
 	}
@@ -518,7 +518,7 @@ public class Club {
 	    return codigos;
 	}
 	
-	// Personal (Área C)
+	// Personal
 	public HorarioAtencion getHorario() {
 	    return horario;
 	}

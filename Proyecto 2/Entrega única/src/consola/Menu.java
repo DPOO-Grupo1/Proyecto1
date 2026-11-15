@@ -7,7 +7,7 @@ import logica.Club;
 import modelo.usuarios.Usuario;
 
 /**
- * Un menú de un área para un rol (por ejemplo, "Deportes y competencias" para el socio).
+ * Un menú de un tema para un rol (por ejemplo, "Deportes y competencias" para el socio).
  * Cada menú lista sus opciones y ejecuta la elegida. Si un gestor rechaza la acción,
  * el menú muestra el motivo y vuelve a mostrar las opciones.
  * Para agregar un menú nuevo basta con heredar de esta clase y registrarlo en la consola del rol.

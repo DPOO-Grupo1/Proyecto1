@@ -1,7 +1,7 @@
 package excepciones;
 
 /**
- * Se lanza cuando los turnos no cumplen la cobertura mínima (área C).
+ * Se lanza cuando los turnos no cumplen la cobertura mínima.
  */
 public class CoberturaTurnosException extends ClubException {
 

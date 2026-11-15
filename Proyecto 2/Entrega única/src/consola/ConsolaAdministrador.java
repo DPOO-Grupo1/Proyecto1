@@ -45,7 +45,6 @@ public class ConsolaAdministrador extends Consola {
 		menus.add(new MenuCompetenciasAdministrador(this));
 		menus.add(new MenuAcademiasAdministrador(this));
 		
-		// Área C:
 		menus.add(new MenuTiendaAdministrador(this));
 		menus.add(new MenuPersonalAdministrador(this));
 		menus.add(new MenuReportesAdministrador(this));

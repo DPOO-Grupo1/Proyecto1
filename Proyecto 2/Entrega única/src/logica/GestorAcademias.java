@@ -27,7 +27,7 @@ import modelo.usuarios.Socio;
 import modelo.usuarios.Usuario;
 
 /**
- * Gestor del área de academias deportivas y reservas.
+ * Gestor de las academias deportivas y las reservas.
  */
 public class GestorAcademias extends Gestor {
 

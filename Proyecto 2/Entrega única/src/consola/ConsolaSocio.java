@@ -12,7 +12,7 @@ import modelo.usuarios.Socio;
 import modelo.usuarios.Usuario;
 
 /**
- * Consola del socio. Carga los datos, pide el login y muestra los menús de cada área.
+ * Consola del socio. Carga los datos, pide el login y muestra los menús del socio.
  * También la usan los estudiantes y externos registrados para los torneos, que solo ven ese menú.
  */
 public class ConsolaSocio extends Consola {

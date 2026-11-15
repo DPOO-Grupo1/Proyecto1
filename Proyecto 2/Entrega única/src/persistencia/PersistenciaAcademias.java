@@ -32,7 +32,7 @@ import modelo.academias.Reserva;
 import modelo.usuarios.Socio;
 
 /**
- * Guarda y carga los datos del Área B (Academias) en academias.json:
+ * Guarda y carga los datos de las academias en academias.json:
  * disciplinas, instalaciones deportivas, inscripciones con ELO,
  * reservas e historial de partidos de práctica con estadísticas.
  */

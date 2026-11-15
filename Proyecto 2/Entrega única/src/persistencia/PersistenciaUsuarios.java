@@ -24,7 +24,7 @@ import modelo.usuarios.Usuario;
 /**
  * Guarda los usuarios en usuarios.json: administradores, socios, empleados y participantes
  * externos de los torneos.
- * Es del núcleo común; las áreas B y C le agregan lo suyo (mensualidades, códigos de descuento).
+ * Las mensualidades y los códigos de descuento de los usuarios se guardan aparte, en tienda.json.
  */
 public class PersistenciaUsuarios implements IPersistenciaArea {
 

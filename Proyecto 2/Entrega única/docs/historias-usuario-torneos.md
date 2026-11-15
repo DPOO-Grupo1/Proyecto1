@@ -1,6 +1,6 @@
 # Historias de usuario: torneos internos
 
-Club Deportivo Séneca, Proyecto 2. Grupo 1, área A (deportes de conjunto, competencias y torneos).
+Club Deportivo Séneca, Proyecto 2. Grupo 1.
 
 Estas historias cubren los requerimientos nuevos de torneos recreativos y competitivos. Cada una indica sus entradas y salidas, sus criterios de aceptación y la prueba JUnit que la verifica (en `test/`). Las pruebas de integración están en `GestorTorneosTest` y tienen el prefijo de la historia en el nombre (por ejemplo `hut3...`).
 
@@ -198,6 +198,6 @@ Criterios de aceptación:
 2. Dado que el bono es de otra persona, o ya lo usé, cuando intento usarlo, entonces no se acepta.
 3. Dado que uso un bono en una compra, cuando se calcula el total, entonces no se suma con un código de descuento.
 
-INVEST: depende de HU_T8, pequeña y verificable. El uso en la compra lo implementa el área C en la tienda.
+INVEST: depende de HU_T8, pequeña y verificable. El uso del bono en una compra está en `historias-usuario-tienda-personal.md`.
 
 Pruebas: `hut10ElSocioVeSusBonosYSoloElPuedeUsarlos`. La persistencia de torneos y bonos se prueba en `PersistenciaTorneosTest`.

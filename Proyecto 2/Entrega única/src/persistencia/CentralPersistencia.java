@@ -9,7 +9,7 @@ import excepciones.PersistenciaException;
 import logica.Club;
 
 /**
- * Carga y guarda todo el club. Cada área tiene su archivo dentro de la carpeta de datos,
+ * Carga y guarda todo el club. Cada parte del club tiene su archivo dentro de la carpeta de datos,
  * y se cargan en orden porque unas dependen de otras (los equipos necesitan a los socios,
  * las competencias necesitan a los equipos, los torneos necesitan casi todo).
  */

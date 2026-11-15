@@ -32,13 +32,13 @@ import persistencia.PersistenciaAcademias;
 import persistencia.PersistenciaEntrenamiento;
 
 /**
- * Prueba integral de persistencia del Área B: Academias y Entrenamiento.
+ * Prueba integral de persistencia de academias y entrenamiento.
  * Valida el ciclo completo de guardado y carga en archivos JSON.
  */
 public class PruebaPersistenciaAreaB {
 
 	public static void main(String[] args) {
-		System.out.println("=== Prueba de persistencia del área B (JSON) ===");
+		System.out.println("=== Prueba de persistencia de academias y entrenamiento (JSON) ===");
 
 		try {
 			String carpeta = "salida_pruebas";

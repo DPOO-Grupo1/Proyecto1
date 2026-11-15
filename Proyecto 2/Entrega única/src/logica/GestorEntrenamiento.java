@@ -26,7 +26,7 @@ import modelo.usuarios.Socio;
 import modelo.usuarios.Usuario;
 
 /**
- * Gestor del área de entrenamientos.
+ * Gestor de los entrenamientos.
  * Cubre RF15 (planear sesiones individuales, grupales y de equipo)
  * y RF16 (asistencia y evaluaciones de desempeño).
  */

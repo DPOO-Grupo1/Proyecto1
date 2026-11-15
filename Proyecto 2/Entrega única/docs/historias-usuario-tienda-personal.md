@@ -1,12 +1,12 @@
 # Historias de usuario: tienda, cafetería, personal y reportes
 
-Club Deportivo Séneca, Proyecto 2. Grupo 1, área C (tienda, cafetería, personal y reportes).
+Club Deportivo Séneca, Proyecto 2. Grupo 1.
 
-Estas historias son las del banco de la Entrega 1 para el área C (RF3 a RF5, RF17 a RF21 y RF28 a RF35). No se reescriben: aquí se indica, para cada una, desde dónde se usa en la consola, sus entradas y salidas, sus criterios de aceptación, los cambios frente a la Entrega 1 y la prueba JUnit que la verifica (en `test/`). Las pruebas de integración están en `GestorTiendaTest`, `GestorPersonalTest` y `GestorReportesTest` y tienen el requerimiento al inicio del nombre (por ejemplo `rf33...`). Al final está la parte de HU_T10 (usar el bono de torneo) que implementa el área C.
+Estas historias son las del banco de la Entrega 1 para la tienda, la cafetería, el personal y los reportes (RF3 a RF5, RF17 a RF21 y RF28 a RF35). No se reescriben: aquí se indica, para cada una, desde dónde se usa en la consola, sus entradas y salidas, sus criterios de aceptación, los cambios frente a la Entrega 1 y la prueba JUnit que la verifica (en `test/`). Las pruebas de integración están en `GestorTiendaTest`, `GestorPersonalTest` y `GestorReportesTest` y tienen el requerimiento al inicio del nombre (por ejemplo `rf33...`). Al final está la parte de HU_T10 que toca la tienda: usar el bono de torneo en una compra.
 
 ## Supuestos
 
-El análisis deja abiertos algunos puntos. Estas son las decisiones del grupo para el área C:
+El análisis deja abiertos algunos puntos. Estas son las decisiones del grupo para esta parte:
 
 1. **Descuento de empleado.** Todo código de descuento pertenece a un empleado. Da 15 % si lo usa su dueño y 8 % si lo usa cualquier otro cliente. Un código que no existe o está inactivo se rechaza.
 2. **No acumulable.** Una compra lleva como máximo un descuento: un código o un bono de torneo, no los dos. Los puntos de fidelidad no cuentan como descuento y se pueden usar con cualquiera de ellos.
@@ -313,7 +313,7 @@ Pruebas: `rf35RegistraElPagoYElSocioQuedaAlDia`, `rf35RechazaPagoRepetidoValorCe
 
 ## HU_T10 en la tienda. Usar el bono de torneo en una compra
 
-La historia HU_T10 está en `historias-usuario-torneos.md`. El área C implementa la parte de usar el bono al comprar.
+La historia HU_T10 está en `historias-usuario-torneos.md`. Aquí solo está la parte de usar el bono al comprar.
 
 - **Entradas:** al comprar en la tienda o la cafetería, si el usuario tiene bonos sin usar, si quiere usar uno (s/n) y cuál (elegido de la lista). Para consultarlos, Tienda y cafetería, Ver mis bonos de torneos.
 - **Salidas:** la compra con el porcentaje del bono como descuento y el bono marcado como usado, o el motivo del rechazo.
