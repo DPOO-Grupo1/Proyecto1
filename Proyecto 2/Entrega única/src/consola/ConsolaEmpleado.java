@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import consola.deportes.MenuDeportesEntrenador;
+import consola.entrenamiento.MenuEntrenamientoEntrenador;
 import consola.tienda.MenuTiendaEmpleado;
 import consola.torneos.MenuTorneosJugador;
 import consola.personal.MenuTurnosEmpleado;
@@ -42,8 +43,8 @@ public class ConsolaEmpleado extends Consola {
 		List<Menu> menus = new ArrayList<Menu>();
 		if (usuario instanceof Entrenador) {
 			menus.add(new MenuDeportesEntrenador(this));
+			menus.add(new MenuEntrenamientoEntrenador(this));
 		}
-		// Área B: menus.add(new MenuEntrenamientoEntrenador(this));
 		
 		menus.add(new MenuTiendaEmpleado(this));
 		menus.add(new MenuTurnosEmpleado(this));
