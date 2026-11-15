@@ -6,7 +6,7 @@
     <coordinates>
       <x>-40</x>
       <y>-60</y>
-      <w>5642</w>
+      <w>7900</w>
       <h>2770</h>
     </coordinates>
     <panel_attributes>modelo
@@ -19,7 +19,7 @@ fontsize=16</panel_attributes>
       <x>0</x>
       <y>2870</y>
       <w>902</w>
-      <h>624</h>
+      <h>774</h>
     </coordinates>
     <panel_attributes>logica
 fontsize=16</panel_attributes>
@@ -52,10 +52,10 @@ fontsize=16</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>5322</x>
+      <x>7600</x>
       <y>-420</y>
       <w>260</w>
-      <h>340</h>
+      <h>370</h>
     </coordinates>
     <panel_attributes>Color de cada subpaquete de modelo
 bg=white</panel_attributes>
@@ -64,7 +64,7 @@ bg=white</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5342</x>
+      <x>7620</x>
       <y>-370</y>
       <w>200</w>
       <h>26</h>
@@ -76,7 +76,7 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5342</x>
+      <x>7620</x>
       <y>-340</y>
       <w>200</w>
       <h>26</h>
@@ -88,7 +88,7 @@ bg=#DDEBF7</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5342</x>
+      <x>7620</x>
       <y>-310</y>
       <w>200</w>
       <h>26</h>
@@ -100,7 +100,7 @@ bg=#E2F0D9</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5342</x>
+      <x>7620</x>
       <y>-280</y>
       <w>200</w>
       <h>26</h>
@@ -112,7 +112,7 @@ bg=#FCE4D6</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5342</x>
+      <x>7620</x>
       <y>-250</y>
       <w>200</w>
       <h>26</h>
@@ -124,7 +124,7 @@ bg=#EDE7F6</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5342</x>
+      <x>7620</x>
       <y>-220</y>
       <w>200</w>
       <h>26</h>
@@ -136,7 +136,7 @@ bg=#FFF2CC</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5342</x>
+      <x>7620</x>
       <y>-190</y>
       <w>200</w>
       <h>26</h>
@@ -148,7 +148,7 @@ bg=#F4CCCC</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5342</x>
+      <x>7620</x>
       <y>-160</y>
       <w>200</w>
       <h>26</h>
@@ -160,7 +160,7 @@ bg=#D0F0F0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>5342</x>
+      <x>7620</x>
       <y>-130</y>
       <w>200</w>
       <h>26</h>
@@ -177,7 +177,7 @@ bg=#EDEDED</panel_attributes>
       <w>480</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>Diagrama de alto nivel (Entrega 2)
+    <panel_attributes>Diagrama de alto nivel (Proyecto 2)
 --
 Todas las clases y sus relaciones, sin atributos ni métodos.
 Los atributos y métodos están en el diagrama de clases de diseño.
@@ -190,11 +190,12 @@ bg=yellow</panel_attributes>
       <x>3446</x>
       <y>3908</y>
       <w>470</w>
-      <h>300</h>
+      <h>340</h>
     </coordinates>
     <panel_attributes>Carpeta datos/ (fuera del código fuente)
 --
-usuarios.json: administradores, socios, empleados
+usuarios.json: administradores, socios, empleados,
+   participantes externos
 deportes.json: deportes, categorías, equipos, jugadores,
    partidos internos (con estadísticas y suspensiones)
 competencias.json: competencias, participantes, nóminas,
@@ -205,6 +206,7 @@ entrenamiento.json: sesiones, convocatorias
 tienda.json: productos, existencias, ventas, códigos,
    mensualidades
 personal.json: turnos, solicitudes, sugerencias
+torneos.json: torneos, inscripciones, encuentros, bonos
 --
 No se guardan: tablas, rankings y reportes (se calculan).</panel_attributes>
     <additional_attributes></additional_attributes>
@@ -3068,5 +3070,1138 @@ r2=-areas</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>265.0;10.0;265.0;69.0;157.0;69.0;157.0;385.0;10.0;385.0;10.0;444.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7620</x>
+      <y>-100</y>
+      <w>200</w>
+      <h>26</h>
+    </coordinates>
+    <panel_attributes>modelo.torneos
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6300</x>
+      <y>150</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Torneo/
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6000</x>
+      <y>400</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>TorneoConjunto
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6450</x>
+      <y>400</y>
+      <w>155</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>TorneoIndividual
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6060</x>
+      <y>200</y>
+      <w>350</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>340.0;10.0;340.0;130.0;10.0;130.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6390</x>
+      <y>200</y>
+      <w>147</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0;137.0;130.0;137.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6900</x>
+      <y>150</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/TipoTorneo/
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6800</x>
+      <y>400</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Recreativo
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7020</x>
+      <y>400</y>
+      <w>117</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Competitivo
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6845</x>
+      <y>200</y>
+      <w>120</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;110.0;130.0;10.0;130.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6945</x>
+      <y>200</y>
+      <w>143</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0;133.0;130.0;133.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7420</x>
+      <y>150</y>
+      <w>132</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/FormatoTorneo/
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7300</x>
+      <y>400</y>
+      <w>155</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>TodosContraTodos
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7520</x>
+      <y>400</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EliminacionDirecta
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7367</x>
+      <y>200</y>
+      <w>129</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>119.0;10.0;119.0;130.0;10.0;130.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7476</x>
+      <y>200</y>
+      <w>139</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0;129.0;130.0;129.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6300</x>
+      <y>750</y>
+      <w>170</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/InscripcionTorneo/
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6080</x>
+      <y>1000</y>
+      <w>163</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>InscripcionEquipo
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6450</x>
+      <y>1000</y>
+      <w>193</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>InscripcionIndividual
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6151</x>
+      <y>800</y>
+      <w>244</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>234.0;10.0;234.0;120.0;10.0;120.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6375</x>
+      <y>800</y>
+      <w>181</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0;171.0;120.0;171.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6900</x>
+      <y>760</y>
+      <w>148</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EncuentroTorneo
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5850</x>
+      <y>760</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>FilaTorneo
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7000</x>
+      <y>1000</y>
+      <w>132</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>BonoDescuento
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7400</x>
+      <y>750</y>
+      <w>125</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+EstadoTorneo
+bg=#FAD7A0</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6490</x>
+      <y>160</y>
+      <w>420</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-tipo</panel_attributes>
+    <additional_attributes>10.0;10.0;410.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6390</x>
+      <y>100</y>
+      <w>1106</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-formato</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0;1096.0;10.0;1096.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6375</x>
+      <y>190</y>
+      <w>295</w>
+      <h>570</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-inscripciones</panel_attributes>
+    <additional_attributes>125.0;10.0;285.0;10.0;285.0;470.0;10.0;470.0;10.0;560.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6490</x>
+      <y>175</y>
+      <w>494</w>
+      <h>595</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-encuentros</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0;190.0;465.0;484.0;465.0;484.0;585.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6460</x>
+      <y>760</y>
+      <w>450</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-local</panel_attributes>
+    <additional_attributes>440.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6460</x>
+      <y>790</y>
+      <w>450</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..1
+r2=-visitante</panel_attributes>
+    <additional_attributes>440.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5950</x>
+      <y>770</y>
+      <w>360</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-participante</panel_attributes>
+    <additional_attributes>10.0;10.0;350.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3876</x>
+      <y>30</y>
+      <w>2174</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-categoria</panel_attributes>
+    <additional_attributes>2164.0;370.0;2164.0;10.0;44.0;10.0;44.0;266.0;10.0;266.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3861</x>
+      <y>20</y>
+      <w>2249</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-deporte</panel_attributes>
+    <additional_attributes>2239.0;380.0;2239.0;10.0;79.0;10.0;79.0;510.0;10.0;510.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3489</x>
+      <y>40</y>
+      <w>2682</w>
+      <h>1070</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-equipo</panel_attributes>
+    <additional_attributes>2672.0;1000.0;2672.0;1060.0;2311.0;1060.0;2311.0;10.0;71.0;10.0;71.0;490.0;10.0;490.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1416</x>
+      <y>1005</y>
+      <w>5120</w>
+      <h>185</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-jugador</panel_attributes>
+    <additional_attributes>5110.0;35.0;5110.0;175.0;154.0;175.0;154.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1416</x>
+      <y>1020</y>
+      <w>5160</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..1
+r2=-pareja</panel_attributes>
+    <additional_attributes>5150.0;20.0;5150.0;170.0;174.0;170.0;174.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1416</x>
+      <y>1030</y>
+      <w>5660</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-dueno</panel_attributes>
+    <additional_attributes>5650.0;10.0;5650.0;170.0;194.0;170.0;194.0;15.0;10.0;15.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1998</x>
+      <y>430</y>
+      <w>4732</w>
+      <h>2250</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-disciplina</panel_attributes>
+    <additional_attributes>4529.0;10.0;4529.0;50.0;4722.0;50.0;4722.0;2240.0;42.0;2240.0;42.0;1938.0;10.0;1938.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1940</x>
+      <y>1000</y>
+      <w>178</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ParticipanteExterno
+bg=light_gray</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1351</x>
+      <y>1030</y>
+      <w>688</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;60.0;678.0;60.0;678.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>75</x>
+      <y>3520</y>
+      <w>132</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>GestorTorneos</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>265</x>
+      <y>3520</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>GestorUsuarios</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>35</x>
+      <y>3040</y>
+      <w>276</w>
+      <h>490</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>266.0;10.0;266.0;69.0;10.0;69.0;10.0;430.0;106.0;430.0;106.0;480.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>35</x>
+      <y>3040</y>
+      <w>310</w>
+      <h>490</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>266.0;10.0;266.0;69.0;10.0;69.0;10.0;430.0;300.0;430.0;300.0;480.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2760</x>
+      <y>3368</y>
+      <w>178</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>PersistenciaTorneos</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1760</x>
+      <y>3048</y>
+      <w>1420</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;1410.0;69.0;1410.0;282.0;1089.0;282.0;1089.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2684</x>
+      <y>3398</y>
+      <w>175</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-archivoJSON</panel_attributes>
+    <additional_attributes>165.0;10.0;165.0;190.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>4020</y>
+      <w>3350</w>
+      <h>600</h>
+    </coordinates>
+    <panel_attributes>consola
+fontsize=16</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>4100</y>
+      <w>130</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Consola/</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2000</x>
+      <y>4100</y>
+      <w>130</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Menu/</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>4120</y>
+      <w>1590</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=#consola</panel_attributes>
+    <additional_attributes>1580.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>4270</y>
+      <w>125</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ConsolaSocio</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>92</x>
+      <y>4150</y>
+      <w>283</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>273.0;10.0;273.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>185</x>
+      <y>4270</y>
+      <w>148</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ConsolaEmpleado</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>249</x>
+      <y>4150</y>
+      <w>126</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>116.0;10.0;116.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>353</x>
+      <y>4270</y>
+      <w>186</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ConsolaAdministrador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>355</x>
+      <y>4150</y>
+      <w>101</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;91.0;70.0;91.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>4270</y>
+      <w>216</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/MenuConsultaCompetencias/</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>798</x>
+      <y>4150</y>
+      <w>1277</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>1267.0;10.0;1267.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>931</x>
+      <y>4270</y>
+      <w>216</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuEquiposAdministrador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1029</x>
+      <y>4150</y>
+      <w>1046</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>1036.0;10.0;1036.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1162</x>
+      <y>4270</y>
+      <w>201</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuDeportesEntrenador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1252</x>
+      <y>4150</y>
+      <w>823</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>813.0;10.0;813.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1378</x>
+      <y>4270</y>
+      <w>117</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/MenuTorneos/</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1426</x>
+      <y>4150</y>
+      <w>649</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>639.0;10.0;639.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1510</x>
+      <y>4270</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuAcademiasSocio</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1585</x>
+      <y>4150</y>
+      <w>490</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>480.0;10.0;480.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1695</x>
+      <y>4270</y>
+      <w>231</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuAcademiasAdministrador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1800</x>
+      <y>4150</y>
+      <w>275</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>265.0;10.0;265.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1941</x>
+      <y>4270</y>
+      <w>239</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuEntrenamientoEntrenador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2050</x>
+      <y>4150</y>
+      <w>25</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>15.0;10.0;15.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2195</x>
+      <y>4270</y>
+      <w>148</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuTiendaSocio</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2055</x>
+      <y>4150</y>
+      <w>224</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;214.0;70.0;214.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2358</x>
+      <y>4270</y>
+      <w>208</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuTiendaAdministrador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2055</x>
+      <y>4150</y>
+      <w>417</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;407.0;70.0;407.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2581</x>
+      <y>4270</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuTurnosEmpleado</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2055</x>
+      <y>4150</y>
+      <w>621</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;611.0;70.0;611.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2766</x>
+      <y>4270</y>
+      <w>224</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuPersonalAdministrador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2055</x>
+      <y>4150</y>
+      <w>833</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;823.0;70.0;823.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3005</x>
+      <y>4270</y>
+      <w>224</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuReportesAdministrador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2055</x>
+      <y>4150</y>
+      <w>1072</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;1062.0;70.0;1062.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>4430</y>
+      <w>163</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuDeportesSocio</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>711</x>
+      <y>4320</y>
+      <w>107</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>97.0;10.0;97.0;70.0;10.0;70.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>818</x>
+      <y>4430</y>
+      <w>254</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuCompetenciasAdministrador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>798</x>
+      <y>4320</y>
+      <w>157</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;147.0;70.0;147.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1318</x>
+      <y>4430</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuTorneosJugador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1393</x>
+      <y>4320</y>
+      <w>53</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>43.0;10.0;43.0;70.0;10.0;70.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1503</x>
+      <y>4430</y>
+      <w>216</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuTorneosAdministrador</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1426</x>
+      <y>4320</y>
+      <w>195</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;185.0;70.0;185.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2195</x>
+      <y>4430</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MenuTiendaEmpleado</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2259</x>
+      <y>4300</y>
+      <w>31</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;21.0;90.0;21.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>4430</y>
+      <w>163</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>LectorEstadistica</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>141</x>
+      <y>4300</y>
+      <w>1131</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-lector</panel_attributes>
+    <additional_attributes>1121.0;10.0;1121.0;260.0;10.0;260.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>81</x>
+      <y>4460</y>
+      <w>874</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-lector</panel_attributes>
+    <additional_attributes>864.0;10.0;864.0;80.0;10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>3640</y>
+      <w>20</w>
+      <h>390</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+los menús llaman a los gestores</panel_attributes>
+    <additional_attributes>10.0;380.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1290</x>
+      <y>3698</y>
+      <w>20</w>
+      <h>332</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+carga al iniciar y guarda al salir</panel_attributes>
+    <additional_attributes>10.0;322.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

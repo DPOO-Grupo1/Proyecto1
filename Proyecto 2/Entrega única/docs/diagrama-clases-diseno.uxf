@@ -18,7 +18,7 @@ fontsize=16</panel_attributes>
     <coordinates>
       <x>4600</x>
       <y>3800</y>
-      <w>3094</w>
+      <w>3640</w>
       <h>1248</h>
     </coordinates>
     <panel_attributes>persistencia
@@ -31,7 +31,7 @@ fontsize=16</panel_attributes>
       <x>6100</x>
       <y>1250</y>
       <w>3212</w>
-      <h>1974</h>
+      <h>2084</h>
     </coordinates>
     <panel_attributes>logica
 fontsize=16</panel_attributes>
@@ -42,16 +42,17 @@ fontsize=16</panel_attributes>
     <coordinates>
       <x>0</x>
       <y>-230</y>
-      <w>480</w>
-      <h>170</h>
+      <w>500</w>
+      <h>200</h>
     </coordinates>
-    <panel_attributes>Diagrama de clases de diseño (Entrega 2)
+    <panel_attributes>Diagrama de clases de diseño (Proyecto 2)
 --
-Sale del código de Entrega 2/src (paquetes modelo, logica,
-persistencia y excepciones). No se muestran constructores ni
-getters/setters simples. Club guarda las listas de todo el
-dominio (ver diagrama de alto nivel), por eso sus colecciones
-son atributos y no líneas. Clases en gris: núcleo común.
+Sale del código de Proyecto 2/Entrega única/src (paquetes modelo,
+logica, persistencia, excepciones y consola). No se muestran
+constructores ni getters/setters simples. Club guarda las listas
+de todo el dominio (ver diagrama de alto nivel), por eso sus
+colecciones son atributos y no líneas. Clases en gris: núcleo común.
+Clases en azul: nuevas del Proyecto 2.
 bg=yellow</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
@@ -542,8 +543,8 @@ bg=light_gray</panel_attributes>
     <coordinates>
       <x>861</x>
       <y>860</y>
-      <w>260</w>
-      <h>120</h>
+      <w>267</w>
+      <h>137</h>
     </coordinates>
     <panel_attributes>CodigoDescuento
 --
@@ -551,16 +552,17 @@ bg=light_gray</panel_attributes>
 -activo: boolean
 --
 +porcentajePara(Cliente): double
-+desactivar(): void</panel_attributes>
++desactivar(): void
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>841</x>
-      <y>1308</y>
-      <w>300</w>
-      <h>260</h>
+      <y>1243</y>
+      <w>305</w>
+      <h>325</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 /Venta/
@@ -568,6 +570,8 @@ bg=light_gray</panel_attributes>
 #fechaHora: LocalDateTime
 #montoTotal: double
 #puntosRedimidos: int
+#idBono: int
+#porcentajeBono: int
 --
 +agregarDetalle(Producto, int): void
 +aplicarCodigo(CodigoDescuento): void
@@ -577,7 +581,9 @@ bg=light_gray</panel_attributes>
 +getDescuento(): double
 +calcularPropina(): double
 +calcularTotal(): double
-+calcularPuntosGenerados(): int</panel_attributes>
++calcularPuntosGenerados(): int
++aplicarBono(int, int): void
++tieneBono(): boolean</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -586,14 +592,15 @@ bg=light_gray</panel_attributes>
       <x>876</x>
       <y>1770</y>
       <w>230</w>
-      <h>100</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>VentaCafeteria
 --
 -porcentajePropina: int
 --
 +calcularImpuesto(): double
-+calcularPropina(): double</panel_attributes>
++calcularPropina(): double
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -602,12 +609,13 @@ bg=light_gray</panel_attributes>
       <x>1406</x>
       <y>1770</y>
       <w>230</w>
-      <h>70</h>
+      <h>87</h>
     </coordinates>
     <panel_attributes>VentaTienda
 --
 --
-+calcularImpuesto(): double</panel_attributes>
++calcularImpuesto(): double
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -647,13 +655,14 @@ bg=light_gray</panel_attributes>
     <coordinates>
       <x>90</x>
       <y>396</y>
-      <w>140</w>
-      <h>70</h>
+      <w>168</w>
+      <h>87</h>
     </coordinates>
     <panel_attributes>Ubicacion
 --
 -nombre: String
---</panel_attributes>
+--
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -661,13 +670,14 @@ bg=light_gray</panel_attributes>
     <coordinates>
       <x>80</x>
       <y>1770</y>
-      <w>160</w>
-      <h>70</h>
+      <w>168</w>
+      <h>87</h>
     </coordinates>
     <panel_attributes>Articulo
 --
 -categoria: String
---</panel_attributes>
+--
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -688,15 +698,16 @@ bg=light_gray</panel_attributes>
     <coordinates>
       <x>65</x>
       <y>2176</y>
-      <w>190</w>
-      <h>100</h>
+      <w>191</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>Bebida
 --
 -temperatura: String
 -tamanio: int
 --
-+esCaliente(): boolean</panel_attributes>
++esCaliente(): boolean
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -705,12 +716,13 @@ bg=light_gray</panel_attributes>
       <x>400</x>
       <y>2176</y>
       <w>210</w>
-      <h>70</h>
+      <h>87</h>
     </coordinates>
     <panel_attributes>Snack
 --
 -alergenos: List&lt;String&gt;
---</panel_attributes>
+--
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -734,8 +746,8 @@ bg=light_gray</panel_attributes>
     <coordinates>
       <x>2238</x>
       <y>396</y>
-      <w>380</w>
-      <h>190</h>
+      <w>381</w>
+      <h>207</h>
     </coordinates>
     <panel_attributes>Turno
 --
@@ -748,7 +760,8 @@ bg=light_gray</panel_attributes>
 +tieneSolicitudPendiente(): boolean
 +seSolapaCon(Turno): boolean
 +cubre(DayOfWeek, LocalTime): boolean
-+cambiar(DayOfWeek, LocalTime, LocalTime): void</panel_attributes>
++cambiar(DayOfWeek, LocalTime, LocalTime): void
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -757,7 +770,7 @@ bg=light_gray</panel_attributes>
       <x>3077</x>
       <y>70</y>
       <w>230</w>
-      <h>180</h>
+      <h>197</h>
     </coordinates>
     <panel_attributes>SolicitudCambioTurno
 --
@@ -769,7 +782,8 @@ bg=light_gray</panel_attributes>
 --
 +estaPendiente(): boolean
 +aprobar(): void
-+rechazar(): void</panel_attributes>
++rechazar(): void
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -777,8 +791,8 @@ bg=light_gray</panel_attributes>
     <coordinates>
       <x>886</x>
       <y>396</y>
-      <w>210</w>
-      <h>190</h>
+      <w>214</w>
+      <h>207</h>
     </coordinates>
     <panel_attributes>Sugerencia
 --
@@ -791,7 +805,8 @@ bg=light_gray</panel_attributes>
 --
 +estaPendiente(): boolean
 +aprobar(): void
-+rechazar(String): void</panel_attributes>
++rechazar(String): void
++toString(): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -1107,7 +1122,7 @@ _+FACTOR_K: int_
       <x>1766</x>
       <y>1770</y>
       <w>290</w>
-      <h>120</h>
+      <h>137</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 /Usuario/
@@ -1116,6 +1131,7 @@ _+FACTOR_K: int_
 #password: String
 --
 +verificarPassword(String): boolean
++getNombreCompleto(): String
 bg=light_gray</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
@@ -1549,17 +1565,19 @@ bg=#FFF8E1</panel_attributes>
     <coordinates>
       <x>4670</x>
       <y>3928</y>
-      <w>360</w>
-      <h>130</h>
+      <w>366</w>
+      <h>163</h>
     </coordinates>
     <panel_attributes>CentralPersistencia
 --
 -archivos: List&lt;String&gt;
+_+CARPETA_DATOS: String_
 --
 -agregarArea(IPersistenciaArea, String): void
 +cargarClub(String): Club
 +guardarClub(Club, String): void
--verificarIdsPartidos(Club): void</panel_attributes>
+-verificarIdsPartidos(Club): void
+_+carpetaPorDefecto(): String_</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -1863,20 +1881,24 @@ bg=#FFF8E1</panel_attributes>
     <coordinates>
       <x>6170</x>
       <y>2084</y>
-      <w>660</w>
-      <h>180</h>
+      <w>738</w>
+      <h>245</h>
     </coordinates>
     <panel_attributes>GestorTienda
 --
 --
 +comprarEnTienda(Usuario, Map&lt;String, Integer&gt;, Integer, int): VentaTienda
 +comprarEnCafeteria(Usuario, Map&lt;String, Integer&gt;, Integer, int, int): VentaCafeteria
++comprarEnTienda(Usuario, Map&lt;String, Integer&gt;, Integer, int, Integer): VentaTienda
++comprarEnCafeteria(Usuario, Map&lt;String, Integer&gt;, Integer, int, int, Integer): VentaCafeteria
 +consultarAlergenos(Usuario, Map&lt;String, Integer&gt;): List&lt;String&gt;
 +reabastecer(Usuario, String, String, int): void
 +registrarProducto(Usuario, Producto, String, int): void
 +consultarInventario(Usuario, String): Map&lt;Producto, Integer&gt;
 +moverProductos(Usuario, String, String, String, int): void
--estaEnInstalacionRestringida(Cliente): boolean</panel_attributes>
+-estaEnInstalacionRestringida(Cliente): boolean
+-validarBono(Cliente, Integer, Integer): BonoDescuento
+-ahora(): LocalDateTime</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -1906,8 +1928,8 @@ bg=#FFF8E1</panel_attributes>
     <coordinates>
       <x>7792</x>
       <y>2084</y>
-      <w>570</w>
-      <h>130</h>
+      <w>578</w>
+      <h>147</h>
     </coordinates>
     <panel_attributes>GestorReportes
 --
@@ -1916,7 +1938,8 @@ bg=#FFF8E1</panel_attributes>
 +consultarHistorial(Usuario, FiltroHistorial): Historial
 +generarReporteFinanciero(Usuario, Periodo, LocalDate): ReporteFinanciero
 +generarReporteDeportivo(Usuario, Periodo, LocalDate): ReporteDeportivo
--enRango(LocalDate, LocalDate, LocalDate): boolean</panel_attributes>
+-enRango(LocalDate, LocalDate, LocalDate): boolean
+-rankingDe(Disciplina): List&lt;Inscripcion&gt;</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
   <element>
@@ -1924,8 +1947,8 @@ bg=#FFF8E1</panel_attributes>
     <coordinates>
       <x>8557</x>
       <y>2084</y>
-      <w>590</w>
-      <h>1040</h>
+      <w>601</w>
+      <h>1184</h>
     </coordinates>
     <panel_attributes>Club
 --
@@ -1949,6 +1972,8 @@ bg=#FFF8E1</panel_attributes>
 -turnos: List&lt;Turno&gt;
 -sugerencias: List&lt;Sugerencia&gt;
 -horario: HorarioAtencion
+-torneos: List&lt;Torneo&gt;
+-bonos: List&lt;BonoDescuento&gt;
 --
 +agregarUsuario(Usuario): void
 +existeUsuario(String): boolean
@@ -1992,6 +2017,13 @@ bg=#FFF8E1</panel_attributes>
 +agregarCodigo(CodigoDescuento): void
 +buscarCodigo(int): CodigoDescuento
 +agregarSugerencia(Sugerencia): void
++agregarTorneo(Torneo): void
++existeTorneo(String): boolean
++buscarTorneo(String): Torneo
++agregarBono(BonoDescuento): void
++siguienteIdBono(): int
++buscarBono(int): BonoDescuento
++getBonosDe(Usuario): List&lt;BonoDescuento&gt;
 -normalizar(String): String</panel_attributes>
     <additional_attributes></additional_attributes>
   </element>
@@ -2338,15 +2370,15 @@ r2=-categoria</panel_attributes>
     <coordinates>
       <x>1009</x>
       <y>1169</y>
-      <w>850</w>
-      <h>159</h>
+      <w>840</w>
+      <h>149</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
 m1=1
 m2=0..*
 r1=#cliente
 r2=#compras</panel_attributes>
-    <additional_attributes>830.1;139.0;830.1;10.0;10.0;10.0;10.0;139.0</additional_attributes>
+    <additional_attributes>830.0;139.0;830.0;10.0;10.0;10.0;10.0;74.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -2366,15 +2398,15 @@ r2=-dueno</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>939</x>
-      <y>970</y>
-      <w>34</w>
-      <h>358</h>
+      <y>987</y>
+      <w>24</w>
+      <h>266</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=*
 m2=0..1
 r2=#codigo</panel_attributes>
-    <additional_attributes>10.0;338.0;10.0;209.0;13.7;209.0;13.7;10.0</additional_attributes>
+    <additional_attributes>10.0;256.0;10.0;192.0;14.0;192.0;14.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -2521,14 +2553,14 @@ r2=~producto</panel_attributes>
     <coordinates>
       <x>478</x>
       <y>1169</y>
-      <w>422</w>
-      <h>159</h>
+      <w>412</w>
+      <h>149</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
 m2=1..*
 r2=#detalles</panel_attributes>
-    <additional_attributes>401.9;139.0;401.9;10.0;10.0;10.0;10.0;139.0</additional_attributes>
+    <additional_attributes>402.0;74.0;402.0;10.0;10.0;10.0;10.0;139.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -2575,31 +2607,31 @@ r2=-disciplina</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>925</x>
-      <y>576</y>
-      <w>937</w>
-      <h>304</h>
+      <y>593</y>
+      <w>927</w>
+      <h>277</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
 m1=1
 m2=0..*
 r1=-empleado
 r2=-sugerencias</panel_attributes>
-    <additional_attributes>916.6;284.0;916.6;169.0;10.0;169.0;10.0;10.0</additional_attributes>
+    <additional_attributes>917.0;267.0;917.0;152.0;10.0;152.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1935</x>
-      <y>576</y>
-      <w>475</w>
-      <h>304</h>
+      <y>593</y>
+      <w>465</w>
+      <h>277</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
 m1=1
 m2=0..*
 r1=-empleado
 r2=-turnos</panel_attributes>
-    <additional_attributes>10.0;284.0;10.0;183.0;455.5;183.0;455.5;10.0</additional_attributes>
+    <additional_attributes>10.0;267.0;10.0;166.0;455.0;166.0;455.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -2810,15 +2842,15 @@ r2=-producto</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>101</x>
-      <y>456</y>
-      <w>63</w>
-      <h>424</h>
+      <y>473</y>
+      <w>53</w>
+      <h>397</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=*
 m2=1
 r2=-ubicacion</panel_attributes>
-    <additional_attributes>43.3;404.0;43.3;289.0;10.0;289.0;10.0;10.0</additional_attributes>
+    <additional_attributes>43.0;387.0;43.0;272.0;10.0;272.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -3138,16 +3170,16 @@ r2=-convocados</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2384</x>
-      <y>240</y>
-      <w>772</w>
-      <h>176</h>
+      <y>257</y>
+      <w>762</w>
+      <h>149</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
 m1=0..*
 m2=1
 r1=-solicitudes
 r2=-turno</panel_attributes>
-    <additional_attributes>751.8;10.0;751.8;69.0;10.0;69.0;10.0;156.0</additional_attributes>
+    <additional_attributes>752.0;10.0;752.0;52.0;10.0;52.0;10.0;139.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -3560,5 +3592,1402 @@ r2=-areas</panel_attributes>
 m2=1
 r2=#club</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;83.0;408.0;83.0;408.0;535.0;1516.5;535.0;1516.5;594.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>6945</x>
+      <y>-300</y>
+      <w>1985</w>
+      <h>1380</h>
+    </coordinates>
+    <panel_attributes>modelo.torneos
+fontsize=16</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7000</x>
+      <y>-200</y>
+      <w>410</w>
+      <h>512</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Torneo/
+--
+_+PORCENTAJE_PREFERENCIAL: int_
+#nombre: String
+#fecha: LocalDate
+#cupos: int
+#estado: EstadoTorneo
+#preferencialesLiberados: boolean
+--
++estaAbierto(): boolean
++getCuposReservados(): int
++liberarCuposPreferenciales(): void
++getCuposPreferencialesLibres(): int
++getCuposRegularesLibres(): int
++contarPreferenciales(): int
++agregarInscripcion(InscripcionTorneo): void
++retirarInscripcion(InscripcionTorneo): void
++buscarInscripcionDe(Usuario): InscripcionTorneo
++buscarInscripcion(String): InscripcionTorneo
++getRecaudo(): double
++agregarEncuentros(List&lt;EncuentroTorneo&gt;): void
++buscarEncuentro(int): EncuentroTorneo
++getRondaActual(): int
++getEncuentrosDeRonda(int): List&lt;EncuentroTorneo&gt;
++getEncuentrosPendientes(): List&lt;EncuentroTorneo&gt;
++calcularPosiciones(): List&lt;FilaTorneo&gt;
++getGanador(): InscripcionTorneo
+/+puntosPara(int, int): int/
+/+admiteEmpate(): boolean/
+/+getDescripcion(): String/
++toString(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6960</x>
+      <y>420</y>
+      <w>230</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>TorneoConjunto
+--
+-deporte: DeporteEquipo
+-categoria: Categoria
+--
++puntosPara(int, int): int
++admiteEmpate(): boolean
++getDescripcion(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7210</x>
+      <y>420</y>
+      <w>230</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes>TorneoIndividual
+--
+-nivel: Nivel
+-modalidad: Modalidad
+-disciplina: Disciplina
+--
++esDobles(): boolean
++puntosPara(int, int): int
++admiteEmpate(): boolean
++getDescripcion(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7065</x>
+      <y>302</y>
+      <w>150</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>140.0;10.0;140.0;68.0;10.0;68.0;10.0;118.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7195</x>
+      <y>302</y>
+      <w>140</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;68.0;130.0;68.0;130.0;118.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7560</x>
+      <y>-200</y>
+      <w>535</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/TipoTorneo/
+--
+--
+/+getNombre(): String/
+/+validar(): void/
+/+tarifaPara(InscripcionTorneo): double/
+/+crearBonos(Torneo, InscripcionTorneo, int): List&lt;BonoDescuento&gt;/
+/+describirPremio(Torneo): String/
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7620</x>
+      <y>-10</y>
+      <w>515</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes>Recreativo
+--
+-porcentajeBono: int
+--
++getNombre(): String
++validar(): void
++tarifaPara(InscripcionTorneo): double
++crearBonos(Torneo, InscripcionTorneo, int): List&lt;BonoDescuento&gt;
++describirPremio(Torneo): String
++toString(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7620</x>
+      <y>190</y>
+      <w>515</w>
+      <h>211</h>
+    </coordinates>
+    <panel_attributes>Competitivo
+--
+_+PORCENTAJE_PREMIO: int_
+-tarifa: double
+--
++getNombre(): String
++validar(): void
++tarifaPara(InscripcionTorneo): double
++crearBonos(Torneo, InscripcionTorneo, int): List&lt;BonoDescuento&gt;
++calcularPremio(Torneo): double
++premioPara(Torneo, Usuario): double
++describirPremio(Torneo): String
++toString(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8250</x>
+      <y>-200</y>
+      <w>590</w>
+      <h>259</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/FormatoTorneo/
+--
+--
+/+getNombre(): String/
+/+crearEncuentrosIniciales(Torneo): List&lt;EncuentroTorneo&gt;/
+/+crearSiguienteRonda(Torneo): List&lt;EncuentroTorneo&gt;/
+/+admiteEmpate(Torneo): boolean/
+/+estaTerminado(Torneo): boolean/
+/+calcularPosiciones(Torneo): List&lt;FilaTorneo&gt;/
++getGanador(Torneo): InscripcionTorneo
+#crearFilas(Torneo): List&lt;FilaTorneo&gt;
+-buscarFila(List&lt;FilaTorneo&gt;, InscripcionTorneo): FilaTorneo
+#ordenar(List&lt;FilaTorneo&gt;, Torneo): void
+/#vaAntes(FilaTorneo, FilaTorneo, Torneo): boolean/
++toString(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8310</x>
+      <y>100</y>
+      <w>530</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes>TodosContraTodos
+--
+--
++getNombre(): String
++crearEncuentrosIniciales(Torneo): List&lt;EncuentroTorneo&gt;
++crearSiguienteRonda(Torneo): List&lt;EncuentroTorneo&gt;
++admiteEmpate(Torneo): boolean
++estaTerminado(Torneo): boolean
++calcularPosiciones(Torneo): List&lt;FilaTorneo&gt;
+#vaAntes(FilaTorneo, FilaTorneo, Torneo): boolean
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8310</x>
+      <y>300</y>
+      <w>590</w>
+      <h>211</h>
+    </coordinates>
+    <panel_attributes>EliminacionDirecta
+--
+--
++getNombre(): String
++crearEncuentrosIniciales(Torneo): List&lt;EncuentroTorneo&gt;
++crearSiguienteRonda(Torneo): List&lt;EncuentroTorneo&gt;
+-crearRonda(Torneo, List&lt;InscripcionTorneo&gt;, int): List&lt;EncuentroTorneo&gt;
++admiteEmpate(Torneo): boolean
++estaTerminado(Torneo): boolean
++calcularPosiciones(Torneo): List&lt;FilaTorneo&gt;
+-describirEtapa(Torneo, InscripcionTorneo, boolean): String
+-contarRondasSuperadas(Torneo, InscripcionTorneo): int
+#vaAntes(FilaTorneo, FilaTorneo, Torneo): boolean
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7580</x>
+      <y>-62</y>
+      <w>50</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;134.0;40.0;134.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7580</x>
+      <y>-62</y>
+      <w>50</w>
+      <h>367</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;357.0;40.0;357.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>8270</x>
+      <y>49</y>
+      <w>50</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;133.0;40.0;133.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>8270</x>
+      <y>49</y>
+      <w>50</w>
+      <h>366</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;356.0;40.0;356.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8560</x>
+      <y>640</y>
+      <w>330</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+EstadoTorneo
+--
+_+INSCRIPCIONES_ABIERTAS: EstadoTorneo_
+_+EN_CURSO: EstadoTorneo_
+_+FINALIZADO: EstadoTorneo_
+-texto: String
+--
++toString(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6960</x>
+      <y>650</y>
+      <w>335</w>
+      <h>227</h>
+    </coordinates>
+    <panel_attributes>FilaTorneo
+--
+-jugados: int
+-ganados: int
+-empatados: int
+-perdidos: int
+-aFavor: int
+-enContra: int
+-puntos: int
+-etapa: String
+--
++registrarEncuentro(int, int, int): void
++getDiferencia(): int
++toString(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7700</x>
+      <y>620</y>
+      <w>275</w>
+      <h>211</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/InscripcionTorneo/
+--
+#fecha: LocalDate
+#preferencial: boolean
+#valorPagado: double
+--
+/+getNombre(): String/
+/+getClave(): String/
+/+getJugadores(): List&lt;Usuario&gt;/
+/+contarTarifas(): int/
++incluye(Usuario): boolean
++toString(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7560</x>
+      <y>910</y>
+      <w>260</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>InscripcionEquipo
+--
+-equipo: Equipo
+--
++getNombre(): String
++getClave(): String
++getJugadores(): List&lt;Usuario&gt;
++contarTarifas(): int
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7850</x>
+      <y>910</y>
+      <w>260</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>InscripcionIndividual
+--
+-jugador: Usuario
+-pareja: Usuario
+--
++getNombre(): String
++getClave(): String
++getJugadores(): List&lt;Usuario&gt;
++contarTarifas(): int
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7680</x>
+      <y>821</y>
+      <w>167</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>157.0;10.0;157.0;49.0;10.0;49.0;10.0;89.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7827</x>
+      <y>821</y>
+      <w>163</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;49.0;153.0;49.0;153.0;89.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8150</x>
+      <y>620</y>
+      <w>325</w>
+      <h>211</h>
+    </coordinates>
+    <panel_attributes>EncuentroTorneo
+--
+-numero: int
+-ronda: int
+-marcadorLocal: int
+-marcadorVisitante: int
+-jugado: boolean
+--
++isPaseDirecto(): boolean
++registrarResultado(int, int): void
++participa(InscripcionTorneo): boolean
++getGanador(): InscripcionTorneo
++toString(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8560</x>
+      <y>840</y>
+      <w>280</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>BonoDescuento
+--
+-id: int
+-porcentaje: int
+-torneo: String
+-usado: boolean
+-dueno: Usuario
+--
++getFraccion(): double
++puedeUsar(Usuario): boolean
++usar(): void
++toString(): String
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7400</x>
+      <y>-160</y>
+      <w>170</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-tipo</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7350</x>
+      <y>-260</y>
+      <w>1205</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-formato</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0;1195.0;10.0;1195.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7400</x>
+      <y>290</y>
+      <w>447</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-inscripciones</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0;120.0;290.0;437.0;290.0;437.0;330.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7400</x>
+      <y>270</y>
+      <w>922</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+r2=-encuentros</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0;140.0;290.0;912.0;290.0;912.0;350.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7965</x>
+      <y>670</y>
+      <w>195</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-local</panel_attributes>
+    <additional_attributes>185.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7965</x>
+      <y>750</y>
+      <w>195</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..1
+r2=-visitante</panel_attributes>
+    <additional_attributes>185.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7285</x>
+      <y>690</y>
+      <w>425</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-participante</panel_attributes>
+    <additional_attributes>10.0;10.0;415.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2440</x>
+      <y>1870</y>
+      <w>250</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>ParticipanteExterno
+--
+-nombre: String
+-apellidos: String
+-documento: String
+-estudiante: boolean
+--
++getNombreCompleto(): String
++toString(): String
+bg=light_gray</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1894</x>
+      <y>1617</y>
+      <w>681</w>
+      <h>263</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;153.0;10.0;10.0;671.0;10.0;671.0;253.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>6175</x>
+      <y>2420</y>
+      <w>1020</w>
+      <h>464</h>
+    </coordinates>
+    <panel_attributes>GestorTorneos
+--
+--
++crearTorneoConjunto(Usuario, String, LocalDate, int, DeporteEquipo, Categoria, TipoTorneo, FormatoTorneo): TorneoConjunto
++crearTorneoIndividual(Usuario, String, LocalDate, int, Disciplina, Nivel, Modalidad, TipoTorneo, FormatoTorneo): TorneoIndividual
+-validarDatosTorneo(String, LocalDate, int, TipoTorneo): void
++registrarParticipanteExterno(Usuario, String, String, String, String, String, boolean): ParticipanteExterno
+-vacio(String): boolean
++inscribirIndividual(Usuario, Torneo, Usuario): InscripcionIndividual
+-verificarJugador(Usuario): void
+-verificarAbierto(Torneo): void
+-verificarPuedeJugar(Usuario, TorneoIndividual): void
+-estaDeTurno(Empleado, LocalDate): boolean
++inscribirEquipo(Usuario, Torneo, Equipo): InscripcionEquipo
+-verificarAdministradorOEntrenadorDe(Usuario, Equipo): void
+-buscarInscripcionDeEquipo(Torneo, Equipo): InscripcionEquipo
+-asignarCupo(Torneo, boolean): boolean
+-esPreferente(TorneoIndividual, Usuario): boolean
+-esPreferente(TorneoConjunto, Equipo): boolean
+-puntosEnCompetencias(Equipo): int
++retirarInscripcion(Usuario, Torneo, InscripcionTorneo): void
++liberarCuposPreferenciales(Usuario, Torneo): void
++iniciarTorneo(Usuario, Torneo): List&lt;EncuentroTorneo&gt;
++registrarResultado(Usuario, Torneo, EncuentroTorneo, int, int): List&lt;BonoDescuento&gt;
++consultarTorneos(Usuario, EstadoTorneo): List&lt;Torneo&gt;
++consultarPosiciones(Usuario, Torneo): List&lt;FilaTorneo&gt;
++consultarTorneosAbiertosIndividuales(Usuario): List&lt;Torneo&gt;
++consultarMisTorneos(Usuario): List&lt;Torneo&gt;
++consultarBonos(Usuario): List&lt;BonoDescuento&gt;
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7260</x>
+      <y>2420</y>
+      <w>300</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>GestorUsuarios
+--
+--
++autenticar(String, String): Usuario
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6675</x>
+      <y>1490</y>
+      <w>1034</w>
+      <h>940</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>536.0;10.0;536.0;69.0;1024.0;69.0;1024.0;890.0;10.0;890.0;10.0;930.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>7201</x>
+      <y>1490</y>
+      <w>508</w>
+      <h>940</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;498.0;69.0;498.0;890.0;209.0;890.0;209.0;930.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7700</x>
+      <y>4176</y>
+      <w>450</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>PersistenciaTorneos
+--
+--
++cargar(String, Club): void
+-cargarTorneo(JSONObject, Club, String): void
+-cargarTipo(JSONObject, String): TipoTorneo
+-cargarFormato(String, String): FormatoTorneo
+-cargarEstado(String, String): EstadoTorneo
+-cargarInscripcion(JSONObject, Club): InscripcionTorneo
++guardar(String, Club): void
+-torneoAJSON(Torneo): JSONObject
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5893</x>
+      <y>4018</y>
+      <w>2042</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;99.0;2032.0;99.0;2032.0;158.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>6922</x>
+      <y>4346</y>
+      <w>1013</w>
+      <h>572</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=-archivoJSON</panel_attributes>
+    <additional_attributes>1003.0;10.0;1003.0;562.0;10.0;562.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>9440</x>
+      <y>1250</y>
+      <w>1640</w>
+      <h>1580</h>
+    </coordinates>
+    <panel_attributes>consola
+fontsize=16</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9480</x>
+      <y>1310</y>
+      <w>385</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Consola/
+--
+_-INTENTOS_LOGIN: int_
+-scanner: Scanner
+-carpetaDatos: String
+-persistencia: CentralPersistencia
+#club: Club
+#usuario: Usuario
+--
+/#getTitulo(): String/
+/#getNombreRol(): String/
+/#rolValido(Usuario): boolean/
+/#crearMenus(): List&lt;Menu&gt;/
++ejecutar(): void
+-cargar(): boolean
+-iniciarSesion(): boolean
+-menuPrincipal(): void
+-guardar(): void
++leerTexto(String): String
++leerTextoOpcional(String): String
++leerEntero(String, int, int): int
++leerEnteros(String): List&lt;Integer&gt;
++leerDecimal(String, double): double
++leerFecha(String): LocalDate
++leerHora(String): LocalTime
++confirmar(String): boolean
++leerOpcion(String, List&lt;String&gt;, String): int
++elegir(String, List&lt;T&gt;): T
++mostrarLista(String, List&lt;?&gt;): void
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10300</x>
+      <y>1310</y>
+      <w>265</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/Menu/
+--
+#club: Club
+#usuario: Usuario
+--
+/+getTitulo(): String/
+/+getOpciones(): List&lt;String&gt;/
+/+ejecutar(int): void/
++mostrar(): void
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>9855</x>
+      <y>1360</y>
+      <w>455</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=1
+r2=#consola</panel_attributes>
+    <additional_attributes>445.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9470</x>
+      <y>1880</y>
+      <w>250</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>ConsolaSocio
+--
+--
+_+main(String[]): void_
+#getTitulo(): String
+#getNombreRol(): String
+#rolValido(Usuario): boolean
+#crearMenus(): List&lt;Menu&gt;
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9735</x>
+      <y>1880</y>
+      <w>250</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>ConsolaEmpleado
+--
+--
+_+main(String[]): void_
+#getTitulo(): String
+#getNombreRol(): String
+#rolValido(Usuario): boolean
+#crearMenus(): List&lt;Menu&gt;
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10000</x>
+      <y>1880</y>
+      <w>250</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>ConsolaAdministrador
+--
+--
+_+main(String[]): void_
+#getTitulo(): String
+#getNombreRol(): String
+#rolValido(Usuario): boolean
+#crearMenus(): List&lt;Menu&gt;
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>9585</x>
+      <y>1780</y>
+      <w>97</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>87.0;10.0;87.0;60.0;10.0;60.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>9662</x>
+      <y>1780</y>
+      <w>208</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;198.0;60.0;198.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>9662</x>
+      <y>1780</y>
+      <w>473</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;463.0;60.0;463.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9500</x>
+      <y>2150</y>
+      <w>345</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/MenuConsultaCompetencias/
+--
+#gestorCompetencias: GestorCompetencias
+--
+#verTabla(): void
+#verClasificaciones(): void
+#elegirCompetencia(): Competencia
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>9470</x>
+      <y>1464</y>
+      <w>972</w>
+      <h>762</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>962.0;10.0;962.0;621.0;10.0;621.0;10.0;752.0;30.0;752.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9550</x>
+      <y>2307</y>
+      <w>330</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuDeportesSocio
+--
+-gestorDeportes: GestorDeportes
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9550</x>
+      <y>2391</y>
+      <w>330</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuCompetenciasAdministrador
+--
+-lector: LectorEstadistica
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>9515</x>
+      <y>2272</y>
+      <w>45</w>
+      <h>79</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;69.0;35.0;69.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>9515</x>
+      <y>2272</y>
+      <w>45</w>
+      <h>163</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;153.0;35.0;153.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9500</x>
+      <y>2485</y>
+      <w>345</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuEquiposAdministrador
+--
+-gestor: GestorDeportes
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>9470</x>
+      <y>1464</y>
+      <w>972</w>
+      <h>1065</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>962.0;10.0;962.0;621.0;10.0;621.0;10.0;1055.0;30.0;1055.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9500</x>
+      <y>2569</y>
+      <w>345</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>MenuDeportesEntrenador
+--
+-gestor: GestorDeportes
+-lector: LectorEstadistica
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>9470</x>
+      <y>1464</y>
+      <w>972</w>
+      <h>1157</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>962.0;10.0;962.0;621.0;10.0;621.0;10.0;1147.0;30.0;1147.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9500</x>
+      <y>2669</y>
+      <w>530</w>
+      <h>101</h>
+    </coordinates>
+    <panel_attributes>LectorEstadistica
+--
+-consola: Consola
+--
+_+habilitados(List&lt;JugadorEquipo&gt;, Partido): List&lt;JugadorEquipo&gt;_
++leer(JugadorEquipo): Estadistica
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10095</x>
+      <y>2150</y>
+      <w>450</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+/MenuTorneos/
+--
+#gestor: GestorTorneos
+--
++getTitulo(): String
+#verTorneos(): void
+#verHistorial(): void
+#mostrarEncuentros(String, List&lt;EncuentroTorneo&gt;): void
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10065</x>
+      <y>1464</y>
+      <w>377</w>
+      <h>770</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>367.0;10.0;367.0;621.0;10.0;621.0;10.0;760.0;30.0;760.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10145</x>
+      <y>2323</y>
+      <w>330</w>
+      <h>53</h>
+    </coordinates>
+    <panel_attributes>MenuTorneosJugador
+--
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10145</x>
+      <y>2391</y>
+      <w>330</w>
+      <h>53</h>
+    </coordinates>
+    <panel_attributes>MenuTorneosAdministrador
+--
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10110</x>
+      <y>2288</y>
+      <w>45</w>
+      <h>71</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;61.0;35.0;61.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10110</x>
+      <y>2288</y>
+      <w>45</w>
+      <h>139</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;129.0;35.0;129.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10095</x>
+      <y>2469</y>
+      <w>345</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>MenuAcademiasSocio
+--
+-gestor: GestorAcademias
+-gestorEntrenamiento: GestorEntrenamiento
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10065</x>
+      <y>1464</y>
+      <w>377</w>
+      <h>1057</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>367.0;10.0;367.0;621.0;10.0;621.0;10.0;1047.0;30.0;1047.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10095</x>
+      <y>2569</y>
+      <w>345</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuAcademiasAdministrador
+--
+-gestor: GestorAcademias
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10065</x>
+      <y>1464</y>
+      <w>377</w>
+      <h>1149</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>367.0;10.0;367.0;621.0;10.0;621.0;10.0;1139.0;30.0;1139.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10095</x>
+      <y>2653</y>
+      <w>345</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuEntrenamientoEntrenador
+--
+-gestor: GestorEntrenamiento
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10065</x>
+      <y>1464</y>
+      <w>377</w>
+      <h>1233</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>367.0;10.0;367.0;621.0;10.0;621.0;10.0;1223.0;30.0;1223.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10620</x>
+      <y>2150</y>
+      <w>345</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuTiendaSocio
+--
+-gestor: GestorTienda
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10422</x>
+      <y>1464</y>
+      <w>208</w>
+      <h>730</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;621.0;178.0;621.0;178.0;720.0;198.0;720.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10670</x>
+      <y>2244</y>
+      <w>330</w>
+      <h>53</h>
+    </coordinates>
+    <panel_attributes>MenuTiendaEmpleado
+--
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10635</x>
+      <y>2209</y>
+      <w>45</w>
+      <h>71</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;61.0;35.0;61.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10620</x>
+      <y>2322</y>
+      <w>345</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuTiendaAdministrador
+--
+-gestor: GestorTienda
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10422</x>
+      <y>1464</y>
+      <w>208</w>
+      <h>902</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;621.0;178.0;621.0;178.0;892.0;198.0;892.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10620</x>
+      <y>2406</y>
+      <w>345</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuTurnosEmpleado
+--
+-gestor: GestorPersonal
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10422</x>
+      <y>1464</y>
+      <w>208</w>
+      <h>986</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;621.0;178.0;621.0;178.0;976.0;198.0;976.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10620</x>
+      <y>2490</y>
+      <w>345</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuPersonalAdministrador
+--
+-gestor: GestorPersonal
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10422</x>
+      <y>1464</y>
+      <w>208</w>
+      <h>1070</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;621.0;178.0;621.0;178.0;1060.0;198.0;1060.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10620</x>
+      <y>2574</y>
+      <w>345</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>MenuReportesAdministrador
+--
+-gestor: GestorReportes
+--
+bg=#E3F2FD</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>10422</x>
+      <y>1464</y>
+      <w>208</w>
+      <h>1154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;621.0;178.0;621.0;178.0;1144.0;198.0;1144.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>10620</x>
+      <y>1310</y>
+      <w>440</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Cada consola arma su lista de menús en
+crearMenus(). Hay un subpaquete por área
+(deportes, torneos, academias, entrenamiento,
+tienda, personal, reportes). De los menús de
+área solo se muestra el gestor que usan.
+bg=yellow</panel_attributes>
+    <additional_attributes></additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>9000</x>
+      <y>-200</y>
+      <w>430</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Torneos internos (Proyecto 2)
+--
+Las referencias a clases de otras partes
+del diagrama (Usuario, Equipo, DeporteEquipo,
+Categoria, Disciplina) se muestran como
+atributos para no cruzar todo el diagrama.
+bg=yellow</panel_attributes>
+    <additional_attributes></additional_attributes>
   </element>
 </diagram>

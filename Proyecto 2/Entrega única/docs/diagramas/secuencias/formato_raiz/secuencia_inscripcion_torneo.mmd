@@ -1,0 +1,45 @@
+sequenceDiagram
+    autonumber
+    actor Jugador as Jugador (socio, empleado o externo)
+    participant Menu as MenuTorneosJugador
+    participant Gestor as GestorTorneos
+    participant Club as Club
+    participant Torneo as TorneoIndividual
+    participant Tipo as TipoTorneo
+
+    Jugador->>Menu: Inscribirme en un torneo individual
+    Menu->>Gestor: consultarTorneosAbiertosIndividuales(jugador)
+    Gestor-->>Menu: torneos con inscripciones abiertas
+    Jugador->>Menu: Elige el torneo (y la pareja si es de dobles)
+    Menu->>Gestor: inscribirIndividual(jugador, torneo, pareja)
+
+    activate Gestor
+    Gestor->>Gestor: verificarJugador(jugador)
+    Gestor->>Torneo: estaAbierto(), esDobles()
+    Torneo-->>Gestor: abierto, modalidad
+
+    loop Para el jugador y, en dobles, su pareja
+        Gestor->>Torneo: buscarInscripcionDe(persona)
+        Torneo-->>Gestor: null (no está inscrito)
+        alt Es empleado
+            Gestor->>Club: getTurnos()
+            Club-->>Gestor: turnos de la semana
+            Note over Gestor: Se rechaza si tiene turno ese día de la semana
+        else Es socio inscrito en la academia
+            Gestor->>Gestor: Revisar que su nivel sea el del torneo
+        end
+    end
+
+    Gestor->>Gestor: esPreferente(torneo, jugador)
+    Note over Gestor: Preferente: socio con menos de N socios del mismo<br/>nivel con más ELO (N = 20 % de los cupos)
+    Gestor->>Torneo: getCuposPreferencialesLibres(), getCuposRegularesLibres()
+    Torneo-->>Gestor: cupos libres
+    Gestor->>Gestor: asignarCupo(torneo, preferente)
+    Gestor->>Gestor: new InscripcionIndividual(jugador, pareja, fecha, preferencial)
+    Gestor->>Tipo: tarifaPara(inscripcion)
+    Tipo-->>Gestor: 0 en recreativo, en competitivo la tarifa por cada jugador que no sea empleado
+    Gestor->>Torneo: agregarInscripcion(inscripcion)
+    Gestor-->>Menu: inscripción
+    deactivate Gestor
+
+    Menu-->>Jugador: ACEPTADO: cupo preferencial o regular y valor a pagar

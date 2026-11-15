@@ -1,0 +1,45 @@
+sequenceDiagram
+    autonumber
+    actor Entrenador as Entrenador (e1)
+    participant Menu as MenuDeportesEntrenador
+    participant Lector as LectorEstadistica
+    participant Gestor as GestorDeportes
+    participant Partido as PartidoInterno (3)
+    participant Jugador as JugadorEquipo (camiseta 10)
+    participant Deporte as DeporteEquipo (Fútbol)
+    participant Est as EstadisticaFutbol
+
+    Entrenador->>Menu: Registrar estadística del partido 3
+    Menu->>Lector: habilitados(jugadores, partido)
+    Lector->>Jugador: motivoNoHabilitadoPara(partido)
+    Jugador-->>Lector: null (está habilitado)
+    Lector-->>Menu: jugadores habilitados
+    Note over Menu,Lector: Los inactivos o suspendidos no aparecen<br/>en la lista y se dice por qué
+
+    Entrenador->>Menu: Elige al 10: 1 gol, 0 asistencias, 2 amarillas, 0 rojas
+    Menu->>Lector: leer(jugador)
+    Lector-->>Menu: estadística de fútbol
+    Menu->>Gestor: registrarEstadistica(e1, partido, jugador, estadistica)
+
+    activate Gestor
+    Gestor->>Gestor: verificarEntrenador(e1)
+    Gestor->>Partido: participa(equipo del jugador)
+    Partido-->>Gestor: true
+    Gestor->>Jugador: motivoNoHabilitadoPara(partido)
+    Jugador-->>Gestor: null
+    Gestor->>Deporte: admiteEstadistica(estadistica)
+    Deporte-->>Gestor: true
+    Gestor->>Partido: tieneEstadisticaDe(jugador)
+    Partido-->>Gestor: false
+    Gestor->>Partido: agregarEstadistica(estadistica)
+
+    Gestor->>Est: motivoSuspension()
+    Est-->>Gestor: "2 amarillas"
+    opt Roja directa o dos amarillas (RF14)
+        Gestor->>Jugador: agregarSuspension(new Suspension(motivo, partido))
+        Note over Jugador: Queda suspendido para el siguiente partido interno de su equipo
+    end
+    Gestor-->>Menu: registro terminado
+    deactivate Gestor
+
+    Menu-->>Entrenador: ACEPTADO y aviso de la suspensión
