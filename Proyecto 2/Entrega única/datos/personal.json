@@ -1,4 +1,235 @@
 {
-  "turnos": [],
-  "sugerencias": []
+  "turnos": [
+    {
+      "empleado": 4,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 1,
+      "dia": "MONDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 1,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 2,
+      "dia": "MONDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 2,
+      "inicio": "06:00",
+      "fin": "13:00",
+      "id": 3,
+      "dia": "MONDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 3,
+      "inicio": "13:00",
+      "fin": "20:00",
+      "id": 4,
+      "dia": "MONDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 4,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 5,
+      "dia": "TUESDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 1,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 6,
+      "dia": "TUESDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 2,
+      "inicio": "06:00",
+      "fin": "13:00",
+      "id": 7,
+      "dia": "TUESDAY",
+      "solicitudes": [{
+        "fecha": "2026-11-15",
+        "nuevoFin": "14:00",
+        "estado": "PENDIENTE",
+        "nuevoDia": "TUESDAY",
+        "nuevoInicio": "07:00"
+      }]
+    },
+    {
+      "empleado": 3,
+      "inicio": "13:00",
+      "fin": "20:00",
+      "id": 8,
+      "dia": "TUESDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 4,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 9,
+      "dia": "WEDNESDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 1,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 10,
+      "dia": "WEDNESDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 2,
+      "inicio": "06:00",
+      "fin": "13:00",
+      "id": 11,
+      "dia": "WEDNESDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 3,
+      "inicio": "13:00",
+      "fin": "20:00",
+      "id": 12,
+      "dia": "WEDNESDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 4,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 13,
+      "dia": "THURSDAY",
+      "solicitudes": [{
+        "fecha": "2026-11-15",
+        "nuevoFin": "20:00",
+        "estado": "RECHAZADA",
+        "nuevoDia": "FRIDAY",
+        "nuevoInicio": "06:00"
+      }]
+    },
+    {
+      "empleado": 1,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 14,
+      "dia": "THURSDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 2,
+      "inicio": "06:00",
+      "fin": "13:00",
+      "id": 15,
+      "dia": "THURSDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 3,
+      "inicio": "13:00",
+      "fin": "20:00",
+      "id": 16,
+      "dia": "THURSDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 4,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 17,
+      "dia": "FRIDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 1,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 18,
+      "dia": "FRIDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 2,
+      "inicio": "06:00",
+      "fin": "13:00",
+      "id": 19,
+      "dia": "FRIDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 3,
+      "inicio": "13:00",
+      "fin": "20:00",
+      "id": 20,
+      "dia": "FRIDAY",
+      "solicitudes": [{
+        "fecha": "2026-11-15",
+        "nuevoFin": "20:00",
+        "estado": "PENDIENTE",
+        "nuevoDia": "SATURDAY",
+        "nuevoInicio": "13:00"
+      }]
+    },
+    {
+      "empleado": 4,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 21,
+      "dia": "SATURDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 1,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 22,
+      "dia": "SATURDAY",
+      "solicitudes": []
+    },
+    {
+      "empleado": 2,
+      "inicio": "06:00",
+      "fin": "20:00",
+      "id": 23,
+      "dia": "SATURDAY",
+      "solicitudes": []
+    }
+  ],
+  "sugerencias": [
+    {
+      "descripcion": "Para la recuperación muscular de los jugadores después de entrenar",
+      "fecha": "2026-11-15",
+      "tipo": "Artículo",
+      "estado": "PENDIENTE",
+      "motivo": null,
+      "empleado": 4,
+      "nombre": "Rodillo de masaje"
+    },
+    {
+      "descripcion": "Muchos socios la piden después de los partidos",
+      "fecha": "2026-11-15",
+      "tipo": "Bebida",
+      "estado": "PENDIENTE",
+      "motivo": null,
+      "empleado": 2,
+      "nombre": "Bebida isotónica"
+    },
+    {
+      "descripcion": "Para los niños de las academias",
+      "fecha": "2026-11-15",
+      "tipo": "Snack",
+      "estado": "RECHAZADA",
+      "motivo": "Se prefiere ofrecer snacks saludables",
+      "empleado": 1,
+      "nombre": "Gomitas"
+    }
+  ]
 }

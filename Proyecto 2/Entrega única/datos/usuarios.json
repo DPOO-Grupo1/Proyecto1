@@ -33,6 +33,16 @@
       "puntosFidelidad": 0,
       "login": "e3",
       "nombre": "Rosa"
+    },
+    {
+      "apellidos": "Mesa",
+      "password": "pass",
+      "tipo": "Fisioterapeuta",
+      "socioID": null,
+      "idEmpleado": 4,
+      "puntosFidelidad": 0,
+      "login": "f1",
+      "nombre": "Laura"
     }
   ],
   "externos": [
