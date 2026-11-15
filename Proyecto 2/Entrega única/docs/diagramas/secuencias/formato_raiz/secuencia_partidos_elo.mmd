@@ -19,7 +19,7 @@ sequenceDiagram
     Partido->>Partido: Validar que S3 sea participante
     Partido->>Partido: Determinar ganador por sets (pareja en dobles)
     Partido->>Partido: Calcular fórmula ELO oficial (K=32)
-    Note over Partido: En sencillos usa ELO rival; en dobles usa promedio ELO de la pareja rival
+    Note over Partido: En sencillos usa ELO rival, en dobles usa promedio ELO de la pareja rival
     Partido->>Reserva: setEstado(FINALIZADA)
     deactivate Partido
 

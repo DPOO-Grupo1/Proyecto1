@@ -5,7 +5,6 @@ sequenceDiagram
     participant Gestor as GestorEntrenamiento
     participant Club as Club
     participant Inst as Instalacion (I1)
-    participant Sesion as Nueva SesionEntrenamiento
 
     Coach->>Consola: Planear sesión (Tenis, Cancha I1, 90 min, Alumnos S1, S2, S3)
     Consola->>Gestor: planearSesion(e1, "Tenis", "I1", fecha, 09:00, 90, [S1, S2, S3])
