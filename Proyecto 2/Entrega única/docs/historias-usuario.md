@@ -2,7 +2,7 @@
 
 Club Deportivo Séneca, Proyecto 2. Grupo 1.
 
-Este documento reúne las historias de usuario del Proyecto 2 en tres partes. La primera tiene las historias del banco de la Entrega 1 para los deportes de conjunto y las competencias. La segunda, las de la tienda, la cafetería, el personal y los reportes. La tercera, las historias nuevas de los torneos internos.
+Este documento reúne las historias de usuario del Proyecto 2 en cuatro partes. La primera tiene las historias del banco de la Entrega 1 para los deportes de conjunto y las competencias. La segunda, las de la tienda, la cafetería, el personal y los reportes. La tercera, las historias nuevas de los torneos internos. La cuarta, las historias del banco de la Entrega 1 para academias, reservas, prácticas y entrenamiento.
 
 ## Cómo están numeradas
 
@@ -15,6 +15,15 @@ Las pruebas de integración de cada historia empiezan con el mismo código en mi
 |---|---|---|---|
 | [HU_RF1](#hu_rf1-consultar-mi-información-deportiva) | No tenía | Consultar mi información deportiva | `GestorDeportesTest` |
 | [HU_RF2](#hu_rf2-consultar-tablas-y-clasificaciones-de-una-competencia) | HU_S1 | Consultar tablas y clasificaciones de una competencia | `GestorCompetenciasTest`, `CompetenciaTest` |
+| [HU_RF6](#hu_rf6-inscribirse-en-una-academia) | HU_S5 | Inscribirse en una academia | `GestorAcademiasTest` |
+| [HU_RF7](#hu_rf7-reservar-una-instalación-y-registrar-ingreso) | HU_S6 | Reservar una instalación y registrar ingreso | `GestorAcademiasTest`, `AcademiaYReservaTest` |
+| [HU_RF8](#hu_rf8-cancelar-una-reserva) | HU_S7 | Cancelar una reserva | `GestorAcademiasTest`, `AcademiaYReservaTest` |
+| [HU_RF9](#hu_rf9-programar-un-partido-de-práctica) | HU_S8 | Programar un partido de práctica | `GestorAcademiasTest` |
+| [HU_RF10](#hu_rf10-registrar-el-resultado-de-un-partido-de-práctica) | HU_S9 | Registrar el resultado de un partido de práctica | `GestorAcademiasTest`, `AcademiaYReservaTest` |
+| [HU_RF11](#hu_rf11-consultar-perfil-historial-y-ranking-elo) | HU_S10 | Consultar perfil, historial y ranking ELO | `GestorAcademiasTest`, `AcademiaYReservaTest` |
+| [HU_RF15](#hu_rf15-planear-una-sesión-de-entrenamiento) | HU_E5 | Planear una sesión de entrenamiento | `GestorEntrenamientoTest`, `EntrenamientoModeloTest` |
+| [HU_RF16](#hu_rf16-registrar-asistencia-evaluación-y-consultar-convocatorias) | HU_E6 | Registrar asistencia, evaluación y consultar convocatorias | `GestorEntrenamientoTest`, `EntrenamientoModeloTest` |
+| [HU_RF36](#hu_rf36-consultar-reservas-e-instalaciones) | HU_A13 | Consultar reservas e instalaciones | `GestorAcademiasTest` |
 | [HU_RF12](#hu_rf12-programar-un-partido-interno) | HU_E1 | Programar un partido interno | `GestorDeportesTest` |
 | [HU_RF13](#hu_rf13-registrar-el-resultado-y-las-estadísticas-de-un-partido-interno) | HU_E2 | Registrar el resultado y las estadísticas de un partido interno | `GestorDeportesTest`, `DeporteYCategoriaTest` |
 | [HU_RF14](#hu_rf14-registrar-tarjetas-y-suspender-jugadores) | HU_E3 | Registrar tarjetas y suspender jugadores | `GestorDeportesTest`, `EquipoYSuspensionTest`, `CompetenciaTest` |
@@ -885,3 +894,163 @@ Criterios de aceptación:
 3. Dado que el bono es de otra persona o ya lo usé, cuando intento usarlo, entonces se rechaza y no cambia nada.
 
 Pruebas: `hut10ElSocioUsaSuBonoYQuedaUsado`, `hut10ElBonoNoSeSumaConElCodigoNiLoUsaOtroNiSeUsaDosVeces`, y en `VentaTest`, `elBonoReemplazaAlCodigoYNoSeSuman`.
+
+## Parte 4. Academias y entrenamiento
+
+Estas historias son las del banco de la Entrega 1 para academias individuales, reservas, partidos de práctica y sesiones de entrenamiento (RF6 a RF11, RF15, RF16 y RF36). Las pruebas de integración están en `GestorAcademiasTest` y `GestorEntrenamientoTest`, y las unitarias del modelo en `AcademiaYReservaTest` y `EntrenamientoModeloTest`.
+
+### Supuestos de la parte 4
+
+1. **ELO inicial y factor K.** Toda inscripción nueva inicia con ELO 1000 y usa factor $K = 32$.
+2. **ELO en dobles.** En partidos de 4 participantes (pareja 1: índices 0 y 1; pareja 2: índices 2 y 3), los compañeros de pareja deben registrar los mismos sets ganados sin empate entre parejas, y cada jugador actualiza su ELO contra el promedio ELO redondeado de la pareja rival.
+3. **Permiso de cancelación.** Solo el socio titular de la reserva puede cancelarla, con al menos 2 horas de anticipación.
+
+### HU_RF6. Inscribirse en una academia
+
+Código en la Entrega 1: HU_S5.
+
+**Como** socio, **quiero** inscribirme en una disciplina individual (tenis, pádel o tenis de mesa) indicando mi nivel inicial, **para** poder reservar canchas y jugar partidos de práctica.
+
+- **Entradas:** desde la consola del socio (Academias y prácticas, Inscribirse en una academia) o del administrador (Academias y reservas, Inscribir a un socio en una academia). La disciplina (elegida de la lista) y el nivel (`PRINCIPIANTE`, `INTERMEDIO`, `AVANZADO`).
+- **Salidas:** la inscripción creada con ELO inicial 1000, o el motivo del rechazo.
+
+Criterios de aceptación:
+
+1. Dado que no estoy inscrito en una disciplina, cuando me inscribo con un nivel válido, entonces quedo inscrito con ELO 1000.
+2. Dado que el administrador inscribe a un socio, cuando confirma, entonces la inscripción queda registrada.
+3. Dado que ya estoy inscrito en la disciplina o intento inscribir a otro socio siendo socio, cuando solicito la inscripción, entonces se rechaza.
+
+Pruebas: `rf6SocioSeInscribeEnAcademiaYAdminPuedeInscribir`, `rf6RechazaInscripcionDuplicadaOPorOtroSocio`.
+
+### HU_RF7. Reservar una instalación y registrar ingreso
+
+Código en la Entrega 1: HU_S6.
+
+**Como** socio, **quiero** reservar una instalación disponible de mi disciplina y registrar el ingreso, **para** realizar mis prácticas cumpliendo las reglas del club.
+
+- **Entradas:** desde la consola del socio, Academias y prácticas, Reservar una instalación o Registrar ingreso a una reserva. Instalación, fecha, hora de inicio y fin, modalidad (`SENCILLOS` o `DOBLES`), número de jugadores; para ingreso, si lleva bebida caliente.
+- **Salidas:** la reserva creada en estado `ACTIVA` o la confirmación de ingreso, o el motivo del rechazo.
+
+Criterios de aceptación:
+
+1. Dado que estoy inscrito y al día con la mensualidad, cuando reservo una instalación libre dentro del cupo simultáneo, entonces la reserva queda activa.
+2. Dado un escenario de conjunto, un socio moroso, un horario inválido o el cupo simultáneo lleno, cuando intento reservar, entonces se rechaza.
+3. Dado que ingreso a una cancha de pádel o mesa techada con bebida caliente, cuando registro el ingreso, entonces se rechaza.
+
+Pruebas: `rf7SocioReservaCanchaEIngresaSinBebidaCaliente`, `rf7RechazaEscenarioConjuntoMorosoYCupoSimultaneo`, `rf7RechazaIngresoConBebidaCalienteEnPadel`, `rf7RechazaHorarioInvalido`, y en `AcademiaYReservaTest`, `instalacionesValidanCapacidadYBebidaCaliente`.
+
+### HU_RF8. Cancelar una reserva
+
+Código en la Entrega 1: HU_S7.
+
+**Como** socio titular, **quiero** cancelar una reserva activa con al menos dos horas de anticipación, **para** liberar la instalación cuando no pueda asistir.
+
+- **Entradas:** desde la consola del socio, Academias y prácticas, Cancelar una reserva. La reserva (elegida de la lista) y la hora actual.
+- **Salidas:** la reserva en estado `CANCELADA` (y su partido de práctica cancelado si tenía uno), o el motivo del rechazo.
+
+Criterios de aceptación:
+
+1. Dado que soy el titular y faltan al menos 2 horas, cuando cancelo la reserva, entonces pasa a `CANCELADA` y cancela el partido asociado.
+2. Dado que faltan menos de 2 horas o intenta cancelar otro socio o el administrador, cuando se solicita cancelar, entonces se rechaza.
+
+Cambios frente a la Entrega 1: se unificó la validación de permiso al inicio de `cancelarReserva` para que únicamente el socio titular pueda cancelar.
+
+Pruebas: `rf8TitularCancelaConMasDeDosHorasYCancelaPartido`, `rf8RechazaCancelarTardeYPorOtroUsuario`, y en `AcademiaYReservaTest`, `cancelarReservaCancelaPartidoAsociado`.
+
+### HU_RF9. Programar un partido de práctica
+
+Código en la Entrega 1: HU_S8.
+
+**Como** socio, **quiero** programar un partido de práctica sobre una reserva activa, **para** jugar con socios de nivel compatible.
+
+- **Entradas:** desde la consola del socio, Academias y prácticas, Programar un partido de práctica. La reserva y los socios participantes según la modalidad.
+- **Salidas:** el partido programado, o el motivo del rechazo.
+
+Criterios de aceptación:
+
+1. Dado una reserva activa y participantes inscritos de niveles adyacentes sin choque de horario, cuando programo el partido, entonces queda asociado a la reserva.
+2. Dado participantes con niveles no adyacentes (sin entrenador) o con choque de horario, cuando intento programar, entonces se rechaza.
+
+Pruebas: `rf9ProgramaPartidoEntreNivelesAdyacentes`, `rf9RechazaNivelesNoAdyacentesYChoqueDeHorario`.
+
+### HU_RF10. Registrar el resultado de un partido de práctica
+
+Código en la Entrega 1: HU_S9.
+
+**Como** socio participante, **quiero** registrar el marcador y estadísticas de un partido de práctica, **para** cerrar la reserva y actualizar mi ELO.
+
+- **Entradas:** desde la consola del socio, Academias y prácticas, Registrar resultado de un partido de práctica. El partido y las estadísticas de cada participante según la disciplina.
+- **Salidas:** el ganador del partido, la reserva en `FINALIZADA` y los ELO actualizados, o el motivo del rechazo.
+
+Criterios de aceptación:
+
+1. Dado un partido en sencillos o dobles con marcador válido y sin empate en sets, cuando un participante registra el resultado, entonces se guarda el ganador y se actualiza el ELO.
+2. Dado un empate en sets, compañeros con distintos sets en dobles o un registro por alguien que no participó, cuando se intenta registrar, entonces se rechaza.
+
+Cambios frente a la Entrega 1: se implementó el cálculo de ELO en dobles usando el promedio ELO de la pareja rival.
+
+Pruebas: `rf10RegistraResultadoYActualizaElo`, `rf10RechazaEmpateEnSetsYRegistroPorNoParticipante`, y en `AcademiaYReservaTest`, `partidoDoblesActualizaEloConPromedioParejaRival`, `partidoDoblesRechazaSetsDistintosEnLaMismaPareja`.
+
+### HU_RF11. Consultar perfil, historial y ranking ELO
+
+Código en la Entrega 1: HU_S10.
+
+**Como** socio, **quiero** consultar mis inscripciones, mi historial de partidos y el ranking ELO de cada disciplina, **para** seguir mi progreso.
+
+- **Entradas:** desde la consola del socio, Academias y prácticas, Ver mi perfil e inscripciones, Ver mi historial de partidos o Ver el ranking de una disciplina.
+- **Salidas:** la lista de inscripciones, los partidos filtrados por fecha o el ranking ordenado de mayor a menor ELO.
+
+Criterios de aceptación:
+
+1. Dado que tengo inscripciones y partidos jugados, cuando consulto mi perfil, historial o ranking, entonces veo mis datos y el ranking ordenado de mayor a menor ELO.
+2. Dado que intento consultar el perfil o historial de otro socio, cuando consulto, entonces se rechaza por permiso.
+
+Pruebas: `rf11ConsultaPerfilHistorialYRanking`, `rf11RechazaConsultarPerfilOHistorialDeOtroSocio`, y en `AcademiaYReservaTest`, `inscripcionActualizaEloYDisciplinaOrdenaRanking`.
+
+### HU_RF15. Planear una sesión de entrenamiento
+
+Código en la Entrega 1: HU_E5.
+
+**Como** entrenador, **quiero** planear sesiones de entrenamiento individuales, grupales o de equipo, **para** preparar a los socios y equipos del club.
+
+- **Entradas:** desde la consola del empleado (solo entrenadores), Entrenamientos, Planear sesión individual o grupal o Planear sesión de equipo. Disciplina o equipo, instalación, fecha, hora, duración y socios convocados.
+- **Salidas:** la sesión planeada con sus convocatorias en estado `PENDIENTE`, o el motivo del rechazo.
+
+Criterios de aceptación:
+
+1. Dado un entrenador, una instalación compatible libre y socios/jugadores disponibles, cuando planeo la sesión, entonces queda registrada con sus convocatorias.
+2. Dado un fisioterapeuta, un socio, una instalación incompatible o un choque de horario, cuando intento planear, entonces se rechaza.
+
+Pruebas: `rf15EntrenadorPlaneaSesionGrupalYDeEquipo`, `rf15RechazaFisioterapeutaSocioYChoqueDeHorario`, y en `EntrenamientoModeloTest`, `sesionDetectaConflictoHorarioYBuscaConvocatoria`.
+
+### HU_RF16. Registrar asistencia, evaluación y consultar convocatorias
+
+Código en la Entrega 1: HU_E6.
+
+**Como** entrenador, **quiero** finalizar la sesión y registrar la asistencia y evaluación de cada convocado, y como socio consultar mis convocatorias, **para** llevar el seguimiento del entrenamiento.
+
+- **Entradas:** desde la consola del empleado (Entrenamientos: Finalizar una sesión, Registrar asistencia, Registrar evaluación) o del socio (Academias y prácticas: Ver mis convocatorias de entrenamiento).
+- **Salidas:** la sesión finalizada, la asistencia y evaluación guardadas o el listado de convocatorias del socio.
+
+Criterios de aceptación:
+
+1. Dado una sesión finalizada, cuando el entrenador responsable registra asistencia (`asistió`, `faltó`, `llegó tarde`) y una evaluación de 1 a 5, entonces quedan guardadas y visibles para el socio.
+2. Dado una sesión sin finalizar, otro entrenador no responsable, estado `pendiente` o nota fuera de 1 a 5, cuando se intenta registrar, entonces se rechaza.
+
+Pruebas: `rf16FinalizaSesionRegistraAsistenciaEvaluacionYConsultaConvocatorias`, `rf16RechazaRegistrarAntesDeFinalizarOtroEntrenadorYEstadoPendiente`, y en `EntrenamientoModeloTest`, `evaluacionValidaRangoDeNota`, `estadoAsistenciaConvierteTextosYRechazaInvalidos`, `convocatoriaRegistraAsistenciaYEvaluacion`.
+
+### HU_RF36. Consultar reservas e instalaciones
+
+Código en la Entrega 1: HU_A13.
+
+**Como** administrador, **quiero** consultar las reservas por fecha y las instalaciones por disciplina, **para** supervisar el uso de los espacios deportivos.
+
+- **Entradas:** desde la consola del administrador, Academias y reservas, Consultar reservas de una fecha o Consultar instalaciones. Fecha o disciplina opcional.
+- **Salidas:** la lista de reservas o instalaciones filtradas, o el rechazo si el usuario no tiene permiso.
+
+Criterios de aceptación:
+
+1. Dado que soy administrador o socio, cuando consulto reservas por fecha o instalaciones por disciplina, entonces recibo la lista filtrada correspondiente.
+2. Dado que soy un empleado (entrenador o fisioterapeuta), cuando intento consultar las reservas, entonces se rechaza por permiso.
+
+Pruebas: `rf36ConsultaReservasPorFechaEInstalacionesPorDisciplina`, `rf36RechazaConsultarReservasAEmpleados`.
