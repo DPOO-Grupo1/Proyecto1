@@ -134,7 +134,7 @@ public class GestorDeportes extends Gestor {
 		}
 		if (tieneCompromisosPendientes(equipo)) {
 			throw new EstadoInvalidoException("El equipo " + equipo.getNombre()
-					+ " tiene compromisos pendientes (partidos sin jugar o competencias vigentes)");
+					+ " tiene partidos sin jugar, internos o de competencia");
 		}
 
 		equipo.desactivar();

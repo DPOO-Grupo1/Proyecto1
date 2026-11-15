@@ -66,12 +66,13 @@ public abstract class MenuConsultaCompetencias extends Menu {
 	}
 
 	/**
-	 * Deja filtrar por deporte para no mostrar todas las competencias. Null si no hay o se cancela.
+	 * Deja filtrar por deporte y categoría para no mostrar todas las competencias. Null si no hay o se cancela.
 	 */
 	protected Competencia elegirCompetencia() {
 		String deporte = consola.leerTextoOpcional("Filtrar por deporte");
+		String categoria = consola.leerTextoOpcional("Filtrar por categoría");
 		List<Competencia> competencias = gestorCompetencias.consultarCompetencias(usuario,
-				deporte.isEmpty() ? null : deporte, null);
+				deporte.isEmpty() ? null : deporte, categoria.isEmpty() ? null : categoria);
 		if (competencias.isEmpty()) {
 			System.out.println("No hay competencias con ese filtro (sin información disponible).");
 			return null;

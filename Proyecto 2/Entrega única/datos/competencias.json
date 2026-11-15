@@ -1,1 +1,353 @@
-{"competencias": []}
+{"competencias": [
+  {
+    "amarillasParaSuspension": 3,
+    "deporte": "Fútbol",
+    "temporada": 2026,
+    "categoria": "Mayores",
+    "formato": {
+      "tipo": "Liga",
+      "idaYVuelta": false
+    },
+    "entidadOrganizadora": "Liga de Fútbol de Bogotá",
+    "nominaMinima": 7,
+    "nombre": "Liga Distrital de Fútbol",
+    "partidos": [
+      {
+        "escenario": "Cancha principal",
+        "fecha": "2026-09-13",
+        "estadisticas": [
+          {
+            "socioID": "J1",
+            "amarillas": 0,
+            "rojas": 0,
+            "equipo": "Águilas FC",
+            "goles": 1,
+            "asistencias": 0
+          },
+          {
+            "socioID": "J9",
+            "amarillas": 1,
+            "rojas": 0,
+            "equipo": "Águilas FC",
+            "goles": 1,
+            "asistencias": 0
+          },
+          {
+            "socioID": "J7",
+            "amarillas": 0,
+            "rojas": 0,
+            "equipo": "Águilas FC",
+            "goles": 0,
+            "asistencias": 2
+          }
+        ],
+        "jugado": true,
+        "fase": "Fecha 1",
+        "marcadorVisitante": 1,
+        "suspensiones": [],
+        "visitante": "Deportivo Chapinero",
+        "marcadorLocal": 2,
+        "id": 2,
+        "local": "Águilas FC"
+      },
+      {
+        "escenario": "Cancha 2",
+        "fecha": "2026-09-13",
+        "estadisticas": [
+          {
+            "socioID": "L3",
+            "amarillas": 0,
+            "rojas": 1,
+            "equipo": "Lobos FC",
+            "goles": 0,
+            "asistencias": 0
+          },
+          {
+            "socioID": "L4",
+            "amarillas": 1,
+            "rojas": 0,
+            "equipo": "Lobos FC",
+            "goles": 0,
+            "asistencias": 0
+          }
+        ],
+        "jugado": true,
+        "fase": "Fecha 1",
+        "marcadorVisitante": 0,
+        "suspensiones": [{
+          "cumplidaEn": 4,
+          "motivo": "Roja directa",
+          "socioID": "L3",
+          "equipo": "Lobos FC"
+        }],
+        "visitante": "Atlético Usaquén",
+        "marcadorLocal": 0,
+        "id": 3,
+        "local": "Lobos FC"
+      },
+      {
+        "escenario": "Cancha principal",
+        "fecha": "2026-09-27",
+        "estadisticas": [
+          {
+            "socioID": "J1",
+            "amarillas": 0,
+            "rojas": 0,
+            "equipo": "Águilas FC",
+            "goles": 1,
+            "asistencias": 0
+          },
+          {
+            "socioID": "L5",
+            "amarillas": 0,
+            "rojas": 0,
+            "equipo": "Lobos FC",
+            "goles": 1,
+            "asistencias": 0
+          },
+          {
+            "socioID": "L6",
+            "amarillas": 1,
+            "rojas": 0,
+            "equipo": "Lobos FC",
+            "goles": 0,
+            "asistencias": 1
+          }
+        ],
+        "jugado": true,
+        "fase": "Fecha 2",
+        "marcadorVisitante": 1,
+        "suspensiones": [],
+        "visitante": "Lobos FC",
+        "marcadorLocal": 1,
+        "id": 4,
+        "local": "Águilas FC"
+      },
+      {
+        "escenario": "Estadio Usaquén",
+        "fecha": "2026-09-27",
+        "estadisticas": [],
+        "jugado": true,
+        "fase": "Fecha 2",
+        "marcadorVisitante": 2,
+        "suspensiones": [],
+        "visitante": "Deportivo Chapinero",
+        "marcadorLocal": 2,
+        "id": 5,
+        "local": "Atlético Usaquén"
+      },
+      {
+        "escenario": "Cancha principal",
+        "fecha": "2026-10-11",
+        "estadisticas": [
+          {
+            "socioID": "J10",
+            "amarillas": 0,
+            "rojas": 0,
+            "equipo": "Águilas FC",
+            "goles": 2,
+            "asistencias": 0
+          },
+          {
+            "socioID": "J1",
+            "amarillas": 0,
+            "rojas": 0,
+            "equipo": "Águilas FC",
+            "goles": 0,
+            "asistencias": 1
+          }
+        ],
+        "jugado": true,
+        "fase": "Fecha 3",
+        "marcadorVisitante": 0,
+        "suspensiones": [],
+        "visitante": "Atlético Usaquén",
+        "marcadorLocal": 2,
+        "id": 6,
+        "local": "Águilas FC"
+      },
+      {
+        "escenario": "Cancha 2",
+        "fecha": "2026-11-22",
+        "estadisticas": [],
+        "jugado": false,
+        "fase": "Fecha 3",
+        "marcadorVisitante": 0,
+        "suspensiones": [],
+        "visitante": "Deportivo Chapinero",
+        "marcadorLocal": 0,
+        "id": 7,
+        "local": "Lobos FC"
+      }
+    ],
+    "participantes": [
+      {
+        "tipo": "Inscrito",
+        "nomina": [
+          "J1",
+          "J4",
+          "J5",
+          "J6",
+          "J7",
+          "J8",
+          "J9",
+          "J10",
+          "J11",
+          "J12",
+          "J13",
+          "J14"
+        ],
+        "equipo": "Águilas FC",
+        "grupo": null,
+        "fechaInscripcion": "2026-09-01"
+      },
+      {
+        "tipo": "Inscrito",
+        "nomina": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "L6",
+          "L7",
+          "L8",
+          "L9",
+          "L10",
+          "L11",
+          "L12"
+        ],
+        "equipo": "Lobos FC",
+        "grupo": null,
+        "fechaInscripcion": "2026-09-01"
+      },
+      {
+        "tipo": "Externo",
+        "grupo": null,
+        "institucion": "Colegio Chapinero",
+        "nombre": "Deportivo Chapinero"
+      },
+      {
+        "tipo": "Externo",
+        "grupo": null,
+        "institucion": "Club Usaquén",
+        "nombre": "Atlético Usaquén"
+      }
+    ]
+  },
+  {
+    "amarillasParaSuspension": 3,
+    "deporte": "Voleibol",
+    "temporada": 2026,
+    "categoria": "Mayores",
+    "formato": {
+      "tipo": "GruposEliminacion",
+      "numeroGrupos": 2,
+      "clasificadosPorGrupo": 1
+    },
+    "entidadOrganizadora": "Liga de Voleibol de Bogotá",
+    "nominaMinima": 6,
+    "nombre": "Copa Interclubes de Voleibol",
+    "partidos": [
+      {
+        "escenario": "Coliseo",
+        "fecha": "2026-10-04",
+        "estadisticas": [
+          {
+            "socioID": "V1",
+            "equipo": "Gaviotas Voley",
+            "aces": 4,
+            "bloqueos": 1
+          },
+          {
+            "socioID": "V2",
+            "equipo": "Gaviotas Voley",
+            "aces": 1,
+            "bloqueos": 3
+          }
+        ],
+        "jugado": true,
+        "fase": "Grupo A",
+        "marcadorVisitante": 1,
+        "suspensiones": [],
+        "visitante": "Club Bochica",
+        "marcadorLocal": 3,
+        "id": 8,
+        "local": "Gaviotas Voley"
+      },
+      {
+        "escenario": "Coliseo Suba",
+        "fecha": "2026-10-04",
+        "estadisticas": [{
+          "socioID": "V7",
+          "equipo": "Panteras Voley",
+          "aces": 2,
+          "bloqueos": 0
+        }],
+        "jugado": true,
+        "fase": "Grupo B",
+        "marcadorVisitante": 0,
+        "suspensiones": [],
+        "visitante": "Panteras Voley",
+        "marcadorLocal": 3,
+        "id": 9,
+        "local": "Voleibol Suba"
+      },
+      {
+        "escenario": "Coliseo",
+        "fecha": "2026-11-29",
+        "estadisticas": [],
+        "jugado": false,
+        "fase": "Final",
+        "marcadorVisitante": 0,
+        "suspensiones": [],
+        "visitante": "Voleibol Suba",
+        "marcadorLocal": 0,
+        "id": 10,
+        "local": "Gaviotas Voley"
+      }
+    ],
+    "participantes": [
+      {
+        "tipo": "Inscrito",
+        "nomina": [
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "V5",
+          "V6"
+        ],
+        "equipo": "Gaviotas Voley",
+        "grupo": "A",
+        "fechaInscripcion": "2026-09-01"
+      },
+      {
+        "tipo": "Externo",
+        "grupo": "A",
+        "institucion": "Club Bochica",
+        "nombre": "Club Bochica"
+      },
+      {
+        "tipo": "Inscrito",
+        "nomina": [
+          "V7",
+          "V8",
+          "V9",
+          "V10",
+          "V11",
+          "V12"
+        ],
+        "equipo": "Panteras Voley",
+        "grupo": "B",
+        "fechaInscripcion": "2026-09-01"
+      },
+      {
+        "tipo": "Externo",
+        "grupo": "B",
+        "institucion": "Escuela de Suba",
+        "nombre": "Voleibol Suba"
+      }
+    ]
+  }
+]}

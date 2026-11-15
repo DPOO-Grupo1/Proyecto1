@@ -95,7 +95,7 @@ Código en la Entrega 1: HU_S1.
 
 **Como** socio, **quiero** consultar la tabla de posiciones y las clasificaciones de goleadores o jugadores destacados de una competencia, **para** conocer el estado y la evolución del torneo.
 
-- **Entradas:** desde la consola del socio, Deportes y competencias, Ver la tabla de posiciones o Ver goleadores y jugadores destacados. El administrador tiene las mismas opciones en Competencias externas. Un filtro opcional por deporte, la competencia (elegida de la lista) y, en formato de grupos, el grupo.
+- **Entradas:** desde la consola del socio, Deportes y competencias, Ver la tabla de posiciones o Ver goleadores y jugadores destacados. El administrador tiene las mismas opciones en Competencias externas. Filtros opcionales por deporte y por categoría, la competencia (elegida de la lista) y, en formato de grupos, el grupo.
 - **Salidas:** la tabla con partidos jugados, ganados, empatados y perdidos, tantos a favor y en contra, diferencia y puntos, seguida de los clasificados; o las listas de goleadores y destacados de mayor a menor. Si no hay datos se muestra "(sin información disponible)".
 
 Criterios de aceptación:
@@ -105,10 +105,10 @@ Criterios de aceptación:
 3. Dada una competencia de grupos y eliminación directa, cuando consulto un grupo, entonces veo la tabla de ese grupo y los equipos que clasifican de cada grupo.
 4. Dada una competencia de fútbol con partidos jugados, cuando consulto los goleadores, entonces veo a los jugadores ordenados por goles en esa competencia. En baloncesto o voleibol se informa que no hay tabla de goleadores.
 5. Dada una competencia con partidos jugados, cuando consulto los destacados, entonces veo a los jugadores ordenados por asistencias en fútbol, puntos en baloncesto o aces en voleibol.
-6. Dado un filtro de deporte sin competencias, o una competencia sin participantes, cuando consulto, entonces se muestra que no hay información disponible.
+6. Dado un filtro de deporte o de categoría sin competencias, o una competencia sin participantes, cuando consulto, entonces se muestra que no hay información disponible.
 7. Dado un grupo que no existe en el formato de la competencia, cuando consulto su tabla, entonces se rechaza por dato inválido.
 
-Cambios frente a la Entrega 1: la consola filtra por deporte; el gestor también filtra por categoría, pero el menú no lo pide. La tabla de goleadores solo existe en fútbol.
+Cambios frente a la Entrega 1: la tabla de goleadores solo existe en fútbol.
 
 INVEST: depende de HU_RF25 a HU_RF27 para tener datos, valiosa para socios y administración, verificable.
 
