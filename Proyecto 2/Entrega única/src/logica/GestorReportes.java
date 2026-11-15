@@ -188,21 +188,48 @@ public class GestorReportes extends Gestor {
         reporte.agregarResultado("Asistencia a entrenamientos: " + asistio + " asistieron, "
                 + falto + " faltaron, " + tarde + " llegaron tarde");
 
-        // ranking ELO actual por disciplina
+        // ranking por disciplina: ELO actual de mayor a menor y partidos de práctica del periodo
         for (Disciplina d : club.getDisciplinas()) {
-            for (Usuario u : club.getUsuarios()) {
-                if (u instanceof Socio) {
-                    Socio socio = (Socio) u;
-                    Inscripcion ins = socio.getInscripcion(d);
-                    if (ins != null) {
-                        reporte.agregarResultado("ELO " + d.getNombre() + " - " + socio.getLogin()
-                                + ": " + ins.getPuntajeELO());
+            for (Inscripcion ins : rankingDe(d)) {
+                Socio socio = ins.getSocio();
+                int jugados = 0;
+                int ganados = 0;
+                for (PartidoPractica pp : club.getPartidosPractica()) {
+                    if (pp.isJugado() && pp.getReserva() != null
+                            && pp.getReserva().getInstalacion().getDisciplina() == d
+                            && enRango(pp.getReserva().getFecha(), inicio, fin)
+                            && pp.tieneParticipante(socio)) {
+                        jugados++;
+                        if (pp.getGanador() == socio) {
+                            ganados++;
+                        }
                     }
                 }
+                reporte.agregarResultado("ELO " + d.getNombre() + " - " + socio.getLogin() + ": "
+                        + ins.getPuntajeELO() + " (en el periodo: " + jugados + " partido(s), "
+                        + ganados + " ganado(s))");
             }
         }
 
         return reporte;
+    }
+
+    // Inscripciones de la disciplina ordenadas por ELO de mayor a menor (inserción)
+    private List<Inscripcion> rankingDe(Disciplina disciplina) {
+        List<Inscripcion> ranking = new ArrayList<Inscripcion>();
+        for (Usuario u : club.getUsuarios()) {
+            if (u instanceof Socio) {
+                Inscripcion ins = ((Socio) u).getInscripcion(disciplina);
+                if (ins != null) {
+                    int pos = 0;
+                    while (pos < ranking.size() && ranking.get(pos).getPuntajeELO() >= ins.getPuntajeELO()) {
+                        pos++;
+                    }
+                    ranking.add(pos, ins);
+                }
+            }
+        }
+        return ranking;
     }
 
     // auxiliar privado

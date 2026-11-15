@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +19,10 @@ import excepciones.DatoInvalidoException;
 import excepciones.DuplicadoException;
 import excepciones.NoEncontradoException;
 import excepciones.PermisoDenegadoException;
+import modelo.academias.Disciplina;
+import modelo.academias.Inscripcion;
+import modelo.academias.Nivel;
+import modelo.academias.PartidoPractica;
 import modelo.reportes.FiltroHistorial;
 import modelo.reportes.Historial;
 import modelo.reportes.Mensualidad;
@@ -106,6 +112,31 @@ public class GestorReportesTest {
 		assertTrue(reporte.getResultados().get(0).startsWith("Asistencia a entrenamientos"));
 		assertThrows(PermisoDenegadoException.class,
 				() -> gestor.generarReporteDeportivo(datos.s1, Periodo.MENSUAL, PRIMERO_NOVIEMBRE));
+	}
+
+	@Test
+	public void rf34ReporteDeportivoMuestraElRankingConLosPartidosDelPeriodo() throws Exception {
+		Disciplina padel = datos.club.buscarDisciplina("Pádel");
+		datos.s1.agregarInscripcion(new Inscripcion(datos.s1, padel, Nivel.INTERMEDIO, 1016));
+		datos.s2.agregarInscripcion(new Inscripcion(datos.s2, padel, Nivel.INTERMEDIO, 984));
+		List<modelo.usuarios.Socio> jugadores = new ArrayList<modelo.usuarios.Socio>();
+		jugadores.add(datos.s1);
+		jugadores.add(datos.s2);
+		PartidoPractica partido = new PartidoPractica("PP1", datos.club.buscarReserva("R1"), jugadores);
+		partido.setJugado(true);
+		partido.setGanador(datos.s1);
+		datos.club.agregarPartidoPractica(partido);
+
+		List<String> noviembre = gestor.generarReporteDeportivo(datos.admin, Periodo.MENSUAL, PRIMERO_NOVIEMBRE)
+				.getResultados();
+		List<String> diciembre = gestor.generarReporteDeportivo(datos.admin, Periodo.MENSUAL, LocalDate.of(2026, 12, 1))
+				.getResultados();
+
+		int primero = noviembre.indexOf("ELO Pádel - s1: 1016 (en el periodo: 1 partido(s), 1 ganado(s))");
+		int segundo = noviembre.indexOf("ELO Pádel - s2: 984 (en el periodo: 1 partido(s), 0 ganado(s))");
+		assertTrue(primero >= 0);
+		assertTrue(segundo > primero);
+		assertTrue(diciembre.contains("ELO Pádel - s1: 1016 (en el periodo: 0 partido(s), 0 ganado(s))"));
 	}
 
 	// RF28: historial global

@@ -271,6 +271,14 @@ public class GestorTiendaTest {
 	}
 
 	@Test
+	public void rf31ReabasteceUnProductoEnUnaUbicacionDondeNoTeniaExistencias() throws Exception {
+		gestor.reabastecer(datos.admin, "Balón", "Bodega", 4);
+
+		assertEquals(4, datos.existencias("Balón", "Bodega"));
+		assertEquals(5, datos.existencias("Balón", "Tienda"));
+	}
+
+	@Test
 	public void rf31RechazaPrecioCeroCantidadNegativaYNombreRepetido() {
 		assertThrows(DatoInvalidoException.class, () -> gestor.registrarProducto(datos.admin,
 				new Snack(new java.util.ArrayList<String>(), "Fruta", 0), "Bodega", 10));

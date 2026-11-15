@@ -241,7 +241,16 @@ public class GestorTienda extends Gestor {
 
         Producto p = club.buscarProducto(producto);
         Ubicacion u = club.buscarUbicacion(ubicacion);
-        club.buscarExistencia(p, u).sumar(cantidad);
+
+        // si el producto todavía no tiene existencia en esa ubicación, se crea en 0
+        Existencia existencia;
+        try {
+            existencia = club.buscarExistencia(p, u);
+        } catch (NoEncontradoException e) {
+            existencia = new Existencia(p, u, 0);
+            club.agregarExistencia(existencia);
+        }
+        existencia.sumar(cantidad);
     }
 
     // RF31: registrar producto nuevo
