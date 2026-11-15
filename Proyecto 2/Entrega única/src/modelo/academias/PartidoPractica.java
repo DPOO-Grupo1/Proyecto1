@@ -151,19 +151,40 @@ public class PartidoPractica {
 					throw new DatoInvalidoException("Los puntos totales no pueden ser negativos");
 				}
 			}
-
-			// Calcular ganador por sets
-			if (stat.getSetsGanados() > maxSets) {
-				maxSets = stat.getSetsGanados();
-				posibleGanador = socio;
-				empateSets = false;
-			} else if (stat.getSetsGanados() == maxSets) {
-				empateSets = true;
-			}
 		}
 
-		if (empateSets || posibleGanador == null) {
-			throw new ReglaDeportivaException("Marcador incoherente: en partidos de academia debe haber un ganador y no puede haber empate en sets");
+		// Calcular ganador por sets (en dobles: pareja 1 = 0 y 1, pareja 2 = 2 y 3)
+		if (participantes.size() == 4) {
+			Socio p0 = participantes.get(0);
+			Socio p1 = participantes.get(1);
+			Socio p2 = participantes.get(2);
+			Socio p3 = participantes.get(3);
+			int setsP1 = stats.get(p0).getSetsGanados();
+			int setsP2 = stats.get(p2).getSetsGanados();
+			if (setsP1 != stats.get(p1).getSetsGanados() || setsP2 != stats.get(p3).getSetsGanados()) {
+				throw new ReglaDeportivaException(
+						"Marcador incoherente: los compañeros de una pareja en dobles deben tener los mismos sets ganados");
+			}
+			if (setsP1 == setsP2) {
+				throw new ReglaDeportivaException(
+						"Marcador incoherente: en partidos de academia debe haber una pareja ganadora y no puede haber empate en sets");
+			}
+			posibleGanador = setsP1 > setsP2 ? p0 : p2;
+		} else {
+			for (Socio socio : stats.keySet()) {
+				int sets = stats.get(socio).getSetsGanados();
+				if (sets > maxSets) {
+					maxSets = sets;
+					posibleGanador = socio;
+					empateSets = false;
+				} else if (sets == maxSets) {
+					empateSets = true;
+				}
+			}
+			if (empateSets || posibleGanador == null) {
+				throw new ReglaDeportivaException(
+						"Marcador incoherente: en partidos de academia debe haber un ganador y no puede haber empate en sets");
+			}
 		}
 
 		this.ganador = posibleGanador;
@@ -185,6 +206,21 @@ public class PartidoPractica {
 				int eloPrevio2 = ins2.getPuntajeELO();
 				ins1.actualizarELO(eloPrevio2, s1 == ganador);
 				ins2.actualizarELO(eloPrevio1, s2 == ganador);
+			}
+		} else if (disciplina != null && participantes.size() == 4) {
+			// En dobles se usa el promedio ELO de la pareja rival
+			Inscripcion ins0 = participantes.get(0).getInscripcion(disciplina);
+			Inscripcion ins1 = participantes.get(1).getInscripcion(disciplina);
+			Inscripcion ins2 = participantes.get(2).getInscripcion(disciplina);
+			Inscripcion ins3 = participantes.get(3).getInscripcion(disciplina);
+			if (ins0 != null && ins1 != null && ins2 != null && ins3 != null) {
+				int eloPareja1 = (int) Math.round((ins0.getPuntajeELO() + ins1.getPuntajeELO()) / 2.0);
+				int eloPareja2 = (int) Math.round((ins2.getPuntajeELO() + ins3.getPuntajeELO()) / 2.0);
+				boolean ganoPareja1 = (ganador == participantes.get(0));
+				ins0.actualizarELO(eloPareja2, ganoPareja1);
+				ins1.actualizarELO(eloPareja2, ganoPareja1);
+				ins2.actualizarELO(eloPareja1, !ganoPareja1);
+				ins3.actualizarELO(eloPareja1, !ganoPareja1);
 			}
 		}
 
