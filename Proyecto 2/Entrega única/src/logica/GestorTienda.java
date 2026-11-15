@@ -90,7 +90,7 @@ public class GestorTienda extends Gestor {
         BonoDescuento bono = validarBono(cliente, codigo, idBono);
 
         // 4. crear la venta
-        VentaTienda venta = new VentaTienda(cliente, LocalDateTime.now());
+        VentaTienda venta = new VentaTienda(cliente, ahora());
         for (String nombre : items.keySet()) {
             venta.agregarDetalle(club.buscarProducto(nombre), items.get(nombre));
         }
@@ -102,6 +102,9 @@ public class GestorTienda extends Gestor {
         }
         venta.redimirPuntos(puntosARedimir);
         venta.calcularTotal();
+        if (venta.getMontoTotal() < 0) {
+            throw new VentaInvalidaException("No se pueden redimir más puntos que el valor de la compra");
+        }
 
         // 5. aplicar cambios
         for (String nombre : items.keySet()) {
@@ -177,7 +180,7 @@ public class GestorTienda extends Gestor {
         BonoDescuento bono = validarBono(cliente, codigo, idBono);
 
         // 4. crear la venta
-        VentaCafeteria venta = new VentaCafeteria(cliente, LocalDateTime.now(), porcentajePropina);
+        VentaCafeteria venta = new VentaCafeteria(cliente, ahora(), porcentajePropina);
         for (String nombre : items.keySet()) {
             venta.agregarDetalle(club.buscarProducto(nombre), items.get(nombre));
         }
@@ -189,6 +192,9 @@ public class GestorTienda extends Gestor {
         }
         venta.redimirPuntos(puntosARedimir);
         venta.calcularTotal();
+        if (venta.getMontoTotal() < 0) {
+            throw new VentaInvalidaException("No se pueden redimir más puntos que el valor de la compra");
+        }
 
         // 5. aplicar cambios
         for (String nombre : items.keySet()) {
@@ -305,6 +311,11 @@ public class GestorTienda extends Gestor {
         exDestino.sumar(cantidad);
     }
     
+  // privado: la venta queda con la fecha del club y la hora actual
+    private LocalDateTime ahora() {
+        return LocalDateTime.of(club.getFechaActual(), LocalTime.now());
+    }
+
   // privado: busca el bono y revisa que se pueda usar (HU_T10). Devuelve null si no hay bono.
     private BonoDescuento validarBono(Cliente cliente, Integer codigo, Integer idBono)
             throws NoEncontradoException, VentaInvalidaException {

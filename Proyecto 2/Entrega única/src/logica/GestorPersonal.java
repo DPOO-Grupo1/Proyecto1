@@ -99,18 +99,25 @@ public class GestorPersonal extends Gestor {
 
     // RF33: publicar turnos
     public void publicarTurnos(Usuario quien, List<Turno> turnos)
-            throws PermisoDenegadoException, ConflictoHorarioException, CoberturaTurnosException {
+            throws PermisoDenegadoException, DatoInvalidoException, ConflictoHorarioException,
+            CoberturaTurnosException {
         verificarAdministrador(quien);
 
+        for (Turno t : turnos) {
+            if (!club.getHorario().contiene(t.getDia(), t.getHoraInicio(), t.getHoraFin())) {
+                throw new DatoInvalidoException(t + " queda fuera del horario de atención del club");
+            }
+        }
         verificarSinSolapes(turnos);
         verificarCobertura(turnos);
 
+        // cada empleado deja los turnos de la semana anterior y recibe los nuevos
+        for (Turno t : club.getTurnos()) {
+            t.getEmpleado().getTurnos().remove(t);
+        }
         club.setTurnos(turnos);
         for (Turno t : turnos) {
-            Empleado e = t.getEmpleado();
-            if (!e.getTurnos().contains(t)) {
-                e.agregarTurno(t);
-            }
+            t.getEmpleado().agregarTurno(t);
         }
     }
 
