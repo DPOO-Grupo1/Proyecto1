@@ -24,4 +24,9 @@ public class VentaCafeteria extends Venta{
 	public double calcularPropina() {
 		return (getPorcentajePropina() * getSubtotal()) /100;
 	}
+
+	@Override
+	public String toString() {
+		return "Cafetería, " + fechaHora.toLocalDate() + ": " + detalles.size() + " producto(s), total $" + (long) montoTotal;
+	}
 }

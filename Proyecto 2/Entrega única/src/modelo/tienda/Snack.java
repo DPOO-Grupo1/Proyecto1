@@ -13,5 +13,13 @@ public class Snack extends ProductoCafeteria{
 	public List<String> getAlergenos() {
 		return alergenos;
 	}
-	
+
+	@Override
+	public String toString() {
+		String texto = nombre + " ($" + (long) precio + ", snack";
+		if (alergenos.isEmpty()) {
+			return texto + ", sin alérgenos)";
+		}
+		return texto + ", alérgenos: " + String.join(", ", alergenos) + ")";
+	}
 }

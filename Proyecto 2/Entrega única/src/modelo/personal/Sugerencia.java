@@ -43,4 +43,14 @@ public class Sugerencia {
         this.estado = EstadoSolicitud.RECHAZADA;
         this.motivoRechazo = motivo;
     }
+
+    @Override
+    public String toString() {
+        String texto = nombreProducto + " (" + tipo + "), sugerido por " + empleado.getNombreCompleto()
+                + ": " + estado.name().toLowerCase();
+        if (motivoRechazo != null) {
+            texto += ". Motivo: " + motivoRechazo;
+        }
+        return texto;
+    }
 }

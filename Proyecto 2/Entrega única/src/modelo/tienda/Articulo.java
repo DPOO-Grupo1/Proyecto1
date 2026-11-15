@@ -11,5 +11,9 @@ public class Articulo extends Producto{
 	public String getCategoria() {
 		return categoria;
 	}
-	
+
+	@Override
+	public String toString() {
+		return nombre + " ($" + (long) precio + ", artículo de " + categoria + ")";
+	}
 }

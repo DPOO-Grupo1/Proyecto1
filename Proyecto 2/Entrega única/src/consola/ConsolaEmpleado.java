@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import consola.deportes.MenuDeportesEntrenador;
+import consola.tienda.MenuTiendaEmpleado;
 import consola.torneos.MenuTorneosJugador;
+import consola.personal.MenuTurnosEmpleado;
 
 import modelo.usuarios.Empleado;
 import modelo.usuarios.Entrenador;
@@ -42,7 +44,9 @@ public class ConsolaEmpleado extends Consola {
 			menus.add(new MenuDeportesEntrenador(this));
 		}
 		// Área B: menus.add(new MenuEntrenamientoEntrenador(this));
-		// Área C: menus.add(new MenuTiendaEmpleado(this)); menus.add(new MenuTurnosEmpleado(this));
+		
+		menus.add(new MenuTiendaEmpleado(this));
+		menus.add(new MenuTurnosEmpleado(this));
 		menus.add(new MenuTorneosJugador(this));
 		return menus;
 	}

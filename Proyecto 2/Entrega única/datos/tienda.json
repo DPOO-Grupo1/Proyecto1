@@ -1,8 +1,174 @@
 {
-  "existencias": [],
-  "mensualidades": [],
+  "ubicaciones": [
+    "Tienda",
+    "Cafetería",
+    "Bodega"
+  ],
+  "productos": [
+    {
+      "tipo": "ARTICULO",
+      "nombre": "Camiseta del club",
+      "precio": 45000,
+      "categoria": "ropa"
+    },
+    {
+      "tipo": "ARTICULO",
+      "nombre": "Balón de fútbol",
+      "precio": 80000,
+      "categoria": "implementos"
+    },
+    {
+      "tipo": "ARTICULO",
+      "nombre": "Raqueta de tenis",
+      "precio": 160000,
+      "categoria": "implementos"
+    },
+    {
+      "tipo": "BEBIDA",
+      "nombre": "Café americano",
+      "precio": 3500,
+      "temperatura": "CALIENTE",
+      "tamanio": 250
+    },
+    {
+      "tipo": "BEBIDA",
+      "nombre": "Chocolate",
+      "precio": 4500,
+      "temperatura": "CALIENTE",
+      "tamanio": 300
+    },
+    {
+      "tipo": "BEBIDA",
+      "nombre": "Limonada",
+      "precio": 5000,
+      "temperatura": "FRIA",
+      "tamanio": 400
+    },
+    {
+      "tipo": "BEBIDA",
+      "nombre": "Agua",
+      "precio": 2500,
+      "temperatura": "FRIA",
+      "tamanio": 500
+    },
+    {
+      "tipo": "SNACK",
+      "nombre": "Mix de frutos secos",
+      "precio": 6000,
+      "alergenos": [
+        "maní",
+        "almendras"
+      ]
+    },
+    {
+      "tipo": "SNACK",
+      "nombre": "Galleta de avena",
+      "precio": 4000,
+      "alergenos": [
+        "gluten"
+      ]
+    },
+    {
+      "tipo": "SNACK",
+      "nombre": "Fruta picada",
+      "precio": 5000,
+      "alergenos": []
+    }
+  ],
+  "existencias": [
+    {
+      "producto": "Camiseta del club",
+      "ubicacion": "Tienda",
+      "cantidad": 20
+    },
+    {
+      "producto": "Balón de fútbol",
+      "ubicacion": "Tienda",
+      "cantidad": 10
+    },
+    {
+      "producto": "Raqueta de tenis",
+      "ubicacion": "Tienda",
+      "cantidad": 5
+    },
+    {
+      "producto": "Café americano",
+      "ubicacion": "Cafetería",
+      "cantidad": 40
+    },
+    {
+      "producto": "Chocolate",
+      "ubicacion": "Cafetería",
+      "cantidad": 25
+    },
+    {
+      "producto": "Limonada",
+      "ubicacion": "Cafetería",
+      "cantidad": 30
+    },
+    {
+      "producto": "Agua",
+      "ubicacion": "Cafetería",
+      "cantidad": 50
+    },
+    {
+      "producto": "Mix de frutos secos",
+      "ubicacion": "Cafetería",
+      "cantidad": 15
+    },
+    {
+      "producto": "Galleta de avena",
+      "ubicacion": "Cafetería",
+      "cantidad": 20
+    },
+    {
+      "producto": "Fruta picada",
+      "ubicacion": "Cafetería",
+      "cantidad": 12
+    },
+    {
+      "producto": "Camiseta del club",
+      "ubicacion": "Bodega",
+      "cantidad": 30
+    },
+    {
+      "producto": "Balón de fútbol",
+      "ubicacion": "Bodega",
+      "cantidad": 8
+    },
+    {
+      "producto": "Agua",
+      "ubicacion": "Bodega",
+      "cantidad": 100
+    },
+    {
+      "producto": "Galleta de avena",
+      "ubicacion": "Bodega",
+      "cantidad": 40
+    }
+  ],
+  "codigos": [
+    {
+      "id": 1,
+      "empleado": 1,
+      "activo": true
+    },
+    {
+      "id": 2,
+      "empleado": 2,
+      "activo": true
+    },
+    {
+      "id": 3,
+      "empleado": 3,
+      "activo": true
+    },
+    {
+      "id": 4,
+      "empleado": 1,
+      "activo": false
+    }
+  ],
   "ventas": [],
-  "ubicaciones": [],
-  "productos": [],
-  "codigos": []
+  "mensualidades": []
 }

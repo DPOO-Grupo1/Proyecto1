@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import consola.deportes.MenuDeportesSocio;
+import consola.tienda.MenuTiendaSocio;
 import consola.torneos.MenuTorneosJugador;
 import modelo.usuarios.ParticipanteExterno;
 import modelo.usuarios.Socio;
@@ -40,7 +41,7 @@ public class ConsolaSocio extends Consola {
 		if (usuario instanceof Socio) {
 			menus.add(new MenuDeportesSocio(this));
 			// Área B: menus.add(new MenuAcademiasSocio(this));
-			// Área C: menus.add(new MenuTiendaSocio(this));
+			menus.add(new MenuTiendaSocio(this));
 		}
 		menus.add(new MenuTorneosJugador(this));
 		return menus;

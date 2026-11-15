@@ -12,12 +12,16 @@ public abstract class Venta {
 	protected int puntosRedimidos;
 	protected List <DetalleVenta> detalles;
 	protected CodigoDescuento codigo;
+	protected int idBono;
+	protected int porcentajeBono;
 		
 	public Venta(Cliente cliente, LocalDateTime fechaHora) {
 		this.cliente = cliente;
         this.fechaHora = fechaHora;
         this.detalles = new ArrayList<DetalleVenta>();
         this.codigo = null;
+        this.idBono = 0;
+        this.porcentajeBono = 0;
         this.puntosRedimidos = 0;
         this.montoTotal = 0;
 	}
@@ -40,6 +44,13 @@ public abstract class Venta {
 	public CodigoDescuento getCodigo() {
 		return codigo;
 	}
+	/** Id del bono de torneo usado en la venta, o 0 si no se usó. */
+	public int getIdBono() {
+		return idBono;
+	}
+	public int getPorcentajeBono() {
+		return porcentajeBono;
+	}
 	
 	//métodos
 	public void agregarDetalle(Producto producto, int cantidad) {
@@ -49,6 +60,19 @@ public abstract class Venta {
 	
 	public void aplicarCodigo(CodigoDescuento codigo) {
 		this.codigo = codigo;
+	}
+	
+	/**
+	 * Bono de torneo recreativo. Se guarda su id y su porcentaje, no el objeto,
+	 * para que la venta se pueda cargar antes que los torneos.
+	 */
+	public void aplicarBono(int idBono, int porcentajeBono) {
+		this.idBono = idBono;
+		this.porcentajeBono = porcentajeBono;
+	}
+	
+	public boolean tieneBono() {
+		return idBono != 0;
 	}
 	
 	public void redimirPuntos(int p) {
@@ -65,7 +89,11 @@ public abstract class Venta {
 	
 	public abstract double calcularImpuesto() ;
 	
+	// El bono no se suma con el código: si hay bono, solo cuenta el bono
 	public double getDescuento() {
+	    if (tieneBono()) {
+	        return (getSubtotal() + calcularImpuesto()) * porcentajeBono / 100.0;
+	    }
 	    if (codigo == null) {
 	        return 0;
 	    }

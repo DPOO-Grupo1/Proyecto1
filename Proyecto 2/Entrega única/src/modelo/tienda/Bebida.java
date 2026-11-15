@@ -21,4 +21,9 @@ public class Bebida extends ProductoCafeteria{
 	public boolean esCaliente() {
 	    return temperatura.equalsIgnoreCase("CALIENTE");
 	}
+
+	@Override
+	public String toString() {
+		return nombre + " ($" + (long) precio + ", bebida " + temperatura.toLowerCase() + " de " + tamanio + " ml)";
+	}
 }

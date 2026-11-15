@@ -6,6 +6,9 @@ import java.util.List;
 import consola.deportes.MenuCompetenciasAdministrador;
 import consola.deportes.MenuEquiposAdministrador;
 import consola.torneos.MenuTorneosAdministrador;
+import consola.tienda.MenuTiendaAdministrador;
+import consola.personal.MenuPersonalAdministrador;
+import consola.reportes.MenuReportesAdministrador;
 
 import modelo.usuarios.Administrador;
 import modelo.usuarios.Usuario;
@@ -40,7 +43,11 @@ public class ConsolaAdministrador extends Consola {
 		menus.add(new MenuEquiposAdministrador(this));
 		menus.add(new MenuCompetenciasAdministrador(this));
 		// Área B: menus.add(new MenuAcademiasAdministrador(this));
-		// Área C: menus.add(new MenuTiendaAdministrador(this)); menus.add(new MenuPersonalAdministrador(this));
+		
+		// Área C:
+		menus.add(new MenuTiendaAdministrador(this));
+		menus.add(new MenuPersonalAdministrador(this));
+		menus.add(new MenuReportesAdministrador(this));
 		menus.add(new MenuTorneosAdministrador(this));
 		return menus;
 	}

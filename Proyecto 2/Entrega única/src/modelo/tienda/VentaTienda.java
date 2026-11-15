@@ -17,4 +17,9 @@ public class VentaTienda extends Venta {
 	public double calcularImpuesto() {
 		return 0.19 * getSubtotal();
 	}
+
+	@Override
+	public String toString() {
+		return "Tienda, " + fechaHora.toLocalDate() + ": " + detalles.size() + " producto(s), total $" + (long) montoTotal;
+	}
 }

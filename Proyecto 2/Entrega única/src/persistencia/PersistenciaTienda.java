@@ -140,6 +140,9 @@ public class PersistenciaTienda implements IPersistenciaArea {
 		if (!jv.isNull("codigo")) {
 			venta.aplicarCodigo(club.buscarCodigo(jv.getInt("codigo")));
 		}
+		if (jv.has("bono") && !jv.isNull("bono")) {
+			venta.aplicarBono(jv.getInt("bono"), jv.getInt("porcentajeBono"));
+		}
 		venta.redimirPuntos(jv.getInt("puntosRedimidos"));
 		venta.calcularTotal();
 
@@ -205,6 +208,12 @@ public class PersistenciaTienda implements IPersistenciaArea {
 				jv.put("codigo", JSONObject.NULL);
 			} else {
 				jv.put("codigo", v.getCodigo().getIdDescuento());
+			}
+			if (v.tieneBono()) {
+				jv.put("bono", v.getIdBono());
+				jv.put("porcentajeBono", v.getPorcentajeBono());
+			} else {
+				jv.put("bono", JSONObject.NULL);
 			}
 			if (v instanceof VentaCafeteria) {
 				jv.put("tipo", "CAFETERIA");

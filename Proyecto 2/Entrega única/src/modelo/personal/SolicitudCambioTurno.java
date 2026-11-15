@@ -40,4 +40,10 @@ public class SolicitudCambioTurno {
     public void rechazar() {
         this.estado = EstadoSolicitud.RECHAZADA;
     }
+
+    @Override
+    public String toString() {
+        return "Cambio del turno #" + turno.getId() + " al " + HorarioAtencion.nombreDia(nuevoDia) + " de "
+                + nuevaHoraInicio + " a " + nuevaHoraFin + " (" + estado.name().toLowerCase() + ")";
+    }
 }

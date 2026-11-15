@@ -25,6 +25,7 @@ import modelo.tienda.Snack;
 import modelo.tienda.Ubicacion;
 import modelo.tienda.VentaCafeteria;
 import modelo.tienda.VentaTienda;
+import modelo.torneos.BonoDescuento;
 import modelo.usuarios.Cliente;
 import modelo.usuarios.Socio;
 import modelo.usuarios.Usuario;
@@ -39,9 +40,16 @@ public class GestorTienda extends Gestor {
         super(club);
     }
     
-  // RF3, RF17, RF20, RF5: comprar en la tienda
+  // RF3, RF17, RF20, RF5: comprar en la tienda sin bono
     public VentaTienda comprarEnTienda(Usuario quien, Map<String, Integer> items,
             Integer codigo, int puntosARedimir)
+            throws PermisoDenegadoException, NoEncontradoException, VentaInvalidaException {
+        return comprarEnTienda(quien, items, codigo, puntosARedimir, null);
+    }
+
+  // RF3, RF17, RF20, RF5 y HU_T10: comprar en la tienda; idBono es null si no usa bono
+    public VentaTienda comprarEnTienda(Usuario quien, Map<String, Integer> items,
+            Integer codigo, int puntosARedimir, Integer idBono)
             throws PermisoDenegadoException, NoEncontradoException, VentaInvalidaException {
 
         // 1. permiso: solo socios y empleados (Cliente)
@@ -79,6 +87,7 @@ public class GestorTienda extends Gestor {
         if (puntosARedimir < 0 || puntosARedimir > cliente.getPuntosFidelidad()) {
             throw new VentaInvalidaException("Puntos insuficientes: tiene " + cliente.getPuntosFidelidad());
         }
+        BonoDescuento bono = validarBono(cliente, codigo, idBono);
 
         // 4. crear la venta
         VentaTienda venta = new VentaTienda(cliente, LocalDateTime.now());
@@ -87,6 +96,9 @@ public class GestorTienda extends Gestor {
         }
         if (cod != null) {
             venta.aplicarCodigo(cod);
+        }
+        if (bono != null) {
+            venta.aplicarBono(bono.getId(), bono.getPorcentaje());
         }
         venta.redimirPuntos(puntosARedimir);
         venta.calcularTotal();
@@ -97,6 +109,9 @@ public class GestorTienda extends Gestor {
             club.buscarExistencia(p, tienda).descontar(items.get(nombre));
         }
         cliente.restarPuntos(puntosARedimir);
+        if (bono != null) {
+            bono.usar();
+        }
         cliente.sumarPuntos(venta.calcularPuntosGenerados());
 
         // 6. registrar
@@ -105,9 +120,16 @@ public class GestorTienda extends Gestor {
         return venta;
     }
     
-  // RF4, RF17, RF20, RF5: comprar en la cafetería
+  // RF4, RF17, RF20, RF5: comprar en la cafetería sin bono
     public VentaCafeteria comprarEnCafeteria(Usuario quien, Map<String, Integer> items,
             Integer codigo, int puntosARedimir, int porcentajePropina)
+            throws PermisoDenegadoException, NoEncontradoException, VentaInvalidaException, DatoInvalidoException {
+        return comprarEnCafeteria(quien, items, codigo, puntosARedimir, porcentajePropina, null);
+    }
+
+  // RF4, RF17, RF20, RF5 y HU_T10: comprar en la cafetería; idBono es null si no usa bono
+    public VentaCafeteria comprarEnCafeteria(Usuario quien, Map<String, Integer> items,
+            Integer codigo, int puntosARedimir, int porcentajePropina, Integer idBono)
             throws PermisoDenegadoException, NoEncontradoException, VentaInvalidaException, DatoInvalidoException {
 
         // 1. permiso: solo socios y empleados (Cliente)
@@ -152,6 +174,7 @@ public class GestorTienda extends Gestor {
         if (puntosARedimir < 0 || puntosARedimir > cliente.getPuntosFidelidad()) {
             throw new VentaInvalidaException("Puntos insuficientes: tiene " + cliente.getPuntosFidelidad());
         }
+        BonoDescuento bono = validarBono(cliente, codigo, idBono);
 
         // 4. crear la venta
         VentaCafeteria venta = new VentaCafeteria(cliente, LocalDateTime.now(), porcentajePropina);
@@ -160,6 +183,9 @@ public class GestorTienda extends Gestor {
         }
         if (cod != null) {
             venta.aplicarCodigo(cod);
+        }
+        if (bono != null) {
+            venta.aplicarBono(bono.getId(), bono.getPorcentaje());
         }
         venta.redimirPuntos(puntosARedimir);
         venta.calcularTotal();
@@ -170,6 +196,9 @@ public class GestorTienda extends Gestor {
             club.buscarExistencia(p, cafeteria).descontar(items.get(nombre));
         }
         cliente.restarPuntos(puntosARedimir);
+        if (bono != null) {
+            bono.usar();
+        }
         cliente.sumarPuntos(venta.calcularPuntosGenerados());
 
         // 6. registrar
@@ -276,6 +305,22 @@ public class GestorTienda extends Gestor {
         exDestino.sumar(cantidad);
     }
     
+  // privado: busca el bono y revisa que se pueda usar (HU_T10). Devuelve null si no hay bono.
+    private BonoDescuento validarBono(Cliente cliente, Integer codigo, Integer idBono)
+            throws NoEncontradoException, VentaInvalidaException {
+        if (idBono == null) {
+            return null;
+        }
+        if (codigo != null) {
+            throw new VentaInvalidaException("El bono no es acumulable con otros descuentos: use el bono o el código, no los dos");
+        }
+        BonoDescuento bono = club.buscarBono(idBono);
+        if (!bono.puedeUsar(cliente)) {
+            throw new VentaInvalidaException("El bono #" + idBono + " no es suyo o ya fue usado");
+        }
+        return bono;
+    }
+
   // privado: ¿el cliente está ahora en una instalación restringida?
     private boolean estaEnInstalacionRestringida(Cliente cliente) {
         LocalDate hoy = club.getFechaActual();

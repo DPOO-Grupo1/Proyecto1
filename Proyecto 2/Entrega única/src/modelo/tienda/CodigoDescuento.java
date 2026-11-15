@@ -38,5 +38,9 @@ public class CodigoDescuento {
 	public void desactivar() {
 	    this.activo = false;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Código " + idDescuento + " de " + dueno.getNombreCompleto() + (activo ? "" : " (inactivo)");
+	}
 }

@@ -62,4 +62,10 @@ public class Turno {
         this.horaInicio = nuevoInicio;
         this.horaFin = nuevoFin;
     }
+
+    @Override
+    public String toString() {
+        return "Turno #" + id + ": " + empleado.getNombreCompleto() + ", " + HorarioAtencion.nombreDia(dia)
+                + " de " + horaInicio + " a " + horaFin;
+    }
 }
