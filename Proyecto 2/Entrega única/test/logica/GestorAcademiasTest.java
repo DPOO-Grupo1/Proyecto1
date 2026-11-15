@@ -236,6 +236,12 @@ public class GestorAcademiasTest {
 	}
 
 	@Test
+	public void rf36RechazaConsultarReservasAEmpleados() {
+		assertThrows(PermisoDenegadoException.class, () -> gestor.consultarReservas(datos.e1, MANANA));
+		assertThrows(PermisoDenegadoException.class, () -> gestor.consultarReservas(datos.f1, MANANA));
+	}
+
+	@Test
 	public void rf7RechazaHorarioInvalido() {
 		assertThrows(DatoInvalidoException.class,
 				() -> gestor.reservar(datos.s1, "I1", MANANA, LocalTime.of(11, 0), LocalTime.of(10, 0),

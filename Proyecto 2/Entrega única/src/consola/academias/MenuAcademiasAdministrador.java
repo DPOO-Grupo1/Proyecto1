@@ -79,7 +79,7 @@ public class MenuAcademiasAdministrador extends Menu {
 		System.out.println("ACEPTADO: " + socio.getNombreCompleto() + " inscrito en " + ins);
 	}
 
-	private void consultarReservas() {
+	private void consultarReservas() throws ClubException {
 		LocalDate fecha = consola.confirmar("¿Filtrar por fecha?") ? consola.leerFecha("Fecha") : null;
 		List<Reserva> reservas = gestor.consultarReservas(usuario, fecha);
 		consola.mostrarLista("Reservas:", reservas);

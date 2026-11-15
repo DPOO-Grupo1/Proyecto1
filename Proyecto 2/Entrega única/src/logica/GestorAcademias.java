@@ -370,7 +370,10 @@ public class GestorAcademias extends Gestor {
 	 * RF36. Consulta las reservas realizadas para una fecha.
 	 * Abierto para socios y administrador.
 	 */
-	public List<Reserva> consultarReservas(Usuario quien, LocalDate fecha) {
+	public List<Reserva> consultarReservas(Usuario quien, LocalDate fecha) throws PermisoDenegadoException {
+		if (!(quien instanceof Socio) && !(quien instanceof Administrador)) {
+			throw new PermisoDenegadoException("Solo los socios y el administrador pueden consultar las reservas");
+		}
 		List<Reserva> resultado = new ArrayList<Reserva>();
 		for (Reserva reserva : club.getReservas()) {
 			if (fecha == null || reserva.getFecha().equals(fecha)) {
