@@ -19,10 +19,16 @@
     {
       "empleado": 2,
       "inicio": "06:00",
-      "fin": "13:00",
+      "fin": "20:00",
       "id": 3,
       "dia": "MONDAY",
-      "solicitudes": []
+      "solicitudes": [{
+        "fecha": "2026-11-15",
+        "nuevoFin": "13:00",
+        "estado": "PENDIENTE",
+        "nuevoDia": "MONDAY",
+        "nuevoInicio": "06:00"
+      }]
     },
     {
       "empleado": 3,
@@ -51,7 +57,7 @@
     {
       "empleado": 2,
       "inicio": "06:00",
-      "fin": "13:00",
+      "fin": "20:00",
       "id": 7,
       "dia": "TUESDAY",
       "solicitudes": [{
@@ -76,7 +82,13 @@
       "fin": "20:00",
       "id": 9,
       "dia": "WEDNESDAY",
-      "solicitudes": []
+      "solicitudes": [{
+        "fecha": "2026-11-15",
+        "nuevoFin": "14:00",
+        "estado": "PENDIENTE",
+        "nuevoDia": "WEDNESDAY",
+        "nuevoInicio": "06:00"
+      }]
     },
     {
       "empleado": 1,
@@ -89,7 +101,7 @@
     {
       "empleado": 2,
       "inicio": "06:00",
-      "fin": "13:00",
+      "fin": "20:00",
       "id": 11,
       "dia": "WEDNESDAY",
       "solicitudes": []
@@ -127,7 +139,7 @@
     {
       "empleado": 2,
       "inicio": "06:00",
-      "fin": "13:00",
+      "fin": "20:00",
       "id": 15,
       "dia": "THURSDAY",
       "solicitudes": []
@@ -159,7 +171,7 @@
     {
       "empleado": 2,
       "inicio": "06:00",
-      "fin": "13:00",
+      "fin": "20:00",
       "id": 19,
       "dia": "FRIDAY",
       "solicitudes": []
@@ -170,13 +182,7 @@
       "fin": "20:00",
       "id": 20,
       "dia": "FRIDAY",
-      "solicitudes": [{
-        "fecha": "2026-11-15",
-        "nuevoFin": "20:00",
-        "estado": "PENDIENTE",
-        "nuevoDia": "SATURDAY",
-        "nuevoInicio": "13:00"
-      }]
+      "solicitudes": []
     },
     {
       "empleado": 4,
