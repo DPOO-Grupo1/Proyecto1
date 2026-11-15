@@ -3,6 +3,7 @@ package consola;
 import java.util.ArrayList;
 import java.util.List;
 
+import consola.academias.MenuAcademiasSocio;
 import consola.deportes.MenuDeportesSocio;
 import consola.tienda.MenuTiendaSocio;
 import consola.torneos.MenuTorneosJugador;
@@ -40,7 +41,7 @@ public class ConsolaSocio extends Consola {
 		List<Menu> menus = new ArrayList<Menu>();
 		if (usuario instanceof Socio) {
 			menus.add(new MenuDeportesSocio(this));
-			// Área B: menus.add(new MenuAcademiasSocio(this));
+			menus.add(new MenuAcademiasSocio(this));
 			menus.add(new MenuTiendaSocio(this));
 		}
 		menus.add(new MenuTorneosJugador(this));
