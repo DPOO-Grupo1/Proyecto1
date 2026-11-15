@@ -78,6 +78,9 @@ public class GestorAcademias extends Gestor {
 	 */
 	public List<Inscripcion> consultarPerfil(Usuario quien, String socioID)
 			throws PermisoDenegadoException, NoEncontradoException {
+		if (!(quien instanceof Socio) && !(quien instanceof Administrador)) {
+			throw new PermisoDenegadoException("Solo el propio socio o el administrador pueden consultar el perfil");
+		}
 		Socio socio = club.buscarSocio(socioID);
 		if (quien instanceof Socio && !((Socio) quien).getSocioID().equals(socioID)) {
 			throw new PermisoDenegadoException("Solo el propio socio o el administrador pueden consultar el perfil");
@@ -193,9 +196,10 @@ public class GestorAcademias extends Gestor {
 	 */
 	public void cancelarReserva(Usuario quien, String idReserva, LocalTime horaActual)
 			throws PermisoDenegadoException, NoEncontradoException, EstadoInvalidoException {
+		verificarSocio(quien);
 		Reserva reserva = club.buscarReserva(idReserva);
 
-		if (quien instanceof Socio && reserva.getTitular() != quien) {
+		if (reserva.getTitular() != quien) {
 			throw new PermisoDenegadoException("Solo el socio titular puede cancelar su reserva");
 		}
 
@@ -320,6 +324,9 @@ public class GestorAcademias extends Gestor {
 	public List<PartidoPractica> consultarHistorial(Usuario quien, String socioID, String nombreDisciplina,
 			LocalDate desde, LocalDate hasta) throws PermisoDenegadoException, NoEncontradoException,
 			ReglaDeportivaException {
+		if (!(quien instanceof Socio) && !(quien instanceof Administrador)) {
+			throw new PermisoDenegadoException("Solo el propio socio o el administrador pueden consultar el historial");
+		}
 		Socio socio = club.buscarSocio(socioID);
 
 		if (quien instanceof Socio && !((Socio) quien).getSocioID().equals(socioID)) {
